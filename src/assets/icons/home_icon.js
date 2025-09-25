@@ -1,0 +1,11 @@
+export default `<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_38_1220" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="28" height="28">
+<path d="M0 1.90735e-06H28V28H0V1.90735e-06Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_38_1220)">
+<path d="M13.3924 5.19551L2.48921 16.5454C2.27123 16.7722 1.90941 16.7759 1.68695 16.5534L0.574657 15.4411C0.358423 15.2249 0.354923 14.8753 0.566782 14.6548L13.1899 1.51455C13.6319 1.05441 14.368 1.05441 14.8101 1.51455L27.4332 14.6548C27.6451 14.8753 27.6416 15.2249 27.4253 15.4411L26.313 16.5534C26.0906 16.7759 25.7288 16.7722 25.5108 16.5454L14.6076 5.19551C14.2761 4.85038 13.7239 4.85038 13.3924 5.19551Z" stroke="white" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.6672 26.8305V21.7764C10.6672 19.9357 12.1593 18.4436 13.9999 18.4436C15.8406 18.4436 17.3327 19.9357 17.3327 21.7764V26.8305H10.6672Z" stroke="white" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.9701 25.5948C23.9701 26.2773 23.4168 26.8305 22.7343 26.8305H5.26563C4.58318 26.8305 4.02991 26.2773 4.02991 25.5948V14.9415L13.3924 5.19551C13.724 4.85037 14.276 4.85037 14.6076 5.19551L23.9701 14.9415V25.5948Z" stroke="white" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>
+`
