@@ -1,39 +1,71 @@
-import { images } from "../constants";
+import { images } from '../constants';
 
 export const TextWeights = {
-  heavy: "HelveticaNeueHeavy",
-  black: "HelveticaNeueBlack",
-  bold: "HelveticaNeueBold",
-  regular: "HelveticaNeueRoman",
-  medium: "HelveticaNeueMedium",
-  light: "HelveticaNeueLight",
-  thin: "HelveticaNeueThin",
-  light: "HelveticaNeueLight",
+  heavy: 'HelveticaNeueHeavy',
+  black: 'HelveticaNeueBlack',
+  bold: 'HelveticaNeueBold',
+  regular: 'HelveticaNeueRoman',
+  medium: 'HelveticaNeueMedium',
+  light: 'HelveticaNeueLight',
+  thin: 'HelveticaNeueThin',
+  light: 'HelveticaNeueLight',
 };
 
-export const website_url = "https://health-asia.com/"
+export const website_url = 'https://health-asia.com/';
 
 export const roles = [
   {
     id: 1,
-    name: "Conference Delegate",
+    name: 'Conference Delegate',
   },
   {
     id: 2,
-    name: "Exhibitor (Stall Owner)",
+    name: 'Exhibitor (Stall Owner)',
   },
   {
     id: 3,
-    name: "Sponsor",
+    name: 'Sponsor',
   },
   {
     id: 4,
-    name: "Visitor",
+    name: 'Visitor',
   },
   {
     id: 5,
-    name: "Speaker",
+    name: 'Speaker',
   },
-]
+];
 
-export const signup_steps = ["Basic Information", "Select Your Category", "Social Media Links", "Agreement & Submission"]
+export const registeredUsers = [
+  {
+    name: 'Muhammad Ali',
+    email: 'muhammadali@gmail.com',
+  },
+  {
+    name: 'Ahmed Khan',
+    email: 'muhammadali@gmail.com',
+  },
+  {
+    name: 'Dr. Sarah Johnson',
+    email: 'muhammadali@gmail.com',
+  },
+  {
+    name: 'Muhammad Ibrahim',
+    email: 'muhammadali@gmail.com',
+  },
+  {
+    name: 'Ayesha Khan',
+    email: 'muhammadali@gmail.com',
+  },
+  {
+    name: 'Syed Hassan',
+    email: 'muhammadali@gmail.com',
+  },
+];
+
+export const signup_steps = [
+  'Basic Information',
+  'Select Your Category',
+  'Social Media Links',
+  'Agreement & Submission',
+];
