@@ -12,10 +12,15 @@ import { styles } from './index.styles';
 import { COLORS, SIZES } from '../../constants';
 import { registeredUsers, TextWeights } from '../../config';
 import { chat_icon } from '../../assets/icons';
+import { navigate } from '../../navigation/service';
 
 const Networking = () => {
   const renderItem = ({ item }) => (
-    <RowView justifyContent={'space-between'} style={styles.grid}>
+    <RowView
+      onPress={() => navigate('UserProfile')}
+      justifyContent={'space-between'}
+      style={styles.grid}
+    >
       <View>
         <Text
           text={item.name}

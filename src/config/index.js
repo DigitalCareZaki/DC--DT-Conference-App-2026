@@ -1,3 +1,10 @@
+import {
+  facebook_icon,
+  instagram_icon,
+  linked_in_icon,
+  twitter_icon,
+  youtube_icon,
+} from '../assets/icons';
 import { images } from '../constants';
 
 export const TextWeights = {
@@ -60,6 +67,29 @@ export const registeredUsers = [
   {
     name: 'Syed Hassan',
     email: 'muhammadali@gmail.com',
+  },
+];
+
+export const socialLinks = [
+  {
+    icon: facebook_icon,
+    link: 'https://www.facebook.com',
+  },
+  {
+    icon: instagram_icon,
+    link: 'https://www.instagram.com',
+  },
+  {
+    icon: linked_in_icon,
+    link: 'https://www.linkedin.com',
+  },
+  {
+    icon: youtube_icon,
+    link: 'https://www.youtube.com',
+  },
+  {
+    icon: twitter_icon,
+    link: 'https://www.twitter.com',
   },
 ];
 
