@@ -27,6 +27,7 @@ export const COLORS = {
     black: "#000000",
     modal_background_color: "#00000050",
     transparent: "transparent",
+    card_heading_color:"#28FFDE"
 }
 
 

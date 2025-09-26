@@ -1,3 +1,4 @@
+import { RowView } from "../components";
 import { TextWeights } from "../config";
 import { COLORS, SIZES } from "../constants";
 
@@ -34,4 +35,5 @@ export const common_styles = {
     paddingTop2: {
         paddingTop: SIZES.padding2
     },
+   
 }

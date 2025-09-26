@@ -13,12 +13,21 @@ const CustomButton = ({
   color,
   size,
   weight,
+  bgColor,
 }) => {
   return (
     <TouchableOpacity
       activeOpacity={0.6}
       onPress={onPress}
-      style={[styles.container, { backgroundColor: isDisabled ? COLORS.background_grey_color : COLORS.white }, style]}
+      style={[
+        styles.container,
+        {
+          backgroundColor: isDisabled
+            ? COLORS.background_grey_color
+            : bgColor ?? styles.container.backgroundColor, 
+        },
+        style,
+      ]}
       disabled={isDisabled}
     >
       <Text
@@ -34,12 +43,14 @@ const CustomButton = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.white, 
     height: SIZES.padding * 2.65,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
+    borderWidth:1,
+    borderColor:COLORS.white,
     borderRadius: SIZES.padding * 2,
   },
 });
