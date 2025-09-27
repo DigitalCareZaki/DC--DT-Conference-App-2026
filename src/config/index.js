@@ -93,6 +93,57 @@ export const socialLinks = [
   },
 ];
 
+export const galleryImgs = [
+  {
+    id: 1,
+    img: images.gallery_img_1,
+  },
+  {
+    id: 2,
+    img: images.gallery_img_2,
+  },
+  {
+    id: 3,
+    img: images.gallery_img_3,
+  },
+  {
+    id: 4,
+    img: images.gallery_img_4,
+  },
+  {
+    id: 5,
+    img: images.gallery_img_1,
+  },
+  {
+    id: 6,
+    img: images.gallery_img_2,
+  },
+  {
+    id: 7,
+    img: images.gallery_img_3,
+  },
+  {
+    id: 8,
+    img: images.gallery_img_4,
+  },
+  {
+    id: 9,
+    img: images.gallery_img_1,
+  },
+  {
+    id: 10,
+    img: images.gallery_img_2,
+  },
+  {
+    id: 11,
+    img: images.gallery_img_3,
+  },
+  {
+    id: 12,
+    img: images.gallery_img_4,
+  },
+];
+
 export const signup_steps = [
   'Basic Information',
   'Select Your Category',

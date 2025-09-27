@@ -35,7 +35,12 @@ const Networking = () => {
           mt={SIZES.padding2}
         />
       </View>
-      <Button style={styles.btn} buttonText={'Chat'} leftIcon={chat_icon} />
+      <Button
+        style={styles.btn}
+        buttonText={'Chat'}
+        leftIcon={chat_icon}
+        onPress={() => navigate('Gallery')}
+      />
     </RowView>
   );
 

@@ -5,7 +5,14 @@ import { navigationRef } from './service';
 import { DrawerNavigation } from './index';
 import Toast from 'react-native-toast-message';
 import { useDispatch, useSelector } from 'react-redux';
-import { Login, Networking, Signup, Splash, UserProfile } from '../screens';
+import {
+  Gallery,
+  Login,
+  Networking,
+  Signup,
+  Splash,
+  UserProfile,
+} from '../screens';
 import { notificationListener } from '../utils/notification_service';
 
 const MainNavigator = () => {
@@ -31,6 +38,7 @@ const MainNavigator = () => {
           <Stack.Screen name="Signup" component={Signup} />
           <Stack.Screen name="Networking" component={Networking} />
           <Stack.Screen name="UserProfile" component={UserProfile} />
+          <Stack.Screen name="Gallery" component={Gallery} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast position="top" />

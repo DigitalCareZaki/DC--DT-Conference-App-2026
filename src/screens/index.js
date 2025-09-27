@@ -5,3 +5,4 @@ export { default as Signup } from './Signup';
 export { default as Splash } from './Splash';
 export { default as Networking } from './Networking';
 export { default as UserProfile } from './UserProfile';
+export { default as Gallery } from './Gallery';
