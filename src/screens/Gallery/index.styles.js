@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLORS, SIZES } from '../../constants';
+import { SIZES } from '../../constants';
 
 export const styles = StyleSheet.create({
   main_view: {
@@ -16,18 +16,21 @@ export const styles = StyleSheet.create({
     flex: 1,
     marginRight: SIZES.padding2 - 2,
   },
-  modal: {
-    backgroundColor: COLORS.primary,
-    width: '90%',
-    height: '50%',
-    borderRadius: SIZES.padding,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
   modalContainer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0,0,0,0.9)',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  modalImageContainer: {
+    width: SIZES.width,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  iconContainer: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    paddingRight: SIZES.padding2 - 2,
+    paddingTop: SIZES.padding,
   },
 });
