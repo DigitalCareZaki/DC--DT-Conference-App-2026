@@ -6,6 +6,7 @@ import { DrawerNavigation } from './index';
 import Toast from 'react-native-toast-message';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  Chat,
   Gallery,
   Login,
   Networking,
@@ -39,6 +40,7 @@ const MainNavigator = () => {
           <Stack.Screen name="Networking" component={Networking} />
           <Stack.Screen name="UserProfile" component={UserProfile} />
           <Stack.Screen name="Gallery" component={Gallery} />
+          <Stack.Screen name="Chat" component={Chat} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast position="top" />

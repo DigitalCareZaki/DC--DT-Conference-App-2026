@@ -39,7 +39,7 @@ const Networking = () => {
         style={styles.btn}
         buttonText={'Chat'}
         leftIcon={chat_icon}
-        onPress={() => navigate('Gallery')}
+        onPress={() => navigate('Chat')}
       />
     </RowView>
   );
