@@ -1,14 +1,13 @@
 import { images } from "../constants";
 
 export const TextWeights = {
-  heavy: "HelveticaNeueHeavy",
-  black: "HelveticaNeueBlack",
-  bold: "HelveticaNeueBold",
-  regular: "HelveticaNeueRoman",
-  medium: "HelveticaNeueMedium",
-  light: "HelveticaNeueLight",
-  thin: "HelveticaNeueThin",
-  light: "HelveticaNeueLight",
+  heavy: "HelveticaNeue-Heavy",
+  black: "HelveticaNeue-Black",
+  bold: "HelveticaNeue-Bold",
+  regular: "HelveticaNeue-Roman",
+  medium: "HelveticaNeue-Medium",
+  light: "HelveticaNeue-Light",
+  thin: "HelveticaNeue-Thin",
 };
 
 export const website_url = "https://health-asia.com/"

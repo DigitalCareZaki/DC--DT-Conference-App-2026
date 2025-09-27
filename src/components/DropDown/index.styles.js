@@ -3,7 +3,7 @@ import { COLORS, SIZES } from "../../constants";
 
 export const styles = StyleSheet.create({
     main_view: {
-        height: SIZES.padding * 2.6,
+        height: SIZES.padding * 2.4,
         justifyContent: "center",
         borderRadius: SIZES.padding2,
         paddingHorizontal: SIZES.padding2,
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
         borderTopRightRadius: SIZES.padding2,
         // borderBottomWidth: 1,
         // borderBottomColor: COLORS.border_color,
-        height: SIZES.padding * 2.6,
+        height: SIZES.padding * 2.4,
         paddingHorizontal: SIZES.padding2,
         justifyContent: "center",
         // borderWidth: 1,
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
         backgroundColor: COLORS.white
     },
     text_view: {
-        height: SIZES.padding * 2.6,
+        height: SIZES.padding * 2.4,
         justifyContent: "center",
         paddingHorizontal: SIZES.padding2,
         borderWidth: 1,

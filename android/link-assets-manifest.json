@@ -2,31 +2,31 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/HelveticaNeueBlack.otf",
+      "path": "src/assets/fonts/HelveticaNeue-Black.otf",
       "sha1": "1cfd5b59e8a2c42433874c9d38d7b3daeb74e6fb"
     },
     {
-      "path": "src/assets/fonts/HelveticaNeueBold.otf",
+      "path": "src/assets/fonts/HelveticaNeue-Bold.otf",
       "sha1": "32a5639cbf87b4992575738e1f72578d7530744c"
     },
     {
-      "path": "src/assets/fonts/HelveticaNeueHeavy.otf",
+      "path": "src/assets/fonts/HelveticaNeue-Heavy.otf",
       "sha1": "de70a16801a647e2a2157a7dd3832e29756f06a3"
     },
     {
-      "path": "src/assets/fonts/HelveticaNeueLight.otf",
+      "path": "src/assets/fonts/HelveticaNeue-Light.otf",
       "sha1": "6013aa8c5fb912f30e935a310c5fa203317d00d8"
     },
     {
-      "path": "src/assets/fonts/HelveticaNeueMedium.otf",
+      "path": "src/assets/fonts/HelveticaNeue-Medium.otf",
       "sha1": "d46c2de0310e80f35934124d36a5556f08948700"
     },
     {
-      "path": "src/assets/fonts/HelveticaNeueRoman.otf",
+      "path": "src/assets/fonts/HelveticaNeue-Roman.otf",
       "sha1": "8e7dc6cf7246db5e6dacf75c0f91e67ba70ab6b9"
     },
     {
-      "path": "src/assets/fonts/HelveticaNeueThin.otf",
+      "path": "src/assets/fonts/HelveticaNeue-Thin.otf",
       "sha1": "623d2934160c3816be359f0cfb443deab769935f"
     }
   ]
