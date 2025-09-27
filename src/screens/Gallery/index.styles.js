@@ -16,21 +16,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     marginRight: SIZES.padding2 - 2,
   },
-
-  modalContainer: {
-    backgroundColor: 'rgba(0,0,0,0.9)',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  modalImageContainer: {
-    width: SIZES.width,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   iconContainer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    paddingRight: SIZES.padding2 - 2,
     paddingTop: SIZES.padding,
   },
 });
