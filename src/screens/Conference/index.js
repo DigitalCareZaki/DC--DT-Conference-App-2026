@@ -7,6 +7,7 @@ import {styles} from './index.styles'
 import { SIZES } from '../../constants';
 import { conferences, TextWeights } from '../../config';
 import Cards from './components/Cards';
+import { common_styles } from '../../utils/common_styles';
 
 const Conference = () => {
   
@@ -16,7 +17,7 @@ const Conference = () => {
       <SizedBox />
 
       {/* Heading */}
-      <View style={styles.heading}>
+      <View style={common_styles.heading}>
         <CustomText
           text={'3: Conferences Available'}
           size={SIZES.h16}

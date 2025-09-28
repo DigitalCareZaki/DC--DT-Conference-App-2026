@@ -35,5 +35,9 @@ export const common_styles = {
     paddingTop2: {
         paddingTop: SIZES.padding2
     },
+
+    heading:{
+        paddingHorizontal: SIZES.padding,
+    }
    
 }

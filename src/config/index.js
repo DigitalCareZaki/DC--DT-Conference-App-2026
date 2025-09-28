@@ -100,4 +100,38 @@ export const conferences = [
       speaker: 'Ms. Emily Clark',
       description: 'Addressing challenges and opportunities in security.',
     },
+       {
+      id: '3',
+      title: 'Cybersecurity in AI Era',
+      time: '12:00 - 01:00',
+      speaker: 'Ms. Emily Clark',
+      description: 'Addressing challenges and opportunities in security.',
+    },
+  ];
+
+  export const shop_modules = [
+    {
+      id: '1',
+      title: 'Security Fundamentals',
+      time: '09:00',
+      description: 'Basic principles of cybersecurity.',
+    },
+    {
+      id: '2',
+      title: 'Threat Detection',
+      time: '10:30',
+      description: 'Insights into the innovations shaping the future.',
+    },
+    {
+      id: '3',
+      title: 'Cybersecurity in AI Era',
+      time: '12:00',
+      description: 'Addressing challenges and opportunities in security.',
+    },
+       {
+      id: '3',
+      title: 'Cybersecurity in AI Era',
+      time: '12:00',
+      description: 'Addressing challenges and opportunities in security.',
+    },
   ];
