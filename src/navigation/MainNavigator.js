@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   AboutOrganizer,
   Chat,
+  Contact,
   Dashboard,
   Exhibition,
   Gallery,
@@ -49,6 +50,7 @@ const MainNavigator = () => {
           <Stack.Screen name="AboutOrganizer" component={AboutOrganizer} />
           <Stack.Screen name="Exhibition" component={Exhibition} />
           <Stack.Screen name="Speakers" component={Speakers} />
+          <Stack.Screen name="Contact" component={Contact} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast position="top" />

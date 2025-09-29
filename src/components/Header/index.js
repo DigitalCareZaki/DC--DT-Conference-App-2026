@@ -22,6 +22,7 @@ const Header = ({
   color,
   name = null,
   rightIcon,
+  onPressRightIcon,
 }) => {
   const { cart_data } = useSelector(state => state.constant);
 
@@ -73,6 +74,7 @@ const Header = ({
           <TouchableOpacity
             activeOpacity={0.6}
             style={[styles.back_icon_view, iconStyle]}
+            onPress={onPressRightIcon}
           >
             <Icons name={rightIcon || back_icon} />
           </TouchableOpacity>

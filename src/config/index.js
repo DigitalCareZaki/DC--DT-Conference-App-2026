@@ -168,7 +168,7 @@ export const dashboardArr = [
     id: 3,
     icon: visitor_registration_icon,
     name: 'Visitor Registration',
-    navigation: '',
+    navigation: 'Contact',
   },
   {
     id: 4,
