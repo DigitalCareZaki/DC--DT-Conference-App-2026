@@ -261,6 +261,33 @@ export const SpeakerArr = [
     ],
   },
 ];
+
+export const notificationArr = [
+  {
+    title: 'Welcome to Global Tech Conference 2025',
+    description:
+      'Thank you for registering! Get ready for an amazing experience.',
+    time: '246d ago',
+  },
+  {
+    title: 'New Speaker Added',
+    description:
+      'Dr. Sarah Johnson has been added to the A1 & Machine Learning track.',
+    time: '246d ago',
+  },
+  {
+    title: 'Welcome to Global Tech Conference 2025',
+    description:
+      'Thank you for registering! Get ready for an amazing experience.',
+    time: '246d ago',
+  },
+  {
+    title: 'Welcome to Global Tech Conference 2025',
+    description:
+      'Thank you for registering! Get ready for an amazing experience.',
+    time: '246d ago',
+  },
+];
 export const signup_steps = [
   'Basic Information',
   'Select Your Category',

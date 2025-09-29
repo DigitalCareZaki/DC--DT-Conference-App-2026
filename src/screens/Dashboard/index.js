@@ -36,6 +36,7 @@ const Dashboard = () => {
         isDashBoard
         leftIcon={menu_icon}
         rightIcon={notification_icon}
+        onPressRightIcon={() => navigate('Notification')}
       />
       <View style={styles.main_view}>
         <ImageView

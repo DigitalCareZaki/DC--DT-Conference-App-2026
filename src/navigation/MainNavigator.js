@@ -21,6 +21,7 @@ import {
   Venue,
 } from '../screens';
 import { notificationListener } from '../utils/notification_service';
+import Notification from '../screens/NotificationScreen';
 
 const MainNavigator = () => {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ const MainNavigator = () => {
           <Stack.Screen name="Speakers" component={Speakers} />
           <Stack.Screen name="Contact" component={Contact} />
           <Stack.Screen name="Venue" component={Venue} />
+          <Stack.Screen name="Notification" component={Notification} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast position="top" />
