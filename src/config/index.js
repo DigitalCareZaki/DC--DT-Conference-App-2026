@@ -156,41 +156,49 @@ export const dashboardArr = [
     id: 1,
     icon: conferences_icon,
     name: 'Conferences',
+    navigation: '',
   },
   {
     id: 2,
     icon: workshops_icon,
     name: 'WorkShops',
+    navigation: '',
   },
   {
     id: 3,
     icon: visitor_registration_icon,
     name: 'Visitor Registration',
+    navigation: '',
   },
   {
     id: 4,
     icon: who_attend_icon,
     name: 'Who Should Attend',
+    navigation: '',
   },
   {
     id: 5,
     icon: organizer_detail_icon,
     name: 'Organizers Details',
+    navigation: 'AboutOrganizer',
   },
   {
     id: 6,
     icon: networking_icon,
     name: 'Networking',
+    navigation: 'Networking',
   },
   {
     id: 7,
     icon: gallery_icon,
     name: 'Gallery',
+    navigation: 'Gallery',
   },
   {
     id: 8,
     icon: my_agenda_icon,
     name: 'My Agenda',
+    navigation: '',
   },
 ];
 export const signup_steps = [

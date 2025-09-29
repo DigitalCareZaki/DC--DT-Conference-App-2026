@@ -14,4 +14,7 @@ export const styles = StyleSheet.create({
     borderRadius: SIZES.padding2 + 4,
     paddingHorizontal: 5,
   },
+  banner: {
+    alignSelf: 'center',
+  },
 });

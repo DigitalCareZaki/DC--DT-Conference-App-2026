@@ -4,19 +4,23 @@ import {
   Container,
   Header,
   Icons,
+  ImageView,
   RowView,
   Text,
 } from '../../components';
 import { FlatList, View } from 'react-native';
-import { SIZES } from '../../constants';
+import { images, SIZES } from '../../constants';
 import { styles } from './index.styles';
 import { counter_icon, menu_icon, notification_icon } from '../../assets/icons';
 import { dashboardArr, TextWeights } from '../../config';
+import { navigate } from '../../navigation/service';
+import FastImage from 'react-native-fast-image';
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
   const renderItem = ({ item }) => (
     <RowView
+      onPress={() => navigate(item?.navigation)}
       direction={'column'}
       justifyContent={'center'}
       style={styles.itemContainer}
@@ -34,13 +38,13 @@ const Dashboard = () => {
         rightIcon={notification_icon}
       />
       <View style={styles.main_view}>
-        {/* <ImageView
+        <ImageView
           image={images.counter_background}
-          width={361}
+          width={330}
           height={180}
-          resizeMode={FastImage.resizeMode.cover}
-        /> */}
-        <Icons name={counter_icon} />
+          radius={12}
+          style={styles.banner}
+        />
         <FlatList
           keyExtractor={item => item?.id?.toString()}
           renderItem={renderItem}
