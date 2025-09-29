@@ -32,18 +32,18 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>HelveticaNeueBlack.otf</string>
-		<string>HelveticaNeueBold.otf</string>
-		<string>HelveticaNeueHeavy.otf</string>
-		<string>HelveticaNeueLight.otf</string>
-		<string>HelveticaNeueMedium.otf</string>
-		<string>HelveticaNeueRoman.otf</string>
-		<string>HelveticaNeueThin.otf</string>
+		<string>HelveticaNeue-Black.otf</string>
+		<string>HelveticaNeue-Bold.otf</string>
+		<string>HelveticaNeue-Heavy.otf</string>
+		<string>HelveticaNeue-Light.otf</string>
+		<string>HelveticaNeue-Medium.otf</string>
+		<string>HelveticaNeue-Roman.otf</string>
+		<string>HelveticaNeue-Thin.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
