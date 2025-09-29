@@ -156,7 +156,7 @@ export const dashboardArr = [
     id: 1,
     icon: conferences_icon,
     name: 'Conferences',
-    navigation: '',
+    navigation: 'Venue',
   },
   {
     id: 2,

@@ -12,3 +12,4 @@ export { default as AboutOrganizer } from './AboutOrganizer';
 export { default as Exhibition } from './Exhibition';
 export { default as Speakers } from './Speakers';
 export { default as Contact } from './Contact';
+export { default as Venue } from './Venue';

@@ -18,6 +18,7 @@ import {
   Speakers,
   Splash,
   UserProfile,
+  Venue,
 } from '../screens';
 import { notificationListener } from '../utils/notification_service';
 
@@ -51,6 +52,7 @@ const MainNavigator = () => {
           <Stack.Screen name="Exhibition" component={Exhibition} />
           <Stack.Screen name="Speakers" component={Speakers} />
           <Stack.Screen name="Contact" component={Contact} />
+          <Stack.Screen name="Venue" component={Venue} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast position="top" />
