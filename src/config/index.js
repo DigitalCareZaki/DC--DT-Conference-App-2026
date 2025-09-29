@@ -226,6 +226,41 @@ export const ExhibitionArr = [
     description: 'Comprehensive cloud infrastructure and migration services.',
   },
 ];
+
+export const SpeakerArr = [
+  {
+    title: 'International Speakers',
+    data: [
+      {
+        name: 'Dr. Sarah Johnson',
+        university: 'Standford University',
+        occupation: 'AI & Machine Learning',
+        about:
+          'Leading researcher in artificial intelligence with 15+ years of exp...',
+        img: images.profile_img_2,
+      },
+      {
+        name: 'Prof. Michael Chen',
+        university: 'MIT',
+        occupation: 'Blockchain Technology',
+        about: 'Pioneer in blockchain research and cryptocurrency systems.',
+        img: images.profile_img_1,
+      },
+    ],
+  },
+  {
+    title: 'National Speakers',
+    data: [
+      {
+        name: 'Dr. Priya Sharma',
+        university: 'IIT Delhi',
+        occupation: 'Cyber Security',
+        about: 'Expert in cybersecurity and network security.',
+        img: images.profile_img_3,
+      },
+    ],
+  },
+];
 export const signup_steps = [
   'Basic Information',
   'Select Your Category',

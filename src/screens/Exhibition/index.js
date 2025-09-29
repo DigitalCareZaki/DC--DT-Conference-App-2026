@@ -9,16 +9,17 @@ import {
   SizedBox,
   Text,
 } from '../../components';
-import { FlatList, ScrollView, View } from 'react-native';
+import { FlatList, ScrollView, TouchableOpacity, View } from 'react-native';
 import { COLORS, images, SIZES } from '../../constants';
 import { styles } from './index.styles';
 import { ExhibitionArr, TextWeights } from '../../config';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
+import { navigate } from '../../navigation/service';
 
 const Exhibition = () => {
   const renderItem = ({ item }) => (
-    <View direction={'column'} style={styles.grid}>
+    <TouchableOpacity onPress={() => navigate('Speakers')} style={styles.grid}>
       <RowView justifyContent={'space-between'}>
         <Text size={SIZES.h16} weight={TextWeights.medium} text={item.title} />
         <Button
@@ -66,7 +67,7 @@ const Exhibition = () => {
         text={item.description}
         lineHeight={SIZES.padding2 + 4}
       />
-    </View>
+    </TouchableOpacity>
   );
   return (
     <Container>

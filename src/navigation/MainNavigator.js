@@ -14,6 +14,7 @@ import {
   Login,
   Networking,
   Signup,
+  Speakers,
   Splash,
   UserProfile,
 } from '../screens';
@@ -47,6 +48,7 @@ const MainNavigator = () => {
           <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="AboutOrganizer" component={AboutOrganizer} />
           <Stack.Screen name="Exhibition" component={Exhibition} />
+          <Stack.Screen name="Speakers" component={Speakers} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast position="top" />

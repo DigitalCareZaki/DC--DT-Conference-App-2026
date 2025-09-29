@@ -9,6 +9,10 @@ import gallery_img_2 from '../assets/images/gallery_img_2.png';
 import gallery_img_3 from '../assets/images/gallery_img_3.png';
 import gallery_img_4 from '../assets/images/gallery_img_4.png';
 
+import profile_img_1 from '../assets/images/profile_img_1.png';
+import profile_img_2 from '../assets/images/profile_img_2.png';
+import profile_img_3 from '../assets/images/profile_img_3.png';
+
 export default {
   background_image,
   counter_background,
@@ -20,4 +24,7 @@ export default {
   gallery_img_2,
   gallery_img_3,
   gallery_img_4,
+  profile_img_1,
+  profile_img_2,
+  profile_img_3,
 };
