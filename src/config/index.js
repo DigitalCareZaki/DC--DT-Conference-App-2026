@@ -174,7 +174,7 @@ export const dashboardArr = [
     id: 4,
     icon: who_attend_icon,
     name: 'Who Should Attend',
-    navigation: '',
+    navigation: 'Exhibition',
   },
   {
     id: 5,
@@ -199,6 +199,31 @@ export const dashboardArr = [
     icon: my_agenda_icon,
     name: 'My Agenda',
     navigation: '',
+  },
+];
+
+export const ExhibitionArr = [
+  {
+    title: 'TechCorp Solutions',
+    city: 'Seattle,USA',
+    venue: 'Main Exhibition Hall',
+    postion: 'Software Development',
+    description:
+      'Leading provider Of enterprise software solutions and cloud services.',
+  },
+  {
+    title: 'DataFlow Analytics',
+    city: 'Austin,USA',
+    venue: 'Main Exhibition Hall',
+    postion: 'Software Development',
+    description: 'Advanced data analytics and business intelligence solutions.',
+  },
+  {
+    title: 'CloudTech Systems',
+    city: 'London,UK',
+    venue: 'Main Exhibition Hall',
+    postion: 'Cloud Computing',
+    description: 'Comprehensive cloud infrastructure and migration services.',
   },
 ];
 export const signup_steps = [

@@ -9,3 +9,4 @@ export { default as Gallery } from './Gallery';
 export { default as Chat } from './Chat';
 export { default as Dashboard } from './Dashboard';
 export { default as AboutOrganizer } from './AboutOrganizer';
+export { default as Exhibition } from './Exhibition';

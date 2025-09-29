@@ -9,6 +9,7 @@ import {
   AboutOrganizer,
   Chat,
   Dashboard,
+  Exhibition,
   Gallery,
   Login,
   Networking,
@@ -45,6 +46,7 @@ const MainNavigator = () => {
           <Stack.Screen name="Chat" component={Chat} />
           <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="AboutOrganizer" component={AboutOrganizer} />
+          <Stack.Screen name="Exhibition" component={Exhibition} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast position="top" />
