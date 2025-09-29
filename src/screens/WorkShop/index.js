@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 import React from 'react';
-import { Container, SizedBox } from '../../components';
-import Card from './components/Card';
+import { Cards, Container, SizedBox } from '../../components';
+
 import { SIZES } from '../../constants';
 
 import { conferences, TextWeights } from '../../config';
@@ -15,7 +15,7 @@ const WorkSop = () => {
         data={conferences}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
-          <Card
+          <Cards
             title={item.title}
             subtitle={item.subtitle}
             date={item.date}

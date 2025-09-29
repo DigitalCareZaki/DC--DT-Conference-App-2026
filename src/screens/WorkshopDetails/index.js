@@ -1,20 +1,25 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, View } from 'react-native';
 import React from 'react';
-import { Button, Container, SizedBox } from '../../components';
-import Card from './components/Card';
+import { Button, Cards, Container, SizedBox, Text } from '../../components';
 import ShopModules from './components/ShopModules';
 import { shop_modules, TextWeights } from '../../config';
 import { COLORS, SIZES } from '../../constants';
-import CustomText from '../../components/Text';
 import { common_styles } from '../../utils/common_styles';
 const WorkshopDetails = () => {
   return (
     <Container>
+      <ScrollView>
       <SizedBox />
-      <Card />
+      <Cards
+      title={'Cybersecurity Best Practices Workshop'}
+      subtitle={'Hands-on workshop covering modern cybersecurity practices.'}
+      date={'Wednesday, June 18, 2025'}
+      time={'3:00 PM - 9:00 PM'}
+      venue={'Workshop Room 1'}
+      />
       <SizedBox />
           <View style={common_styles.heading}>
-        <CustomText
+        <Text
           text={'Workshop Modules'}
           size={SIZES.h16}
           weight={TextWeights.medium}
@@ -24,6 +29,7 @@ const WorkshopDetails = () => {
       <FlatList
         data={shop_modules}
         keyExtractor={item => item.id}
+        scrollEnabled={false}
         renderItem={({ item }) => (
           <ShopModules
             title={item.title}
@@ -35,7 +41,10 @@ const WorkshopDetails = () => {
         ItemSeparatorComponent={() => <SizedBox height={SIZES.h13} />}
         showsVerticalScrollIndicator={false}
       />
+       </ScrollView>
       <SizedBox />
+       
+       
       <View style={{ paddingHorizontal: SIZES.padding2 }}>
         <Button
           buttonText={'Download Materials'}
@@ -52,6 +61,7 @@ const WorkshopDetails = () => {
         />
       </View>
         <SizedBox />
+      
     </Container>
   );
 };

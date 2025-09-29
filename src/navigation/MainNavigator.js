@@ -22,7 +22,7 @@ const MainNavigator = () => {
     <>
       <NavigationContainer ref={navigationRef} >
         <Stack.Navigator
-          initialRouteName={"Splash"}
+          initialRouteName={"ConferenceDetails"}
           screenOptions={{ headerShown: false, unmountOnBlur: true }}>
           <Stack.Screen name="Splash" component={Splash} />
           <Stack.Screen name="DrawerNavigation" component={DrawerNavigation} />

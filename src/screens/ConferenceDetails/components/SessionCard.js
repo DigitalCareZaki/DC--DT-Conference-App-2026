@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { RowView, SizedBox } from '../../../components';
-import CustomText from '../../../components/Text';
+import { RowView, SizedBox, Text } from '../../../components';
+
 import { COLORS, SIZES } from '../../../constants';
 import { TextWeights } from '../../../config';
 
@@ -11,32 +11,34 @@ const SessionCard = ({ title, time, speaker, description }) => {
       <View style={styles.card}>
         {/* Title + Time */}
         <RowView style={styles.wrap}>
-          <CustomText
+          <Text
             text={title}
             size={SIZES.h16}
+            lineHeight={18}
             weight={TextWeights.medium}
             style={{ flex: 1, flexShrink: 1 }}
           />
           <View style={styles.time}>
-            <CustomText text={time} color={COLORS.text_black} />
+            <Text text={time} color={COLORS.placeholder_text_color} />
           </View>
         </RowView>
 
         <SizedBox />
 
         {/* Speaker */}
-        <CustomText
+        <Text
           text={`Speaker: ${speaker}`}
           size={SIZES.h12}
           color={COLORS.card_heading_color}
         />
 
-        <SizedBox height={SIZES.h10} />
+        <SizedBox height={SIZES.h14} />
 
         {/* Description */}
-        <CustomText
+        <Text
           text={description}
           size={SIZES.h14}
+          lineHeight={15}
           style={{ flex: 1, flexShrink: 1 }}
         />
       </View>
@@ -58,14 +60,14 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary,
     height: SIZES.height * 0.17,
     width: '98%',
-    padding: 5,
-    paddingHorizontal: SIZES.padding,
+    paddingVertical:SIZES.padding2,
+    paddingHorizontal: SIZES.padding2,
     alignSelf: 'flex-end',
     borderRadius: 15,
   },
   time: {
-    width: '30%',
-    paddingVertical: 8,
+    width: '40%',
+    paddingVertical: 6,
     paddingHorizontal: 7,
     borderRadius: 40,
     alignItems: 'center',

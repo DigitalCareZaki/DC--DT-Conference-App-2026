@@ -1,13 +1,10 @@
 import { StyleSheet, View, FlatList } from 'react-native';
 import React from 'react';
 import Container from '../../components/Container';
-import CustomText from '../../components/Text';
-import SizedBox from '../../components/SizedBox';
-import {styles} from './index.styles'
 import { SIZES } from '../../constants';
 import { conferences, TextWeights } from '../../config';
-import Cards from './components/Cards';
 import { common_styles } from '../../utils/common_styles';
+import { Cards, SizedBox, Text } from '../../components';
 
 const Conference = () => {
   
@@ -18,8 +15,8 @@ const Conference = () => {
 
       {/* Heading */}
       <View style={common_styles.heading}>
-        <CustomText
-          text={'3: Conferences Available'}
+        <Text
+          text={'3 Conferences Available'}
           size={SIZES.h16}
           weight={TextWeights.medium}
         />

@@ -16,3 +16,4 @@ export { default as SizedBox } from "./SizedBox";
 export { default as Text } from "./Text";
 export { default as AskModal } from "./AskModal";
 export { default as DrawerContent } from "./DrawerContent";
+export {default as Cards} from "./Cards"
