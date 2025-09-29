@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Container, Header, Icons, Text } from '../../components';
+import { Container, Header, Icons, RowView, Text } from '../../components';
 import { View } from 'react-native';
 import { COLORS, SIZES } from '../../constants';
 import {
@@ -9,8 +9,9 @@ import {
   Send,
 } from 'react-native-gifted-chat';
 import { styles } from './index.styles';
-import { call_icon } from '../../assets/icons';
 import { TextWeights } from '../../config';
+import { attachment_icon, microphone_icon } from '../../assets/icons';
+import { styles } from './index.styles';
 const Chat = () => {
   const [messages, setMessages] = useState([]);
 
@@ -50,7 +51,7 @@ const Chat = () => {
       <Bubble
         {...props}
         renderCustomView={() => (
-          <>
+          <RowView justifyContent={'space-between'}>
             <Text
               ml={5}
               size={SIZES.h14}
@@ -58,58 +59,73 @@ const Chat = () => {
               text={currentMessage.user.name}
               color={position === 'left' ? COLORS.white : COLORS.primary}
             />
-          </>
+            <Text
+              size={SIZES.h11}
+              color={
+                position === 'left'
+                  ? 'rgba(255, 255, 255, 0.8)'
+                  : 'rgba(119, 119, 119, 0.8)'
+              }
+              text={new Date(currentMessage.createdAt).toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit',
+              })}
+            />
+          </RowView>
         )}
         wrapperStyle={{
-          right: {
-            backgroundColor: COLORS.white,
-            borderBottomRightRadius: 0,
-            padding: 5,
-            marginBottom: 5,
-          },
-          left: {
-            backgroundColor: COLORS.primary,
-            borderBottomLeftRadius: 0,
-            padding: 5,
-            marginBottom: 5,
-          },
+          right: styles.rightBubbleStyle,
+          left: styles.leftBubbleStyle,
         }}
         textStyle={{
-          right: {
-            color: COLORS.placeholder_text_color,
-          },
-          left: {
-            color: 'rgba(255, 255, 255, 0.8)',
-          },
+          right: styles.rightText,
+          left: styles.leftText,
         }}
         timeTextStyle={{
-          right: { color: COLORS.gray },
+          right: {
+            color: COLORS.gray,
+          },
           left: { color: COLORS.white },
         }}
       />
     );
   };
-
+  console.log('hey');
   const renderInputToolbar = props => (
     <InputToolbar
       {...props}
       containerStyle={{
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 25,
-        margin: 10,
-        padding: 5,
+        borderRadius: 12,
       }}
     />
   );
 
-  //   const renderSend = props => (
-  //     <Send {...props}>
-  //       <View style={{ marginRight: 10, marginBottom: 5 }}>
-  //         <Icons name={call_icon} />
-  //       </View>
-  //     </Send>
-  //   );
+  const renderSend = props => (
+    <Send
+      {...props}
+      containerStyle={{
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: SIZES.padding2 + 4,
+      }}
+    >
+      <RowView gap={20}>
+        <Icons name={microphone_icon} color={COLORS.primary} />
+        <Icons name={attachment_icon} color={COLORS.primary} />
+      </RowView>
+    </Send>
+
+    // <RowView style={{ alignItems: 'center', marginRight: SIZES.padding2 }}>
+    //   <Icons name={microphone_icon} color={COLORS.primary} />
+    //   <Icons name={attachment_icon} color={COLORS.primary} />
+
+    //   <Send {...props}>
+    //     <View style={{ marginBottom: 5 }}>
+    //       <Icons name="send" color={COLORS.primary} />
+    //     </View>
+    //   </Send>
+    // </RowView>
+  );
 
   return (
     <Container>
@@ -122,10 +138,10 @@ const Chat = () => {
           user={{ _id: 1, name: 'Sidra Azher' }}
           renderBubble={renderBubble}
           renderInputToolbar={renderInputToolbar}
-          renderUsernameOnMessage={true}
           showUserAvatar={false}
           renderAvatar={null}
-          //   renderSend={renderSend}
+          renderTime={() => null}
+          renderSend={renderSend}
           alwaysShowSend
         />
       </View>
