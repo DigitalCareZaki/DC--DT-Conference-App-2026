@@ -4,17 +4,25 @@ import {
   linked_in_icon,
   twitter_icon,
   youtube_icon,
+  gallery_icon,
+  my_agenda_icon,
+  networking_icon,
+  organizer_detail_icon,
+  visitor_registration_icon,
+  who_attend_icon,
+  workshops_icon,
+  conferences_icon,
 } from '../assets/icons';
 import { images } from '../constants';
 
 export const TextWeights = {
-  heavy: "HelveticaNeue-Heavy",
-  black: "HelveticaNeue-Black",
-  bold: "HelveticaNeue-Bold",
-  regular: "HelveticaNeue-Roman",
-  medium: "HelveticaNeue-Medium",
-  light: "HelveticaNeue-Light",
-  thin: "HelveticaNeue-Thin",
+  heavy: 'HelveticaNeue-Heavy',
+  black: 'HelveticaNeue-Black',
+  bold: 'HelveticaNeue-Bold',
+  regular: 'HelveticaNeue-Roman',
+  medium: 'HelveticaNeue-Medium',
+  light: 'HelveticaNeue-Light',
+  thin: 'HelveticaNeue-Thin',
 };
 
 export const website_url = 'https://health-asia.com/';
@@ -143,6 +151,48 @@ export const galleryImgs = [
   },
 ];
 
+export const dashboardArr = [
+  {
+    id: 1,
+    icon: conferences_icon,
+    name: 'Conferences',
+  },
+  {
+    id: 2,
+    icon: workshops_icon,
+    name: 'WorkShops',
+  },
+  {
+    id: 3,
+    icon: visitor_registration_icon,
+    name: 'Visitor Registration',
+  },
+  {
+    id: 4,
+    icon: who_attend_icon,
+    name: 'Who Should Attend',
+  },
+  {
+    id: 5,
+    icon: organizer_detail_icon,
+    name: 'Organizers Details',
+  },
+  {
+    id: 6,
+    icon: networking_icon,
+    name: 'Networking',
+  },
+  {
+    id: 7,
+    icon: gallery_icon,
+    name: 'Gallery',
+  },
+  {
+    id: 8,
+    icon: my_agenda_icon,
+    name: 'My Agenda',
+  },
+];
 export const signup_steps = [
   'Basic Information',
   'Select Your Category',

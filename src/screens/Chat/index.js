@@ -11,7 +11,6 @@ import {
 import { styles } from './index.styles';
 import { TextWeights } from '../../config';
 import { attachment_icon, microphone_icon } from '../../assets/icons';
-import { styles } from './index.styles';
 const Chat = () => {
   const [messages, setMessages] = useState([]);
 
