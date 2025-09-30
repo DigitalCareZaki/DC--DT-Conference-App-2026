@@ -10,6 +10,7 @@ import {
   twitter_icon,
   youtube_icon,
 } from '../../assets/icons';
+import { navigate } from '../../navigation/service';
 
 const EditSocialMedia = () => {
   return (
@@ -52,7 +53,11 @@ const EditSocialMedia = () => {
         </View>
       </ScrollView>
 
-      <Button buttonText={'Save Changes'} style={styles.btn} />
+      <Button
+        buttonText={'Save Changes'}
+        style={styles.btn}
+        onPress={() => navigate('Feedback')}
+      />
     </Container>
   );
 };

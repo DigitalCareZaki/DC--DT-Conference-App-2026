@@ -16,3 +16,4 @@ export { default as Notification } from './NotificationScreen';
 export { default as Venue } from './Venue';
 export { default as MyAgenda } from './MyAgenda';
 export { default as EditSocialMedia } from './EditSocialMedia';
+export { default as Feedback } from './Feedback';

@@ -12,6 +12,7 @@ import {
   Dashboard,
   EditSocialMedia,
   Exhibition,
+  Feedback,
   Gallery,
   Login,
   MyAgenda,
@@ -59,6 +60,7 @@ const MainNavigator = () => {
           <Stack.Screen name="Notification" component={Notification} />
           <Stack.Screen name="MyAgenda" component={MyAgenda} />
           <Stack.Screen name="EditSocialMedia" component={EditSocialMedia} />
+          <Stack.Screen name="Feedback" component={Feedback} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast position="top" />
