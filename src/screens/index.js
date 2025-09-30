@@ -17,3 +17,7 @@ export { default as Venue } from './Venue';
 export { default as MyAgenda } from './MyAgenda';
 export { default as EditSocialMedia } from './EditSocialMedia';
 export { default as Feedback } from './Feedback';
+export { default as Conference } from "./Conference"
+export { default as ConferenceDetails } from "./ConferenceDetails"
+export { default as WorkShop } from "./WorkShop"
+export { default as WorkshopDetails } from "./WorkshopDetails"

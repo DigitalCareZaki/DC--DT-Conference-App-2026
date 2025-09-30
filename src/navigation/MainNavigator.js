@@ -22,6 +22,10 @@ import {
   Splash,
   UserProfile,
   Venue,
+  Conference,
+  ConferenceDetails,
+  WorkShop,
+  WorkshopDetails
 } from '../screens';
 import { notificationListener } from '../utils/notification_service';
 import Notification from '../screens/NotificationScreen';
@@ -33,7 +37,7 @@ const MainNavigator = () => {
   const { user } = useSelector(state => state.constant);
 
   useEffect(() => {
-    notificationListener(message => {});
+    notificationListener(message => { });
   }, []);
 
   return (
@@ -61,6 +65,10 @@ const MainNavigator = () => {
           <Stack.Screen name="MyAgenda" component={MyAgenda} />
           <Stack.Screen name="EditSocialMedia" component={EditSocialMedia} />
           <Stack.Screen name="Feedback" component={Feedback} />
+          <Stack.Screen name="Conference" component={Conference} />
+          <Stack.Screen name="ConferenceDetails" component={ConferenceDetails} />
+          <Stack.Screen name="WorkShop" component={WorkShop} />
+          <Stack.Screen name="WorkShopDetails" component={WorkshopDetails} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast position="top" />

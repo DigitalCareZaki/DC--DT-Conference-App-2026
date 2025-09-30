@@ -73,73 +73,73 @@ export const drawer_array = [
     id: 1,
     name: "Home",
     icon: home_icon,
-    route:"Dashboard"
+    route: "Dashboard"
   },
   {
     id: 2,
     name: "About Organizers",
     icon: organizer_detail_icon,
-    route:"AboutOrganizer"
+    route: "AboutOrganizer"
   },
   {
     id: 3,
     name: "Exhibition",
     icon: exhibition_icon,
-    route:"Exhibition"
+    route: "Exhibition"
   },
   {
     id: 4,
     name: "Speakers",
     icon: speakers_icon,
-    route:"Speakers"
+    route: "Speakers"
   },
   {
     id: 5,
     name: "Conferences",
     icon: conferences_icon,
-    route:"Conferences"
+    route: "Conferences"
   },
   {
     id: 6,
     name: "Workshops",
     icon: workshops_icon,
-    route:"Workshops"
+    route: "Workshops"
   },
   {
     id: 7,
     name: "Notifications",
     icon: drawer_notification_icon,
-    route:"Notifications"
+    route: "Notifications"
   },
   {
     id: 8,
     name: "ContactUs",
     icon: call_icon,
-    route:"Contact"
+    route: "Contact"
   },
   {
     id: 9,
     name: "Venue",
     icon: venue_icon,
-    route:"Venue"
+    route: "Venue"
   },
   {
     id: 10,
     name: "My Agenda",
     icon: my_agenda_icon,
-    route:"MyAgenda"
+    route: "MyAgenda"
   },
   {
     id: 11,
     name: "Feedback",
     icon: feedback_icon,
-    route:"Feedback"
+    route: "Feedback"
   },
   {
     id: 12,
     name: "Social Media links",
     icon: social_media_icon,
-    route:"SocialMedia"
+    route: "SocialMedia"
   },
   {
     id: 13,
@@ -147,7 +147,7 @@ export const drawer_array = [
     icon: logout_icon,
     isLogout: true
   },
-]
+];
 
 export const dashboard_array = [
   {
@@ -301,9 +301,6 @@ export const galleryImgs = [
   },
 ];
 
-
-
-
 export const ExhibitionArr = [
   {
     title: 'TechCorp Solutions',
@@ -416,6 +413,99 @@ export const agendaArr = [
     time: '2:00 PM - 11:00 PM',
     venue: 'Convention Center, Hall A ',
     btnTxt: 'Conference',
+  },
+];
+
+export const conferences = [
+  {
+    id: '1',
+    title: 'Future of Technology 2025',
+    subtitle: 'Exploring the latest trends and innovations in technology.',
+    date: 'Sunday, June 15, 2025 - June 17, 2025',
+    time: '2:00 PM - 11:00 PM',
+    venue: 'Convention Center, Hall A',
+  },
+  {
+    id: '2',
+    title: 'AI & Robotics Summit',
+    subtitle: 'How AI and robotics are reshaping industries worldwide.',
+    date: 'July 10, 2025 - July 12, 2025',
+    time: '9:00 AM - 5:00 PM',
+    venue: 'Expo Center, Hall B',
+  },
+  {
+    id: '3',
+    title: 'Cybersecurity Conference',
+    subtitle: 'Protecting businesses in a digital-first world.',
+    date: 'August 20, 2025 - August 22, 2025',
+    time: '10:00 AM - 6:00 PM',
+    venue: 'Tech Park Auditorium',
+  },
+  {
+    id: '3',
+    title: 'Cybersecurity Conference',
+    subtitle: 'Protecting businesses in a digital-first world.',
+    date: 'August 20, 2025 - August 22, 2025',
+    time: '10:00 AM - 6:00 PM',
+    venue: 'Tech Park Auditorium',
+  },
+];
+
+export const sessions = [
+  {
+    id: '1',
+    title: 'Opening Keynote: AI Revolution',
+    time: '09:00 - 10:00',
+    speaker: 'Dr. Sarah Johnson',
+    description: 'Exploring how AI is transforming industries worldwide.',
+  },
+  {
+    id: '2',
+    title: 'Blockchain and the Future of Finance',
+    time: '10:30 - 11:30',
+    speaker: 'Speaker: Prof. Michael Chen',
+    description: 'Insights into the innovations shaping the future.',
+  },
+  {
+    id: '3',
+    title: 'Cybersecurity in AI Era',
+    time: '12:00 - 01:00',
+    speaker: 'Ms. Emily Clark',
+    description: 'Addressing challenges and opportunities in security.',
+  },
+  {
+    id: '3',
+    title: 'Cybersecurity in AI Era',
+    time: '12:00 - 01:00',
+    speaker: 'Ms. Emily Clark',
+    description: 'Addressing challenges and opportunities in security.',
+  },
+];
+
+export const shop_modules = [
+  {
+    id: '1',
+    title: 'Security Fundamentals',
+    time: '09:00',
+    description: 'Basic principles of cybersecurity.',
+  },
+  {
+    id: '2',
+    title: 'Threat Detection',
+    time: '10:30',
+    description: 'Insights into the innovations shaping the future.',
+  },
+  {
+    id: '3',
+    title: 'Cybersecurity in AI Era',
+    time: '12:00',
+    description: 'Addressing challenges and opportunities in security.',
+  },
+  {
+    id: '3',
+    title: 'Cybersecurity in AI Era',
+    time: '12:00',
+    description: 'Addressing challenges and opportunities in security.',
   },
 ];
 

@@ -13,6 +13,7 @@ const CustomButton = ({
   color,
   size,
   weight,
+  bgColor,
 }) => {
   return (
     <TouchableOpacity
