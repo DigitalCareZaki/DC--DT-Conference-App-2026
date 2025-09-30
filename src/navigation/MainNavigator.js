@@ -71,8 +71,7 @@ const MainNavigator = () => {
           <Stack.Screen name="WorkShopDetails" component={WorkshopDetails} />
         </Stack.Navigator>
       </NavigationContainer>
-      <Toast position="top" />
-      {/* <NotificationModal /> */}
+      <Toast />
     </>
   );
 };

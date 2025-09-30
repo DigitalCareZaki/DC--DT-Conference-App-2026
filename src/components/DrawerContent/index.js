@@ -52,7 +52,7 @@ const DrawerContent = ({ navigation }) => {
                     ))}
 
 
-
+                    <SizedBox />
                 </ScrollView>
                 <AskModal
                     description={"See you next time! You can log out here."}

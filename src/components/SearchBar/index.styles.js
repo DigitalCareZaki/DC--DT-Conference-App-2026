@@ -7,8 +7,6 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         height: SIZES.padding * 2.5,
         borderRadius: SIZES.padding2,
-        borderWidth: 1,
-        borderColor: COLORS.border_color,
         paddingHorizontal: SIZES.padding2,
         backgroundColor: COLORS.white
     },

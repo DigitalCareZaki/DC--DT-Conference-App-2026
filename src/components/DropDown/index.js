@@ -19,7 +19,8 @@ const DropDown = ({
     textColor,
     label,
     isrequired,
-    leftIcon
+    leftIcon,
+    ml
 }) => {
 
     const [open, setOpen] = useState(false)
@@ -67,6 +68,7 @@ const DropDown = ({
                 weight={TextWeights.medium}
                 size={SIZES.h12}
                 isrequired={isrequired}
+                ml={ml}
             />
 
             <View style={common_styles.flex_1} >
@@ -104,6 +106,7 @@ const DropDown = ({
                                         <Text
                                             size={SIZES.h12}
                                             text={item?.[value_key]}
+                                            color={COLORS.black}
                                         />
                                     </TouchableOpacity>
                                 ))

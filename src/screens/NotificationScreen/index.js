@@ -3,7 +3,7 @@ import { Container, Header, Icons, RowView, Text } from '../../components';
 import { FlatList, View } from 'react-native';
 import { COLORS, SIZES } from '../../constants';
 import { styles } from './index.styles';
-import { notificationArr, TextWeights } from '../../config';
+import { notification_array, TextWeights } from '../../config';
 import { notification_list_icon } from '../../assets/icons';
 
 const Notification = () => {
@@ -46,7 +46,7 @@ const Notification = () => {
         <FlatList
           contentContainerStyle={{ gap: SIZES.padding2 + 4 }}
           renderItem={renderItem}
-          data={notificationArr}
+          data={notification_array}
           showsVerticalScrollIndicator={false}
         />
       </View>

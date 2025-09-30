@@ -97,13 +97,13 @@ export const drawer_array = [
     id: 5,
     name: "Conferences",
     icon: conferences_icon,
-    route: "Conferences"
+    route: "Conference"
   },
   {
     id: 6,
     name: "Workshops",
     icon: workshops_icon,
-    route: "Workshops"
+    route: "WorkShop"
   },
   {
     id: 7,
@@ -139,7 +139,7 @@ export const drawer_array = [
     id: 12,
     name: "Social Media links",
     icon: social_media_icon,
-    route: "SocialMedia"
+    route: "EditSocialMedia"
   },
   {
     id: 13,
@@ -154,25 +154,25 @@ export const dashboard_array = [
     id: 1,
     icon: conferences_icon,
     name: 'Conferences',
-    route: 'Venue',
+    route: 'Conference',
   },
   {
     id: 2,
     icon: workshops_icon,
     name: 'WorkShops',
-    route: 'EditSocialMedia',
+    route: 'WorkShop',
   },
   {
     id: 3,
     icon: visitor_registration_icon,
     name: 'Visitor Registration',
-    route: 'Contact',
+    route: '',
   },
   {
     id: 4,
     icon: who_attend_icon,
     name: 'Who Should Attend',
-    route: 'Exhibition',
+    route: '',
   },
   {
     id: 5,
@@ -200,34 +200,40 @@ export const dashboard_array = [
   },
 ];
 
-export const registeredUsers = [
+export const registered_users = [
   {
+    id: 1,
     name: 'Muhammad Ali',
     email: 'muhammadali@gmail.com',
   },
   {
+    id: 2,
     name: 'Ahmed Khan',
     email: 'muhammadali@gmail.com',
   },
   {
+    id: 3,
     name: 'Dr. Sarah Johnson',
     email: 'muhammadali@gmail.com',
   },
   {
+    id: 4,
     name: 'Muhammad Ibrahim',
     email: 'muhammadali@gmail.com',
   },
   {
+    id: 5,
     name: 'Ayesha Khan',
     email: 'muhammadali@gmail.com',
   },
   {
+    id: 6,
     name: 'Syed Hassan',
     email: 'muhammadali@gmail.com',
   },
 ];
 
-export const socialLinks = [
+export const social_links = [
   {
     icon: facebook_icon,
     link: 'https://www.facebook.com',
@@ -250,7 +256,7 @@ export const socialLinks = [
   },
 ];
 
-export const galleryImgs = [
+export const gallery_images = [
   {
     id: 1,
     img: images.gallery_img_1,
@@ -261,11 +267,11 @@ export const galleryImgs = [
   },
   {
     id: 3,
-    img: images.gallery_img_3,
+    img: images.gallery_img_1,
   },
   {
     id: 4,
-    img: images.gallery_img_4,
+    img: images.gallery_img_2,
   },
   {
     id: 5,
@@ -277,11 +283,11 @@ export const galleryImgs = [
   },
   {
     id: 7,
-    img: images.gallery_img_3,
+    img: images.gallery_img_1,
   },
   {
     id: 8,
-    img: images.gallery_img_4,
+    img: images.gallery_img_2,
   },
   {
     id: 9,
@@ -301,7 +307,7 @@ export const galleryImgs = [
   },
 ];
 
-export const ExhibitionArr = [
+export const exhibitions_array = [
   {
     title: 'TechCorp Solutions',
     city: 'Seattle,USA',
@@ -326,7 +332,7 @@ export const ExhibitionArr = [
   },
 ];
 
-export const SpeakerArr = [
+export const speakers_array = [
   {
     title: 'International Speakers',
     data: [
@@ -361,7 +367,7 @@ export const SpeakerArr = [
   },
 ];
 
-export const notificationArr = [
+export const notification_array = [
   {
     title: 'Welcome to Global Tech Conference 2025',
     description:
@@ -388,63 +394,66 @@ export const notificationArr = [
   },
 ];
 
-export const agendaArr = [
+export const agenda_array = [
   {
+    id: 1,
     title: 'Future of Technology 2025',
     description: 'Exploring the latest trends and innovations in technology.',
     date: 'Sunday, June 15, 2025 -  June 17, 2025',
     time: '2:00 PM - 11:00 PM',
     venue: 'Convention Center, Hall A',
-    btnTxt: 'Conference ',
+    type: 'conference',
   },
 
   {
+    id: 2,
     title: 'Cybersecurity Best Practices Workshop',
     description: 'Hands-on workshop covering modern cybersecurity practices.',
     date: 'Sunday, June 15, 2025 -  June 17, 2025',
     time: '2:00 PM - 11:00 PM',
     venue: 'Workshop Room 1',
-    btnTxt: 'Workshop',
+    type: 'workshop',
   },
   {
+    id: 3,
     title: 'Future of Technology 2025',
     description: 'Exploring the latest trends and innovations in technology.',
     date: 'Sunday, June 15, 2025 -  June 17, 2025',
     time: '2:00 PM - 11:00 PM',
     venue: 'Convention Center, Hall A ',
-    btnTxt: 'Conference',
+    type: 'conference',
   },
 ];
 
 export const conferences = [
   {
-    id: '1',
+    id: 1,
     title: 'Future of Technology 2025',
-    subtitle: 'Exploring the latest trends and innovations in technology.',
+    description: 'Exploring the latest trends and innovations in technology.',
     date: 'Sunday, June 15, 2025 - June 17, 2025',
     time: '2:00 PM - 11:00 PM',
     venue: 'Convention Center, Hall A',
   },
   {
-    id: '2',
+    id: 2,
     title: 'AI & Robotics Summit',
-    subtitle: 'How AI and robotics are reshaping industries worldwide.',
+    description: 'How AI and robotics are reshaping industries worldwide.',
     date: 'July 10, 2025 - July 12, 2025',
     time: '9:00 AM - 5:00 PM',
     venue: 'Expo Center, Hall B',
   },
   {
-    id: '3',
+    id: 3,
     title: 'Cybersecurity Conference',
-    subtitle: 'Protecting businesses in a digital-first world.',
+    description: 'Protecting businesses in a digital-first world.',
     date: 'August 20, 2025 - August 22, 2025',
     time: '10:00 AM - 6:00 PM',
     venue: 'Tech Park Auditorium',
   },
   {
-    id: '3',
+    id: 4,
     title: 'Cybersecurity Conference',
-    subtitle: 'Protecting businesses in a digital-first world.',
+    description: 'Protecting businesses in a digital-first world.',
     date: 'August 20, 2025 - August 22, 2025',
     time: '10:00 AM - 6:00 PM',
     venue: 'Tech Park Auditorium',
@@ -453,28 +462,28 @@ export const conferences = [
 
 export const sessions = [
   {
-    id: '1',
+    id: 1,
     title: 'Opening Keynote: AI Revolution',
     time: '09:00 - 10:00',
     speaker: 'Dr. Sarah Johnson',
     description: 'Exploring how AI is transforming industries worldwide.',
   },
   {
-    id: '2',
+    id: 2,
     title: 'Blockchain and the Future of Finance',
     time: '10:30 - 11:30',
     speaker: 'Speaker: Prof. Michael Chen',
     description: 'Insights into the innovations shaping the future.',
   },
   {
-    id: '3',
+    id: 3,
     title: 'Cybersecurity in AI Era',
     time: '12:00 - 01:00',
     speaker: 'Ms. Emily Clark',
     description: 'Addressing challenges and opportunities in security.',
   },
   {
-    id: '3',
+    id: 4,
     title: 'Cybersecurity in AI Era',
     time: '12:00 - 01:00',
     speaker: 'Ms. Emily Clark',
@@ -484,28 +493,27 @@ export const sessions = [
 
 export const shop_modules = [
   {
-    id: '1',
+    id: 1,
     title: 'Security Fundamentals',
     time: '09:00',
     description: 'Basic principles of cybersecurity.',
   },
   {
-    id: '2',
+    id: 2,
     title: 'Threat Detection',
     time: '10:30',
     description: 'Insights into the innovations shaping the future.',
   },
   {
-    id: '3',
+    id: 3,
     title: 'Cybersecurity in AI Era',
     time: '12:00',
     description: 'Addressing challenges and opportunities in security.',
   },
   {
-    id: '3',
+    id: 4,
     title: 'Cybersecurity in AI Era',
     time: '12:00',
     description: 'Addressing challenges and opportunities in security.',
   },
 ];
-

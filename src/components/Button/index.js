@@ -44,7 +44,7 @@ const CustomButton = ({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.primary,
-    height: SIZES.padding * 2.5,
+    height: SIZES.padding * 2.2,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

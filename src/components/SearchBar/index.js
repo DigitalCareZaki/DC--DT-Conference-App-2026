@@ -15,30 +15,24 @@ const SearchBar = ({
   inputStyle,
   onPress,
   editable,
-  autoFocus,
-  isLeft = true,
-  isRight = false,
 }) => {
   return (
     <RowView
       onPress={onPress}
-      gap={SIZES.padding2 / 2}
       style={[styles.main_view, style]}
     >
-      {isLeft && <Icons name={search_icon} />}
       <TextInput
         onChangeText={onChangeText}
         placeholder={placeholder}
         style={[styles.input, inputStyle]}
         keyboardType={keyboardType}
-        placeholderTextColor={COLORS.text_gray_color}
+        placeholderTextColor={COLORS.placeholder_text_color}
         value={value}
-        autoFocus={autoFocus}
         editable={editable}
         onSubmitEditing={onSubmitEditing}
         underlineColorAndroid="transparent"
       />
-      {isRight && <Icons name={search_icon} />}
+      <Icons name={search_icon} />
     </RowView>
   );
 };

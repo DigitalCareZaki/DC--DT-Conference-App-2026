@@ -4,44 +4,40 @@ import { RowView, SizedBox, Text } from '../../../components';
 
 import { COLORS, SIZES } from '../../../constants';
 import { TextWeights } from '../../../config';
+import { common_styles } from '../../../utils/common_styles';
 
-const SessionCard = ({ title, time, speaker, description }) => {
+const SessionCard = ({ item }) => {
   return (
-    <View style={styles.backcard}>
-      <View style={styles.card}>
-        {/* Title + Time */}
-        <RowView style={styles.wrap}>
-          <Text
-            text={title}
-            size={SIZES.h16}
-            lineHeight={18}
-            weight={TextWeights.medium}
-            style={{ flex: 1, flexShrink: 1 }}
-          />
-          <View style={styles.time}>
-            <Text text={time} color={COLORS.placeholder_text_color} />
-          </View>
-        </RowView>
+    <View style={styles.main_view}>
 
-        <SizedBox />
+      <RowView>
 
-        {/* Speaker */}
         <Text
-          text={`Speaker: ${speaker}`}
-          size={SIZES.h12}
-          color={COLORS.card_heading_color}
-        />
-
-        <SizedBox height={SIZES.h14} />
-
-        {/* Description */}
-        <Text
-          text={description}
+          text={item?.title}
           size={SIZES.h14}
-          lineHeight={15}
-          style={{ flex: 1, flexShrink: 1 }}
+          weight={TextWeights.medium}
+          style={common_styles.flex_1}
+          lineHeight={SIZES.padding2 * 1.5}
         />
-      </View>
+
+        <View style={styles.time_view}>
+          <Text size={SIZES.h10} text={item?.time} color={COLORS.placeholder_text_color} />
+        </View>
+
+      </RowView>
+
+      <Text
+        mt={SIZES.padding2 / 2}
+        text={`Speaker: ${item?.speaker}`}
+        color={COLORS.light_blue_color}
+      />
+
+      <Text
+        text={item?.description}
+        mt={SIZES.padding2 / 2}
+        lineHeight={SIZES.padding2 * 1.3}
+
+      />
     </View>
   );
 };
@@ -49,31 +45,19 @@ const SessionCard = ({ title, time, speaker, description }) => {
 export default SessionCard;
 
 const styles = StyleSheet.create({
-  backcard: {
-    backgroundColor: COLORS.card_heading_color,
-    height: SIZES.height * 0.17,
-    width: '95%',
-    borderRadius: 15,
-    alignSelf: 'center',
-  },
-  card: {
+  main_view: {
     backgroundColor: COLORS.primary,
-    height: SIZES.height * 0.17,
-    width: '98%',
-    paddingVertical:SIZES.padding2,
-    paddingHorizontal: SIZES.padding2,
-    alignSelf: 'flex-end',
-    borderRadius: 15,
+    marginTop: SIZES.padding2,
+    borderLeftWidth: 6,
+    borderLeftColor: COLORS.light_blue_color,
+    borderRadius: SIZES.padding2 * 1.5,
+    padding: SIZES.padding2
   },
-  time: {
-    width: '40%',
-    paddingVertical: 6,
-    paddingHorizontal: 7,
+  time_view: {
     borderRadius: 40,
-    alignItems: 'center',
     backgroundColor: COLORS.white,
-  },
-  wrap: {
-    flexWrap: 'wrap',
+    height: SIZES.padding * 1.2,
+    paddingHorizontal: SIZES.padding2,
+    justifyContent: 'center'
   },
 });

@@ -127,7 +127,7 @@ const Chat = () => {
 
   return (
     <Container>
-      <Header title={'Muhammad Ali'} color={COLORS.white} />
+      <Header title={'Muhammad Ali'} rightIcon={null} />
 
       <View style={styles.main_view}>
         <GiftedChat

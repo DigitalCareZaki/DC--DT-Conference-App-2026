@@ -12,7 +12,7 @@ import {
 import { FlatList, ScrollView, TouchableOpacity, View } from 'react-native';
 import { COLORS, images, SIZES } from '../../constants';
 import { styles } from './index.styles';
-import { ExhibitionArr, TextWeights } from '../../config';
+import { exhibitions_array, TextWeights } from '../../config';
 import FastImage from 'react-native-fast-image';
 import { navigate } from '../../navigation/service';
 
@@ -36,14 +36,14 @@ const Exhibition = () => {
             <Text
               size={SIZES.h12}
               weight={TextWeights.medium}
-              color={COLORS.text_aqua_color}
+              color={COLORS.light_blue_color}
               text={item.city}
             />
             <Text text={' - '} color={COLORS.keys_color} />
             <Text
               size={SIZES.h12}
               weight={TextWeights.medium}
-              color={COLORS.text_aqua_color}
+              color={COLORS.light_blue_color}
               text={item.postion}
             />
           </>
@@ -91,7 +91,7 @@ const Exhibition = () => {
 
         <FlatList
           renderItem={renderItem}
-          data={ExhibitionArr}
+          data={exhibitions_array}
           style={{ marginTop: SIZES.padding }}
           contentContainerStyle={{ gap: SIZES.padding2 + 4 }}
           showsVerticalScrollIndicator={false}

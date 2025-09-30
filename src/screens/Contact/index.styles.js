@@ -4,14 +4,21 @@ import { COLORS, SIZES } from '../../constants';
 export const styles = StyleSheet.create({
   main_view: {
     flex: 1,
-    paddingHorizontal: SIZES.padding2 + 4,
-    paddingVertical: SIZES.padding,
-    marginBottom: SIZES.padding,
+    paddingHorizontal: SIZES.padding2,
+    paddingTop: SIZES.padding2,
   },
-  txtInput: {
-    height: 110,
+  detail_view: {
+    marginTop: SIZES.padding2,
+    backgroundColor: COLORS.primary,
+    borderRadius: SIZES.padding,
+    paddingHorizontal: SIZES.padding2,
+    paddingVertical: SIZES.padding
   },
-  scrollViewStyle: {
-    paddingBottom: SIZES.padding,
+  left_view: {
+    width: "60%"
   },
+  multi_input: {
+    height: SIZES.padding * 6
+  }
+
 });

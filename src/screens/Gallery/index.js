@@ -1,50 +1,42 @@
 import React, { useState } from 'react';
-import { Container, Header, Icons, ImageView, RowView } from '../../components';
+import { Container, Header, Icons, ImageView, RowView, SizedBox } from '../../components';
 import { FlatList, Modal, View } from 'react-native';
 import { COLORS, SIZES } from '../../constants';
 import { styles } from './index.styles';
 import FastImage from 'react-native-fast-image';
-import { galleryImgs } from '../../config';
+import { gallery_images } from '../../config';
 import { close_icon } from '../../assets/icons';
 import ImageViewer from 'react-native-image-zoom-viewer';
+import { SingleGalleryView } from "./components"
 
 const Gallery = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const openModal = index => {
+  const onPressImage = index => {
     setSelectedIndex(index);
     setShowModal(true);
   };
 
-  const renderItem = ({ item, index }) => (
-    <ImageView
-      onPress={() => openModal(index)}
-      image={item.img}
-      height={SIZES.padding * 8}
-      width={SIZES.padding * 8}
-      resizeMode={FastImage.resizeMode.cover}
-    />
-  );
-
   return (
     <Container>
-      <Header title={'Gallery'} color={COLORS.white} />
+      <Header title={'Gallery'} rightIcon={null} />
 
       <View style={styles.main_view}>
         <FlatList
-          keyExtractor={item => item?.id?.toString()}
-          renderItem={renderItem}
-          data={galleryImgs}
+          keyExtractor={item => item?.id}
+          ListFooterComponent={<SizedBox />}
+          data={gallery_images}
           numColumns={2}
-          contentContainerStyle={styles.flatlist}
           showsVerticalScrollIndicator={false}
+          columnWrapperStyle={styles.list}
+          renderItem={({ item, index }) => <SingleGalleryView onPress={() => onPressImage(index)} item={item} />}
         />
       </View>
 
       <Modal transparent visible={showModal}>
         <ImageViewer
-          imageUrls={galleryImgs.map(item => ({
+          imageUrls={gallery_images.map(item => ({
             props: {
               source: item.img,
               style: {

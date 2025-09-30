@@ -7,6 +7,9 @@ export const styles = StyleSheet.create({
     paddingHorizontal: SIZES.padding,
     paddingTop: SIZES.padding,
   },
+  list: {
+    justifyContent: "space-between"
+  },
   flatlist: {
     alignItems: 'center',
     justifyContent: 'center',

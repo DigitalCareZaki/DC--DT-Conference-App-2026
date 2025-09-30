@@ -1,24 +1,23 @@
 import { TouchableOpacity, View } from 'react-native';
 import { Icons, ImageView, RowView, Text } from '../index';
 import { styles } from './index.style';
-import { COLORS, images, SIZES } from '../../constants';
+import { images, SIZES } from '../../constants';
 import { goBack, navigate } from '../../navigation/service';
-import { back_icon, cart_icon, notification_icon } from '../../assets/icons';
+import { back_icon, menu_icon, notification_icon } from '../../assets/icons';
 import { TextWeights } from '../../config';
-import { useSelector } from 'react-redux';
 import FastImage from 'react-native-fast-image';
+import { useNavigation } from '@react-navigation/native';
 
 const Header = ({
   title,
   style,
-  leftIcon,
-  onPressBack,
   iconStyle,
   isDashBoard = false,
-  color,
-  rightIcon,
+  rightIcon  = notification_icon,
   onPressIcon,
+  isMenu = false
 }) => {
+  const navigation = useNavigation()
 
   return (
     <RowView
@@ -29,9 +28,9 @@ const Header = ({
       <TouchableOpacity
         activeOpacity={0.6}
         style={[styles.icon_view, iconStyle]}
-        onPress={onPressBack ? () => onPressBack() : goBack}
+        onPress={isMenu ? () => navigation.openDrawer() : goBack}
       >
-        <Icons name={leftIcon || back_icon} />
+        <Icons name={isMenu ? menu_icon : back_icon} />
       </TouchableOpacity>
 
       {isDashBoard ? (
@@ -57,7 +56,7 @@ const Header = ({
           style={[styles.icon_view, iconStyle]}
           onPress={() => onPressIcon ? onPressIcon() : navigate('Notification')}
         >
-          <Icons name={rightIcon || back_icon} />
+          <Icons name={rightIcon} />
         </TouchableOpacity>
       ) : <View style={styles.icon_view} />}
 

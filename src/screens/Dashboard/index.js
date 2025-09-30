@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  AskModal,
   Container,
   Header,
   ImageView,
@@ -9,25 +8,19 @@ import {
 import { FlatList, View } from 'react-native';
 import { images, SIZES } from '../../constants';
 import { styles } from './index.styles';
-import { menu_icon, notification_icon } from '../../assets/icons';
 import { dashboard_array } from '../../config';
-import { useNavigation } from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
 import { SingleTabView } from "./components"
 
 const Dashboard = () => {
-  const navigation = useNavigation()
-  const [showModal, setShowModal] = useState(false);
 
   return (
     <Container>
-      <Header
-        onPressBack={() => navigation.openDrawer()}
-        isDashBoard
-        leftIcon={menu_icon}
-        rightIcon={notification_icon}
-      />
+
+      <Header isDashBoard isMenu />
+
       <View style={styles.main_view}>
+
         <FlatList
           data={dashboard_array}
           columnWrapperStyle={styles.list}
@@ -45,7 +38,7 @@ const Dashboard = () => {
           showsVerticalScrollIndicator={false}
         />
       </View>
-      <AskModal visible={showModal} onPressClose={() => setShowModal(false)} />
+
     </Container>
   );
 };

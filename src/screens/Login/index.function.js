@@ -1,7 +1,7 @@
 import { Keyboard } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/actions/auth-action";
-import { goBack } from "../../navigation/service";
+import { goBack, navigate } from "../../navigation/service";
 
 export default () => {
     const dispatch = useDispatch()
@@ -15,7 +15,7 @@ export default () => {
         //     password: values?.password
         // }
         // dispatch(login(apiData))
-        goBack()
+        navigate("DrawerNavigation")
     }
 
 

@@ -3,10 +3,17 @@ import { COLORS, SIZES } from "../../constants";
 
 
 export const styles = StyleSheet.create({
-  card: {
+  main_view: {
     backgroundColor: COLORS.primary,
-    borderRadius: 12,
-    padding: SIZES.padding2 * 1.5,
-    marginHorizontal: SIZES.padding2,
+    borderRadius: SIZES.padding2,
+    padding: SIZES.padding2,
+    marginTop: SIZES.padding2
   },
+  type_view: {
+    backgroundColor: COLORS.white,
+    height: SIZES.padding * 1.2,
+    paddingHorizontal: SIZES.padding2,
+    justifyContent:"center",
+    borderRadius:SIZES.padding
+  }
 });

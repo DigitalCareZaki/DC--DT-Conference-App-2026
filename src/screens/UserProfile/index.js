@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Card,
   Container,
   Header,
   Icons,
@@ -9,30 +8,63 @@ import {
   Text,
 } from '../../components';
 import { View } from 'react-native';
-import { COLORS, SIZES } from '../../constants';
+import { SIZES } from '../../constants';
 import { styles } from './index.styles';
-import { socialLinks, TextWeights } from '../../config';
+import { social_links, TextWeights } from '../../config';
 import { Linking } from 'react-native';
+import { common_styles } from '../../utils/common_styles';
 
 const UserProfile = () => {
   return (
     <Container>
-      <Header title={'User Profile'} color={COLORS.white} />
+      <Header title={'User Profile'} rightIcon={null} />
 
       <View style={styles.main_view}>
-        <Card />
+
+        <View style={styles.detail_view} >
+
+          <RowView>
+            <View style={styles.left_view} >
+              <Text size={SIZES.h11} text={"Name"} weight={TextWeights.light} />
+              <Text weight={TextWeights.medium} mt={SIZES.padding2 / 2} text={"Muhammad Ali"} />
+            </View>
+
+            <View style={common_styles.flex_1} >
+              <Text size={SIZES.h11} text={"Mobile"} weight={TextWeights.light} />
+              <Text weight={TextWeights.medium} mt={SIZES.padding2 / 2} text={"+92 300 0568711"} />
+            </View>
+          </RowView>
+
+          <SizedBox height={SIZES.padding2} />
+
+          <RowView>
+            <View style={styles.left_view} >
+              <Text size={SIZES.h11} text={"Email"} weight={TextWeights.light} />
+              <Text weight={TextWeights.medium} mt={SIZES.padding2 / 2} text={"muhammadali@gmail.com"} />
+            </View>
+
+            <View style={common_styles.flex_1} >
+              <Text size={SIZES.h11} text={"Date of Birth"} weight={TextWeights.light} />
+              <Text weight={TextWeights.medium} mt={SIZES.padding2 / 2} text={"10-10-2024"} />
+            </View>
+          </RowView>
+
+          <Text mt={SIZES.padding2} size={SIZES.h11} text={"City"} weight={TextWeights.light} />
+          <Text weight={TextWeights.medium} mt={SIZES.padding2 / 2} text={"Karachi,Pakistan"} />
+
+        </View>
 
         <Text
           text={'Social Media Profile'}
           weight={TextWeights.medium}
-          size={SIZES.h18}
-          mt={SIZES.padding + 4}
+          size={SIZES.h16}
+          mt={SIZES.padding}
         />
 
         <SizedBox />
 
         <RowView justifyContent={'space-between'}>
-          {socialLinks.map(item => (
+          {social_links.map(item => (
             <RowView onPress={() => Linking.openURL(item.link)}>
               <Icons iconHeight={54} name={item.icon} />
             </RowView>

@@ -1,69 +1,51 @@
-import {  View, FlatList, ScrollView } from 'react-native';
+import { View, FlatList, ScrollView } from 'react-native';
 import React from 'react';
-import { Button, Cards, Container, SizedBox, Text } from '../../components';
+import { Button, Cards, Container, Header, SizedBox, Text } from '../../components';
 import { COLORS, SIZES } from '../../constants';
-import { sessions, TextWeights } from '../../config';
+import { conferences, sessions, TextWeights } from '../../config';
 import SessionCard from './components/SessionCard'
-import {styles} from './index.styles'
+import { styles } from './index.styles'
 
 const ConferenceDetails = () => {
-  
 
   return (
     <Container >
-        <ScrollView>
-      <SizedBox />
-      <Cards
-        title={'Future of Technology 2025'}
-        subtitle={'Exploring the latest trends and innovations in technology.'}
-        date={'Sunday, June 15, 2025 -  June 17, 2025'}
-        time={'Time: 2:00 PM - 11:00 PM'}
-        venue={'Venue: Convention Center, Hall A'}
-      />
-    <SizedBox height={SIZES.h15}/>
 
+      <Header title={"Conference Detail"} rightIcon={null} />
 
-      {/* Heading */}
-      <View style={styles.heading}>
-        <Text
-          text={'Program Sessions'}
-          size={SIZES.h16}
-          weight={TextWeights.medium}
-        />
-      </View>
+      <View style={styles.main_view} >
 
-        <SizedBox height={SIZES.h15}/>
+        <ScrollView showsVerticalScrollIndicator={false} >
 
-      {/* FlatList with SessionCard */}
-      <FlatList
-        data={sessions}
-        scrollEnabled={false}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <SessionCard
-            title={item.title}
-            time={item.time}
-            speaker={item.speaker}
-            description={item.description}
+          <Cards isDetail={true} item={conferences?.[0]} />
+
+          <Text
+            text={'Program Sessions'}
+            size={SIZES.h16}
+            weight={TextWeights.medium}
+            mt={SIZES.padding2}
           />
-        )}
-        contentContainerStyle={{ paddingBottom: SIZES.padding * 2 }}
-        ItemSeparatorComponent={() => <SizedBox />}
-        showsVerticalScrollIndicator={false}
-      />
-      </ScrollView>
 
-      {/* Buttons */}
-      <View style={{ paddingHorizontal: SIZES.padding2 }}>
+
+          <FlatList
+            data={sessions}
+            scrollEnabled={false}
+            keyExtractor={(item) => item.id}
+            ListFooterComponent={<SizedBox />}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => <SessionCard item={item} />}
+          />
+        </ScrollView>
+
+        <SizedBox height={SIZES.padding2} />
         <Button buttonText={'Register Online'} />
-        <SizedBox />
+
         <Button
+          style={styles.download_btn}
           buttonText={'Download Brochure'}
-          textStyle={{ color: COLORS.white }}
-          bgColor="transparent"
+          color={COLORS.white}
         />
       </View>
-      <SizedBox height={SIZES.height*0.04}/>
     </Container>
   );
 };

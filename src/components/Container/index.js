@@ -9,7 +9,7 @@ import { common_styles } from '../../utils/common_styles'
 
 const Container = ({ children, background, barStyle, isImage = true }) => {
   return (
-    <View style={[styles.safe_area, { backgroundColor: background ?? COLORS.white }]} >
+    <View style={[common_styles.flex_1, { backgroundColor: background ?? COLORS.white }]} >
       {isImage && <ImageView radius={0} resizeMode={FastImage.resizeMode.cover} image={images.background_image} style={styles.image} />}
 
       <StatusBar barStyle={barStyle || 'light-content'} backgroundColor={background ?? COLORS.white} translucent />

@@ -26,7 +26,8 @@ const InputField = ({
   icon,
   label,
   leftIcon,
-  isrequired
+  isrequired,
+  ml
 }) => {
   const [showPassword, setShwoPassword] = useState(true)
 
@@ -36,6 +37,7 @@ const InputField = ({
         text={label}
         weight={TextWeights.medium}
         size={SIZES.h12}
+        ml={ml}
         isrequired={isrequired}
       />
       <RowView style={[styles.main_view, style]} >

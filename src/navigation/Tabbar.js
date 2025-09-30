@@ -26,13 +26,12 @@ if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const EXPANDED_FLEX = 2;   // focused width
-const COLLAPSED_FLEX = 1;  // non-focused width
+const EXPANDED_FLEX = 2;   
+const COLLAPSED_FLEX = 1; 
 
 const Tabbar = ({ state, descriptors, navigation }) => {
     const insets = useSafeAreaInsets();
 
-    // small easing when focus changes
     useEffect(() => {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     }, [state.index]);
@@ -40,9 +39,9 @@ const Tabbar = ({ state, descriptors, navigation }) => {
     const iconFor = (routeName, focused) => {
         switch (routeName) {
             case "Dashboard": return focused ? selected_home_icon : home_icon;
-            case "Exhibition": return focused ? selected_conferences_icon : conferences_icon;
-            case "Contact": return focused ? selected_speakers_icon : speakers_icon;
-            case "Feedback": return focused ? selected_call_icon : call_icon;
+            case "Conference": return focused ? selected_conferences_icon : conferences_icon;
+            case "Speakers": return focused ? selected_speakers_icon : speakers_icon;
+            case "Contact": return focused ? selected_call_icon : call_icon;
             default: return home_icon;
         }
     };
@@ -50,9 +49,9 @@ const Tabbar = ({ state, descriptors, navigation }) => {
     const labelFor = (routeName) => {
         switch (routeName) {
             case "Dashboard": return "Home";
-            case "Exhibition": return "Conferences";
-            case "Contact": return "Speakers";
-            case "Feedback": return "Contact";
+            case "Conference": return "Conferences";
+            case "Speakers": return "Speakers";
+            case "Contact": return "Contact";
             default: return routeName;
         }
     };
@@ -61,7 +60,6 @@ const Tabbar = ({ state, descriptors, navigation }) => {
         <View style={[styles.tabbar, { paddingBottom: Math.max(insets.bottom, 8) }]}>
             {state.routes.map((route, index) => {
                 const focused = state.index === index;
-                const { options } = descriptors[route.key];
 
                 const onPress = () => {
                     const event = navigation.emit({
@@ -83,7 +81,7 @@ const Tabbar = ({ state, descriptors, navigation }) => {
                         activeOpacity={0.9}
                         style={[
                             styles.itemWrap,
-                            focused && { height: "80%" },
+                            focused && { height: "70%" },
                             { flex: focused ? EXPANDED_FLEX : COLLAPSED_FLEX },
                         ]}
                     >

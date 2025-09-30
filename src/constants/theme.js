@@ -13,6 +13,7 @@ export const COLORS = {
   background_grey_color: '#CCCCCC',
   text_red_color: '#ED1010',
   text_green_color: '#0C9409',
+  light_blue_color: "#28FFDE",
   text_dark_blue_color: '#2E4888',
   text_pink_color: '#FF7B7B',
   pending_text_color: '#EE4D4D',
@@ -27,7 +28,6 @@ export const COLORS = {
   black: '#000000',
   modal_background_color: 'rgba(0,0,0,0.8)',
   transparent: 'transparent',
-  text_aqua_color: '#28FFDE',
   keys_color: 'rgba(255, 255, 255, 0.8)',
 };
 

@@ -1,9 +1,17 @@
 import { StyleSheet } from "react-native";
-import { SIZES } from "../../constants";
+import { COLORS, SIZES } from "../../constants";
 
 
 export const styles = StyleSheet.create({
-  heading: {
+  main_view: {
+    flex: 1,
     paddingHorizontal: SIZES.padding,
+    paddingTop: SIZES.padding2 /2
+  },
+  download_btn: {
+    backgroundColor: COLORS.transparent,
+    borderWidth: 1,
+    borderColor: COLORS.white,
+    marginVertical: SIZES.padding2
   },
 });

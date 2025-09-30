@@ -15,7 +15,7 @@ import { navigate } from '../../navigation/service';
 const EditSocialMedia = () => {
   return (
     <Container>
-      <Header color={COLORS.white} title={'Edit Social Media Links'} />
+      <Header rightIcon={null} title={'Edit Social Media Links'} />
       <ScrollView
         style={styles.main_view}
         contentContainerStyle={styles.scrollViewStyle}

@@ -1,38 +1,31 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { RowView, SizedBox, Text } from '../../../components';
-
+import { RowView, Text } from '../../../components';
 import { COLORS, SIZES } from '../../../constants';
 import { TextWeights } from '../../../config';
+import { common_styles } from '../../../utils/common_styles';
 
-const ShopModules = ({ title, time, description }) => {
+const ShopModules = ({ item }) => {
   return (
-    <View style={styles.backcard}>
-      <View style={styles.card}>
-        {/* Title + Time */}
-        <RowView style={styles.wrap}>
-          <Text
-            text={title}
-            size={SIZES.h16}
-            weight={TextWeights.medium}
-            color={COLORS.card_heading_color}
-            style={{ flex: 1, flexShrink: 1 }}
-          />
-          <View style={styles.time}>
-            <Text text={time} color={COLORS.placeholder_text_color} size={SIZES.h12} />
-          </View>
-        </RowView>
-    
-
-        <SizedBox height={SIZES.h10} />
-
-        {/* Description */}
+    <View style={styles.main_view}>
+      <RowView >
         <Text
-          text={description}
+          text={item?.title}
           size={SIZES.h14}
-          style={{ flex: 1, flexShrink: 1 }}
+          weight={TextWeights.medium}
+          color={COLORS.light_blue_color}
+          style={common_styles.flex_1}
         />
-      </View>
+
+        <View style={styles.time_view}>
+          <Text text={item?.time}
+            color={COLORS.placeholder_text_color}
+          />
+        </View>
+
+      </RowView>
+
+      <Text text={item?.description} mt={SIZES.padding2 / 2} />
     </View>
   );
 };
@@ -40,31 +33,19 @@ const ShopModules = ({ title, time, description }) => {
 export default ShopModules;
 
 const styles = StyleSheet.create({
-  backcard: {
-    backgroundColor: COLORS.card_heading_color,
-    height: SIZES.height * 0.11,
-    width: '95%',
-    borderRadius: 15,
-    alignSelf: 'center',
-  },
-  card: {
+  main_view: {
     backgroundColor: COLORS.primary,
-    height: SIZES.height * 0.11,
-    width: '98%',
-    paddingVertical:SIZES.padding*0.5,
-    paddingHorizontal: SIZES.padding2,
-    alignSelf: 'flex-end',
-    borderRadius: 15,
+    marginTop: SIZES.padding2,
+    borderLeftWidth: 6,
+    borderLeftColor: COLORS.light_blue_color,
+    borderRadius: SIZES.padding2 * 1.5,
+    padding: SIZES.padding2,
   },
-  time: {
-    width: '25%',
-    paddingVertical: 4,
-    paddingHorizontal: 7,
-    borderRadius: 40,
-    alignItems: 'center',
+  time_view: {
+    borderRadius: SIZES.padding,
     backgroundColor: COLORS.white,
-  },
-  wrap: {
-    flexWrap: 'wrap',
+    height: SIZES.padding,
+    paddingHorizontal: SIZES.padding2 * 1.5,
+    justifyContent: 'center'
   },
 });

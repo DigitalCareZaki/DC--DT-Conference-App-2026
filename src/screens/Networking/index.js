@@ -1,75 +1,43 @@
 import React from 'react';
 import {
-  Button,
   Container,
   Header,
-  RowView,
   SearchBar,
+  SizedBox,
   Text,
 } from '../../components';
 import { FlatList, View } from 'react-native';
 import { styles } from './index.styles';
-import { COLORS, SIZES } from '../../constants';
-import { registeredUsers, TextWeights } from '../../config';
-import { chat_icon } from '../../assets/icons';
-import { navigate } from '../../navigation/service';
+import { SIZES } from '../../constants';
+import { registered_users, TextWeights } from '../../config';
+import { SingleUserView } from "./components"
 
 const Networking = () => {
-  const renderItem = ({ item }) => (
-    <RowView
-      onPress={() => navigate('UserProfile')}
-      justifyContent={'space-between'}
-      style={styles.grid}
-    >
-      <View>
-        <Text
-          text={item.name}
-          color={COLORS.white}
-          size={SIZES.h16}
-          weight={TextWeights.medium}
-        />
-        <Text
-          text={item.email}
-          color={COLORS.white}
-          size={SIZES.h14}
-          mt={SIZES.padding2}
-        />
-      </View>
-      <Button
-        style={styles.btn}
-        buttonText={'Chat'}
-        leftIcon={chat_icon}
-        onPress={() => navigate('Chat')}
-      />
-    </RowView>
-  );
 
   return (
     <Container>
-      <Header title={'Networking'} color={COLORS.white} />
+
+      <Header title={'Networking'} rightIcon={null} />
 
       <View style={styles.main_view}>
+
         <SearchBar
           style={styles.search_bar}
           placeholder={'Search..'}
-          editable={false}
-          isRight
-          isLeft={false}
         />
 
         <Text
           text={'6 Users Registered'}
-          color={COLORS.white}
-          size={SIZES.h18}
+          size={SIZES.h16}
           weight={TextWeights.medium}
         />
 
         <FlatList
           showsVerticalScrollIndicator={false}
-          renderItem={renderItem}
-          data={registeredUsers}
-          contentContainerStyle={styles.gap}
-          style={styles.flatlist}
+          data={registered_users}
+          ListFooterComponent={<SizedBox />}
+          keyExtractor={item => item?.id}
+          renderItem={({ item }) => <SingleUserView item={item} />}
         />
       </View>
     </Container>

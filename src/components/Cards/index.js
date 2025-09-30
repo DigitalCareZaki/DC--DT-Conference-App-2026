@@ -1,110 +1,78 @@
-import {  View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import React from 'react';
 import RowView from '../RowView';
 import { Icons, SizedBox, Text } from '..';
-import { forward_arrow_icon, heart_icon } from '../../assets/icons';
+import { forward_arrow_icon, heart_icon, selected_heart_icon } from '../../assets/icons';
 import { COLORS, SIZES } from '../../constants';
 import { TextWeights } from '../../config';
-import {styles} from './index.styles'
+import { styles } from './index.styles'
+import { common_styles } from '../../utils/common_styles';
+import { capitalize } from '../../utils/functions';
 
 const Cards = ({
-  title,
-  subtitle,
-  date,
-  time,
-  venue,
   onPressHeart,
-  onPressForward,
+  item,
+  isDetail = false,
+  onPress,
+  isFavourite = false
 }) => {
   return (
-    <View style={styles.card}>
-      {/* Title Row */}
-      <RowView justifyContent="space-between" alignItems="center">
+    <TouchableOpacity disabled={isDetail} activeOpacity={0.6} onPress={onPress} style={styles.main_view}>
+
+      <RowView >
         <Text
-          text={title}
+          text={item?.title}
           size={SIZES.h16}
-          lineHeight={17}
           weight={TextWeights.medium}
-          color={COLORS.card_heading_color}
-          style={{ flex: 1, flexShrink: 1, marginRight: SIZES.padding2 }}
+          color={COLORS.light_blue_color}
+          style={common_styles.flex_1}
         />
-        <TouchableOpacity onPress={onPressHeart}>
-          <Icons name={heart_icon} iconHeight={20} />
+        <TouchableOpacity activeOpacity={0.6} hitSlop={common_styles.hitslop2} onPress={onPressHeart}>
+          <Icons name={isFavourite ? selected_heart_icon : heart_icon} />
         </TouchableOpacity>
       </RowView>
 
-      <SizedBox/>
+      <Text text={item?.description} mt={SIZES.padding2} />
 
-      {/* Subtitle */}
-      <Text
-        text={subtitle}
-        size={SIZES.h12}
-        lineHeight={13}
-        weight={TextWeights.regular}
-      />
+      <SizedBox height={SIZES.padding2} />
 
-      <SizedBox height={SIZES.padding} />
+      <RowView >
+        <Text text={'Date:'} size={SIZES.h10} color={COLORS.white + 80} />
+        <Text text={item?.date} size={SIZES.h10} />
+      </RowView>
 
-      {/* Date */}
+      <SizedBox height={SIZES.padding2} />
+
+      <RowView gap={1}>
+        <Text text={'Time:'} size={SIZES.h10} color={COLORS.white + 80} />
+        <Text text={item?.time} size={SIZES.h10} />
+      </RowView>
+
       <RowView >
         <Text
-          text={'Date:'}
+          text={'Venue:'}
           size={SIZES.h10}
           weight={TextWeights.medium}
           color={COLORS.white + 80}
         />
         <Text
-          text={date}
+          style={common_styles.flex_1}
+          text={item?.venue}
           size={SIZES.h10}
           weight={TextWeights.semibold}
         />
-      </RowView>
-
-      <SizedBox height={SIZES.h10} />
-
-      {/* Time */}
-      <RowView gap={1}>
-        <Text
-          text={'Time:'}
-          size={SIZES.h10}
-          weight={TextWeights.medium}
-          color={COLORS.white + 80}
-        />
-        <Text
-          text={time}
-          size={SIZES.h10}
-          weight={TextWeights.semibold}
-        />
+        {
+          !isDetail ? <Icons name={forward_arrow_icon} />
+            : isFavourite ?
+              <View style={styles.type_view} >
+                <Text color={COLORS.placeholder_text_color} text={capitalize(item?.type)} />
+              </View>
+              : null
+        }
       </RowView>
 
 
-      {/* Venue */}
-      {/* Venue */}
-<RowView justifyContent="space-between">
-  {/* Left side texts */}
-  <RowView gap={1}>
-    <Text
-      text={'Venue:'}
-      size={SIZES.h10}
-      weight={TextWeights.medium}
-      color={COLORS.white + 80}
-    />
-    <Text
-      text={venue}
-      size={SIZES.h10}
-      weight={TextWeights.semibold}
-    />
-  </RowView>
-
-  {/* Right side forward button (sirf tab jab onPressForward ho) */}
-  {onPressForward && (
-    <TouchableOpacity onPress={onPressForward}>
-      <Icons name={forward_arrow_icon} />
     </TouchableOpacity>
-  )}
-</RowView>
-
-    </View>
   );
 };
 
