@@ -1,49 +1,33 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Keyboard } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { signup } from "../../redux/actions/auth-action";
-import { navigate } from "../../navigation/service";
+import { goBack, resetNavigationStack } from "../../navigation/service";
 
 export default () => {
     const dispatch = useDispatch()
 
-    const [isKeybaord, setIsKeyboard] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const { auth_loading } = useSelector(state => state.auth)
 
-    useEffect(() => {
-        const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
-            setIsKeyboard(true)
-        });
-        const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
-            setIsKeyboard(false)
-        });
-
-        return () => {
-            showSubscription.remove();
-            hideSubscription.remove();
-        };
-    }, []);
-
-    const onPressSignup = async (values) => {
+    const onPressButton = async (values) => {
         Keyboard.dismiss()
-        const apiData = {
-            firstName: values?.first_name,
-            lastName: values?.last_name,
-            email: values?.email?.trim()?.toLowerCase(),
-            password: values?.password,
-            phone: `+92${values?.phone_number?.slice(1)}`,
-        }
-        dispatch(signup(apiData, () => navigate("Otp", { phone: apiData?.phone, isForgot: false })))
+
+        if (selectedIndex < 3) setSelectedIndex(selectedIndex + 1)
+        else goBack()
+    }
+
+    const onPressBack = () => {
+        if (selectedIndex > 0) setSelectedIndex(selectedIndex - 1)
+        else goBack()
     }
 
 
+
     return {
-        isKeybaord,
-        onPressSignup,
+        onPressButton,
         auth_loading,
         selectedIndex,
-        setSelectedIndex
+        onPressBack
     }
 }

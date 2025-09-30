@@ -96,11 +96,10 @@ const Login = () => {
                                             auth_loading ?
                                                 <Loader />
                                                 :
-
                                                 <Button
-                                                    isDisabled={(values?.email?.length < 1 || values?.password?.length < 1) ? true : false}
+                                                    // isDisabled={(values?.email?.length < 1 || values?.password?.length < 1) ? true : false}
                                                     buttonText={'Login'}
-                                                    onPress={handleSubmit}
+                                                    onPress={onPressLogin}
                                                 />
                                         }
 

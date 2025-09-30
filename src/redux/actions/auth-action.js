@@ -31,7 +31,6 @@ export const login = (data) => {
                 isSuccessMessage: true,
                 param_data: data,
                 onDone: async val => {
-                    console.log("Login ho gayaya")
                 }
             }),
         );
@@ -50,22 +49,3 @@ export const getUserDetail = (user) => {
         );
     };
 };
-
-// export const updateFcm = async () => {
-//     const fcm_token = await requestUserPermission()
-//     const apiData = {
-//         token: fcm_token,
-//         deviceType: Platform.OS,
-//     }
-//     console.log("apiData", apiData)
-//     return async dispatch => {
-//         dispatch(
-//             requestHandler({
-//                 apiService: apiServices.updateFcm,
-//                 param_data: apiData,
-//                 onDone: val => {
-//                 }
-//             }),
-//         );
-//     };
-// };

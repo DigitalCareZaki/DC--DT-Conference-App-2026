@@ -10,8 +10,16 @@ export const styles = StyleSheet.create({
     icon_view: {
         alignSelf: "flex-start",
         padding: 0,
-        width: SIZES.padding * 2
+        width: SIZES.padding * 2.1
     },
-    tab:{}
+    tab: {
+        flex: 1,
+        height: SIZES.padding2 / 3,
+        backgroundColor: COLORS.white,
+        marginTop: SIZES.padding2
+    },
+    selected_tab: {
+        backgroundColor: COLORS.primary
+    }
 
 })

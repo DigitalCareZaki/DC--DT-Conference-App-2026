@@ -56,3 +56,5 @@ export { default as youtube_icon } from './youtube_icon';
 export { default as microphone_icon } from './microphone_icon';
 export { default as attachment_icon } from './attachment_icon';
 export { default as counter_icon } from './counter_icon';
+export { default as drawer_icon } from './drawer_icon';
+export { default as drawer_line_icon } from './drawer_line_icon';

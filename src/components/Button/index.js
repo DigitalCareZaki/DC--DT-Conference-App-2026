@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { Icons, Text } from '../index';
+import { Text } from '../index';
 import { COLORS, SIZES } from '../../constants';
 import { TextWeights } from '../../config';
-import { chat_icon } from '../../assets/icons';
 
 const CustomButton = ({
   style,
@@ -14,7 +13,6 @@ const CustomButton = ({
   color,
   size,
   weight,
-  leftIcon,
 }) => {
   return (
     <TouchableOpacity
@@ -31,7 +29,6 @@ const CustomButton = ({
       ]}
       disabled={isDisabled}
     >
-      <Icons name={leftIcon} />
       <Text
         text={buttonText}
         style={textStyle}
@@ -46,7 +43,7 @@ const CustomButton = ({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.primary,
-    height: SIZES.padding * 2.65,
+    height: SIZES.padding * 2.5,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

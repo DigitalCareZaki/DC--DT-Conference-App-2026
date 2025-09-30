@@ -12,6 +12,15 @@ import {
   who_attend_icon,
   workshops_icon,
   conferences_icon,
+  home_icon,
+  social_media_icon,
+  feedback_icon,
+  venue_icon,
+  call_icon,
+  drawer_notification_icon,
+  speakers_icon,
+  exhibition_icon,
+  logout_icon,
 } from '../assets/icons';
 import { images } from '../constants';
 
@@ -26,6 +35,8 @@ export const TextWeights = {
 };
 
 export const website_url = 'https://health-asia.com/';
+export const privacy_policy_link = 'https://health-asia.com/privacy-policy.php';
+export const terms_link = 'https://health-asia.com/terms-and-conditions.php';
 
 export const roles = [
   {
@@ -47,6 +58,145 @@ export const roles = [
   {
     id: 5,
     name: 'Speaker',
+  },
+];
+
+export const signup_steps = [
+  'Basic Information',
+  'Select Your Category',
+  'Social Media Links',
+  'Agreement & Submission',
+];
+
+export const drawer_array = [
+  {
+    id: 1,
+    name: "Home",
+    icon: home_icon,
+    route:"Dashboard"
+  },
+  {
+    id: 2,
+    name: "About Organizers",
+    icon: organizer_detail_icon,
+    route:"AboutOrganizer"
+  },
+  {
+    id: 3,
+    name: "Exhibition",
+    icon: exhibition_icon,
+    route:"Exhibition"
+  },
+  {
+    id: 4,
+    name: "Speakers",
+    icon: speakers_icon,
+    route:"Speakers"
+  },
+  {
+    id: 5,
+    name: "Conferences",
+    icon: conferences_icon,
+    route:"Conferences"
+  },
+  {
+    id: 6,
+    name: "Workshops",
+    icon: workshops_icon,
+    route:"Workshops"
+  },
+  {
+    id: 7,
+    name: "Notifications",
+    icon: drawer_notification_icon,
+    route:"Notifications"
+  },
+  {
+    id: 8,
+    name: "ContactUs",
+    icon: call_icon,
+    route:"Contact"
+  },
+  {
+    id: 9,
+    name: "Venue",
+    icon: venue_icon,
+    route:"Venue"
+  },
+  {
+    id: 10,
+    name: "My Agenda",
+    icon: my_agenda_icon,
+    route:"MyAgenda"
+  },
+  {
+    id: 11,
+    name: "Feedback",
+    icon: feedback_icon,
+    route:"Feedback"
+  },
+  {
+    id: 12,
+    name: "Social Media links",
+    icon: social_media_icon,
+    route:"SocialMedia"
+  },
+  {
+    id: 13,
+    name: "Logout",
+    icon: logout_icon,
+    isLogout: true
+  },
+]
+
+export const dashboard_array = [
+  {
+    id: 1,
+    icon: conferences_icon,
+    name: 'Conferences',
+    route: 'Venue',
+  },
+  {
+    id: 2,
+    icon: workshops_icon,
+    name: 'WorkShops',
+    route: 'EditSocialMedia',
+  },
+  {
+    id: 3,
+    icon: visitor_registration_icon,
+    name: 'Visitor Registration',
+    route: 'Contact',
+  },
+  {
+    id: 4,
+    icon: who_attend_icon,
+    name: 'Who Should Attend',
+    route: 'Exhibition',
+  },
+  {
+    id: 5,
+    icon: organizer_detail_icon,
+    name: 'Organizers Details',
+    route: 'AboutOrganizer',
+  },
+  {
+    id: 6,
+    icon: networking_icon,
+    name: 'Networking',
+    route: 'Networking',
+  },
+  {
+    id: 7,
+    icon: gallery_icon,
+    name: 'Gallery',
+    route: 'Gallery',
+  },
+  {
+    id: 8,
+    icon: my_agenda_icon,
+    name: 'My Agenda',
+    route: 'MyAgenda',
   },
 ];
 
@@ -151,56 +301,8 @@ export const galleryImgs = [
   },
 ];
 
-export const dashboardArr = [
-  {
-    id: 1,
-    icon: conferences_icon,
-    name: 'Conferences',
-    navigation: 'Venue',
-  },
-  {
-    id: 2,
-    icon: workshops_icon,
-    name: 'WorkShops',
-    navigation: 'EditSocialMedia',
-  },
-  {
-    id: 3,
-    icon: visitor_registration_icon,
-    name: 'Visitor Registration',
-    navigation: 'Contact',
-  },
-  {
-    id: 4,
-    icon: who_attend_icon,
-    name: 'Who Should Attend',
-    navigation: 'Exhibition',
-  },
-  {
-    id: 5,
-    icon: organizer_detail_icon,
-    name: 'Organizers Details',
-    navigation: 'AboutOrganizer',
-  },
-  {
-    id: 6,
-    icon: networking_icon,
-    name: 'Networking',
-    navigation: 'Networking',
-  },
-  {
-    id: 7,
-    icon: gallery_icon,
-    name: 'Gallery',
-    navigation: 'Gallery',
-  },
-  {
-    id: 8,
-    icon: my_agenda_icon,
-    name: 'My Agenda',
-    navigation: 'MyAgenda',
-  },
-];
+
+
 
 export const ExhibitionArr = [
   {
@@ -317,9 +419,3 @@ export const agendaArr = [
   },
 ];
 
-export const signup_steps = [
-  'Basic Information',
-  'Select Your Category',
-  'Social Media Links',
-  'Agreement & Submission',
-];

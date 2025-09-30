@@ -25,7 +25,7 @@ export const COLORS = {
   shadow_color: '#262626',
   white: '#ffffff',
   black: '#000000',
-  modal_background_color: '#00000050',
+  modal_background_color: 'rgba(0,0,0,0.8)',
   transparent: 'transparent',
   text_aqua_color: '#28FFDE',
   keys_color: 'rgba(255, 255, 255, 0.8)',

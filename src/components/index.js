@@ -17,3 +17,4 @@ export { default as Text } from './Text';
 export { default as AskModal } from './AskModal';
 export { default as DrawerContent } from './DrawerContent';
 export { default as Card } from './Card';
+export { default as DateView } from './DateView';

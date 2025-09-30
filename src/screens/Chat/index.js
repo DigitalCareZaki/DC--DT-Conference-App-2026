@@ -89,7 +89,6 @@ const Chat = () => {
       />
     );
   };
-  console.log('hey');
   const renderInputToolbar = props => (
     <InputToolbar
       {...props}

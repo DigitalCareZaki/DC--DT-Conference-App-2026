@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Button,
   Container,
@@ -14,7 +14,6 @@ import { COLORS, images, SIZES } from '../../constants';
 import { styles } from './index.styles';
 import { ExhibitionArr, TextWeights } from '../../config';
 import FastImage from 'react-native-fast-image';
-import LinearGradient from 'react-native-linear-gradient';
 import { navigate } from '../../navigation/service';
 
 const Exhibition = () => {

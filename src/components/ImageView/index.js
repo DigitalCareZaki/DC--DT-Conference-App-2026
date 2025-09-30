@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { SIZES } from '../../constants';
 import FastImage from 'react-native-fast-image';
@@ -44,10 +44,10 @@ const ImageView = ({
         source={
           url
             ? {
-                uri: url,
-                priority: FastImage.priority.high,
-                cache: FastImage.cacheControl.immutable,
-              }
+              uri: url,
+              priority: FastImage.priority.high,
+              cache: FastImage.cacheControl.immutable,
+            }
             : image
         }
       />

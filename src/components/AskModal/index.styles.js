@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import { COLORS, SIZES } from '../../constants';
-import { TextWeights } from '../../config';
 
 export const styles = StyleSheet.create({
   main_view: {
@@ -11,10 +10,12 @@ export const styles = StyleSheet.create({
   },
   sub_view: {
     backgroundColor: COLORS.primary,
-    borderRadius: SIZES.padding2,
+    borderRadius: SIZES.padding,
     padding: SIZES.padding,
   },
   icon_view: {
-    alignSelf: 'flex-end',
+    position: "absolute",
+    right: SIZES.padding2,
+    top: SIZES.padding2
   },
 });

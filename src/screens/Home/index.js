@@ -1,15 +1,17 @@
 import { FlatList, ScrollView, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { BannerCarousel, CategoryCard, Container, Header, ImageView, ProductCard, RowView, SearchBar, SizedBox, Text } from '../../components'
+import {  Container, Header, ImageView, RowView, SearchBar, Text } from '../../components'
 import { styles } from './index.styles'
 import { navigate } from '../../navigation/service'
-import { profile_icon } from '../../assets/icons'
+import { menu_icon  } from '../../assets/icons'
 import { COLORS, images, SIZES } from '../../constants'
 import HomeFunctional from "./index.function"
 import { SeeAllRow } from './components'
 import { TextWeights } from '../../config'
+import { useNavigation } from '@react-navigation/native'
 
 const Home = () => {
+    const navigation = useNavigation()
     const {
         home_data,
         categories,
@@ -21,8 +23,8 @@ const Home = () => {
     return (
         <Container>
             <Header
-                leftIcon={profile_icon}
-                onPressBack={() => navigate("AccountStack")}
+                leftIcon={menu_icon}
+                onPressBack={() => navigation.openDrawer()}
                 // title={"Discover"}
                 name={`Hi, ${user?.firstName ?? "Guest"}`}
             />
@@ -44,9 +46,6 @@ const Home = () => {
                         editable={false}
                         onPress={() => navigate("SearchStack")}
                     />
-
-                    <BannerCarousel imagesArray={home_data?.featuredSlider} />
-
 
                     <SeeAllRow
                         onPress={() => navigate("Categories")}
@@ -81,21 +80,6 @@ const Home = () => {
                             )
                         }}
                     />
-
-
-                    <FlatList
-                        data={home_data?.categories}
-                        showsVerticalScrollIndicator={false}
-                        keyExtractor={item => item?.id}
-                        ListFooterComponent={<SizedBox />}
-                        renderItem={({ item, index }) => (
-                            <CategoryCard item={item} />
-                        )}
-                    />
-
-                    <SizedBox height={latest_order ? SIZES.padding * 2 : SIZES.padding} />
-
-
 
 
                 </ScrollView>

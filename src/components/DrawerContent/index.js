@@ -1,9 +1,13 @@
-import { View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import React from 'react'
 import { styles } from './index.styles'
-import { AskModal, Container, ImageView, SizedBox } from '../index'
+import { AskModal, Container, Icons, SizedBox, Text } from '../index'
 import DrawerContentFunctional from "./index.function"
-import { images, SIZES } from '../../constants'
+import { COLORS, SIZES } from '../../constants'
+import { drawer_icon, drawer_line_icon } from '../../assets/icons'
+import { drawer_array, TextWeights } from '../../config'
+import { SingleDrawerView } from "./components"
+import { navigate } from '../../navigation/service'
 
 const DrawerContent = ({ navigation }) => {
     const {
@@ -14,28 +18,49 @@ const DrawerContent = ({ navigation }) => {
     } = DrawerContentFunctional()
 
     return (
-        <Container  >
+        <Container isImage={false} background={COLORS.primary} >
             <View style={styles.main_view} >
+                <ScrollView showsVerticalScrollIndicator={false} >
 
-                <ImageView image={images.drawer_logo} />
+                    <Icons name={drawer_icon} />
 
-                <View>
+                    <Text
+                        mt={SIZES.padding}
+                        text={"Muhammad Ali"}
+                        align={'center'}
+                        weight={TextWeights.medium}
+                        size={SIZES.h22}
+                    />
+                    <Text
+                        mt={SIZES.padding2 / 6}
+                        align={'center'}
+                        text={"muhammadali@gmail.com"}
+                        mb={SIZES.padding * 1.5}
+                    />
 
-
+                    <Icons name={drawer_line_icon} />
 
                     <SizedBox height={SIZES.padding2} />
 
-                    <AskModal
-                        description={"See you next time! You can log out here."}
-                        onPressClose={() => setShowModal(false)}
-                        onPressYes={onPressLogout}
-                        title={"Logout"}
-                        visible={showModal}
-                    />
+                    {drawer_array?.map((item, index) => (
+                        <SingleDrawerView
+                            onPress={() => {
+                                if (item?.isLogout) setShowModal(true)
+                                else navigate(item?.route)
+                            }}
+                            key={item?.id} item={item} />
+                    ))}
 
-                    <SizedBox />
 
-                </View>
+
+                </ScrollView>
+                <AskModal
+                    description={"See you next time! You can log out here."}
+                    onPressClose={() => setShowModal(false)}
+                    onPressYes={onPressLogout}
+                    title={"Logout"}
+                    visible={showModal}
+                />
             </View>
         </Container >
     )

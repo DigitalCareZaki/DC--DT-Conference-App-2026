@@ -11,37 +11,29 @@ import { Formik } from 'formik'
 import { signup_schema, signup_validation_schema } from '../../validations_schemas/signup_validation_schemas'
 import { styles } from "./index.styles"
 import { back_icon } from '../../assets/icons'
+import {
+    BasicInformation,
+    SelectCategory,
+    SetupPassword,
+    SocialMediaLinks
+} from "./components"
 
 const Signup = () => {
     const {
-        isKeybaord,
-        onPressSignup,
         auth_loading,
         selectedIndex,
-        setSelectedIndex
+        onPressButton,
+        onPressBack
     } = SignupFunctional()
 
     return (
         <Container>
-
             <KeyboardAvoidingView style={common_styles.flex_1} behavior={keyboardAvoidingBehaviour}  >
 
                 <View style={styles.main_view} >
-                    <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={"handled"}  >
+                    <ScrollView  nestedScrollEnabled={true} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={"handled"}  >
 
-                        {/* <Formik
-                            validationSchema={signup_validation_schema}
-                            initialValues={signup_schema}
-                            validateOnChange={false}
-                            validateOnMount={false}
-                            validateOnBlur={false}
-                            onSubmit={(values, functions) => onPressSignup(values, functions.resetForm)}
-                        >
-                            {({ handleSubmit, setFieldValue, setFieldError, values, errors, }) => {
-                                return (
-                                    <> */}
-
-                        <TouchableOpacity style={styles.icon_view} hitSlop={common_styles.hitslop} activeOpacity={0.6} >
+                        <TouchableOpacity  onPress={onPressBack} style={styles.icon_view} hitSlop={common_styles.hitslop} activeOpacity={0.6} >
                             <Icons name={back_icon} />
                         </TouchableOpacity>
 
@@ -52,39 +44,29 @@ const Signup = () => {
 
 
                         <RowView>
-                            {roles?.map((val, ind) => (
-                                <View style={[styles.tab, selectedIndex > ind && styles.selected_tab]} />
+                            {signup_steps?.map((val, ind) => (
+                                <View key={ind?.toString()} style={[styles.tab, selectedIndex >= ind && styles.selected_tab]} />
                             ))}
                         </RowView>
 
+                        <Text
+                            text={`Step 0${selectedIndex + 1}/04`}
+                            mt={SIZES.padding2}
+                            weight={TextWeights.medium}
+                        />
+                        {selectedIndex === 0 && <BasicInformation />}
+                        {selectedIndex === 1 && <SelectCategory />}
+                        {selectedIndex === 2 && <SocialMediaLinks />}
+                        {selectedIndex === 3 && <SetupPassword />}
+
+                        <SizedBox />
 
                         {
-                            !isKeybaord &&
-                            <>
-                                <RowView gap={0} justifyContent={'center'} >
-                                    <Text
-                                        size={SIZES.h12}
-                                        text={"Already have an account?"} />
-
-                                    <TouchableOpacity hitSlop={common_styles.hitslop2} onPress={goBack} activeOpacity={0.6} >
-                                        <Text
-                                            size={SIZES.h12}
-                                            weight={TextWeights.medium}
-                                            textDecorationLine={'underline'}
-                                            text={"Login"}
-                                        />
-                                    </TouchableOpacity>
-                                </RowView>
-                                <SizedBox height={SIZES.padding * 1.5} />
-                            </>
+                            auth_loading ?
+                                <Loader mt={0} />
+                                :
+                                <Button onPress={onPressButton} buttonText={selectedIndex < 3 ? "Next" : "Submit"} />
                         }
-
-
-
-                        {/* </>
-                                )
-                            }}
-                        </Formik> */}
 
                         <SizedBox />
 

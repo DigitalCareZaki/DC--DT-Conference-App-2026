@@ -12,7 +12,7 @@ const Splash = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            resetNavigationStack("Login")
+            resetNavigationStack("DrawerNavigation")
         }, 2000);
     }, [])
 

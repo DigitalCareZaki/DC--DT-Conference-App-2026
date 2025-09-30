@@ -7,10 +7,11 @@ import ImageView from '../ImageView'
 import FastImage from 'react-native-fast-image'
 import { common_styles } from '../../utils/common_styles'
 
-const Container = ({ children, background, barStyle }) => {
+const Container = ({ children, background, barStyle, isImage = true }) => {
   return (
     <View style={[styles.safe_area, { backgroundColor: background ?? COLORS.white }]} >
-      <ImageView radius={0} resizeMode={FastImage.resizeMode.cover} image={images.background_image} style={styles.image} />
+      {isImage && <ImageView radius={0} resizeMode={FastImage.resizeMode.cover} image={images.background_image} style={styles.image} />}
+
       <StatusBar barStyle={barStyle || 'light-content'} backgroundColor={background ?? COLORS.white} translucent />
       <SafeAreaView style={common_styles.flex_1} >
         {children}
