@@ -13,6 +13,7 @@ import {
   Exhibition,
   Gallery,
   Login,
+  MyAgenda,
   Networking,
   Signup,
   Speakers,
@@ -55,6 +56,7 @@ const MainNavigator = () => {
           <Stack.Screen name="Contact" component={Contact} />
           <Stack.Screen name="Venue" component={Venue} />
           <Stack.Screen name="Notification" component={Notification} />
+          <Stack.Screen name="MyAgenda" component={MyAgenda} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast position="top" />

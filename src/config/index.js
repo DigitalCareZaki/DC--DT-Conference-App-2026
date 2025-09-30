@@ -198,7 +198,7 @@ export const dashboardArr = [
     id: 8,
     icon: my_agenda_icon,
     name: 'My Agenda',
-    navigation: '',
+    navigation: 'MyAgenda',
   },
 ];
 
@@ -286,6 +286,34 @@ export const notificationArr = [
     description:
       'Thank you for registering! Get ready for an amazing experience.',
     time: '246d ago',
+  },
+];
+
+export const agendaArr = [
+  {
+    title: 'Future of Technology 2025',
+    description: 'Exploring the latest trends and innovations in technology.',
+    date: 'Sunday, June 15, 2025 -  June 17, 2025',
+    time: '2:00 PM - 11:00 PM',
+    venue: 'Convention Center, Hall A',
+    btnTxt: 'Conference ',
+  },
+
+  {
+    title: 'Cybersecurity Best Practices Workshop',
+    description: 'Hands-on workshop covering modern cybersecurity practices.',
+    date: 'Sunday, June 15, 2025 -  June 17, 2025',
+    time: '2:00 PM - 11:00 PM',
+    venue: 'Workshop Room 1',
+    btnTxt: 'Workshop',
+  },
+  {
+    title: 'Future of Technology 2025',
+    description: 'Exploring the latest trends and innovations in technology.',
+    date: 'Sunday, June 15, 2025 -  June 17, 2025',
+    time: '2:00 PM - 11:00 PM',
+    venue: 'Convention Center, Hall A ',
+    btnTxt: 'Conference',
   },
 ];
 export const signup_steps = [
