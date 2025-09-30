@@ -162,7 +162,7 @@ export const dashboardArr = [
     id: 2,
     icon: workshops_icon,
     name: 'WorkShops',
-    navigation: '',
+    navigation: 'EditSocialMedia',
   },
   {
     id: 3,
@@ -316,6 +316,7 @@ export const agendaArr = [
     btnTxt: 'Conference',
   },
 ];
+
 export const signup_steps = [
   'Basic Information',
   'Select Your Category',

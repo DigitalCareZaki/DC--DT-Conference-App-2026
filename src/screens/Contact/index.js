@@ -59,6 +59,7 @@ const Contact = () => {
           label={'Message'}
           placeholder={'Tell us more about your inquiry...'}
           style={styles.txtInput}
+          inputStyle={{ textAlignVertical: 'top' }}
         />
 
         <SizedBox />

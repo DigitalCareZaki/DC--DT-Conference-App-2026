@@ -10,6 +10,7 @@ import {
   Chat,
   Contact,
   Dashboard,
+  EditSocialMedia,
   Exhibition,
   Gallery,
   Login,
@@ -57,6 +58,7 @@ const MainNavigator = () => {
           <Stack.Screen name="Venue" component={Venue} />
           <Stack.Screen name="Notification" component={Notification} />
           <Stack.Screen name="MyAgenda" component={MyAgenda} />
+          <Stack.Screen name="EditSocialMedia" component={EditSocialMedia} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast position="top" />

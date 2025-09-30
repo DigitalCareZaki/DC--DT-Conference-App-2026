@@ -18,6 +18,5 @@ export const styles = StyleSheet.create({
     marginRight: SIZES.padding2,
     fontFamily: TextWeights.regular,
     height: '100%',
-    textAlignVertical: 'top',
   },
 });
