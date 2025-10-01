@@ -13,11 +13,11 @@ const Header = ({
   style,
   iconStyle,
   isDashBoard = false,
-  rightIcon  = notification_icon,
+  rightIcon = notification_icon,
   onPressIcon,
-  isMenu = false
+  isMenu = false,
 }) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   return (
     <RowView
@@ -54,12 +54,15 @@ const Header = ({
         <TouchableOpacity
           activeOpacity={0.6}
           style={[styles.icon_view, iconStyle]}
-          onPress={() => onPressIcon ? onPressIcon() : navigate('Notification')}
+          onPress={() =>
+            onPressIcon ? onPressIcon() : navigate('Notification')
+          }
         >
           <Icons name={rightIcon} />
         </TouchableOpacity>
-      ) : <View style={styles.icon_view} />}
-
+      ) : (
+        <View style={styles.icon_view} />
+      )}
     </RowView>
   );
 };

@@ -3,16 +3,16 @@
  */
 // language translation
 
-import { Alert, Dimensions, Platform } from "react-native";
-import { GOOGLE_WEB_CLIENT_ID } from "@env"
-import Toast from "react-native-toast-message";
+import { Alert, Dimensions, Platform } from 'react-native';
+import { GOOGLE_WEB_CLIENT_ID } from '@env';
+import Toast from 'react-native-toast-message';
 import ImagePicker from 'react-native-image-crop-picker';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { setUser } from "../redux/slices/constant-slice";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { setUser } from '../redux/slices/main-slice';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // first letter capitalize
-export const capitalize = (str) => str?.charAt(0).toUpperCase() + str?.slice(1);
+export const capitalize = str => str?.charAt(0).toUpperCase() + str?.slice(1);
 
 export const getGoogleToken = async () => {
   try {
@@ -22,7 +22,7 @@ export const getGoogleToken = async () => {
       await GoogleSignin.revokeAccess();
       await GoogleSignin.signOut();
     }
-  } catch (error) { }
+  } catch (error) {}
 
   try {
     GoogleSignin.configure({
@@ -40,85 +40,102 @@ export const getGoogleToken = async () => {
 
 export const openImagePicker = (onDone, multiple = false) => {
   ImagePicker.openPicker({
-    mediaType: "photo",
+    mediaType: 'photo',
     width: 300,
     height: 400,
-    multiple
-  }).then(image => {
-    let name = image?.path?.split("/")
-    let obj = {
-      uri: Platform.OS === "android" ? "file://" + image.path : image.path,
-      type: image.mime,
-      name: name?.[name?.length - 1]
-    }
-    onDone(multiple ? image : obj)
-  }).catch(err => {
-    if (err?.toString() === "Error: User did not grant library permission.") {
-      Alert.alert('Permission', 'To select an image, please allow permissions from settings', [
-        {
-          text: 'Cancel',
-          onPress: () => { },
-          style: 'cancel',
-        },
-        { text: 'Settings', onPress: () => Linking.openSettings() },
-      ])
-
-    }
-  });
+    multiple,
+  })
+    .then(image => {
+      let name = image?.path?.split('/');
+      let obj = {
+        uri: Platform.OS === 'android' ? 'file://' + image.path : image.path,
+        type: image.mime,
+        name: name?.[name?.length - 1],
+      };
+      onDone(multiple ? image : obj);
+    })
+    .catch(err => {
+      if (err?.toString() === 'Error: User did not grant library permission.') {
+        Alert.alert(
+          'Permission',
+          'To select an image, please allow permissions from settings',
+          [
+            {
+              text: 'Cancel',
+              onPress: () => {},
+              style: 'cancel',
+            },
+            { text: 'Settings', onPress: () => Linking.openSettings() },
+          ],
+        );
+      }
+    });
 };
 
-export const openCamera = (onDone) => {
+export const openCamera = onDone => {
   ImagePicker.openCamera({
-    mediaType: "photo",
+    mediaType: 'photo',
     width: 300,
     height: 400,
-  }).then(image => {
-    let name = image?.path?.split("/")
-    let obj = {
-      uri: Platform.OS === "android" ? "file://" + image.path : image.path,
-      type: image.mime,
-      name: name?.[name?.length - 1]
-    }
-    onDone(obj)
-  }).catch(err => {
-    if (err?.toString() === "Error: User did not grant camera permission.") {
-      Alert.alert('Permission', 'To capture an image, please allow permissions from settings', [
-        {
-          text: 'Cancel',
-          onPress: () => { },
-          style: 'cancel',
-        },
-        { text: 'Settings', onPress: () => Linking.openSettings() },
-      ])
-
-    }
-  });
+  })
+    .then(image => {
+      let name = image?.path?.split('/');
+      let obj = {
+        uri: Platform.OS === 'android' ? 'file://' + image.path : image.path,
+        type: image.mime,
+        name: name?.[name?.length - 1],
+      };
+      onDone(obj);
+    })
+    .catch(err => {
+      if (err?.toString() === 'Error: User did not grant camera permission.') {
+        Alert.alert(
+          'Permission',
+          'To capture an image, please allow permissions from settings',
+          [
+            {
+              text: 'Cancel',
+              onPress: () => {},
+              style: 'cancel',
+            },
+            { text: 'Settings', onPress: () => Linking.openSettings() },
+          ],
+        );
+      }
+    });
 };
 
 export const searchArray = (data, keyword) => {
   const result = [];
-  data?.forEach((item) => {
+  data?.forEach(item => {
     let matched = false;
-    Object.keys(item).forEach((key) => {
+    Object.keys(item).forEach(key => {
       if (
         item &&
         typeof item[key] === 'string' &&
-        (item[key]?.toLowerCase().includes(keyword.toLowerCase()) || item[key]?.toLowerCase().match(keyword.toLowerCase()))
+        (item[key]?.toLowerCase().includes(keyword.toLowerCase()) ||
+          item[key]?.toLowerCase().match(keyword.toLowerCase()))
       ) {
         return (matched = true);
       } else if (item && typeof item[key] === 'object') {
         if (item[key]) {
-          Object.keys(item[key]).forEach((val) => {
+          Object.keys(item[key]).forEach(val => {
             if (
               item[key][val] &&
               typeof item[key][val] === 'string' &&
-              (item[key][val]?.toLowerCase().includes(keyword.toLowerCase()) || item[key][val]?.toLowerCase().match(keyword.toLowerCase()))
+              (item[key][val]?.toLowerCase().includes(keyword.toLowerCase()) ||
+                item[key][val]?.toLowerCase().match(keyword.toLowerCase()))
             ) {
               return (matched = true);
             }
           });
         }
-      } else if (item && typeof item[key] === 'number' && (item[key]?.toString()?.toLowerCase().match(keyword.toLowerCase()) || item[key]?.toString()?.toLowerCase().includes(keyword.toLowerCase()))) {
+      } else if (
+        item &&
+        typeof item[key] === 'number' &&
+        (item[key]?.toString()?.toLowerCase().match(keyword.toLowerCase()) ||
+          item[key]?.toString()?.toLowerCase().includes(keyword.toLowerCase()))
+      ) {
         return (matched = true);
       }
     });
@@ -134,9 +151,9 @@ export const showToast = (type, message) => {
     type: type,
     text1: capitalize(type),
     text2: message,
-    position: "top"
+    position: 'top',
   });
-}
+};
 
 export function requestHandler({
   apiService,
@@ -145,7 +162,7 @@ export function requestHandler({
   isSuccessMessage = false,
   param_data,
   onDone,
-  onError = () => {}
+  onError = () => {},
 }) {
   return async dispatch => {
     try {
@@ -153,18 +170,22 @@ export function requestHandler({
       const response = await apiService(param_data);
       if (!response?.data?.error) {
         setData && dispatch(setData(response?.data?.data));
-        isSuccessMessage && showToast('success', response?.data?.msg ?? response?.data?.message ?? "");
+        isSuccessMessage &&
+          showToast(
+            'success',
+            response?.data?.msg ?? response?.data?.message ?? '',
+          );
         onDone && onDone(response?.data);
       } else {
-        showToast('error', response?.data?.message ?? "");
+        showToast('error', response?.data?.message ?? '');
       }
     } catch (error) {
-      onError()
+      onError();
       if (error?.status === 401) {
-        dispatch(setUser(null))
-        await AsyncStorage.clear()
+        dispatch(setUser(null));
+        await AsyncStorage.clear();
       }
-      showToast('error', error?.data?.msg ?? error?.data?.message ?? "");
+      showToast('error', error?.data?.msg ?? error?.data?.message ?? '');
     } finally {
       setLoading && dispatch(setLoading(false));
     }
@@ -177,7 +198,7 @@ export const urlReg =
 
 export const numberReg = /^\+|0{1,}(?:[0-9] ?){6,14}[0-9]$/;
 
-const { width, height } = Dimensions.get("window");
+const { width, height } = Dimensions.get('window');
 const guidelineBaseWidth = 350;
 const guidelineBaseHeight = 680;
 

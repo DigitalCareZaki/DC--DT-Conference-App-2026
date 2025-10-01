@@ -1,22 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import {
-  constantReducer,
-  authReducer,
-  orderReducer,
-  productReducer
-} from './slices';
+import { authReducer, mainSlice } from './slices';
 import persistReducer from 'redux-persist/es/persistReducer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistStore } from 'redux-persist';
 
-
 const rootReducer = combineReducers({
-  constant: constantReducer,
   auth: authReducer,
-  order: orderReducer,
-  product: productReducer,
+  main: mainSlice,
 });
-
 
 const persistConfig = {
   key: 'root',
@@ -24,12 +15,11 @@ const persistConfig = {
   whitelist: ['constant'],
 };
 
-
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],

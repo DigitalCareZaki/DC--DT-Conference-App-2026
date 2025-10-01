@@ -71,81 +71,81 @@ export const signup_steps = [
 export const drawer_array = [
   {
     id: 1,
-    name: "Home",
+    name: 'Home',
     icon: home_icon,
-    route: "Dashboard"
+    route: 'Dashboard',
   },
   {
     id: 2,
-    name: "About Organizers",
+    name: 'About Organizers',
     icon: organizer_detail_icon,
-    route: "AboutOrganizer"
+    route: 'AboutOrganizer',
   },
   {
     id: 3,
-    name: "Exhibition",
+    name: 'Exhibition',
     icon: exhibition_icon,
-    route: "Exhibition"
+    route: 'Exhibition',
   },
   {
     id: 4,
-    name: "Speakers",
+    name: 'Speakers',
     icon: speakers_icon,
-    route: "Speakers"
+    route: 'Speakers',
   },
   {
     id: 5,
-    name: "Conferences",
+    name: 'Conferences',
     icon: conferences_icon,
-    route: "Conference"
+    route: 'Conference',
   },
   {
     id: 6,
-    name: "Workshops",
+    name: 'Workshops',
     icon: workshops_icon,
-    route: "WorkShop"
+    route: 'WorkShop',
   },
   {
     id: 7,
-    name: "Notifications",
+    name: 'Notifications',
     icon: drawer_notification_icon,
-    route: "Notifications"
+    route: 'Notifications',
   },
   {
     id: 8,
-    name: "ContactUs",
+    name: 'ContactUs',
     icon: call_icon,
-    route: "Contact"
+    route: 'Contact',
   },
   {
     id: 9,
-    name: "Venue",
+    name: 'Venue',
     icon: venue_icon,
-    route: "Venue"
+    route: 'Venue',
   },
   {
     id: 10,
-    name: "My Agenda",
+    name: 'My Agenda',
     icon: my_agenda_icon,
-    route: "MyAgenda"
+    route: 'MyAgenda',
   },
   {
     id: 11,
-    name: "Feedback",
+    name: 'Feedback',
     icon: feedback_icon,
-    route: "Feedback"
+    route: 'Feedback',
   },
   {
     id: 12,
-    name: "Social Media links",
+    name: 'Social Media links',
     icon: social_media_icon,
-    route: "EditSocialMedia"
+    route: 'EditSocialMedia',
   },
   {
     id: 13,
-    name: "Logout",
+    name: 'Logout',
     icon: logout_icon,
-    isLogout: true
+    isLogout: true,
   },
 ];
 
