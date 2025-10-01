@@ -4,8 +4,8 @@ import { COLORS, SIZES } from '../../constants';
 export const styles = StyleSheet.create({
   main_view: {
     flex: 1,
-    paddingHorizontal: SIZES.padding2 + 4,
-    paddingVertical: SIZES.padding,
+    paddingHorizontal: SIZES.padding,
+    paddingTop: SIZES.padding2
   },
   scrollViewStyle: {
     paddingBottom: SIZES.padding,
