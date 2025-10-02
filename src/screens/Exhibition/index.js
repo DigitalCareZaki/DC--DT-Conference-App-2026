@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   Button,
   Container,
   Header,
   ImageView,
+  LoaderModal,
   RowView,
   SearchBar,
   SizedBox,
@@ -15,123 +16,92 @@ import { styles } from './index.styles';
 import { exhibitions_array, TextWeights } from '../../config';
 import FastImage from 'react-native-fast-image';
 import { navigate } from '../../navigation/service';
+import ExhibitionCard from './component/ExhibitionCard';
+import ExhibitionFunctional from './index.function';
+import { useFocusEffect } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { getExhibition } from '../../redux/actions/main-action';
 
 const Exhibition = () => {
-  const renderItem = ({ item }) => (
-    <TouchableOpacity onPress={() => navigate('Speakers')} style={styles.grid}>
-      <RowView justifyContent={'space-between'}>
-        <Text size={SIZES.h16} weight={TextWeights.medium} text={item.title} />
-        <Button
-          buttonText={'Booth A-101'}
-          style={styles.btn}
-          color={COLORS.placeholder_text_color}
-          size={SIZES.h12}
-          weight={TextWeights.regular}
-        />
-      </RowView>
-      <Text
-        mt={SIZES.padding2 + 4}
-        text={
-          <>
-            <Text
-              size={SIZES.h12}
-              weight={TextWeights.medium}
-              color={COLORS.light_blue_color}
-              text={item.city}
-            />
-            <Text text={' - '} color={COLORS.keys_color} />
-            <Text
-              size={SIZES.h12}
-              weight={TextWeights.medium}
-              color={COLORS.light_blue_color}
-              text={item.postion}
-            />
-          </>
-        }
-      />
+  const { main_loading, exhibition } = ExhibitionFunctional();
 
-      <Text
-        mt={SIZES.padding2 - 4}
-        text={
-          <>
-            <Text text={'Venue:'} color={COLORS.keys_color} />
-            <Text text={item.venue} />
-          </>
-        }
-      ></Text>
+  const dispatch = useDispatch();
 
-      <Text
-        size={SIZES.h14}
-        mt={SIZES.padding2 + 4}
-        text={item.description}
-        lineHeight={SIZES.padding2 + 4}
-      />
-    </TouchableOpacity>
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(getExhibition());
+    }, []),
   );
+
   return (
     <Container>
       <Header color={COLORS.white} title={'Exhibition'} />
-      <ScrollView
-        style={styles.main_view}
-        contentContainerStyle={styles.scrollViewStyle}
-      >
-        <SearchBar
-          isRight
-          isLeft={false}
-          placeholder={'Search by name, industry category, city...'}
-        />
 
-        <SizedBox />
-
-        <Text
-          text={'3 Exhibitors Participating'}
-          size={SIZES.h18}
-          weight={TextWeights.medium}
-        />
-
-        <FlatList
-          renderItem={renderItem}
-          data={exhibitions_array}
-          style={{ marginTop: SIZES.padding }}
-          contentContainerStyle={{ gap: SIZES.padding2 + 4 }}
-          showsVerticalScrollIndicator={false}
-          scrollEnabled={false}
-        />
-
-        <SizedBox />
-
-        <Button buttonText={'Download List in PDF'} />
-
-        <Text
-          mt={SIZES.padding + 4}
-          text={'Hall Map'}
-          size={SIZES.h18}
-          weight={TextWeights.medium}
-        />
-
-        <SizedBox />
-
-        <View style={styles.mapView}>
-          <ImageView
-            image={images.map_image}
-            width={SIZES.padding * 17}
-            height={SIZES.padding * 9}
-            resizeMode={FastImage.resizeMode.cover}
-            radius={SIZES.padding2}
-            style={styles.map}
-            gradientColors={['transparent', 'rgba(0,0,0,0.6)']}
+      {main_loading ? (
+        <LoaderModal />
+      ) : (
+        <ScrollView
+          style={styles.main_view}
+          contentContainerStyle={styles.scrollViewStyle}
+        >
+          <SearchBar
+            isRight
+            isLeft={false}
+            placeholder={'Search by name, industry category, city...'}
           />
+
+          <SizedBox />
+
           <Text
-            style={styles.mapText}
+            text={'3 Exhibitors Participating'}
+            size={SIZES.h18}
             weight={TextWeights.medium}
-            size={SIZES.h14}
-            lineHeight={SIZES.padding}
-            text={
-              'Ecommerce Gateway Pakistan (Pvt) Ltd.8, Kokan Society, Dr. Azhar Hussain Road, Near Kokan Park, off: Shaheed-e-Millat Road, Karachi-74000 Pakistan'
-            }
           />
-        </View>
-      </ScrollView>
+
+          <FlatList
+            renderItem={({ item }) => <ExhibitionCard item={item} />}
+            data={exhibition}
+            ListHeaderComponent={<SizedBox height={SIZES.padding2} />}
+            contentContainerStyle={styles.flatlist}
+            showsVerticalScrollIndicator={false}
+            scrollEnabled={false}
+          />
+
+          <SizedBox />
+
+          <Button buttonText={'Download List in PDF'} />
+
+          <Text
+            mt={SIZES.padding + 4}
+            text={'Hall Map'}
+            size={SIZES.h18}
+            weight={TextWeights.medium}
+          />
+
+          <SizedBox />
+
+          <View style={styles.mapView}>
+            <ImageView
+              image={images.map_image}
+              width={SIZES.padding * 17}
+              height={SIZES.padding * 9}
+              resizeMode={FastImage.resizeMode.cover}
+              radius={SIZES.padding2}
+              style={styles.map}
+              gradientColors={['transparent', 'rgba(0,0,0,0.6)']}
+            />
+            <Text
+              style={styles.mapText}
+              weight={TextWeights.medium}
+              size={SIZES.h14}
+              lineHeight={SIZES.padding}
+              text={
+                'Ecommerce Gateway Pakistan (Pvt) Ltd.8, Kokan Society, Dr. Azhar Hussain Road, Near Kokan Park, off: Shaheed-e-Millat Road, Karachi-74000 Pakistan'
+              }
+            />
+          </View>
+        </ScrollView>
+      )}
     </Container>
   );
 };

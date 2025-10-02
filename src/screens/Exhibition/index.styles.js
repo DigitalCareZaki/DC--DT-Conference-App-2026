@@ -29,4 +29,7 @@ export const styles = StyleSheet.create({
   mapView: {
     marginHorizontal: SIZES.padding2 + 2,
   },
+  flatlist: {
+    gap: SIZES.padding2 + 4,
+  },
 });

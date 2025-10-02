@@ -1,17 +1,15 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import {
   Container,
   Header,
   Icons,
-  ImageView,
   LoaderModal,
   RowView,
   SizedBox,
 } from '../../components';
 import { FlatList, Modal, View } from 'react-native';
-import { COLORS, SIZES } from '../../constants';
+import { SIZES } from '../../constants';
 import { styles } from './index.styles';
-import FastImage from 'react-native-fast-image';
 import { gallery_images } from '../../config';
 import { close_icon } from '../../assets/icons';
 import ImageViewer from 'react-native-image-zoom-viewer';
@@ -37,6 +35,7 @@ const Gallery = () => {
       dispatch(getGallery());
     }, []),
   );
+
   return (
     <Container>
       <Header title={'Gallery'} rightIcon={null} />

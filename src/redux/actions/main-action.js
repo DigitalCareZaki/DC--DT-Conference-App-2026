@@ -2,6 +2,7 @@ import apiServices from '../../api_services/request-handler';
 import { requestHandler } from '../../utils/functions';
 import {
   setConferences,
+  setExhibition,
   setGallery,
   setMainLoading,
   setSingleConference,
@@ -81,6 +82,22 @@ export const getGallery = () => {
         apiService: apiServices.getGallery,
         onDone: async res => {
           dispatch(setGallery(res?.data?.data));
+        },
+      }),
+    );
+  };
+};
+
+// Exhibition
+
+export const getExhibition = () => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setMainLoading,
+        apiService: apiServices.getExhibition,
+        onDone: async res => {
+          dispatch(setExhibition(res?.data?.data));
         },
       }),
     );
