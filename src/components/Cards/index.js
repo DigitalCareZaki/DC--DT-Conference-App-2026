@@ -2,10 +2,14 @@ import { View, TouchableOpacity } from 'react-native';
 import React from 'react';
 import RowView from '../RowView';
 import { Icons, SizedBox, Text } from '..';
-import { forward_arrow_icon, heart_icon, selected_heart_icon } from '../../assets/icons';
+import {
+  forward_arrow_icon,
+  heart_icon,
+  selected_heart_icon,
+} from '../../assets/icons';
 import { COLORS, SIZES } from '../../constants';
 import { TextWeights } from '../../config';
-import { styles } from './index.styles'
+import { styles } from './index.styles';
 import { common_styles } from '../../utils/common_styles';
 import { capitalize } from '../../utils/functions';
 
@@ -14,12 +18,16 @@ const Cards = ({
   item,
   isDetail = false,
   onPress,
-  isFavourite = false
+  isFavourite = false,
 }) => {
   return (
-    <TouchableOpacity disabled={isDetail} activeOpacity={0.6} onPress={onPress} style={styles.main_view}>
-
-      <RowView >
+    <TouchableOpacity
+      disabled={isDetail}
+      activeOpacity={0.6}
+      onPress={onPress}
+      style={styles.main_view}
+    >
+      <RowView>
         <Text
           text={item?.title}
           size={SIZES.h16}
@@ -27,7 +35,11 @@ const Cards = ({
           color={COLORS.light_blue_color}
           style={common_styles.flex_1}
         />
-        <TouchableOpacity activeOpacity={0.6} hitSlop={common_styles.hitslop2} onPress={onPressHeart}>
+        <TouchableOpacity
+          activeOpacity={0.6}
+          hitSlop={common_styles.hitslop2}
+          onPress={onPressHeart}
+        >
           <Icons name={isFavourite ? selected_heart_icon : heart_icon} />
         </TouchableOpacity>
       </RowView>
@@ -36,9 +48,22 @@ const Cards = ({
 
       <SizedBox height={SIZES.padding2} />
 
-      <RowView >
+      <RowView>
         <Text text={'Date:'} size={SIZES.h10} color={COLORS.white + 80} />
-        <Text text={item?.date} size={SIZES.h10} />
+        <Text
+          text={`${new Date(item.startDate).toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })} - ${new Date(item.endDate).toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}`}
+          size={SIZES.h10}
+        />
       </RowView>
 
       <SizedBox height={SIZES.padding2} />
@@ -48,7 +73,7 @@ const Cards = ({
         <Text text={item?.time} size={SIZES.h10} />
       </RowView>
 
-      <RowView >
+      <RowView>
         <Text
           text={'Venue:'}
           size={SIZES.h10}
@@ -61,21 +86,19 @@ const Cards = ({
           size={SIZES.h10}
           weight={TextWeights.semibold}
         />
-        {
-          !isDetail ? <Icons name={forward_arrow_icon} />
-            : isFavourite ?
-              <View style={styles.type_view} >
-                <Text color={COLORS.placeholder_text_color} text={capitalize(item?.type)} />
-              </View>
-              : null
-        }
+        {!isDetail ? (
+          <Icons name={forward_arrow_icon} />
+        ) : isFavourite ? (
+          <View style={styles.type_view}>
+            <Text
+              color={COLORS.placeholder_text_color}
+              text={capitalize(item?.type)}
+            />
+          </View>
+        ) : null}
       </RowView>
-
-
     </TouchableOpacity>
   );
 };
 
 export default Cards;
-
-

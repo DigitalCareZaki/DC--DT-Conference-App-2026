@@ -16,6 +16,7 @@ export const SERVICE_URLS = {
   updateFcm: '/v1/user/fcm-token',
 
   // Main Action
+  getConferences: '/conference',
 };
 
 // Common Managemnt
@@ -35,6 +36,9 @@ const logout = () => post(SERVICE_URLS.logout);
 const refreshAuthToken = data => post(SERVICE_URLS.refreshAuthToken, data);
 const updateFcm = data => post(SERVICE_URLS.updateFcm, data);
 
+// Main Management
+const getConferences = () => get(SERVICE_URLS.getConferences);
+
 const apiServices = {
   // Auth Management
   login,
@@ -49,6 +53,9 @@ const apiServices = {
   logout,
   refreshAuthToken,
   updateFcm,
+
+  // Main Management
+  getConferences,
 };
 
 export default apiServices;

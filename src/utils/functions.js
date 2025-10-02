@@ -168,6 +168,7 @@ export function requestHandler({
     try {
       setLoading && dispatch(setLoading(true));
       const response = await apiService(param_data);
+      console.log('response', response);
       if (!response?.data?.error) {
         setData && dispatch(setData(response?.data?.data));
         isSuccessMessage &&

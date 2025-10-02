@@ -1,16 +1,19 @@
 import apiServices from '../../api_services/request-handler';
 import { requestHandler } from '../../utils/functions';
-import { setAuthLoading } from '../slices/auth-slice';
+import { setConferences, setMainLoading } from '../slices/main-slice';
 
-export const signup = (data, onDone) => {
+// Conferences
+
+export const getConferences = data => {
   return async dispatch => {
     dispatch(
       requestHandler({
-        setLoading: setAuthLoading,
-        apiService: apiServices.signup,
+        setLoading: setMainLoading,
+        apiService: apiServices.getConferences,
         param_data: data,
-        onDone,
-        isSuccessMessage: true,
+        onDone: async res => {
+          dispatch(setConferences(res?.data?.data));
+        },
       }),
     );
   };

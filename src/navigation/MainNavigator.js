@@ -25,7 +25,7 @@ import {
   Conference,
   ConferenceDetails,
   WorkShop,
-  WorkshopDetails
+  WorkshopDetails,
 } from '../screens';
 import { notificationListener } from '../utils/notification_service';
 import Notification from '../screens/NotificationScreen';
@@ -34,10 +34,10 @@ const MainNavigator = () => {
   const dispatch = useDispatch();
   const Stack = createNativeStackNavigator();
 
-  const { user } = useSelector(state => state.constant);
+  // const { user } = useSelector(state => state.constant);
 
   useEffect(() => {
-    notificationListener(message => { });
+    notificationListener(message => {});
   }, []);
 
   return (
@@ -66,7 +66,10 @@ const MainNavigator = () => {
           <Stack.Screen name="EditSocialMedia" component={EditSocialMedia} />
           <Stack.Screen name="Feedback" component={Feedback} />
           <Stack.Screen name="Conference" component={Conference} />
-          <Stack.Screen name="ConferenceDetails" component={ConferenceDetails} />
+          <Stack.Screen
+            name="ConferenceDetails"
+            component={ConferenceDetails}
+          />
           <Stack.Screen name="WorkShop" component={WorkShop} />
           <Stack.Screen name="WorkShopDetails" component={WorkshopDetails} />
         </Stack.Navigator>

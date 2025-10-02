@@ -108,10 +108,9 @@
 import axios from 'axios';
 import { getToken } from '../utils/auth.util';
 import { API_URL } from '@env';
-
 export async function getApiRequestHeader(isFormData = false) {
   const token = await getToken();
-  console.log('token', token);
+  console.log('token===>', token);
   return {
     Accept: 'application/json',
     'Content-Type': isFormData ? 'multipart/form-data' : 'application/json',
