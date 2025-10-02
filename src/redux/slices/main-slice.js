@@ -8,6 +8,7 @@ const initialState = {
   single_workshop: null,
   gallery: null,
   exhibition: null,
+  speakers: null,
 };
 
 export const mainSlice = createSlice({
@@ -36,6 +37,9 @@ export const mainSlice = createSlice({
     setExhibition: (state, action) => {
       state.exhibition = action.payload;
     },
+    setSpeakers: (state, action) => {
+      state.speakers = action.payload;
+    },
   },
 });
 
@@ -47,6 +51,7 @@ export const {
   setSingleWorkshop,
   setGallery,
   setExhibition,
+  setSpeakers,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

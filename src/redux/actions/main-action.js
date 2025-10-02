@@ -7,6 +7,7 @@ import {
   setMainLoading,
   setSingleConference,
   setSingleWorkshop,
+  setSpeakers,
   setWorkshops,
 } from '../slices/main-slice';
 
@@ -98,6 +99,22 @@ export const getExhibition = () => {
         apiService: apiServices.getExhibition,
         onDone: async res => {
           dispatch(setExhibition(res?.data?.data));
+        },
+      }),
+    );
+  };
+};
+
+// Speakers
+
+export const getSpeakers = () => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setMainLoading,
+        apiService: apiServices.getSpeakers,
+        onDone: async res => {
+          dispatch(setSpeakers(res?.data ?? []));
         },
       }),
     );
