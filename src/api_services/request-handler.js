@@ -6,6 +6,7 @@ export const SERVICE_URLS = {
   getConferencesByID: '/conference/',
   getWorkshops: '/workshop',
   getWorkshopsById: '/workshop/',
+  getGallery: '/gallery',
 };
 
 // Main Management
@@ -14,6 +15,7 @@ const getConferencesById = params =>
   get(SERVICE_URLS.getConferencesByID + params);
 const getWorkshops = () => get(SERVICE_URLS.getWorkshops);
 const getWorkshopsById = params => get(SERVICE_URLS.getWorkshopsById + params);
+const getGallery = () => get(SERVICE_URLS.getGallery);
 
 const apiServices = {
   // Main Management
@@ -21,6 +23,7 @@ const apiServices = {
   getConferencesById,
   getWorkshops,
   getWorkshopsById,
+  getGallery,
 };
 
 export default apiServices;

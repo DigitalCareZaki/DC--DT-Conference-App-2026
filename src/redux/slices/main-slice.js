@@ -6,6 +6,7 @@ const initialState = {
   single_conference: null,
   workshops: null,
   single_workshop: null,
+  gallery: null,
 };
 
 export const mainSlice = createSlice({
@@ -28,6 +29,9 @@ export const mainSlice = createSlice({
     setSingleWorkshop: (state, action) => {
       state.single_workshop = action.payload;
     },
+    setGallery: (state, action) => {
+      state.gallery = action.payload;
+    },
   },
 });
 
@@ -37,6 +41,7 @@ export const {
   setSingleConference,
   setWorkshops,
   setSingleWorkshop,
+  setGallery,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

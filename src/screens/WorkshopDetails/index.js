@@ -21,8 +21,8 @@ import { getWorkshopById } from '../../redux/actions/main-action';
 const WorkshopDetails = ({ route }) => {
   const { id } = route?.params;
   const { main_loading, single_workshop } = WorkshopDetailFunctional();
+
   const dispatch = useDispatch();
-  console.log('single_workshop', single_workshop);
 
   useFocusEffect(
     useCallback(() => {
