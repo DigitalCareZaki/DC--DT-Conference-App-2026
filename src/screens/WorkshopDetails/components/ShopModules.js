@@ -8,7 +8,7 @@ import { common_styles } from '../../../utils/common_styles';
 const ShopModules = ({ item }) => {
   return (
     <View style={styles.main_view}>
-      <RowView >
+      <RowView>
         <Text
           text={item?.title}
           size={SIZES.h14}
@@ -18,11 +18,8 @@ const ShopModules = ({ item }) => {
         />
 
         <View style={styles.time_view}>
-          <Text text={item?.time}
-            color={COLORS.placeholder_text_color}
-          />
+          <Text text={item?.duration} color={COLORS.placeholder_text_color} />
         </View>
-
       </RowView>
 
       <Text text={item?.description} mt={SIZES.padding2 / 2} />
@@ -46,6 +43,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     height: SIZES.padding,
     paddingHorizontal: SIZES.padding2 * 1.5,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 });

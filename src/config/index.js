@@ -37,6 +37,13 @@ export const TextWeights = {
 export const website_url = 'https://health-asia.com/';
 export const privacy_policy_link = 'https://health-asia.com/privacy-policy.php';
 export const terms_link = 'https://health-asia.com/terms-and-conditions.php';
+export const dateLocale = 'en-US';
+export const datePattern = {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+};
 
 export const roles = [
   {

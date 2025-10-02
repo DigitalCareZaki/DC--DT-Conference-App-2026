@@ -1,62 +1,81 @@
 import { FlatList, ScrollView, View } from 'react-native';
-import React from 'react';
-import { Button, Cards, Container, Header, SizedBox, Text } from '../../components';
+import React, { useCallback } from 'react';
+import {
+  Button,
+  Cards,
+  Container,
+  Header,
+  LoaderModal,
+  SizedBox,
+  Text,
+} from '../../components';
 import ShopModules from './components/ShopModules';
 import { conferences, shop_modules, TextWeights } from '../../config';
 import { COLORS, SIZES } from '../../constants';
-import { styles } from "./index.styles"
+import { styles } from './index.styles';
+import WorkshopDetailFunctional from './index.function';
+import { useFocusEffect } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { getWorkshopById } from '../../redux/actions/main-action';
 
-const WorkshopDetails = () => {
+const WorkshopDetails = ({ route }) => {
+  const { id } = route?.params;
+  const { main_loading, single_workshop } = WorkshopDetailFunctional();
+  const dispatch = useDispatch();
+  console.log('single_workshop', single_workshop);
 
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(getWorkshopById(id));
+    }, []),
+  );
   return (
     <Container>
+      <Header title={'Workshop Detail'} rightIcon={null} />
 
-      <Header title={"Workshop Detail"} rightIcon={null} />
+      {main_loading ? (
+        <LoaderModal />
+      ) : (
+        <View style={styles.main_view}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <Cards isWorkshop isDetail={true} item={single_workshop} />
 
-      <View style={styles.main_view} >
+            <Text
+              mt={SIZES.padding2}
+              text={'Workshop Modules'}
+              size={SIZES.h16}
+              weight={TextWeights.medium}
+            />
 
-        <ScrollView showsVerticalScrollIndicator={false} >
+            <FlatList
+              data={single_workshop?.modules}
+              keyExtractor={item => item.id}
+              scrollEnabled={false}
+              renderItem={({ item }) => <ShopModules item={item} />}
+              showsVerticalScrollIndicator={false}
+              ListFooterComponent={<SizedBox />}
+            />
+          </ScrollView>
 
-          <Cards isDetail={true} item={conferences?.[0]} />
+          <SizedBox height={SIZES.padding2} />
 
-          <Text
-            mt={SIZES.padding2}
-            text={'Workshop Modules'}
-            size={SIZES.h16}
-            weight={TextWeights.medium}
+          <Button
+            buttonText={'Download Materials'}
+            color={COLORS.white}
+            style={styles.transparent_btn}
           />
 
-          <FlatList
-            data={shop_modules}
-            keyExtractor={item => item.id}
-            scrollEnabled={false}
-            renderItem={({ item }) => <ShopModules item={item} />}
-            showsVerticalScrollIndicator={false}
-            ListFooterComponent={<SizedBox />}
+          <Button buttonText={'Register Online'} style={styles.btn} />
+
+          <Button
+            buttonText={'Ask Workshop Leader'}
+            color={COLORS.white}
+            style={styles.transparent_btn}
           />
 
-
-        </ScrollView>
-
-        <SizedBox height={SIZES.padding2} />
-
-        <Button
-          buttonText={'Download Materials'}
-          color={COLORS.white}
-          style={styles.transparent_btn}
-        />
-
-        <Button buttonText={'Register Online'} style={styles.btn} />
-
-        <Button
-          buttonText={'Ask Workshop Leader'}
-          color={COLORS.white}
-          style={styles.transparent_btn}
-        />
-
-        <SizedBox height={SIZES.padding2} />
-
-      </View>
+          <SizedBox height={SIZES.padding2} />
+        </View>
+      )}
     </Container>
   );
 };

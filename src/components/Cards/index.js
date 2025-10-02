@@ -8,7 +8,7 @@ import {
   selected_heart_icon,
 } from '../../assets/icons';
 import { COLORS, SIZES } from '../../constants';
-import { TextWeights } from '../../config';
+import { dateLocale, datePattern, TextWeights } from '../../config';
 import { styles } from './index.styles';
 import { common_styles } from '../../utils/common_styles';
 import { capitalize } from '../../utils/functions';
@@ -19,6 +19,7 @@ const Cards = ({
   isDetail = false,
   onPress,
   isFavourite = false,
+  isWorkshop = false,
 }) => {
   return (
     <TouchableOpacity
@@ -50,18 +51,19 @@ const Cards = ({
 
       <RowView>
         <Text text={'Date:'} size={SIZES.h10} color={COLORS.white + 80} />
+        {}
         <Text
-          text={`${new Date(item.startDate).toLocaleDateString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })} - ${new Date(item.endDate).toLocaleDateString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}`}
+          text={
+            isWorkshop
+              ? new Date(item?.date).toLocaleDateString(dateLocale, datePattern)
+              : `${new Date(item?.startDate).toLocaleDateString(
+                  dateLocale,
+                  datePattern,
+                )} - ${new Date(item?.endDate).toLocaleDateString(
+                  dateLocale,
+                  datePattern,
+                )}`
+          }
           size={SIZES.h10}
         />
       </RowView>

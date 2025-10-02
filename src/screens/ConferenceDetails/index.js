@@ -23,7 +23,7 @@ const ConferenceDetails = ({ route }) => {
   const { main_loading, single_conference } = ConferenceFunctional();
 
   const dispatch = useDispatch();
-  console.log('single_conference', single_conference);
+
   useFocusEffect(
     useCallback(() => {
       dispatch(getConferencesById(id));
