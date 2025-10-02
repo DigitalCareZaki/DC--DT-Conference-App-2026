@@ -1,5 +1,4 @@
 export { default as Login } from './Login';
-export { default as Notifications } from './Notifications';
 export { default as Signup } from './Signup';
 export { default as Splash } from './Splash';
 export { default as Networking } from './Networking';
@@ -11,7 +10,6 @@ export { default as AboutOrganizer } from './AboutOrganizer';
 export { default as Exhibition } from './Exhibition';
 export { default as Speakers } from './Speakers';
 export { default as Contact } from './Contact';
-export { default as Notification } from './NotificationScreen';
 export { default as Venue } from './Venue';
 export { default as MyAgenda } from './MyAgenda';
 export { default as EditSocialMedia } from './EditSocialMedia';
@@ -20,3 +18,4 @@ export { default as Conference } from './Conference';
 export { default as ConferenceDetails } from './ConferenceDetails';
 export { default as WorkShop } from './WorkShop';
 export { default as WorkshopDetails } from './WorkshopDetails';
+export { default as Notification } from './Notification';

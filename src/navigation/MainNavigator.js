@@ -26,9 +26,9 @@ import {
   ConferenceDetails,
   WorkShop,
   WorkshopDetails,
+  Notification,
 } from '../screens';
 import { notificationListener } from '../utils/notification_service';
-import Notification from '../screens/NotificationScreen';
 
 const MainNavigator = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,9 @@
-import { get } from './http-provider';
+import { get, post } from './http-provider';
 
 export const SERVICE_URLS = {
+  // Auth Management
+  register: '/auth/register',
+
   // Main Management
   getConferences: '/conference',
   getConferencesByID: '/conference/',
@@ -10,6 +13,9 @@ export const SERVICE_URLS = {
   getExhibition: '/exhibition',
   getSpeakers: '/speaker',
 };
+
+// Auth
+const register = data => post(SERVICE_URLS.register, data);
 
 // Main Management
 const getConferences = () => get(SERVICE_URLS.getConferences);
@@ -30,6 +36,7 @@ const apiServices = {
   getGallery,
   getExhibition,
   getSpeakers,
+  register,
 };
 
 export default apiServices;

@@ -38,7 +38,9 @@ const DateView = ({
         <Text
           style={common_styles.flex}
           numberOfLines={2}
-          text={dateText?.trim()?.length > 0 ? dateText : placeholder}
+          text={
+            dateText ? new Date(dateText).toLocaleDateString() : placeholder
+          }
           color={dateText ? COLORS.black : COLORS.placeholder_text_color}
         />
 

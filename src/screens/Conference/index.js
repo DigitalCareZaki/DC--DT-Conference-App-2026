@@ -29,7 +29,7 @@ const Conference = () => {
       ) : (
         <View style={styles.main_view}>
           <Text
-            text={'3 Conferences Available'}
+            text={`${conferences?.length} Conferences Available`}
             size={SIZES.h16}
             weight={TextWeights.medium}
             mt={SIZES.padding2}

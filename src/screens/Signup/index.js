@@ -12,6 +12,7 @@ import {
   Icons,
   InputField,
   Loader,
+  LoaderModal,
   RowView,
   SizedBox,
   Text,
@@ -37,9 +38,24 @@ import {
 } from './components';
 
 const Signup = () => {
-  const { auth_loading, selectedIndex, onPressButton, onPressBack } =
-    SignupFunctional();
-
+  const {
+    auth_loading,
+    selectedIndex,
+    onPressButton,
+    onPressBack,
+    basicInfoRef,
+    submitBasicInfo,
+    passworkRef,
+    socialMediaLinksRef,
+    categoryRef,
+    submitCategory,
+    submitPassword,
+    submitSocialMedia,
+    signUpData,
+    setSelectedRole,
+    selectedRole,
+  } = SignupFunctional();
+  console.log('auth_loading', auth_loading);
   return (
     <Container>
       <KeyboardAvoidingView
@@ -85,15 +101,38 @@ const Signup = () => {
               mt={SIZES.padding2}
               weight={TextWeights.medium}
             />
-            {selectedIndex === 0 && <BasicInformation />}
-            {selectedIndex === 1 && <SelectCategory />}
-            {selectedIndex === 2 && <SocialMedialinks />}
-            {selectedIndex === 3 && <SetupPassword />}
+            {selectedIndex === 0 && (
+              <BasicInformation
+                formikRef={basicInfoRef}
+                onSubmit={submitBasicInfo}
+                data={signUpData}
+              />
+            )}
+            {selectedIndex === 1 && (
+              <SelectCategory
+                selectedRole={selectedRole}
+                setSelectedRole={setSelectedRole}
+              />
+            )}
+            {selectedIndex === 2 && (
+              <SocialMedialinks
+                formikRef={socialMediaLinksRef}
+                onSubmit={submitSocialMedia}
+                data={signUpData}
+              />
+            )}
+            {selectedIndex === 3 && (
+              <SetupPassword
+                formikRef={passworkRef}
+                onSubmit={submitPassword}
+                data={signUpData}
+              />
+            )}
 
             <SizedBox />
 
             {auth_loading ? (
-              <Loader mt={0} />
+              <LoaderModal />
             ) : (
               <Button
                 onPress={onPressButton}
