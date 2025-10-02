@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   main_loading: null,
   conferences: null,
+  single_conference: null,
 };
 
 export const mainSlice = createSlice({
@@ -16,9 +17,13 @@ export const mainSlice = createSlice({
     setConferences: (state, action) => {
       state.conferences = action.payload;
     },
+    setSingleConference: (state, action) => {
+      state.single_conference = action.payload;
+    },
   },
 });
 
-export const { setConferences, setMainLoading } = mainSlice.actions;
+export const { setMainLoading, setConferences, setSingleConference } =
+  mainSlice.actions;
 
 export default mainSlice.reducer;
