@@ -27,7 +27,7 @@ const register = data => post(SERVICE_URLS.register, data);
 const login = data => post(SERVICE_URLS.login, data);
 const getAllUser = () => get(SERVICE_URLS.getAllUser);
 const getProfile = () => get(SERVICE_URLS.getProfile);
-const googleLogin = () => get(SERVICE_URLS.googleLogin);
+const googleLogin = () => post(SERVICE_URLS.googleLogin);
 
 // Main Management
 const getConferences = () => get(SERVICE_URLS.getConferences);

@@ -66,7 +66,7 @@ const EditSocialMedia = () => {
                       value={values?.instagramLink}
                       onChangeText={handleChange('instagramLink')}
                     />
-                    <ErrorText error={errors.facebookLink} />
+                    <ErrorText error={errors.instagramLink} />
 
                     <InputField
                       label={'LinkedIn Link'}

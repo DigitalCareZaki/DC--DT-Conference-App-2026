@@ -70,7 +70,6 @@ export const getWorkshopById = data => {
         param_data: data,
         apiService: apiServices.getWorkshopsById,
         onDone: async res => {
-          console.log('res', res);
           dispatch(setSingleWorkshop(res?.data));
         },
       }),
@@ -119,7 +118,6 @@ export const getSpeakers = () => {
         setLoading: setMainLoading,
         apiService: apiServices.getSpeakers,
         onDone: async res => {
-          console.log('res', res);
           dispatch(setSpeakers(res?.data?.data ?? []));
         },
       }),

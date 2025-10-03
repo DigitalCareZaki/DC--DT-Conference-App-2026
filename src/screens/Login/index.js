@@ -37,9 +37,15 @@ import {
   password_icon,
   role_icon,
 } from '../../assets/icons';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+} from '@react-native-google-signin/google-signin';
 
 const Login = () => {
-  const { onPressLogin, auth_loading } = LoginFunctional();
+  const { onPressLogin, auth_loading, onPressGoogleBtn } = LoginFunctional();
+  GoogleSignin.configure();
+
   return (
     <Container>
       <KeyboardAvoidingView
@@ -140,7 +146,10 @@ const Login = () => {
 
                     <SizedBox />
 
-                    <RowView style={styles.social_btn}>
+                    <RowView
+                      onPress={() => onPressGoogleBtn(values)}
+                      style={styles.social_btn}
+                    >
                       <Icons name={google_icon} />
                       <Text
                         weight={TextWeights.medium}

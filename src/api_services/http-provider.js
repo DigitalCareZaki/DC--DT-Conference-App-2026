@@ -9,7 +9,6 @@
 // export async function getApiRequestHeader(isFormData = false, url, method) {
 //   let tokenObj = await getToken();
 //   tokenObj = tokenObj?.length > 0 ? JSON.parse(tokenObj) : null;
-//   console.log('tokenObj', tokenObj);
 //   const cleanUrl = url.includes('?') ? url.split('?')[0] : url;
 //   const path = cleanUrl + method?.toUpperCase() + PUB_Q;
 //   const apiKey = await getEncryptedValue(path);
@@ -110,7 +109,6 @@ import { getToken } from '../utils/auth.util';
 import { API_URL } from '@env';
 export async function getApiRequestHeader(isFormData = false) {
   const token = await getToken();
-  console.log('token===>', token);
   return {
     Accept: 'application/json',
     'Content-Type': isFormData ? 'multipart/form-data' : 'application/json',

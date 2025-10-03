@@ -37,9 +37,9 @@ const MainNavigator = () => {
   const { user } = useSelector(state => state.auth);
 
   useEffect(() => {
-    // if (!user) {
-    //   dispatch(getUserProfile());
-    // }
+    if (!user) {
+      dispatch(getUserProfile());
+    }
     notificationListener(message => {});
   }, []);
 

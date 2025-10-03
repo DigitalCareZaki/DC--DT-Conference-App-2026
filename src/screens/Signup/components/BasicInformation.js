@@ -11,7 +11,6 @@ import {
 } from '../../../validations_schemas/signup_validation_schemas';
 
 const BasicInformation = ({ onSubmit, formikRef, data }) => {
-  console.log('data', data);
   return (
     <Formik
       innerRef={formikRef}

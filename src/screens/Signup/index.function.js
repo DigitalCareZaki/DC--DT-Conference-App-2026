@@ -73,7 +73,6 @@ export default () => {
       twitterLink: signUpData?.twitterLink,
       fcmToken: fcmToken,
     };
-    console.log('apiData', apiData);
     dispatch(signup(apiData, () => goBack()));
   };
 

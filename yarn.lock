@@ -2835,7 +2835,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-google-signin/google-signin@npm:^16.0.0":
+"@react-native-google-signin/google-signin@npm:latest":
   version: 16.0.0
   resolution: "@react-native-google-signin/google-signin@npm:16.0.0"
   peerDependencies:
@@ -4656,7 +4656,7 @@ __metadata:
     "@react-native-community/push-notification-ios": ^1.11.0
     "@react-native-firebase/app": ^23.4.0
     "@react-native-firebase/messaging": ^23.4.0
-    "@react-native-google-signin/google-signin": ^16.0.0
+    "@react-native-google-signin/google-signin": latest
     "@react-native/babel-preset": 0.81.4
     "@react-native/eslint-config": 0.81.4
     "@react-native/metro-config": 0.81.4
