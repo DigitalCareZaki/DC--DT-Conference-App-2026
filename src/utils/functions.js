@@ -162,6 +162,7 @@ export function requestHandler({
   isSuccessMessage = false,
   param_data,
   onDone,
+  isAuth,
   onError = () => {},
 }) {
   return async dispatch => {
@@ -181,7 +182,7 @@ export function requestHandler({
       }
     } catch (error) {
       onError();
-      if (error?.status === 401) {
+      if (error?.status === 401 && !isAuth) {
         dispatch(setUser(null));
         await AsyncStorage.clear();
       }

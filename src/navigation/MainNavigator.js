@@ -30,16 +30,18 @@ import {
 } from '../screens';
 import { notificationListener } from '../utils/notification_service';
 import { getUserProfile } from '../redux/actions/auth-action';
+import { firebase_messaging } from '../utils/firebase_service';
+import { notificationTopic } from '../config';
 
 const MainNavigator = () => {
   const dispatch = useDispatch();
   const Stack = createNativeStackNavigator();
   const { user } = useSelector(state => state.auth);
-
   useEffect(() => {
     if (!user) {
       dispatch(getUserProfile());
     }
+    firebase_messaging.subscribeToTopic(notificationTopic);
     notificationListener(message => {});
   }, []);
 

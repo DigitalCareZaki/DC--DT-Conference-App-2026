@@ -1,4 +1,4 @@
-import { Keyboard } from 'react-native';
+import { Alert, Keyboard } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { navigate } from '../../navigation/service';
 import { googleLogin, login } from '../../redux/actions/auth-action';
@@ -11,7 +11,9 @@ import { setUser } from '../../redux/slices/auth-slice';
 export default () => {
   const dispatch = useDispatch();
 
-  const { auth_loading } = useSelector(state => state.auth);
+  const { auth_loading, google_signin_loading } = useSelector(
+    state => state.auth,
+  );
 
   const onPressLogin = async values => {
     Keyboard.dismiss();
@@ -29,21 +31,23 @@ export default () => {
 
   const onPressGoogleBtn = async values => {
     try {
+      if (!values?.role) {
+        Alert.alert('Please select the role first');
+        return;
+      }
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
       if (isSuccessResponse(response)) {
         const apiData = {
-          email: values?.email,
+          email: response?.data?.user?.email,
           role: values?.role,
         };
-        dispatch(setUser(response?.data?.user));
-        navigate('DrawerNavigation');
-        // dispatch(
-        //   googleLogin(apiData, () => {
-        //     dispatch(setUser(response?.data?.user));
-        //     navigate('Dashboard');
-        //   }),
-        // );
+        dispatch(
+          googleLogin(apiData, res => {
+            dispatch(setUser(res?.data?.user));
+            navigate('DrawerNavigation');
+          }),
+        );
       }
     } catch (error) {
       if (isErrorWithCode(error)) {
@@ -60,9 +64,11 @@ export default () => {
       }
     }
   };
+
   return {
     onPressLogin,
     auth_loading,
     onPressGoogleBtn,
+    google_signin_loading,
   };
 };

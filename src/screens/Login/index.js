@@ -13,7 +13,6 @@ import {
   Icons,
   InputField,
   Loader,
-  LoaderModal,
   RowView,
   SizedBox,
   Text,
@@ -37,13 +36,15 @@ import {
   password_icon,
   role_icon,
 } from '../../assets/icons';
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-} from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const Login = () => {
-  const { onPressLogin, auth_loading, onPressGoogleBtn } = LoginFunctional();
+  const {
+    onPressLogin,
+    auth_loading,
+    onPressGoogleBtn,
+    google_signin_loading,
+  } = LoginFunctional();
   GoogleSignin.configure();
 
   return (
@@ -65,13 +66,7 @@ const Login = () => {
               validateOnBlur={false}
               onSubmit={values => onPressLogin(values)}
             >
-              {({
-                handleSubmit,
-                setFieldValue,
-                setFieldError,
-                values,
-                errors,
-              }) => {
+              {({ handleSubmit, setFieldValue, values, errors }) => {
                 return (
                   <>
                     <Text
@@ -133,7 +128,11 @@ const Login = () => {
                     {auth_loading ? (
                       <Loader />
                     ) : (
-                      <Button buttonText={'Login'} onPress={handleSubmit} />
+                      <Button
+                        buttonText={'Login'}
+                        onPress={handleSubmit}
+                        isDisabled={google_signin_loading}
+                      />
                     )}
 
                     <SizedBox />
@@ -146,17 +145,29 @@ const Login = () => {
 
                     <SizedBox />
 
-                    <RowView
-                      onPress={() => onPressGoogleBtn(values)}
-                      style={styles.social_btn}
-                    >
-                      <Icons name={google_icon} />
-                      <Text
-                        weight={TextWeights.medium}
-                        color={COLORS.text_black}
-                        text={'Continue With Google'}
-                      />
-                    </RowView>
+                    {google_signin_loading ? (
+                      <Loader />
+                    ) : (
+                      <RowView
+                        disabled={auth_loading}
+                        onPress={() => onPressGoogleBtn(values)}
+                        style={[
+                          styles.social_btn,
+                          {
+                            backgroundColor: auth_loading
+                              ? COLORS.background_grey_color
+                              : COLORS.white,
+                          },
+                        ]}
+                      >
+                        <Icons name={google_icon} />
+                        <Text
+                          weight={TextWeights.medium}
+                          color={COLORS.text_black}
+                          text={'Continue With Google'}
+                        />
+                      </RowView>
+                    )}
 
                     <SizedBox height={SIZES.padding * 2} />
 
