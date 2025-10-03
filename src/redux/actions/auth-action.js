@@ -64,3 +64,18 @@ export const getUserProfile = onDone => {
     );
   };
 };
+
+export const googleLogin = onDone => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setAuthLoading,
+        apiService: apiServices.googleLogin,
+        onDone: async res => {
+          dispatch(setUser(res?.data?.user));
+          onDone && onDone(res);
+        },
+      }),
+    );
+  };
+};

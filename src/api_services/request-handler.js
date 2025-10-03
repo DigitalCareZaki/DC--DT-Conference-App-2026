@@ -6,6 +6,7 @@ export const SERVICE_URLS = {
   login: '/auth/login',
   getAllUser: '/user',
   getProfile: '/user/profile',
+  googleLogin: '/auth/google',
 
   // Main Management
   getConferences: '/conference',
@@ -26,6 +27,7 @@ const register = data => post(SERVICE_URLS.register, data);
 const login = data => post(SERVICE_URLS.login, data);
 const getAllUser = () => get(SERVICE_URLS.getAllUser);
 const getProfile = () => get(SERVICE_URLS.getProfile);
+const googleLogin = () => get(SERVICE_URLS.googleLogin);
 
 // Main Management
 const getConferences = () => get(SERVICE_URLS.getConferences);
@@ -48,6 +50,7 @@ const apiServices = {
   login,
   getAllUser,
   getProfile,
+  googleLogin,
 
   // Main Management
   getConferences,

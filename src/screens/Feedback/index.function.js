@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { postUpdateFeedback } from '../../redux/actions/main-action';
-import { goBack } from '../../navigation/service';
+import {
+  getFeedBack,
+  postUpdateFeedback,
+} from '../../redux/actions/main-action';
 
 export default () => {
   const { main_loading, feedback, main_post_loading } = useSelector(
@@ -15,7 +17,7 @@ export default () => {
       likedMost: values.likedMost,
       suggestions: values.suggestions,
     };
-    dispatch(postUpdateFeedback(apiData, () => goBack()));
+    dispatch(postUpdateFeedback(apiData, () => dispatch(getFeedBack())));
   };
   return {
     main_loading,
