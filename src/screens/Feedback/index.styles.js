@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   main_view: {
     flex: 1,
     paddingHorizontal: SIZES.padding,
-    paddingTop: SIZES.padding2
+    paddingTop: SIZES.padding2,
   },
   scrollViewStyle: {
     paddingBottom: SIZES.padding,
@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
     paddingVertical: SIZES.padding + 4,
     paddingHorizontal: SIZES.padding2 + 4,
     borderRadius: SIZES.padding2 + 4,
+    alignItems: 'center',
   },
   input: {
     height: SIZES.padding * 6,

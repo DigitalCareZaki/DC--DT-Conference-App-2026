@@ -11,6 +11,8 @@ const initialState = {
   speakers: null,
   favourites: null,
   favlist: null,
+  feedback: null,
+  main_post_loading: false,
 };
 
 export const mainSlice = createSlice({
@@ -49,6 +51,12 @@ export const mainSlice = createSlice({
     setFavList: (state, action) => {
       state.favlist = action.payload;
     },
+    setFeedback: (state, action) => {
+      state.feedback = action.payload;
+    },
+    setMainPostLoading: (state, action) => {
+      state.main_post_loading = action.payload;
+    },
   },
 });
 
@@ -63,6 +71,8 @@ export const {
   setSpeakers,
   setFavourites,
   setFavList,
+  setFeedback,
+  setMainPostLoading,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

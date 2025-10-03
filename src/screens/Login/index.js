@@ -42,147 +42,139 @@ const Login = () => {
   const { onPressLogin, auth_loading } = LoginFunctional();
   return (
     <Container>
-      {auth_loading ? (
-        <LoaderModal />
-      ) : (
-        <KeyboardAvoidingView
-          style={common_styles.flex_1}
-          behavior={keyboardAvoidingBehaviour}
-        >
-          <View style={styles.main_view}>
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              keyboardShouldPersistTaps={'handled'}
+      <KeyboardAvoidingView
+        style={common_styles.flex_1}
+        behavior={keyboardAvoidingBehaviour}
+      >
+        <View style={styles.main_view}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps={'handled'}
+          >
+            <Formik
+              validationSchema={login_validation_schema}
+              initialValues={login_schema}
+              validateOnChange={true}
+              validateOnMount={false}
+              validateOnBlur={false}
+              onSubmit={values => onPressLogin(values)}
             >
-              <Formik
-                validationSchema={login_validation_schema}
-                initialValues={login_schema}
-                validateOnChange={true}
-                validateOnMount={false}
-                validateOnBlur={false}
-                onSubmit={values => onPressLogin(values)}
-              >
-                {({
-                  handleSubmit,
-                  setFieldValue,
-                  setFieldError,
-                  values,
-                  errors,
-                }) => {
-                  return (
-                    <>
+              {({
+                handleSubmit,
+                setFieldValue,
+                setFieldError,
+                values,
+                errors,
+              }) => {
+                return (
+                  <>
+                    <Text
+                      weight={TextWeights.heavy}
+                      size={SIZES.h26}
+                      text={'Welcome to Health Asia!'}
+                      align={'center'}
+                      mt={SIZES.padding * 2}
+                    />
+                    <Text
+                      size={SIZES.h14}
+                      text={
+                        "Your journey into Pakistan's largest healthcare event starts here. Please log in or signup to access all the features and connect with fellow attendees."
+                      }
+                      align={'center'}
+                      lineHeight={SIZES.padding}
+                    />
+
+                    <SizedBox height={SIZES.padding2} />
+
+                    <DropDown
+                      isrequired
+                      label={'Are you a:'}
+                      placeholder={'Select your role'}
+                      leftIcon={role_icon}
+                      value={values?.role}
+                      value_key={'name'}
+                      array={roles}
+                      onPressValue={val => setFieldValue('role', val?.name)}
+                    />
+                    <ErrorText error={errors?.role} />
+
+                    <InputField
+                      isrequired
+                      label={'Email Address'}
+                      placeholder={'Enter your Email Address'}
+                      leftIcon={email_icon}
+                      value={values?.email}
+                      onChangeText={text => setFieldValue('email', text)}
+                      maxLength={40}
+                      keyboardType={'email-address'}
+                    />
+                    <ErrorText error={errors?.email} />
+
+                    <InputField
+                      isrequired
+                      label={'Password'}
+                      placeholder={'Enter your password'}
+                      isPassword
+                      leftIcon={password_icon}
+                      value={values?.password}
+                      onChangeText={text => setFieldValue('password', text)}
+                      maxLength={25}
+                    />
+                    <ErrorText error={errors?.password} />
+
+                    <SizedBox height={SIZES.padding * 2} />
+
+                    {auth_loading ? (
+                      <Loader />
+                    ) : (
+                      <Button buttonText={'Login'} onPress={handleSubmit} />
+                    )}
+
+                    <SizedBox />
+
+                    <RowView>
+                      <Icons name={or_line_icon} />
+                      <Text size={SIZES.h14} text={'OR'} />
+                      <Icons name={or_line_icon} />
+                    </RowView>
+
+                    <SizedBox />
+
+                    <RowView style={styles.social_btn}>
+                      <Icons name={google_icon} />
                       <Text
-                        weight={TextWeights.heavy}
-                        size={SIZES.h26}
-                        text={'Welcome to Health Asia!'}
-                        align={'center'}
-                        mt={SIZES.padding * 2}
+                        weight={TextWeights.medium}
+                        color={COLORS.text_black}
+                        text={'Continue With Google'}
                       />
-                      <Text
-                        size={SIZES.h14}
-                        text={
-                          "Your journey into Pakistan's largest healthcare event starts here. Please log in or signup to access all the features and connect with fellow attendees."
-                        }
-                        align={'center'}
-                        lineHeight={SIZES.padding}
-                      />
+                    </RowView>
 
-                      <SizedBox height={SIZES.padding2} />
+                    <SizedBox height={SIZES.padding * 2} />
 
-                      <DropDown
-                        isrequired
-                        label={'Are you a:'}
-                        placeholder={'Select your role'}
-                        leftIcon={role_icon}
-                        value={values?.role}
-                        value_key={'name'}
-                        array={roles}
-                        onPressValue={val => setFieldValue('role', val?.name)}
-                      />
-                      <ErrorText error={errors?.role} />
+                    <RowView gap={0} justifyContent={'center'}>
+                      <Text text={'Don’t have an account?'} />
 
-                      <InputField
-                        isrequired
-                        label={'Email Address'}
-                        placeholder={'Enter your Email Address'}
-                        leftIcon={email_icon}
-                        value={values?.email}
-                        onChangeText={text => setFieldValue('email', text)}
-                        maxLength={40}
-                        keyboardType={'email-address'}
-                      />
-                      <ErrorText error={errors?.email} />
-
-                      <InputField
-                        isrequired
-                        label={'Password'}
-                        placeholder={'Enter your password'}
-                        isPassword
-                        leftIcon={password_icon}
-                        value={values?.password}
-                        onChangeText={text => setFieldValue('password', text)}
-                        maxLength={25}
-                      />
-                      <ErrorText error={errors?.password} />
-
-                      <SizedBox height={SIZES.padding * 2} />
-
-                      {auth_loading ? (
-                        <Loader />
-                      ) : (
-                        <Button
-                          // isDisabled={(values?.email?.length < 1 || values?.password?.length < 1) ? true : false}
-                          buttonText={'Login'}
-                          onPress={handleSubmit}
-                        />
-                      )}
-
-                      <SizedBox />
-
-                      <RowView>
-                        <Icons name={or_line_icon} />
-                        <Text size={SIZES.h14} text={'OR'} />
-                        <Icons name={or_line_icon} />
-                      </RowView>
-
-                      <SizedBox />
-
-                      <RowView style={styles.social_btn}>
-                        <Icons name={google_icon} />
+                      <TouchableOpacity
+                        hitSlop={common_styles.hitslop2}
+                        onPress={() => navigate('Signup')}
+                        activeOpacity={0.6}
+                      >
                         <Text
-                          weight={TextWeights.medium}
-                          color={COLORS.text_black}
-                          text={'Continue With Google'}
+                          weight={TextWeights.bold}
+                          textDecorationLine={'underline'}
+                          text={'Sign Up'}
                         />
-                      </RowView>
+                      </TouchableOpacity>
+                    </RowView>
+                  </>
+                );
+              }}
+            </Formik>
 
-                      <SizedBox height={SIZES.padding * 2} />
-
-                      <RowView gap={0} justifyContent={'center'}>
-                        <Text text={'Don’t have an account?'} />
-
-                        <TouchableOpacity
-                          hitSlop={common_styles.hitslop2}
-                          onPress={() => navigate('Signup')}
-                          activeOpacity={0.6}
-                        >
-                          <Text
-                            weight={TextWeights.bold}
-                            textDecorationLine={'underline'}
-                            text={'Sign Up'}
-                          />
-                        </TouchableOpacity>
-                      </RowView>
-                    </>
-                  );
-                }}
-              </Formik>
-
-              <SizedBox />
-            </ScrollView>
-          </View>
-        </KeyboardAvoidingView>
-      )}
+            <SizedBox />
+          </ScrollView>
+        </View>
+      </KeyboardAvoidingView>
     </Container>
   );
 };

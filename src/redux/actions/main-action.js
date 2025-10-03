@@ -5,8 +5,10 @@ import {
   setExhibition,
   setFavList,
   setFavourites,
+  setFeedback,
   setGallery,
   setMainLoading,
+  setMainPostLoading,
   setSingleConference,
   setSingleWorkshop,
   setSpeakers,
@@ -123,6 +125,7 @@ export const getSpeakers = () => {
   };
 };
 
+// Favourite
 export const getFavourites = onDone => {
   return async dispatch => {
     dispatch(
@@ -147,6 +150,37 @@ export const addRemoveFav = (data, onDone) => {
         param_data: data,
         onDone: async res => {
           dispatch(setFavList(res?.data));
+          onDone && onDone(res);
+        },
+      }),
+    );
+  };
+};
+
+// Feedbacl
+export const getFeedBack = onDone => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setMainLoading,
+        apiService: apiServices.getFeedBacks,
+        onDone: async res => {
+          dispatch(setFeedback(res?.data));
+          onDone && onDone(res);
+        },
+      }),
+    );
+  };
+};
+
+export const postUpdateFeedback = (data, onDone) => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setMainPostLoading,
+        param_data: data,
+        apiService: apiServices.postUpdateFeedback,
+        onDone: async res => {
           onDone && onDone(res);
         },
       }),

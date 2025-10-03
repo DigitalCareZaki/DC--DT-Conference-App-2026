@@ -1,4 +1,4 @@
-import { get, post } from './http-provider';
+import { get, post, put } from './http-provider';
 
 export const SERVICE_URLS = {
   // Auth Management
@@ -14,6 +14,8 @@ export const SERVICE_URLS = {
   getExhibition: '/exhibition',
   getSpeakers: '/speaker',
   favourites: '/user/favorites',
+  getFeedbacks: '/feedbacks/user',
+  postUpdateFeedback: 'feedbacks/submit-update',
 };
 
 // Auth
@@ -31,6 +33,8 @@ const getExhibition = () => get(SERVICE_URLS.getExhibition);
 const getSpeakers = () => get(SERVICE_URLS.getSpeakers);
 const getFavourites = () => get(SERVICE_URLS.favourites);
 const addRemoveFavourite = data => post(SERVICE_URLS.favourites, data);
+const getFeedBacks = () => get(SERVICE_URLS.getFeedbacks);
+const postUpdateFeedback = data => put(SERVICE_URLS.postUpdateFeedback, data);
 
 const apiServices = {
   // Main Management
@@ -45,6 +49,8 @@ const apiServices = {
   login,
   getFavourites,
   addRemoveFavourite,
+  getFeedBacks,
+  postUpdateFeedback,
 };
 
 export default apiServices;
