@@ -118,7 +118,8 @@ export const getSpeakers = () => {
         setLoading: setMainLoading,
         apiService: apiServices.getSpeakers,
         onDone: async res => {
-          dispatch(setSpeakers(res?.data ?? []));
+          console.log('res', res);
+          dispatch(setSpeakers(res?.data?.data ?? []));
         },
       }),
     );

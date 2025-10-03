@@ -5,17 +5,15 @@ import {
   Header,
   ImageView,
   LoaderModal,
-  RowView,
   SearchBar,
   SizedBox,
   Text,
 } from '../../components';
-import { FlatList, ScrollView, TouchableOpacity, View } from 'react-native';
+import { FlatList, ScrollView, View } from 'react-native';
 import { COLORS, images, SIZES } from '../../constants';
 import { styles } from './index.styles';
-import { exhibitions_array, TextWeights } from '../../config';
+import { TextWeights } from '../../config';
 import FastImage from 'react-native-fast-image';
-import { navigate } from '../../navigation/service';
 import ExhibitionCard from './component/ExhibitionCard';
 import ExhibitionFunctional from './index.function';
 import { useFocusEffect } from '@react-navigation/native';
@@ -53,7 +51,7 @@ const Exhibition = () => {
           <SizedBox />
 
           <Text
-            text={'3 Exhibitors Participating'}
+            text={`${exhibition?.length} Exhibitors Participating`}
             size={SIZES.h18}
             weight={TextWeights.medium}
           />

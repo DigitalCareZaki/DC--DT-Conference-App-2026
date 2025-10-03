@@ -1,12 +1,8 @@
 import React, { useCallback } from 'react';
 import {
-  Button,
-  Card,
   Container,
   Header,
-  ImageView,
   LoaderModal,
-  RowView,
   SearchBar,
   SizedBox,
   Text,
@@ -14,7 +10,7 @@ import {
 import { FlatList, SectionList, View } from 'react-native';
 import { styles } from './index.styles';
 import { SIZES } from '../../constants';
-import { speakers_array, TextWeights } from '../../config';
+import { TextWeights } from '../../config';
 import { SingleSpeakerView } from './components';
 import SpeakerFunctional from './index.function';
 import { useDispatch } from 'react-redux';
@@ -23,7 +19,7 @@ import { getSpeakers } from '../../redux/actions/main-action';
 
 const Speakers = () => {
   const dispatch = useDispatch();
-  const { main_loading, speakers } = SpeakerFunctional();
+  const { main_loading, data } = SpeakerFunctional();
 
   useFocusEffect(
     useCallback(() => {
@@ -41,7 +37,7 @@ const Speakers = () => {
           <SearchBar placeholder={'Search by name, specialty, institute'} />
 
           <SectionList
-            sections={speakers_array}
+            sections={data}
             keyExtractor={(item, index) => index?.toString()}
             showsVerticalScrollIndicator={false}
             ListFooterComponent={<SizedBox />}
