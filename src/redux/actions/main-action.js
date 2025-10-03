@@ -187,3 +187,19 @@ export const postUpdateFeedback = (data, onDone) => {
     );
   };
 };
+
+// Social Media Links
+export const updateLinks = (data, onDone) => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setMainLoading,
+        param_data: data,
+        apiService: apiServices.updateLinks,
+        onDone: async res => {
+          onDone && onDone(res);
+        },
+      }),
+    );
+  };
+};

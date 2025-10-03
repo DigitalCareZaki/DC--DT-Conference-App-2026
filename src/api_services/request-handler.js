@@ -16,6 +16,7 @@ export const SERVICE_URLS = {
   favourites: '/user/favorites',
   getFeedbacks: '/feedbacks/user',
   postUpdateFeedback: 'feedbacks/submit-update',
+  updateLinks: '/user/update',
 };
 
 // Auth
@@ -35,8 +36,13 @@ const getFavourites = () => get(SERVICE_URLS.favourites);
 const addRemoveFavourite = data => post(SERVICE_URLS.favourites, data);
 const getFeedBacks = () => get(SERVICE_URLS.getFeedbacks);
 const postUpdateFeedback = data => put(SERVICE_URLS.postUpdateFeedback, data);
+const updateLinks = data => put(SERVICE_URLS.updateLinks, data);
 
 const apiServices = {
+  // Auth
+  register,
+  login,
+
   // Main Management
   getConferences,
   getConferencesById,
@@ -45,12 +51,11 @@ const apiServices = {
   getGallery,
   getExhibition,
   getSpeakers,
-  register,
-  login,
   getFavourites,
   addRemoveFavourite,
   getFeedBacks,
   postUpdateFeedback,
+  updateLinks,
 };
 
 export default apiServices;

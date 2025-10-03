@@ -7,7 +7,7 @@ import {
   RowView,
   SizedBox,
 } from '../../components';
-import { FlatList, Modal, View } from 'react-native';
+import { FlatList, Image, Modal, View } from 'react-native';
 import { SIZES } from '../../constants';
 import { styles } from './index.styles';
 import { gallery_images } from '../../config';
@@ -35,7 +35,6 @@ const Gallery = () => {
       dispatch(getGallery());
     }, []),
   );
-
   return (
     <Container>
       <Header title={'Gallery'} rightIcon={null} />
@@ -63,15 +62,8 @@ const Gallery = () => {
 
       <Modal transparent visible={showModal}>
         <ImageViewer
-          imageUrls={gallery_images.map(item => ({
-            props: {
-              source: item.img,
-              style: {
-                width: SIZES.padding * 20,
-                height: SIZES.padding * 20,
-                resizeMode: 'cover',
-              },
-            },
+          imageUrls={gallery?.map(item => ({
+            url: item.image,
           }))}
           renderHeader={() => (
             <RowView
