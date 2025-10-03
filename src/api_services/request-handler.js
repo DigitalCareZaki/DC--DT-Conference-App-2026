@@ -3,6 +3,7 @@ import { get, post } from './http-provider';
 export const SERVICE_URLS = {
   // Auth Management
   register: '/auth/register',
+  login: '/auth/login',
 
   // Main Management
   getConferences: '/conference',
@@ -16,6 +17,7 @@ export const SERVICE_URLS = {
 
 // Auth
 const register = data => post(SERVICE_URLS.register, data);
+const login = data => post(SERVICE_URLS.login, data);
 
 // Main Management
 const getConferences = () => get(SERVICE_URLS.getConferences);
@@ -37,6 +39,7 @@ const apiServices = {
   getExhibition,
   getSpeakers,
   register,
+  login,
 };
 
 export default apiServices;

@@ -8,26 +8,17 @@ import React from 'react';
 import {
   Button,
   Container,
-  ErrorText,
   Icons,
-  InputField,
-  Loader,
   LoaderModal,
   RowView,
   SizedBox,
   Text,
 } from '../../components';
-import { COLORS, SIZES } from '../../constants';
-import { roles, signup_steps, TextWeights } from '../../config';
+import { SIZES } from '../../constants';
+import { signup_steps, TextWeights } from '../../config';
 import { common_styles } from '../../utils/common_styles';
-import { goBack, navigate } from '../../navigation/service';
 import { keyboardAvoidingBehaviour } from '../../constants/theme';
 import SignupFunctional from './index.function';
-import { Formik } from 'formik';
-import {
-  signup_schema,
-  signup_validation_schema,
-} from '../../validations_schemas/signup_validation_schemas';
 import { styles } from './index.styles';
 import { back_icon } from '../../assets/icons';
 import {
@@ -47,15 +38,13 @@ const Signup = () => {
     submitBasicInfo,
     passworkRef,
     socialMediaLinksRef,
-    categoryRef,
-    submitCategory,
     submitPassword,
     submitSocialMedia,
     signUpData,
     setSelectedRole,
     selectedRole,
   } = SignupFunctional();
-  console.log('auth_loading', auth_loading);
+
   return (
     <Container>
       <KeyboardAvoidingView

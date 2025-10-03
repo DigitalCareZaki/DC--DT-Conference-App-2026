@@ -29,12 +29,11 @@ import {
   Notification,
 } from '../screens';
 import { notificationListener } from '../utils/notification_service';
+import { setUser } from '../redux/slices/auth-slice';
 
 const MainNavigator = () => {
   const dispatch = useDispatch();
   const Stack = createNativeStackNavigator();
-
-  // const { user } = useSelector(state => state.constant);
 
   useEffect(() => {
     notificationListener(message => {});

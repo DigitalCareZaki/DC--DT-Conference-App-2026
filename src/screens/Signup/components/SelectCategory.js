@@ -7,8 +7,6 @@ import { COLORS, SIZES } from '../../../constants';
 import { check_icon, checked_icon } from '../../../assets/icons';
 
 const SelectCategory = ({ selectedRole, setSelectedRole }) => {
-  // const [selectedRole, setSelectedRole] = useState(null);
-
   return (
     <View style={common_styles.flex_1}>
       <Text

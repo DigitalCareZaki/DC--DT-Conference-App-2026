@@ -10,7 +10,6 @@ export default () => {
   const dispatch = useDispatch();
 
   const basicInfoRef = useRef(null);
-  const categoryRef = useRef(null);
   const socialMediaLinksRef = useRef(null);
   const passworkRef = useRef(null);
 
@@ -46,6 +45,7 @@ export default () => {
     }));
     setSelectedIndex(selectedIndex + 1);
   };
+
   const submitSocialMedia = values => {
     setSignUpData(prev => ({
       ...prev,
@@ -53,6 +53,7 @@ export default () => {
     }));
     setSelectedIndex(selectedIndex + 1);
   };
+
   const submitPassword = async values => {
     const fcmToken = await requestUserPermission();
     setSignUpData(prev => ({
@@ -72,10 +73,11 @@ export default () => {
       twitterLink: signUpData?.twitterLink,
       fcmToken: fcmToken,
     };
+    console.log('apiData', apiData);
     dispatch(signup(apiData, () => goBack()));
   };
 
-  const onPressButton = async values => {
+  const onPressButton = async () => {
     Keyboard.dismiss();
 
     if (selectedIndex < signup_steps?.length) {
@@ -109,7 +111,6 @@ export default () => {
     submitBasicInfo,
     passworkRef,
     socialMediaLinksRef,
-    categoryRef,
     submitCategory,
     submitPassword,
     submitSocialMedia,

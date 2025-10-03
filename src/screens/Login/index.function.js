@@ -1,26 +1,33 @@
-import { Keyboard } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../redux/actions/auth-action";
-import { goBack, navigate } from "../../navigation/service";
+import { Keyboard } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  goBack,
+  navigate,
+  resetNavigationStack,
+} from '../../navigation/service';
+import { login } from '../../redux/actions/auth-action';
 
 export default () => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    const { auth_loading } = useSelector(state => state.auth)
+  const { auth_loading } = useSelector(state => state.auth);
 
-    const onPressLogin = async (values) => {
-        // Keyboard.dismiss()
-        // const apiData = {
-        //     phone: `+92${values?.phone_number?.slice(1)}`,
-        //     password: values?.password
-        // }
-        // dispatch(login(apiData))
-        navigate("DrawerNavigation")
-    }
+  const onPressLogin = async values => {
+    Keyboard.dismiss();
+    const apiData = {
+      email: values.email,
+      password: values?.password,
+      role: values?.role,
+    };
+    dispatch(
+      login(apiData, () => {
+        navigate('DrawerNavigation');
+      }),
+    );
+  };
 
-
-    return {
-        onPressLogin,
-        auth_loading
-    }
-}
+  return {
+    onPressLogin,
+    auth_loading,
+  };
+};
