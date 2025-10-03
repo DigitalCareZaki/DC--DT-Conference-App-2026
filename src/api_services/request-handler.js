@@ -4,6 +4,8 @@ export const SERVICE_URLS = {
   // Auth Management
   register: '/auth/register',
   login: '/auth/login',
+  getAllUser: '/user',
+  getProfile: '/user/profile',
 
   // Main Management
   getConferences: '/conference',
@@ -15,13 +17,15 @@ export const SERVICE_URLS = {
   getSpeakers: '/speaker',
   favourites: '/user/favorites',
   getFeedbacks: '/feedbacks/user',
-  postUpdateFeedback: 'feedbacks/submit-update',
+  postUpdateFeedback: '/feedbacks/submit-update',
   updateLinks: '/user/update',
 };
 
 // Auth
 const register = data => post(SERVICE_URLS.register, data);
 const login = data => post(SERVICE_URLS.login, data);
+const getAllUser = () => get(SERVICE_URLS.getAllUser);
+const getProfile = () => get(SERVICE_URLS.getProfile);
 
 // Main Management
 const getConferences = () => get(SERVICE_URLS.getConferences);
@@ -42,6 +46,8 @@ const apiServices = {
   // Auth
   register,
   login,
+  getAllUser,
+  getProfile,
 
   // Main Management
   getConferences,

@@ -17,7 +17,7 @@ import {
 
 // Conferences
 
-export const getConferences = () => {
+export const getConferences = onDone => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -25,6 +25,7 @@ export const getConferences = () => {
         apiService: apiServices.getConferences,
         onDone: async res => {
           dispatch(setConferences(res?.data?.data));
+          onDone && onDone(res);
         },
       }),
     );

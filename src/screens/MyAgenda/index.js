@@ -11,10 +11,8 @@ import { FlatList, View } from 'react-native';
 import { styles } from './index.styles';
 import FavoutitesFunctional from './index.function';
 import { useFocusEffect } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
-import { addRemoveFav, getFavourites } from '../../redux/actions/main-action';
+import { getFavourites } from '../../redux/actions/main-action';
 import { COLORS, SIZES } from '../../constants';
-import ExhibitionCard from '../Exhibition/component/ExhibitionCard';
 
 const MyAgenda = () => {
   const { main_loading, favourites, onPressHeart, dispatch } =
@@ -45,18 +43,14 @@ const MyAgenda = () => {
             showsVerticalScrollIndicator={false}
             ListFooterComponent={<SizedBox />}
             ListEmptyComponent={<RenderEmptyComponent />}
-            renderItem={({ item }) =>
-              item?.type === 'Exhibition' ? (
-                <ExhibitionCard item={item} isFav={true} />
-              ) : (
-                <Cards
-                  onPressHeart={() => onPressHeart(item)}
-                  isDetail={true}
-                  item={item}
-                  isFavourite={true}
-                />
-              )
-            }
+            renderItem={({ item }) => (
+              <Cards
+                onPressHeart={() => onPressHeart(item)}
+                isDetail={true}
+                item={item}
+                isFavourite={true}
+              />
+            )}
             contentContainerStyle={
               favourites?.length === 0
                 ? { flexGrow: 1, justifyContent: 'center' }

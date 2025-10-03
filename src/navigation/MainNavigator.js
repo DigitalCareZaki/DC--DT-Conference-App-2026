@@ -29,13 +29,17 @@ import {
   Notification,
 } from '../screens';
 import { notificationListener } from '../utils/notification_service';
-import { setUser } from '../redux/slices/auth-slice';
+import { getUserProfile } from '../redux/actions/auth-action';
 
 const MainNavigator = () => {
   const dispatch = useDispatch();
   const Stack = createNativeStackNavigator();
+  const { user } = useSelector(state => state.auth);
 
   useEffect(() => {
+    if (!user) {
+      dispatch(getUserProfile());
+    }
     notificationListener(message => {});
   }, []);
 

@@ -27,6 +27,7 @@ const Cards = ({
   const isFav = favlist?.find(
     favItem => favItem?.favoriteId?._id === item?._id,
   );
+
   return (
     <TouchableOpacity
       disabled={isDetail}
@@ -67,13 +68,11 @@ const Cards = ({
           text={
             isWorkshop
               ? new Date(item?.date).toLocaleDateString(dateLocale, datePattern)
-              : `${new Date(item?.startDate).toLocaleDateString(
-                  dateLocale,
-                  datePattern,
-                )} - ${new Date(item?.endDate).toLocaleDateString(
-                  dateLocale,
-                  datePattern,
-                )}`
+              : `${new Date(
+                  isFavourite ? item?.favoriteId?.startDate : item?.startDate,
+                ).toLocaleDateString(dateLocale, datePattern)} - ${new Date(
+                  isFavourite ? item?.favoriteId?.startDate : item?.endDate,
+                ).toLocaleDateString(dateLocale, datePattern)}`
           }
           size={SIZES.h10}
         />
@@ -83,7 +82,10 @@ const Cards = ({
 
       <RowView gap={1}>
         <Text text={'Time:'} size={SIZES.h10} color={COLORS.white + 80} />
-        <Text text={item?.time} size={SIZES.h10} />
+        <Text
+          text={isFavourite ? item?.favoriteId?.time : item?.time}
+          size={SIZES.h10}
+        />
       </RowView>
 
       <RowView>

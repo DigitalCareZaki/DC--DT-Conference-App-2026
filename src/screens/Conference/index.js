@@ -7,20 +7,25 @@ import { Cards, Header, LoaderModal, SizedBox, Text } from '../../components';
 import { styles } from './index.styles';
 import { navigate } from '../../navigation/service';
 import { useFocusEffect } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
-import { addRemoveFav, getConferences } from '../../redux/actions/main-action';
+import { getConferences } from '../../redux/actions/main-action';
 import ConferenceFunctional from './index.function';
 
 const Conference = () => {
-  const { main_loading, conferences, onPressHeart, dispatch } =
-    ConferenceFunctional();
+  const {
+    main_loading,
+    conferences,
+    onPressHeart,
+    dispatch,
+    page,
+    setHasMore,
+    onEndReached,
+  } = ConferenceFunctional();
 
   useFocusEffect(
     useCallback(() => {
       dispatch(getConferences());
     }, []),
   );
-
   return (
     <Container>
       <Header isMenu title={'Conferences'} />
