@@ -12,6 +12,7 @@ import { dateLocale, datePattern, TextWeights } from '../../config';
 import { styles } from './index.styles';
 import { common_styles } from '../../utils/common_styles';
 import { capitalize } from '../../utils/functions';
+import { useSelector } from 'react-redux';
 
 const Cards = ({
   onPressHeart,
@@ -21,6 +22,11 @@ const Cards = ({
   isFavourite = false,
   isWorkshop = false,
 }) => {
+  const { favlist } = useSelector(state => state.main);
+
+  const isFav = favlist?.find(
+    favItem => favItem?.favoriteId?._id === item?._id,
+  );
   return (
     <TouchableOpacity
       disabled={isDetail}
@@ -30,7 +36,7 @@ const Cards = ({
     >
       <RowView>
         <Text
-          text={item?.title}
+          text={isFavourite ? item?.favoriteId?.title : item?.title}
           size={SIZES.h16}
           weight={TextWeights.medium}
           color={COLORS.light_blue_color}
@@ -41,11 +47,16 @@ const Cards = ({
           hitSlop={common_styles.hitslop2}
           onPress={onPressHeart}
         >
-          <Icons name={isFavourite ? selected_heart_icon : heart_icon} />
+          <Icons
+            name={isFavourite || isFav ? selected_heart_icon : heart_icon}
+          />
         </TouchableOpacity>
       </RowView>
 
-      <Text text={item?.description} mt={SIZES.padding2} />
+      <Text
+        text={isFavourite ? item?.favoriteId?.description : item?.description}
+        mt={SIZES.padding2}
+      />
 
       <SizedBox height={SIZES.padding2} />
 
@@ -84,7 +95,7 @@ const Cards = ({
         />
         <Text
           style={common_styles.flex_1}
-          text={item?.venue}
+          text={isFavourite ? item?.favoriteId?.venue : item?.venue}
           size={SIZES.h10}
           weight={TextWeights.semibold}
         />

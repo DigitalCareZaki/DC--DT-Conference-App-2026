@@ -20,9 +20,8 @@ import { getConferencesById } from '../../redux/actions/main-action';
 
 const ConferenceDetails = ({ route }) => {
   const { id } = route?.params;
-  const { main_loading, single_conference } = ConferenceFunctional();
-
-  const dispatch = useDispatch();
+  const { main_loading, single_conference, dispatch, onPressHeart } =
+    ConferenceFunctional();
 
   useFocusEffect(
     useCallback(() => {
@@ -38,7 +37,11 @@ const ConferenceDetails = ({ route }) => {
       ) : (
         <View style={styles.main_view}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Cards isDetail={true} item={single_conference} />
+            <Cards
+              isDetail={true}
+              item={single_conference}
+              onPressHeart={() => onPressHeart(single_conference)}
+            />
 
             <Text
               text={'Program Sessions'}

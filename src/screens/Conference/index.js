@@ -8,18 +8,19 @@ import { styles } from './index.styles';
 import { navigate } from '../../navigation/service';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
-import { getConferences } from '../../redux/actions/main-action';
+import { addRemoveFav, getConferences } from '../../redux/actions/main-action';
 import ConferenceFunctional from './index.function';
 
 const Conference = () => {
-  const { main_loading, conferences } = ConferenceFunctional();
-  const dispatch = useDispatch();
+  const { main_loading, conferences, onPressHeart, dispatch } =
+    ConferenceFunctional();
 
   useFocusEffect(
     useCallback(() => {
       dispatch(getConferences());
     }, []),
   );
+
   return (
     <Container>
       <Header isMenu title={'Conferences'} />
@@ -45,7 +46,7 @@ const Conference = () => {
             renderItem={({ item }) => (
               <Cards
                 item={item}
-                onPressHeart={() => {}}
+                onPressHeart={() => onPressHeart(item)}
                 onPress={() => navigate('ConferenceDetails', { id: item?._id })}
               />
             )}

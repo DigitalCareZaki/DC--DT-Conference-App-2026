@@ -45,25 +45,30 @@ export const datePattern = {
   day: 'numeric',
 };
 
+// // default: "Conference Delegate" roles: "Admin" || "Conference Delegate" || "Exhibitor" || "Sponsor" || "Visitor" || "Speaker"
 export const roles = [
   {
     id: 1,
-    name: 'Conference Delegate',
+    name: 'Admin',
   },
   {
     id: 2,
-    name: 'Exhibitor (Stall Owner)',
+    name: 'Conference Delegate',
   },
   {
     id: 3,
-    name: 'Sponsor',
+    name: 'Exhibitor',
   },
   {
     id: 4,
-    name: 'Visitor',
+    name: 'Sponsor',
   },
   {
     id: 5,
+    name: 'Visitor',
+  },
+  {
+    id: 6,
     name: 'Speaker',
   },
 ];

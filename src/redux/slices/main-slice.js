@@ -9,6 +9,8 @@ const initialState = {
   gallery: null,
   exhibition: null,
   speakers: null,
+  favourites: null,
+  favlist: null,
 };
 
 export const mainSlice = createSlice({
@@ -40,6 +42,13 @@ export const mainSlice = createSlice({
     setSpeakers: (state, action) => {
       state.speakers = action.payload;
     },
+    setFavourites: (state, action) => {
+      state.favourites = action.payload;
+    },
+
+    setFavList: (state, action) => {
+      state.favlist = action.payload;
+    },
   },
 });
 
@@ -52,6 +61,8 @@ export const {
   setGallery,
   setExhibition,
   setSpeakers,
+  setFavourites,
+  setFavList,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

@@ -3,6 +3,8 @@ import { requestHandler } from '../../utils/functions';
 import {
   setConferences,
   setExhibition,
+  setFavList,
+  setFavourites,
   setGallery,
   setMainLoading,
   setSingleConference,
@@ -115,6 +117,37 @@ export const getSpeakers = () => {
         apiService: apiServices.getSpeakers,
         onDone: async res => {
           dispatch(setSpeakers(res?.data ?? []));
+        },
+      }),
+    );
+  };
+};
+
+export const getFavourites = onDone => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setMainLoading,
+        apiService: apiServices.getFavourites,
+        onDone: async res => {
+          dispatch(setFavourites(res?.data));
+          onDone && onDone(res);
+        },
+      }),
+    );
+  };
+};
+
+export const addRemoveFav = (data, onDone) => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setMainLoading,
+        apiService: apiServices.addRemoveFavourite,
+        param_data: data,
+        onDone: async res => {
+          dispatch(setFavList(res?.data));
+          onDone && onDone(res);
         },
       }),
     );

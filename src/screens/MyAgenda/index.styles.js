@@ -27,4 +27,10 @@ export const styles = StyleSheet.create({
   flatList: {
     gap: SIZES.padding2 + 4,
   },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: SIZES.padding,
+  },
 });

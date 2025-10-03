@@ -13,6 +13,7 @@ export const SERVICE_URLS = {
   getGallery: '/gallery',
   getExhibition: '/exhibition',
   getSpeakers: '/speaker',
+  favourites: '/user/favorites',
 };
 
 // Auth
@@ -28,6 +29,8 @@ const getWorkshopsById = params => get(SERVICE_URLS.getWorkshopsById + params);
 const getGallery = () => get(SERVICE_URLS.getGallery);
 const getExhibition = () => get(SERVICE_URLS.getExhibition);
 const getSpeakers = () => get(SERVICE_URLS.getSpeakers);
+const getFavourites = () => get(SERVICE_URLS.favourites);
+const addRemoveFavourite = data => post(SERVICE_URLS.favourites, data);
 
 const apiServices = {
   // Main Management
@@ -40,6 +43,8 @@ const apiServices = {
   getSpeakers,
   register,
   login,
+  getFavourites,
+  addRemoveFavourite,
 };
 
 export default apiServices;

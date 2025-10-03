@@ -10,19 +10,17 @@ import {
   Text,
 } from '../../components';
 import ShopModules from './components/ShopModules';
-import { conferences, shop_modules, TextWeights } from '../../config';
+import { TextWeights } from '../../config';
 import { COLORS, SIZES } from '../../constants';
 import { styles } from './index.styles';
 import WorkshopDetailFunctional from './index.function';
 import { useFocusEffect } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
 import { getWorkshopById } from '../../redux/actions/main-action';
 
 const WorkshopDetails = ({ route }) => {
   const { id } = route?.params;
-  const { main_loading, single_workshop } = WorkshopDetailFunctional();
-
-  const dispatch = useDispatch();
+  const { main_loading, single_workshop, dispatch, onPressHeart } =
+    WorkshopDetailFunctional();
 
   useFocusEffect(
     useCallback(() => {
@@ -38,7 +36,12 @@ const WorkshopDetails = ({ route }) => {
       ) : (
         <View style={styles.main_view}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Cards isWorkshop isDetail={true} item={single_workshop} />
+            <Cards
+              isWorkshop
+              isDetail={true}
+              item={single_workshop}
+              onPressHeart={() => onPressHeart(single_workshop)}
+            />
 
             <Text
               mt={SIZES.padding2}

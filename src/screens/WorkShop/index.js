@@ -7,18 +7,14 @@ import {
   LoaderModal,
   SizedBox,
 } from '../../components';
-import { conferences } from '../../config';
 import { navigate } from '../../navigation/service';
 import { styles } from './index.styles';
 import { useFocusEffect } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
 import { getWorkshops } from '../../redux/actions/main-action';
 import WorkFunctional from './index.function';
 
 const WorkSop = () => {
-  const { main_loading, workshops } = WorkFunctional();
-
-  const dispatch = useDispatch();
+  const { main_loading, workshops, dispatch, onPressHeart } = WorkFunctional();
 
   useFocusEffect(
     useCallback(() => {
@@ -26,7 +22,6 @@ const WorkSop = () => {
     }, []),
   );
 
-  console.log('workshops', workshops);
   return (
     <Container>
       <Header title={'Workshop'} rightIcon={null} />
@@ -42,7 +37,7 @@ const WorkSop = () => {
               <Cards
                 isWorkshop
                 item={item}
-                onPressHeart={() => {}}
+                onPressHeart={() => onPressHeart(item)}
                 onPress={() => navigate('WorkShopDetails', { id: item?._id })}
               />
             )}

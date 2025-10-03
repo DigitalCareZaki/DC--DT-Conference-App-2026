@@ -5,13 +5,17 @@ import { COLORS, SIZES } from '../../../constants';
 import { TextWeights } from '../../../config';
 import { navigate } from '../../../navigation/service';
 import { styles } from '../index.styles';
-const ExhibitionCard = ({ item }) => {
+const ExhibitionCard = ({ item, isFav = false }) => {
   return (
-    <TouchableOpacity onPress={() => navigate('Speakers')} style={styles.grid}>
+    <TouchableOpacity style={styles.grid}>
       <RowView justifyContent={'space-between'}>
-        <Text size={SIZES.h16} weight={TextWeights.medium} text={item.title} />
+        <Text
+          size={SIZES.h16}
+          weight={TextWeights.medium}
+          text={isFav ? item?.favoriteId?.title : item.title}
+        />
         <Button
-          buttonText={item?.booth}
+          buttonText={isFav ? item?.favoriteId?.booth : item?.booth}
           style={styles.btn}
           color={COLORS.placeholder_text_color}
           size={SIZES.h12}
@@ -26,14 +30,14 @@ const ExhibitionCard = ({ item }) => {
               size={SIZES.h12}
               weight={TextWeights.medium}
               color={COLORS.light_blue_color}
-              text={item.address}
+              text={isFav ? item?.favoriteId?.address : item.address}
             />
             <Text text={' - '} color={COLORS.keys_color} />
             <Text
               size={SIZES.h12}
               weight={TextWeights.medium}
               color={COLORS.light_blue_color}
-              text={item.industry}
+              text={isFav ? item?.favoriteId?.industry : item.industry}
             />
           </>
         }
@@ -44,7 +48,7 @@ const ExhibitionCard = ({ item }) => {
         text={
           <>
             <Text text={'Venue:'} color={COLORS.keys_color} />
-            <Text text={item.venue} />
+            <Text text={isFav ? item?.favoriteId?.venue : item.venue} />
           </>
         }
       ></Text>
@@ -52,7 +56,7 @@ const ExhibitionCard = ({ item }) => {
       <Text
         size={SIZES.h14}
         mt={SIZES.padding2 + 4}
-        text={item.description}
+        text={isFav ? item?.favoriteId?.description : item.description}
         lineHeight={SIZES.padding2 + 4}
       />
     </TouchableOpacity>
