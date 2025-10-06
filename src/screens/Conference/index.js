@@ -14,7 +14,7 @@ import {
 import { styles } from './index.styles';
 import { navigate } from '../../navigation/service';
 import { useFocusEffect } from '@react-navigation/native';
-import { getConferences } from '../../redux/actions/main-action';
+import { getConferences, getFavourites } from '../../redux/actions/main-action';
 import ConferenceFunctional from './index.function';
 
 const Conference = () => {
@@ -42,6 +42,7 @@ const Conference = () => {
           setHasMore(hasMore);
         }),
       );
+      dispatch(getFavourites(payload));
     }, []),
   );
 

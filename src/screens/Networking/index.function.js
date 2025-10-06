@@ -17,7 +17,9 @@ export default () => {
   const onEndReached = () => {
     console.log('end reached called');
     if (isLoading || !hasMore) return;
+
     setIsLoading(true);
+
     const nextPage = page + 1;
     if (hasMore && all_users?.length > 0) {
       const payload = {

@@ -36,6 +36,7 @@ const Speakers = () => {
       color={COLORS.primary}
     />
   );
+
   return (
     <Container>
       <Header title={'Speakers'} isMenu />
@@ -50,14 +51,6 @@ const Speakers = () => {
             keyExtractor={(item, index) => index?.toString()}
             showsVerticalScrollIndicator={false}
             ListFooterComponent={<SizedBox />}
-            renderSectionHeader={({ section: { title } }) => (
-              <Text
-                text={title}
-                size={SIZES.h16}
-                weight={TextWeights.medium}
-                mt={SIZES.padding2}
-              />
-            )}
             renderSectionFooter={({ section }) => (
               <FlatList
                 data={section?.data}
@@ -66,6 +59,16 @@ const Speakers = () => {
                   <SingleSpeakerView item={item} />
                 )}
                 ListEmptyComponent={<RenderEmptyComponent />}
+                ListHeaderComponent={
+                  <>
+                    <Text
+                      text={section?.title}
+                      size={SIZES.h16}
+                      weight={TextWeights.medium}
+                      mt={SIZES.padding2}
+                    />
+                  </>
+                }
                 keyExtractor={(item, index) => index?.toString()}
                 columnWrapperStyle={{ justifyContent: 'space-between' }}
                 scrollEnabled={false}

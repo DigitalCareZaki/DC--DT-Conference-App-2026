@@ -1,5 +1,5 @@
 import { View, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import RowView from '../RowView';
 import { Icons, SizedBox, Text } from '..';
 import {
@@ -22,11 +22,7 @@ const Cards = ({
   isFavourite = false,
   isWorkshop = false,
 }) => {
-  const { favlist } = useSelector(state => state.main);
-
-  const isFav = favlist?.find(
-    favItem => favItem?.favoriteId?._id === item?._id,
-  );
+  const { favourites } = useSelector(state => state.main);
 
   return (
     <TouchableOpacity
@@ -49,7 +45,14 @@ const Cards = ({
           onPress={onPressHeart}
         >
           <Icons
-            name={isFavourite || isFav ? selected_heart_icon : heart_icon}
+            name={
+              isFavourite ||
+              favourites?.find(
+                favItem => favItem?.favoriteId?._id === item?._id,
+              )
+                ? selected_heart_icon
+                : heart_icon
+            }
           />
         </TouchableOpacity>
       </RowView>
@@ -63,7 +66,6 @@ const Cards = ({
 
       <RowView>
         <Text text={'Date:'} size={SIZES.h10} color={COLORS.white + 80} />
-        {}
         <Text
           text={
             isWorkshop && item?.type === 'Workshop'

@@ -1,10 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addRemoveFav, getConferences } from '../../redux/actions/main-action';
+import {
+  addRemoveFav,
+  getConferences,
+  getFavourites,
+} from '../../redux/actions/main-action';
 import { useState } from 'react';
 import { navigate } from '../../navigation/service';
 
 export default () => {
-  const { main_loading, conferences } = useSelector(state => state.main);
+  const { main_loading, conferences, favourites } = useSelector(
+    state => state.main,
+  );
   const { user, total_item } = useSelector(state => state.auth);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
@@ -21,7 +27,15 @@ export default () => {
       favoriteId: item?._id,
       type: 'conference',
     };
-    dispatch(addRemoveFav(apiData));
+    dispatch(
+      addRemoveFav(apiData, () => {
+        const payload = {
+          limit: 10,
+          page: page,
+        };
+        dispatch(getFavourites(payload));
+      }),
+    );
   };
 
   const onEndReached = () => {
@@ -35,6 +49,13 @@ export default () => {
       };
       dispatch(
         getConferences(payload, conferences, hasMore => {
+          setHasMore(hasMore);
+          setPage(nextPage);
+          setIsLoading(false);
+        }),
+      );
+      dispatch(
+        getFavourites(payload, favourites, hasMore => {
           setHasMore(hasMore);
           setPage(nextPage);
           setIsLoading(false);
@@ -56,5 +77,6 @@ export default () => {
     onEndReached,
     isLoading,
     total_item,
+    favourites,
   };
 };

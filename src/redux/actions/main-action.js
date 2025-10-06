@@ -26,14 +26,12 @@ export const getConferences = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getConferences,
         onDone: async res => {
-          console.log('res', res);
           if (params?.page === 1) {
             dispatch(setConferences(res?.data?.data ?? []));
           } else {
             dispatch(setConferences([...array, ...(res?.data?.data ?? [])]));
           }
           onDone && onDone(res?.data?.pagination?.hasNextPage);
-          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
         },
       }),
     );
@@ -64,6 +62,7 @@ export const getWorkshops = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getWorkshops,
         onDone: async res => {
+          console.log('res....', res);
           dispatch(setTotalItems(res?.data?.pagination?.totalItems));
 
           if (params?.page === 1) {
@@ -128,8 +127,6 @@ export const getExhibition = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getExhibition,
         onDone: async res => {
-          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
-
           if (params?.page === 1) {
             dispatch(setExhibition(res?.data?.data));
           } else {
@@ -167,8 +164,6 @@ export const getFavourites = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getFavourites,
         onDone: async res => {
-          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
-
           if (params?.page === 1) {
             dispatch(setFavourites(res?.data?.favorites));
           } else {
@@ -191,6 +186,7 @@ export const addRemoveFav = (data, onDone) => {
         apiService: apiServices.addRemoveFavourite,
         param_data: data,
         onDone: async res => {
+          console.log('res', res);
           dispatch(setFavList(res?.data));
           onDone && onDone(res);
         },

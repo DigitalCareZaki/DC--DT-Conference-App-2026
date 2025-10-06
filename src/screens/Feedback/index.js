@@ -92,7 +92,9 @@ const Feedback = () => {
                         label={'What did you like most?'}
                         placeholder={'Such a Informative.'}
                         style={styles.input}
-                        inputStyle={{ textAlignVertical: 'top' }}
+                        inputStyle={{
+                          textAlignVertical: 'top',
+                        }}
                         value={values.likedMost}
                         onChangeText={handleChange('likedMost')}
                       />
