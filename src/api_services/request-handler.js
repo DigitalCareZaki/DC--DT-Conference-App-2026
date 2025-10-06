@@ -38,7 +38,7 @@ const getWorkshopsById = params => get(SERVICE_URLS.getWorkshopsById + params);
 const getGallery = () => get(SERVICE_URLS.getGallery);
 const getExhibition = data => get(SERVICE_URLS.getExhibition, data);
 const getSpeakers = () => get(SERVICE_URLS.getSpeakers);
-const getFavourites = () => get(SERVICE_URLS.favourites);
+const getFavourites = data => get(SERVICE_URLS.favourites, data);
 const addRemoveFavourite = data => post(SERVICE_URLS.favourites, data);
 const getFeedBacks = () => get(SERVICE_URLS.getFeedbacks);
 const postUpdateFeedback = data => put(SERVICE_URLS.postUpdateFeedback, data);

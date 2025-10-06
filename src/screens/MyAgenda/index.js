@@ -3,6 +3,7 @@ import {
   Cards,
   Container,
   Header,
+  Loader,
   LoaderModal,
   SizedBox,
   Text,
@@ -15,12 +16,29 @@ import { getFavourites } from '../../redux/actions/main-action';
 import { COLORS, SIZES } from '../../constants';
 
 const MyAgenda = () => {
-  const { main_loading, favourites, onPressHeart, dispatch } =
-    FavoutitesFunctional();
+  const {
+    main_loading,
+    favourites,
+    onPressHeart,
+    dispatch,
+    page,
+    setHasMore,
+    onEndReached,
+    isLoading,
+    hasMore,
+  } = FavoutitesFunctional();
 
   useFocusEffect(
     useCallback(() => {
-      dispatch(getFavourites());
+      const payload = {
+        limit: 10,
+        page: page,
+      };
+      dispatch(
+        getFavourites(payload, favourites, hasMore => {
+          setHasMore(hasMore);
+        }),
+      );
     }, []),
   );
   const RenderEmptyComponent = () => (
@@ -33,7 +51,7 @@ const MyAgenda = () => {
     <Container>
       <Header title={'My Agenda'} rightIcon={null} />
 
-      {main_loading ? (
+      {main_loading && !isLoading ? (
         <LoaderModal />
       ) : (
         <View style={styles.main_view}>
@@ -41,7 +59,15 @@ const MyAgenda = () => {
             data={favourites}
             keyExtractor={item => item?.id}
             showsVerticalScrollIndicator={false}
-            ListFooterComponent={<SizedBox />}
+            ListFooterComponent={
+              isLoading && hasMore ? (
+                <Loader style={styles.loader} />
+              ) : (
+                <SizedBox />
+              )
+            }
+            onEndReached={onEndReached}
+            onEndReachedThreshold={0.5}
             ListEmptyComponent={<RenderEmptyComponent />}
             renderItem={({ item }) => (
               <Cards

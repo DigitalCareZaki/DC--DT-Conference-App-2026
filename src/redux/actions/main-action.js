@@ -144,15 +144,22 @@ export const getSpeakers = () => {
 };
 
 // Favourite
-export const getFavourites = onDone => {
+export const getFavourites = (params, array, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setMainLoading,
+        param_data: params,
         apiService: apiServices.getFavourites,
         onDone: async res => {
-          dispatch(setFavourites(res?.data));
-          onDone && onDone(res);
+          if (params?.page === 1) {
+            dispatch(setFavourites(res?.data?.favorites));
+          } else {
+            dispatch(
+              setFavourites([...array, ...(res?.data?.favorites ?? [])]),
+            );
+          }
+          onDone && onDone(res?.data?.pagination?.hasNextPage);
         },
       }),
     );

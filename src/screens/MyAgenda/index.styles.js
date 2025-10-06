@@ -33,4 +33,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     padding: SIZES.padding,
   },
+  loader: {
+    paddingVertical: SIZES.padding,
+  },
 });

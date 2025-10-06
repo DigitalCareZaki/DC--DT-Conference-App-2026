@@ -1,4 +1,5 @@
 import apiServices from '../../api_services/request-handler';
+import { setToken } from '../../utils/auth.util';
 import { requestHandler } from '../../utils/functions';
 import {
   setAllUsers,
@@ -34,6 +35,7 @@ export const login = (data, onDone) => {
         isAuth: true,
         onDone: async res => {
           dispatch(setUser(res?.data?.user));
+          setToken(res?.data?.accessToken);
           onDone && onDone(res);
         },
       }),
