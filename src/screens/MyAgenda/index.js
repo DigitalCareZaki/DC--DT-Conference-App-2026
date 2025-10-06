@@ -57,7 +57,7 @@ const MyAgenda = () => {
         <View style={styles.main_view}>
           <FlatList
             data={favourites}
-            keyExtractor={item => item?.id}
+            keyExtractor={item => item?._id}
             showsVerticalScrollIndicator={false}
             ListFooterComponent={
               isLoading && hasMore ? (

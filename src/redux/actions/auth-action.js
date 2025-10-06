@@ -5,6 +5,7 @@ import {
   setAllUsers,
   setAuthLoading,
   setGoogleSigninLoading,
+  setTotalItems,
   setUser,
 } from '../slices/auth-slice';
 
@@ -53,6 +54,7 @@ export const getAllUsers = (params, array, onDone) => {
         apiService: apiServices.getAllUser,
         isAuth: true,
         onDone: async res => {
+          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
           if (params?.page === 1) {
             dispatch(setAllUsers(res?.data?.data));
           } else {

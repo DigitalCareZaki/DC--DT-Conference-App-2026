@@ -27,6 +27,7 @@ const Networking = () => {
     onEndReached,
     isLoading,
     hasMore,
+    total_item,
   } = NetworkFunctional();
 
   useFocusEffect(
@@ -53,10 +54,12 @@ const Networking = () => {
           <SearchBar style={styles.search_bar} placeholder={'Search..'} />
 
           <Text
-            text={`${all_users?.length} Users Registered`}
+            text={`${total_item} Users Registered`}
             size={SIZES.h16}
             weight={TextWeights.medium}
           />
+
+          <SizedBox height={SIZES.padding2} />
 
           <FlatList
             showsVerticalScrollIndicator={false}

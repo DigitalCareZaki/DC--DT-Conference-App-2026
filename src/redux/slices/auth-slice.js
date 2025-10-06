@@ -5,6 +5,7 @@ const initialState = {
   user: null,
   all_users: null,
   google_signin_loading: null,
+  total_item: null,
 };
 
 export const authSlice = createSlice({
@@ -23,6 +24,9 @@ export const authSlice = createSlice({
     setGoogleSigninLoading: (state, action) => {
       state.google_signin_loading = action.payload;
     },
+    setTotalItems: (state, action) => {
+      state.total_item = action.payload;
+    },
   },
 });
 
@@ -32,6 +36,7 @@ export const {
   setAllUsers,
   setGoogleSigninLoading,
   setIsAuth,
+  setTotalItems,
 } = authSlice.actions;
 
 export default authSlice.reducer;

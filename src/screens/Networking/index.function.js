@@ -4,7 +4,9 @@ import { useState } from 'react';
 import { getAllUsers } from '../../redux/actions/auth-action';
 
 export default () => {
-  const { auth_loading, all_users } = useSelector(state => state.auth);
+  const { auth_loading, all_users, total_item } = useSelector(
+    state => state.auth,
+  );
 
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
@@ -44,5 +46,6 @@ export default () => {
     setHasMore,
     onEndReached,
     isLoading,
+    total_item,
   };
 };

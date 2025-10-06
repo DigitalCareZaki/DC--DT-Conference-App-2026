@@ -1,5 +1,6 @@
 import apiServices from '../../api_services/request-handler';
 import { requestHandler } from '../../utils/functions';
+import { setTotalItems } from '../slices/auth-slice';
 import {
   setConferences,
   setExhibition,
@@ -22,15 +23,17 @@ export const getConferences = (params, array, onDone) => {
     dispatch(
       requestHandler({
         setLoading: setMainLoading,
-        apiService: apiServices.getConferences,
         param_data: params,
+        apiService: apiServices.getConferences,
         onDone: async res => {
+          console.log('res', res);
           if (params?.page === 1) {
-            dispatch(setConferences(res?.data?.data));
+            dispatch(setConferences(res?.data?.data ?? []));
           } else {
             dispatch(setConferences([...array, ...(res?.data?.data ?? [])]));
           }
           onDone && onDone(res?.data?.pagination?.hasNextPage);
+          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
         },
       }),
     );
@@ -61,6 +64,8 @@ export const getWorkshops = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getWorkshops,
         onDone: async res => {
+          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
+
           if (params?.page === 1) {
             dispatch(setWorkshops(res?.data?.data));
           } else {
@@ -90,14 +95,22 @@ export const getWorkshopById = data => {
 
 // Gallery
 
-export const getGallery = () => {
+export const getGallery = (params, array, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setMainLoading,
+        param_data: params,
         apiService: apiServices.getGallery,
         onDone: async res => {
-          dispatch(setGallery(res?.data?.data));
+          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
+
+          if (params?.page === 1) {
+            dispatch(setGallery(res?.data?.data));
+          } else {
+            dispatch(setGallery([...array, ...(res?.data?.data ?? [])]));
+          }
+          onDone && onDone(res?.data?.pagination?.hasNextPage);
         },
       }),
     );
@@ -115,6 +128,8 @@ export const getExhibition = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getExhibition,
         onDone: async res => {
+          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
+
           if (params?.page === 1) {
             dispatch(setExhibition(res?.data?.data));
           } else {
@@ -152,6 +167,8 @@ export const getFavourites = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getFavourites,
         onDone: async res => {
+          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
+
           if (params?.page === 1) {
             dispatch(setFavourites(res?.data?.favorites));
           } else {

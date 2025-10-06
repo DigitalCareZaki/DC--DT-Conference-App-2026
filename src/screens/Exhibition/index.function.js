@@ -4,6 +4,7 @@ import { getExhibition } from '../../redux/actions/main-action';
 
 export default () => {
   const { main_loading, exhibition } = useSelector(state => state.main);
+  const { total_item } = useSelector(state => state.auth);
 
   const dispatch = useDispatch();
 
@@ -42,5 +43,6 @@ export default () => {
     dispatch,
     isLoading,
     hasMore,
+    total_item,
   };
 };

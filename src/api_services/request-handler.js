@@ -35,7 +35,7 @@ const getConferencesById = params =>
   get(SERVICE_URLS.getConferencesByID + params);
 const getWorkshops = data => get(SERVICE_URLS.getWorkshops, data);
 const getWorkshopsById = params => get(SERVICE_URLS.getWorkshopsById + params);
-const getGallery = () => get(SERVICE_URLS.getGallery);
+const getGallery = data => get(SERVICE_URLS.getGallery, data);
 const getExhibition = data => get(SERVICE_URLS.getExhibition, data);
 const getSpeakers = () => get(SERVICE_URLS.getSpeakers);
 const getFavourites = data => get(SERVICE_URLS.favourites, data);

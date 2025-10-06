@@ -5,7 +5,7 @@ import { navigate } from '../../navigation/service';
 
 export default () => {
   const { main_loading, conferences } = useSelector(state => state.main);
-  const { user } = useSelector(state => state.auth);
+  const { user, total_item } = useSelector(state => state.auth);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -55,5 +55,6 @@ export default () => {
     setHasMore,
     onEndReached,
     isLoading,
+    total_item,
   };
 };

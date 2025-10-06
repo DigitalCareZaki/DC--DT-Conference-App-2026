@@ -31,6 +31,7 @@ const Exhibition = () => {
     dispatch,
     isLoading,
     hasMore,
+    total_item,
   } = ExhibitionFunctional();
 
   useFocusEffect(
@@ -68,7 +69,7 @@ const Exhibition = () => {
             <SizedBox />
 
             <Text
-              text={`${exhibition?.length} Exhibitors Participating`}
+              text={`${total_item} Exhibitors Participating`}
               size={SIZES.h18}
               weight={TextWeights.medium}
             />

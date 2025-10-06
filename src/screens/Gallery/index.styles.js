@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     paddingTop: SIZES.padding,
   },
   list: {
-    justifyContent: "space-between"
+    justifyContent: 'space-between',
   },
   flatlist: {
     alignItems: 'center',
@@ -21,5 +21,8 @@ export const styles = StyleSheet.create({
   },
   iconContainer: {
     paddingTop: SIZES.padding,
+  },
+  loader: {
+    paddingVertical: SIZES.padding,
   },
 });

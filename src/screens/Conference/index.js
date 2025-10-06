@@ -28,6 +28,7 @@ const Conference = () => {
     onEndReached,
     isLoading,
     hasMore,
+    total_item,
   } = ConferenceFunctional();
 
   useFocusEffect(
@@ -53,7 +54,7 @@ const Conference = () => {
       ) : (
         <View style={styles.main_view}>
           <Text
-            text={`${conferences?.length} Conferences Available`}
+            text={`${total_item} Conferences Available`}
             size={SIZES.h16}
             weight={TextWeights.medium}
             mt={SIZES.padding2}

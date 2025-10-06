@@ -3,14 +3,13 @@ import {
   Container,
   Header,
   Icons,
+  Loader,
   LoaderModal,
   RowView,
   SizedBox,
 } from '../../components';
-import { FlatList, Image, Modal, View } from 'react-native';
-import { SIZES } from '../../constants';
+import { FlatList, Modal, View } from 'react-native';
 import { styles } from './index.styles';
-import { gallery_images } from '../../config';
 import { close_icon } from '../../assets/icons';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import { SingleGalleryView } from './components';
@@ -28,24 +27,46 @@ const Gallery = () => {
     selectedIndex,
     onPressImage,
     setShowModal,
+    page,
+    setHasMore,
+    onEndReached,
+    isLoading,
+    hasMore,
   } = GalleryFunctional();
 
   useFocusEffect(
     useCallback(() => {
-      dispatch(getGallery());
+      const payload = {
+        limit: 10,
+        page: page,
+      };
+      dispatch(
+        getGallery(payload, gallery, hasMore => {
+          setHasMore(hasMore);
+        }),
+      );
     }, []),
   );
+
   return (
     <Container>
       <Header title={'Gallery'} rightIcon={null} />
 
-      {main_loading ? (
+      {main_loading && !isLoading ? (
         <LoaderModal />
       ) : (
         <View style={styles.main_view}>
           <FlatList
             keyExtractor={item => item?.id}
-            ListFooterComponent={<SizedBox />}
+            ListFooterComponent={
+              isLoading && hasMore ? (
+                <Loader style={styles.loader} />
+              ) : (
+                <SizedBox />
+              )
+            }
+            onEndReached={onEndReached}
+            onEndReachedThreshold={0.5}
             data={gallery}
             numColumns={2}
             showsVerticalScrollIndicator={false}
