@@ -41,16 +41,22 @@ export const login = (data, onDone) => {
   };
 };
 
-export const getAllUsers = onDone => {
+export const getAllUsers = (params, array, onDone) => {
+  console.log('params', params);
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setAuthLoading,
+        param_data: params,
         apiService: apiServices.getAllUser,
         isAuth: true,
         onDone: async res => {
-          dispatch(setAllUsers(res?.data?.data));
-          onDone && onDone(res);
+          if (params?.page === 1) {
+            dispatch(setAllUsers(res?.data?.data));
+          } else {
+            dispatch(setAllUsers([...array, ...(res?.data?.data ?? [])]));
+          }
+          onDone && onDone(res?.data?.pagination?.hasNextPage);
         },
       }),
     );

@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import {
   Container,
   Header,
+  Loader,
   LoaderModal,
   SearchBar,
   SizedBox,
@@ -17,17 +18,35 @@ import { useFocusEffect } from '@react-navigation/native';
 import { getAllUsers } from '../../redux/actions/auth-action';
 
 const Networking = () => {
-  const { auth_loading, all_users, dispatch } = NetworkFunctional();
+  const {
+    auth_loading,
+    all_users,
+    dispatch,
+    page,
+    setHasMore,
+    onEndReached,
+    isLoading,
+    hasMore,
+  } = NetworkFunctional();
 
   useFocusEffect(
     useCallback(() => {
-      dispatch(getAllUsers());
+      const payload = {
+        limit: 10,
+        page: page,
+      };
+      dispatch(
+        getAllUsers(payload, all_users, hasMore => {
+          setHasMore(hasMore);
+        }),
+      );
     }, []),
   );
+
   return (
     <Container>
       <Header title={'Networking'} rightIcon={null} />
-      {auth_loading ? (
+      {auth_loading && !isLoading ? (
         <LoaderModal />
       ) : (
         <View style={styles.main_view}>
@@ -42,9 +61,17 @@ const Networking = () => {
           <FlatList
             showsVerticalScrollIndicator={false}
             data={all_users}
-            ListFooterComponent={<SizedBox />}
-            keyExtractor={item => item?.id}
+            keyExtractor={item => item?._id}
             renderItem={({ item }) => <SingleUserView item={item} />}
+            ListFooterComponent={
+              isLoading && hasMore ? (
+                <Loader style={styles.loader} />
+              ) : (
+                <SizedBox />
+              )
+            }
+            onEndReached={onEndReached}
+            onEndReachedThreshold={0.5}
           />
         </View>
       )}

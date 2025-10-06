@@ -25,7 +25,7 @@ export const SERVICE_URLS = {
 // Auth
 const register = data => post(SERVICE_URLS.register, data);
 const login = data => post(SERVICE_URLS.login, data);
-const getAllUser = () => get(SERVICE_URLS.getAllUser);
+const getAllUser = data => get(SERVICE_URLS.getAllUser, data);
 const getProfile = () => get(SERVICE_URLS.getProfile);
 const googleLogin = data => post(SERVICE_URLS.googleLogin, data);
 
