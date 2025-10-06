@@ -148,13 +148,13 @@ export async function request({
   return response;
 }
 
-export async function get(url, params, featureAndAction) {
-  for (var key in params) {
-    url = url + '' + params[key];
+export async function get(url, params) {
+  const query = new URLSearchParams(params).toString();
+  if (query) {
+    url += (url.includes('?') ? '&' : '?') + query;
   }
-  return request({ method: 'get', url, data: { featureAndAction } });
+  return request({ method: 'get', url });
 }
-
 export async function del(url, params) {
   return request({ method: 'delete', url, data: { params } });
 }

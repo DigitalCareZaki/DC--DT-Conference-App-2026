@@ -3,7 +3,14 @@ import React, { useCallback } from 'react';
 import Container from '../../components/Container';
 import { SIZES } from '../../constants';
 import { TextWeights } from '../../config';
-import { Cards, Header, LoaderModal, SizedBox, Text } from '../../components';
+import {
+  Cards,
+  Header,
+  Loader,
+  LoaderModal,
+  SizedBox,
+  Text,
+} from '../../components';
 import { styles } from './index.styles';
 import { navigate } from '../../navigation/service';
 import { useFocusEffect } from '@react-navigation/native';
@@ -23,9 +30,18 @@ const Conference = () => {
 
   useFocusEffect(
     useCallback(() => {
-      dispatch(getConferences());
+      const payload = {
+        limit: 10,
+        page: page,
+      };
+      dispatch(
+        getConferences(payload, conferences, hasMore => {
+          setHasMore(hasMore);
+        }),
+      );
     }, []),
   );
+
   return (
     <Container>
       <Header isMenu title={'Conferences'} />
@@ -45,9 +61,13 @@ const Conference = () => {
 
           <FlatList
             data={conferences}
-            keyExtractor={item => item?.id}
+            keyExtractor={item => item?._id?.toString()}
             showsVerticalScrollIndicator={false}
-            ListFooterComponent={<SizedBox />}
+            ListFooterComponent={
+              main_loading && page > 1 ? <Loader /> : <SizedBox />
+            }
+            onEndReached={onEndReached}
+            onEndReachedThreshold={0.5}
             renderItem={({ item }) => (
               <Cards
                 item={item}

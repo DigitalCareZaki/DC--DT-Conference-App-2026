@@ -1,10 +1,40 @@
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getExhibition } from '../../redux/actions/main-action';
 
 export default () => {
   const { main_loading, exhibition } = useSelector(state => state.main);
 
+  const dispatch = useDispatch();
+
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
+
+  const onEndReached = () => {
+    console.log('end reached called');
+    if (main_loading || !hasMore || exhibition?.length === 0) return;
+
+    const nextPage = page + 1;
+    if (hasMore && exhibition?.length > 0) {
+      const payload = {
+        limit: 10,
+        page: nextPage,
+      };
+      dispatch(
+        getExhibition(payload, exhibition, hasMore => {
+          setHasMore(hasMore);
+          setPage(nextPage);
+        }),
+      );
+    }
+  };
+
   return {
     main_loading,
     exhibition,
+    onEndReached,
+    page,
+    setHasMore,
+    dispatch,
   };
 };

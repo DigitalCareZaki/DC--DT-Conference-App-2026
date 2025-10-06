@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addRemoveFav, getConferences } from '../../redux/actions/main-action';
 import { useState } from 'react';
-import { navigate, resetNavigationStack } from '../../navigation/service';
+import { navigate } from '../../navigation/service';
 
 export default () => {
   const { main_loading, conferences } = useSelector(state => state.main);
@@ -21,11 +21,16 @@ export default () => {
     };
     dispatch(addRemoveFav(apiData));
   };
+
   const onEndReached = () => {
     const nextPage = page + 1;
     if (hasMore && conferences?.length > 0) {
+      const payload = {
+        limit: 10,
+        page: nextPage,
+      };
       dispatch(
-        getConferences(page, conferences, hasMore => {
+        getConferences(payload, conferences, hasMore => {
           setHasMore(hasMore);
           setPage(nextPage);
         }),

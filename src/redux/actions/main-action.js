@@ -17,15 +17,20 @@ import {
 
 // Conferences
 
-export const getConferences = onDone => {
+export const getConferences = (params, array, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setMainLoading,
         apiService: apiServices.getConferences,
+        param_data: params,
         onDone: async res => {
-          dispatch(setConferences(res?.data?.data));
-          onDone && onDone(res);
+          if (params?.page === 1) {
+            dispatch(setConferences(res?.data?.data));
+          } else {
+            dispatch(setConferences([...array, ...(res?.data?.data ?? [])]));
+          }
+          onDone && onDone(res?.data?.pagination?.hasNextPage);
         },
       }),
     );
@@ -95,14 +100,21 @@ export const getGallery = () => {
 
 // Exhibition
 
-export const getExhibition = () => {
+export const getExhibition = (params, array, onDone) => {
+  console.log('params', params);
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setMainLoading,
+        param_data: params,
         apiService: apiServices.getExhibition,
         onDone: async res => {
-          dispatch(setExhibition(res?.data?.data));
+          if (params?.page === 1) {
+            dispatch(setExhibition(res?.data?.data));
+          } else {
+            dispatch(setExhibition([...array, ...(res?.data?.data ?? [])]));
+          }
+          onDone && onDone(res?.data?.pagination?.hasNextPage);
         },
       }),
     );

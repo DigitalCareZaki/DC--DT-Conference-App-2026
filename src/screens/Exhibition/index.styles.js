@@ -22,9 +22,9 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     bottom: SIZES.padding2 - 4,
   },
-  scrollViewStyle: {
-    paddingBottom: SIZES.padding,
-  },
+  // scrollViewStyle: {
+  //   paddingBottom: SIZES.padding,
+  // },
 
   mapView: {
     marginHorizontal: SIZES.padding2 + 2,

@@ -30,13 +30,13 @@ const getProfile = () => get(SERVICE_URLS.getProfile);
 const googleLogin = data => post(SERVICE_URLS.googleLogin, data);
 
 // Main Management
-const getConferences = () => get(SERVICE_URLS.getConferences);
+const getConferences = data => get(SERVICE_URLS.getConferences, data);
 const getConferencesById = params =>
   get(SERVICE_URLS.getConferencesByID + params);
 const getWorkshops = () => get(SERVICE_URLS.getWorkshops);
 const getWorkshopsById = params => get(SERVICE_URLS.getWorkshopsById + params);
 const getGallery = () => get(SERVICE_URLS.getGallery);
-const getExhibition = () => get(SERVICE_URLS.getExhibition);
+const getExhibition = data => get(SERVICE_URLS.getExhibition, data);
 const getSpeakers = () => get(SERVICE_URLS.getSpeakers);
 const getFavourites = () => get(SERVICE_URLS.favourites);
 const addRemoveFavourite = data => post(SERVICE_URLS.favourites, data);
