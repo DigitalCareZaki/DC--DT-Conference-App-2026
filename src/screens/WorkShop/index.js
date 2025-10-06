@@ -4,6 +4,7 @@ import {
   Cards,
   Container,
   Header,
+  Loader,
   LoaderModal,
   SizedBox,
 } from '../../components';
@@ -12,13 +13,32 @@ import { styles } from './index.styles';
 import { useFocusEffect } from '@react-navigation/native';
 import { getWorkshops } from '../../redux/actions/main-action';
 import WorkFunctional from './index.function';
+import { SIZES } from '../../constants';
 
-const WorkSop = () => {
-  const { main_loading, workshops, dispatch, onPressHeart } = WorkFunctional();
+const WorkShop = () => {
+  const {
+    main_loading,
+    workshops,
+    dispatch,
+    onPressHeart,
+    page,
+    setHasMore,
+    onEndReached,
+    isLoading,
+    hasMore,
+  } = WorkFunctional();
 
   useFocusEffect(
     useCallback(() => {
-      dispatch(getWorkshops());
+      const payload = {
+        limit: 10,
+        page: page,
+      };
+      dispatch(
+        getWorkshops(payload, workshops, hasMore => {
+          setHasMore(hasMore);
+        }),
+      );
     }, []),
   );
 
@@ -26,7 +46,7 @@ const WorkSop = () => {
     <Container>
       <Header title={'Workshop'} rightIcon={null} />
 
-      {main_loading ? (
+      {main_loading && !isLoading ? (
         <LoaderModal />
       ) : (
         <View style={styles.main_view}>
@@ -41,8 +61,16 @@ const WorkSop = () => {
                 onPress={() => navigate('WorkShopDetails', { id: item?._id })}
               />
             )}
+            ListFooterComponent={
+              isLoading && hasMore ? (
+                <Loader style={styles.loader} />
+              ) : (
+                <SizedBox />
+              )
+            }
+            onEndReached={onEndReached}
+            onEndReachedThreshold={0.1}
             showsVerticalScrollIndicator={false}
-            ListFooterComponent={<SizedBox />}
           />
         </View>
       )}
@@ -50,4 +78,4 @@ const WorkSop = () => {
   );
 };
 
-export default WorkSop;
+export default WorkShop;

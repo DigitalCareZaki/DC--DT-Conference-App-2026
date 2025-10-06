@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   main_view: {
     flex: 1,
     paddingHorizontal: SIZES.padding,
-    paddingTop: SIZES.padding2
+    paddingTop: SIZES.padding2,
   },
   banner: {
     alignSelf: 'center',

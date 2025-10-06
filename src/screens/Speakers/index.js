@@ -9,7 +9,7 @@ import {
 } from '../../components';
 import { FlatList, SectionList, View } from 'react-native';
 import { styles } from './index.styles';
-import { SIZES } from '../../constants';
+import { COLORS, SIZES } from '../../constants';
 import { TextWeights } from '../../config';
 import { SingleSpeakerView } from './components';
 import SpeakerFunctional from './index.function';
@@ -27,6 +27,15 @@ const Speakers = () => {
     }, []),
   );
 
+  const RenderEmptyComponent = () => (
+    <Text
+      align={'center'}
+      mt={SIZES.padding2}
+      text="No speakers yet"
+      size={SIZES.h20}
+      color={COLORS.primary}
+    />
+  );
   return (
     <Container>
       <Header title={'Speakers'} isMenu />
@@ -56,6 +65,7 @@ const Speakers = () => {
                 renderItem={({ item, index }) => (
                   <SingleSpeakerView item={item} />
                 )}
+                ListEmptyComponent={<RenderEmptyComponent />}
                 keyExtractor={(item, index) => index?.toString()}
                 columnWrapperStyle={{ justifyContent: 'space-between' }}
                 scrollEnabled={false}

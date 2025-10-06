@@ -8,6 +8,8 @@ export default () => {
   const { user } = useSelector(state => state.auth);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const dispatch = useDispatch();
 
   const onPressHeart = item => {
@@ -23,6 +25,8 @@ export default () => {
   };
 
   const onEndReached = () => {
+    if (isLoading || !hasMore) return;
+    setIsLoading(true);
     const nextPage = page + 1;
     if (hasMore && conferences?.length > 0) {
       const payload = {
@@ -33,8 +37,11 @@ export default () => {
         getConferences(payload, conferences, hasMore => {
           setHasMore(hasMore);
           setPage(nextPage);
+          setIsLoading(false);
         }),
       );
+    } else {
+      setIsLoading(true);
     }
   };
   return {
@@ -47,5 +54,6 @@ export default () => {
     hasMore,
     setHasMore,
     onEndReached,
+    isLoading,
   };
 };

@@ -33,7 +33,7 @@ const googleLogin = data => post(SERVICE_URLS.googleLogin, data);
 const getConferences = data => get(SERVICE_URLS.getConferences, data);
 const getConferencesById = params =>
   get(SERVICE_URLS.getConferencesByID + params);
-const getWorkshops = () => get(SERVICE_URLS.getWorkshops);
+const getWorkshops = data => get(SERVICE_URLS.getWorkshops, data);
 const getWorkshopsById = params => get(SERVICE_URLS.getWorkshopsById + params);
 const getGallery = () => get(SERVICE_URLS.getGallery);
 const getExhibition = data => get(SERVICE_URLS.getExhibition, data);

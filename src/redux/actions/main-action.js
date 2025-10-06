@@ -53,14 +53,20 @@ export const getConferencesById = data => {
 };
 
 // Workshops
-export const getWorkshops = () => {
+export const getWorkshops = (params, array, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setMainLoading,
+        param_data: params,
         apiService: apiServices.getWorkshops,
         onDone: async res => {
-          dispatch(setWorkshops(res?.data?.data));
+          if (params?.page === 1) {
+            dispatch(setWorkshops(res?.data?.data));
+          } else {
+            dispatch(setWorkshops([...array, ...(res?.data?.data ?? [])]));
+          }
+          onDone && onDone(res?.data?.pagination?.hasNextPage);
         },
       }),
     );

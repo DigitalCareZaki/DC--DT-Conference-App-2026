@@ -9,10 +9,11 @@ export default () => {
 
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onEndReached = () => {
-    console.log('end reached called');
-    if (main_loading || !hasMore || exhibition?.length === 0) return;
+    if (isLoading || !hasMore) return;
+    setIsLoading(true);
 
     const nextPage = page + 1;
     if (hasMore && exhibition?.length > 0) {
@@ -24,8 +25,11 @@ export default () => {
         getExhibition(payload, exhibition, hasMore => {
           setHasMore(hasMore);
           setPage(nextPage);
+          setIsLoading(false);
         }),
       );
+    } else {
+      setIsLoading(false);
     }
   };
 
@@ -36,5 +40,7 @@ export default () => {
     page,
     setHasMore,
     dispatch,
+    isLoading,
+    hasMore,
   };
 };

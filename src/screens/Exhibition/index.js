@@ -22,8 +22,16 @@ import { useDispatch } from 'react-redux';
 import { getExhibition } from '../../redux/actions/main-action';
 
 const Exhibition = () => {
-  const { main_loading, exhibition, setHasMore, onEndReached, page, dispatch } =
-    ExhibitionFunctional();
+  const {
+    main_loading,
+    exhibition,
+    setHasMore,
+    onEndReached,
+    page,
+    dispatch,
+    isLoading,
+    hasMore,
+  } = ExhibitionFunctional();
 
   useFocusEffect(
     useCallback(() => {
@@ -43,7 +51,7 @@ const Exhibition = () => {
     <Container>
       <Header color={COLORS.white} title={'Exhibition'} />
 
-      {main_loading ? (
+      {main_loading && !isLoading ? (
         <LoaderModal />
       ) : (
         <View style={styles.main_view}>
@@ -71,7 +79,11 @@ const Exhibition = () => {
               keyExtractor={item => item?._id?.toString()}
               ListHeaderComponent={<SizedBox height={SIZES.padding2} />}
               ListFooterComponent={
-                main_loading && page > 1 ? <Loader /> : <SizedBox />
+                isLoading && hasMore ? (
+                  <Loader style={styles.loader} />
+                ) : (
+                  <SizedBox />
+                )
               }
               onEndReached={onEndReached}
               onEndReachedThreshold={0.1}

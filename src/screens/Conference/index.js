@@ -26,6 +26,8 @@ const Conference = () => {
     page,
     setHasMore,
     onEndReached,
+    isLoading,
+    hasMore,
   } = ConferenceFunctional();
 
   useFocusEffect(
@@ -46,7 +48,7 @@ const Conference = () => {
     <Container>
       <Header isMenu title={'Conferences'} />
 
-      {main_loading ? (
+      {main_loading && !isLoading ? (
         <LoaderModal />
       ) : (
         <View style={styles.main_view}>
@@ -64,7 +66,11 @@ const Conference = () => {
             keyExtractor={item => item?._id?.toString()}
             showsVerticalScrollIndicator={false}
             ListFooterComponent={
-              main_loading && page > 1 ? <Loader /> : <SizedBox />
+              isLoading && hasMore ? (
+                <Loader style={styles.loader} />
+              ) : (
+                <SizedBox />
+              )
             }
             onEndReached={onEndReached}
             onEndReachedThreshold={0.5}
