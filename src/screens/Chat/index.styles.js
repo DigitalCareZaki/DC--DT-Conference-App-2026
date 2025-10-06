@@ -27,4 +27,19 @@ export const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.8)',
     marginTop: SIZES.padding / 2,
   },
+
+  inputContainer: {
+    width: '100%',
+    height: SIZES.padding * 3,
+  },
+  input_view: {
+    flex: 1,
+    height: '100%',
+    backgroundColor: 'blue',
+    justifyContent: 'center',
+  },
+  input: {
+    marginBottom: 0,
+    marginTop: 0,
+  },
 });

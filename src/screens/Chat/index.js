@@ -1,6 +1,13 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { Container, Header, Icons, RowView, Text } from '../../components';
-import { View } from 'react-native';
+import React, { useEffect } from 'react';
+import {
+  Container,
+  Header,
+  Icons,
+  InputField,
+  RowView,
+  Text,
+} from '../../components';
+import { TouchableOpacity, View } from 'react-native';
 import { COLORS, SIZES } from '../../constants';
 import {
   Bubble,
@@ -11,36 +18,93 @@ import {
 import { styles } from './index.styles';
 import { TextWeights } from '../../config';
 import { attachment_icon, microphone_icon } from '../../assets/icons';
-const Chat = () => {
-  const [messages, setMessages] = useState([]);
+import io from 'socket.io-client';
+import { getToken } from '../../utils/auth.util';
+import ChatFunctional from './index.function';
+
+const Chat = ({ route }) => {
+  const { _id, name } = route?.params?.user;
+
+  const {
+    messages,
+    setMessages,
+    isFirstTime,
+    setIsFirstTime,
+    user,
+    setChatId,
+    chatId,
+    setMsg,
+    msg,
+    setSocket,
+    mySocket,
+  } = ChatFunctional();
+
+  let socket;
+
+  const connectSocket = async () => {
+    const token = await getToken();
+    socket = io(`http://51.83.237.63:5041?token=${token}`);
+    setSocket(socket);
+
+    socket.on('connect', () => {
+      socket.emit('create-chat', { receiverId: _id }, msgs => {});
+    });
+
+    socket.on('chat-created', msgs => {
+      console.log('msgs-=====>', msgs);
+      setChatId(msgs?.chat?._id);
+
+      if (isFirstTime) {
+        const array = msgs?.messageHistory?.map(item => ({
+          _id: item?._id,
+          text: item?.message,
+          createdAt: new Date(item?.createdAt),
+          user: {
+            _id: item?.sender?._id,
+            name: item?.sender?.first_name,
+          },
+          type: item?.type,
+          attachmentUrl: item?.attachmentUrl,
+        }));
+        setMessages(array?.sort((a, b) => b?.createdAt - a?.createdAt));
+        setIsFirstTime(false);
+      }
+    });
+
+    socket.on('new-message', msg => {
+      console.log('new message', msg);
+      const obj = {
+        _id: msg?._id,
+        text: msg?.message,
+        createdAt: new Date(msg?.createdAt),
+        user: {
+          _id: msg?.sender?._id,
+          name: msg?.sender?.first_name,
+          avatar: msg?.sender?.profile_image,
+        },
+        type: msg?.type,
+        attachmentUrl: msg?.attachmentUrl,
+      };
+
+      setMessages(prev => GiftedChat.append(prev, [obj]));
+    });
+    return socket;
+  };
+
+  const onSend = () => {
+    if (!msg || !msg.length) return;
+
+    const message = {
+      chatId: chatId,
+      message: msg?.trim() || '',
+      type: 'text',
+    };
+    mySocket?.emit('send-message', message);
+    setMsg('');
+  };
 
   useEffect(() => {
-    setMessages([
-      {
-        _id: 1,
-        text: 'Hello developer',
-        createdAt: new Date(),
-        user: {
-          _id: 1,
-          name: 'Sidra Azher',
-        },
-      },
-      {
-        _id: 2,
-        text: 'Hi Sidra!',
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'Muhammad Ali',
-        },
-      },
-    ]);
-  }, []);
-
-  const onSend = useCallback((messages = []) => {
-    setMessages(previousMessages =>
-      GiftedChat.append(previousMessages, messages),
-    );
+    connectSocket();
   }, []);
 
   const renderBubble = props => {
@@ -89,15 +153,25 @@ const Chat = () => {
       />
     );
   };
-  const renderInputToolbar = props => (
-    <InputToolbar
-      {...props}
-      containerStyle={{
-        borderRadius: 12,
-      }}
-    />
-  );
 
+  const renderTextInput = props => {
+    return (
+      <RowView style={styles.inputContainer}>
+        <View style={styles.input_view}>
+          <InputField
+            mainStyle={{ marginTop: 0 }}
+            style={styles.input}
+            placeholder={'Type a message'}
+            onChangeText={setMsg}
+            value={msg || ''}
+          />
+        </View>
+        <TouchableOpacity onPress={onSend}>
+          <Text color={COLORS.primary} text={'Send'} />
+        </TouchableOpacity>
+      </RowView>
+    );
+  };
   const renderSend = props => (
     <Send
       {...props}
@@ -112,35 +186,37 @@ const Chat = () => {
         <Icons name={attachment_icon} color={COLORS.primary} />
       </RowView>
     </Send>
-
-    // <RowView style={{ alignItems: 'center', marginRight: SIZES.padding2 }}>
-    //   <Icons name={microphone_icon} color={COLORS.primary} />
-    //   <Icons name={attachment_icon} color={COLORS.primary} />
-
-    //   <Send {...props}>
-    //     <View style={{ marginBottom: 5 }}>
-    //       <Icons name="send" color={COLORS.primary} />
-    //     </View>
-    //   </Send>
-    // </RowView>
   );
+
+  const renderInputToolbar = props => {
+    return (
+      <InputToolbar
+        {...props}
+        containerStyle={{
+          borderTopWidth: 1,
+          borderTopColor: '#E8E8E8',
+          padding: 8,
+        }}
+        primaryStyle={{ alignItems: 'center' }}
+      />
+    );
+  };
 
   return (
     <Container>
-      <Header title={'Muhammad Ali'} rightIcon={null} />
+      <Header title={name} rightIcon={null} />
 
       <View style={styles.main_view}>
         <GiftedChat
           messages={messages}
           onSend={messages => onSend(messages)}
-          user={{ _id: 1, name: 'Sidra Azher' }}
+          user={{ _id: user?.id, name: user?.name }}
           renderBubble={renderBubble}
-          renderInputToolbar={renderInputToolbar}
           showUserAvatar={false}
-          renderAvatar={null}
           renderTime={() => null}
-          renderSend={renderSend}
-          alwaysShowSend
+          renderAvatar={null}
+          renderComposer={renderTextInput}
+          // renderInputToolbar={renderInputToolbar}
         />
       </View>
     </Container>

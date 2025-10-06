@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { TextInput, TouchableOpacity, View } from "react-native";
-import { Icons, RowView, Text } from "../index";
-import { styles } from "./index.style";
-import { COLORS, SIZES } from "../../constants";
-import { hide_password_icon, show_password_icon } from "../../assets/icons";
-import { TextWeights } from "../../config";
+import React, { useState } from 'react';
+import { TextInput, TouchableOpacity, View } from 'react-native';
+import { Icons, RowView, Text } from '../index';
+import { styles } from './index.style';
+import { COLORS, SIZES } from '../../constants';
+import { hide_password_icon, show_password_icon } from '../../assets/icons';
+import { TextWeights } from '../../config';
 
 const InputField = ({
   style,
@@ -27,12 +27,15 @@ const InputField = ({
   label,
   leftIcon,
   isrequired,
-  ml
+  ml,
+  mainStyle,
+  secondIcon,
+  onPressSecondIcon,
 }) => {
-  const [showPassword, setShwoPassword] = useState(true)
+  const [showPassword, setShwoPassword] = useState(true);
 
   return (
-    <View style={{ marginTop: SIZES.padding2 }} >
+    <View style={[{ marginTop: SIZES.padding2 }, mainStyle]}>
       <Text
         text={label}
         weight={TextWeights.medium}
@@ -40,7 +43,7 @@ const InputField = ({
         ml={ml}
         isrequired={isrequired}
       />
-      <RowView style={[styles.main_view, style]} >
+      <RowView style={[styles.main_view, style]}>
         {leftIcon && <Icons name={leftIcon} />}
         <TextInput
           onChangeText={onChangeText}
@@ -49,7 +52,9 @@ const InputField = ({
           secureTextEntry={isPassword ? showPassword : secureText}
           numberOfLines={numberOfLines}
           style={[styles.input, inputStyle]}
-          placeholderTextColor={placeholderTextColor || COLORS.placeholder_text_color}
+          placeholderTextColor={
+            placeholderTextColor || COLORS.placeholder_text_color
+          }
           defaultValue={defaultValue}
           value={value}
           maxLength={maxLength}
@@ -59,16 +64,29 @@ const InputField = ({
           underlineColorAndroid="transparent"
           {...restProps}
         />
-        {
-          (isPassword || icon) &&
+        {(isPassword || icon) && (
           <TouchableOpacity
             activeOpacity={0.6}
             disable={icon}
             onPress={() => setShwoPassword(!showPassword)}
           >
-            <Icons name={icon ? icon : (showPassword ? hide_password_icon : show_password_icon)} />
+            <Icons
+              name={
+                icon
+                  ? icon
+                  : showPassword
+                  ? hide_password_icon
+                  : show_password_icon
+              }
+            />
           </TouchableOpacity>
-        }
+        )}
+
+        {secondIcon && (
+          <TouchableOpacity activeOpacity={0.6} onPress={onPressSecondIcon}>
+            <Icons name={secondIcon} />
+          </TouchableOpacity>
+        )}
       </RowView>
     </View>
   );

@@ -15,9 +15,13 @@ export default () => {
       favoriteId: item?.favoriteId?._id,
       type: item?.type,
     };
+    const payload = {
+      limit: 10,
+      page: page,
+    };
     dispatch(
       addRemoveFav(apiData, () => {
-        dispatch(getFavourites());
+        dispatch(getFavourites(payload));
       }),
     );
   };

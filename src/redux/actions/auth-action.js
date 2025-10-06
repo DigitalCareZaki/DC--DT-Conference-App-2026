@@ -45,7 +45,6 @@ export const login = (data, onDone) => {
 };
 
 export const getAllUsers = (params, array, onDone) => {
-  console.log('params', params);
   return async dispatch => {
     dispatch(
       requestHandler({

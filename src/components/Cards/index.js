@@ -66,8 +66,10 @@ const Cards = ({
         {}
         <Text
           text={
-            isWorkshop
-              ? new Date(item?.date).toLocaleDateString(dateLocale, datePattern)
+            isWorkshop && item?.type === 'Workshop'
+              ? new Date(
+                  isFavourite ? item?.favoriteId?.date : item?.date,
+                ).toLocaleDateString(dateLocale, datePattern)
               : `${new Date(
                   isFavourite ? item?.favoriteId?.startDate : item?.startDate,
                 ).toLocaleDateString(dateLocale, datePattern)} - ${new Date(
