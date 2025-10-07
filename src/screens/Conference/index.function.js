@@ -2,7 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addRemoveFav, getConferences } from '../../redux/actions/main-action';
 import { useEffect, useState } from 'react';
 import { navigate } from '../../navigation/service';
-import { setListLoading } from '../../redux/slices/main-slice';
+import {
+  setListLoading,
+  setSelectedItemIndex,
+} from '../../redux/slices/main-slice';
 
 export default () => {
   const dispatch = useDispatch();
@@ -44,22 +47,18 @@ export default () => {
     setRefreshing(false);
   };
 
-  const onPressHeart = async item => {
+  const onPressHeart = async (item, index) => {
     if (!user) {
       navigate('Login');
       return;
     }
-    setLoadingItemId(item?._id);
+    dispatch(setSelectedItemIndex(index));
 
     const apiData = {
       favoriteId: item?._id,
       type: 'conference',
     };
-    try {
-      await dispatch(addRemoveFav(apiData));
-    } finally {
-      setLoadingItemId(null);
-    }
+    dispatch(addRemoveFav(apiData));
   };
 
   const onEndReached = () => {

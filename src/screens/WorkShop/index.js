@@ -39,20 +39,12 @@ const WorkShop = () => {
               <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }
             renderItem={({ item }) => (
-              <>
-                {loadingItemId === item?._id ? (
-                  <Loader />
-                ) : (
-                  <Cards
-                    isWorkshop
-                    item={item}
-                    onPressHeart={() => onPressHeart(item)}
-                    onPress={() =>
-                      navigate('WorkShopDetails', { id: item?._id })
-                    }
-                  />
-                )}
-              </>
+              <Cards
+                isWorkshop
+                item={item}
+                onPressHeart={() => onPressHeart(item, index)}
+                onPress={() => navigate('WorkShopDetails', { id: item?._id })}
+              />
             )}
             ListEmptyComponent={<ListEmptyText text={'No Workshop Found'} />}
             ListFooterComponent={

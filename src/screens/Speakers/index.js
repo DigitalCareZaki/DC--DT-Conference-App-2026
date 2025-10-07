@@ -10,11 +10,10 @@ import {
 } from '../../components';
 import { FlatList, SectionList, View } from 'react-native';
 import { styles } from './index.styles';
-import { COLORS, SIZES } from '../../constants';
+import { SIZES } from '../../constants';
 import { TextWeights } from '../../config';
 import { SingleSpeakerView } from './components';
 import SpeakerFunctional from './index.function';
-import { useDispatch } from 'react-redux';
 
 const Speakers = () => {
   const { main_loading, data } = SpeakerFunctional();

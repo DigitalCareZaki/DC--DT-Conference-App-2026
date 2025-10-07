@@ -13,6 +13,7 @@ const initialState = {
   favourites: null,
   feedback: null,
   main_post_loading: false,
+  selected_item_index: null,
 };
 
 export const mainSlice = createSlice({
@@ -56,6 +57,9 @@ export const mainSlice = createSlice({
     setMainPostLoading: (state, action) => {
       state.main_post_loading = action.payload;
     },
+    setSelectedItemIndex: (state, action) => {
+      state.selected_item_index = action.payload;
+    },
   },
 });
 
@@ -72,6 +76,7 @@ export const {
   setFavourites,
   setFeedback,
   setMainPostLoading,
+  setSelectedItemIndex,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

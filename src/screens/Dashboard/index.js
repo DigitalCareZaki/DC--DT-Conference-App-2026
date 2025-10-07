@@ -6,7 +6,6 @@ import { styles } from './index.styles';
 import { dashboard_array } from '../../config';
 import FastImage from 'react-native-fast-image';
 import { SingleTabView } from './components';
-import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
   return (

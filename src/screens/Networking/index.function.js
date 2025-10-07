@@ -1,18 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addRemoveFav, getFavourites } from '../../redux/actions/main-action';
 import { useEffect, useState } from 'react';
 import { getAllUsers } from '../../redux/actions/auth-action';
-import { setListLoading } from '../../redux/slices/main-slice';
+import { setAuthLoading } from '../../redux/slices/auth-slice';
 
 export default () => {
   const dispatch = useDispatch();
 
-  const { all_users, total_item } = useSelector(state => state.auth);
-  const { list_loading } = useSelector(state => state.main);
+  const { auth_loading, all_users, total_item } = useSelector(
+    state => state.auth,
+  );
 
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -29,7 +28,7 @@ export default () => {
   };
 
   useEffect(() => {
-    dispatch(setListLoading(true));
+    dispatch(setAuthLoading(true));
     getNetworks(1);
   }, []);
 
@@ -42,11 +41,11 @@ export default () => {
   };
 
   const onEndReached = () => {
-    if (list_loading) return;
+    if (auth_loading) return;
 
     if (hasMore && all_users?.length > 0) {
       setPage(page + 1);
-      getNetworks(1);
+      getNetworks(page + 1);
     }
   };
 
@@ -57,11 +56,10 @@ export default () => {
     hasMore,
     setHasMore,
     onEndReached,
-    isLoading,
     total_item,
     search,
     setSearch,
-    list_loading,
+    auth_loading,
     refreshing,
     onRefresh,
   };

@@ -24,7 +24,7 @@ const Networking = () => {
     total_item,
     search,
     setSearch,
-    list_loading,
+    auth_loading,
     onRefresh,
     refreshing,
   } = NetworkFunctional();
@@ -32,7 +32,7 @@ const Networking = () => {
   return (
     <Container>
       <Header title={'Networking'} rightIcon={null} />
-      {list_loading && !hasMore ? (
+      {auth_loading && !hasMore ? (
         <Loader />
       ) : (
         <View style={styles.main_view}>
@@ -57,7 +57,7 @@ const Networking = () => {
             keyExtractor={item => item?._id}
             renderItem={({ item }) => <SingleUserView item={item} />}
             ListFooterComponent={
-              list_loading && hasMore ? (
+              auth_loading && hasMore ? (
                 <Loader style={styles.loader} />
               ) : (
                 <SizedBox />

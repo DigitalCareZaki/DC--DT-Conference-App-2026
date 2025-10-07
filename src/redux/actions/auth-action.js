@@ -67,7 +67,7 @@ export const getAllUsers = (params, array, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
-        setLoading: setListLoading,
+        setLoading: setAuthLoading,
         param_data: params,
         apiService: apiServices.getAllUser,
         isAuth: true,

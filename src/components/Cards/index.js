@@ -16,13 +16,18 @@ import { useSelector } from 'react-redux';
 
 const Cards = ({
   onPressHeart,
+  index,
   item,
   isDetail = false,
   onPress,
   isFavourite = false,
   isWorkshop = false,
 }) => {
-  const { favourites } = useSelector(state => state.main);
+  const { favourites, selected_item_index, main_loading } = useSelector(
+    state => state.main,
+  );
+
+  console.log('selected_item_index', selected_item_index);
   return (
     <>
       <TouchableOpacity
@@ -39,22 +44,26 @@ const Cards = ({
             color={COLORS.light_blue_color}
             style={common_styles.flex_1}
           />
-          <TouchableOpacity
-            activeOpacity={0.6}
-            hitSlop={common_styles.hitslop2}
-            onPress={onPressHeart}
-          >
-            <Icons
-              name={
-                isFavourite ||
-                favourites?.find(
-                  favItem => favItem?.favoriteId?._id === item?._id,
-                )
-                  ? selected_heart_icon
-                  : heart_icon
-              }
-            />
-          </TouchableOpacity>
+          {selected_item_index === index && main_loading ? (
+            <Loader mt={0} size={'small'} />
+          ) : (
+            <TouchableOpacity
+              activeOpacity={0.6}
+              hitSlop={common_styles.hitslop2}
+              onPress={onPressHeart}
+            >
+              <Icons
+                name={
+                  isFavourite ||
+                  favourites?.find(
+                    favItem => favItem?.favoriteId?._id === item?._id,
+                  )
+                    ? selected_heart_icon
+                    : heart_icon
+                }
+              />
+            </TouchableOpacity>
+          )}
         </RowView>
 
         <Text

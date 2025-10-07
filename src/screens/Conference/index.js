@@ -25,7 +25,6 @@ const Conference = () => {
     isMore,
     onRefresh,
     refreshing,
-    loadingItemId,
   } = ConferenceFunctional();
 
   return (
@@ -65,19 +64,16 @@ const Conference = () => {
               }
               onEndReached={onEndReached}
               onEndReachedThreshold={0.5}
-              renderItem={({ item }) => (
+              renderItem={({ item, index }) => (
                 <>
-                  {loadingItemId === item?._id ? (
-                    <Loader />
-                  ) : (
-                    <Cards
-                      item={item}
-                      onPressHeart={() => onPressHeart(item)}
-                      onPress={() =>
-                        navigate('ConferenceDetails', { id: item?._id })
-                      }
-                    />
-                  )}
+                  <Cards
+                    index={index}
+                    item={item}
+                    onPressHeart={() => onPressHeart(item, index)}
+                    onPress={() =>
+                      navigate('ConferenceDetails', { id: item?._id })
+                    }
+                  />
                 </>
               )}
             />

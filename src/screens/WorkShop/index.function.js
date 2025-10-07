@@ -1,7 +1,10 @@
 import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addRemoveFav, getWorkshops } from '../../redux/actions/main-action';
-import { setListLoading } from '../../redux/slices/main-slice';
+import {
+  setListLoading,
+  setSelectedItemIndex,
+} from '../../redux/slices/main-slice';
 
 export default () => {
   const dispatch = useDispatch();
@@ -40,12 +43,12 @@ export default () => {
     setRefreshing(false);
   };
 
-  const onPressHeart = async item => {
+  const onPressHeart = async (item, index) => {
     if (!user) {
       navigate('Login');
       return;
     }
-    setLoadingItemId(item?._id);
+    dispatch(setSelectedItemIndex(index));
 
     const apiData = {
       favoriteId: item?._id,
