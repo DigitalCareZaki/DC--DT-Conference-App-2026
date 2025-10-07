@@ -16,6 +16,7 @@ import { SingleUserView } from './components';
 import NetworkFunctional from './index.function';
 import { useFocusEffect } from '@react-navigation/native';
 import { getAllUsers } from '../../redux/actions/auth-action';
+import { searchArray } from '../../utils/functions';
 
 const Networking = () => {
   const {
@@ -28,6 +29,8 @@ const Networking = () => {
     isLoading,
     hasMore,
     total_item,
+    search,
+    setSearch
   } = NetworkFunctional();
 
   useFocusEffect(
@@ -51,7 +54,10 @@ const Networking = () => {
         <LoaderModal />
       ) : (
         <View style={styles.main_view}>
-          <SearchBar style={styles.search_bar} placeholder={'Search..'} />
+          <SearchBar
+            value={search}
+            onChangeText={setSearch}
+            style={styles.search_bar} placeholder={'Search..'} />
 
           <Text
             text={`${total_item} Users Registered`}
@@ -63,7 +69,7 @@ const Networking = () => {
 
           <FlatList
             showsVerticalScrollIndicator={false}
-            data={all_users}
+            data={search ? searchArray(all_users, search) : all_users}
             keyExtractor={item => item?._id}
             renderItem={({ item }) => <SingleUserView item={item} />}
             ListFooterComponent={

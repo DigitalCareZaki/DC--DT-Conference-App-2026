@@ -7,7 +7,7 @@ import { TextWeights } from '../../../config';
 import { useSelector } from 'react-redux';
 
 const SingleTabView = ({ item }) => {
-  const { user } = useSelector(state => state.auth);
+  const { user } = useSelector(state => state.constant);
   return (
     <TouchableOpacity
       style={styles.main_view}

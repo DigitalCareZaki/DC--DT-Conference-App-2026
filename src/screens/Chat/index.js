@@ -19,8 +19,8 @@ import { styles } from './index.styles';
 import { TextWeights } from '../../config';
 import { attachment_icon, microphone_icon } from '../../assets/icons';
 import io from 'socket.io-client';
-import { getToken } from '../../utils/auth.util';
 import ChatFunctional from './index.function';
+import { getToken } from '../../utils/functions';
 
 const Chat = ({ route }) => {
   const { _id, name } = route?.params?.user;
@@ -71,9 +71,10 @@ const Chat = ({ route }) => {
     });
 
     socket.on('new-message', msg => {
+      console.log("New Messageee" , msg)
       const obj = {
         _id: msg?._id,
-        text: msg?.message,
+        text: msg?.message?? "",
         createdAt: new Date(msg?.createdAt),
         user: {
           _id: msg?.sender?._id,
@@ -97,6 +98,7 @@ const Chat = ({ route }) => {
       message: msg?.trim() || '',
       type: 'text',
     };
+    console.log("message" ,message)
     mySocket?.emit('send-message', message);
     setMsg('');
   };

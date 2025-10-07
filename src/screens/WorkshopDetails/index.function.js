@@ -4,7 +4,7 @@ import { addRemoveFav } from '../../redux/actions/main-action';
 export default () => {
   const { main_loading, single_workshop } = useSelector(state => state.main);
 
-  const { user } = useSelector(state => state.auth);
+  const { user } = useSelector(state => state.constant);
 
   const dispatch = useDispatch();
 

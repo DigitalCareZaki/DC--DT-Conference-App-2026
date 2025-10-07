@@ -4,16 +4,14 @@ import { common_styles } from '../../../utils/common_styles';
 import { ErrorText, InputField, RowView, Text } from '../../../components';
 import { password_icon } from '../../../assets/icons';
 import { COLORS, SIZES } from '../../../constants';
-import { privacy_policy_link, terms_link, TextWeights } from '../../../config';
+import { privacy_policy_link, terms_link } from '../../../config';
 import { Formik } from 'formik';
 import {
   password_schema,
   password_validation_schema,
 } from '../../../validations_schemas/password_validation_schemas';
-import { getToken } from '../../../utils/auth.util';
 
 const SetupPassword = ({ formikRef, onSubmit, data }) => {
-  const [checked, setChecked] = useState(false);
 
   return (
     <Formik

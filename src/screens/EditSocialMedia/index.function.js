@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { updateLinks } from '../../redux/actions/main-action';
-import { setUser } from '../../redux/slices/auth-slice';
+import { setUser } from '../../redux/slices/constant-slice';
 
 export default () => {
+
   const { main_loading } = useSelector(state => state.main);
-  const { user } = useSelector(state => state.auth);
+  const { user } = useSelector(state => state.constant);
 
   const dispatch = useDispatch();
 

@@ -8,8 +8,8 @@ import { GOOGLE_WEB_CLIENT_ID } from '@env';
 import Toast from 'react-native-toast-message';
 import ImagePicker from 'react-native-image-crop-picker';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { setUser } from '../redux/slices/main-slice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setUser } from '../redux/slices/constant-slice';
 
 // first letter capitalize
 export const capitalize = str => str?.charAt(0).toUpperCase() + str?.slice(1);
@@ -38,6 +38,9 @@ export const getGoogleToken = async () => {
     return null;
   }
 };
+
+export const getToken = () => AsyncStorage.getItem("token");
+export const setToken = (token) => AsyncStorage.setItem("token", token);
 
 export const openImagePicker = (onDone, multiple = false) => {
   ImagePicker.openPicker({

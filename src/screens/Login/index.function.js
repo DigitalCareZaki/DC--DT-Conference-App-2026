@@ -1,12 +1,7 @@
-import { Alert, Keyboard } from 'react-native';
+import { Keyboard } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { navigate } from '../../navigation/service';
 import { googleLogin, login } from '../../redux/actions/auth-action';
-import {
-  GoogleSignin,
-  isSuccessResponse,
-} from '@react-native-google-signin/google-signin';
-import { setUser } from '../../redux/slices/auth-slice';
 import { getGoogleToken, showToast } from '../../utils/functions';
 
 export default () => {

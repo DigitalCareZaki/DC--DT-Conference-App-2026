@@ -11,7 +11,7 @@ export default () => {
     state => state.main,
   );
 
-  const { user } = useSelector(state => state.auth);
+  const { user } = useSelector(state => state.constant);
   const [workShopPage, setWorkShopPage] = useState(1);
   const [favPage, setFavPage] = useState(1);
   const [hasMoreWorkshops, setHasMoreWorkshop] = useState(true);

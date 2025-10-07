@@ -1,16 +1,15 @@
 import apiServices from '../../api_services/request-handler';
 import { goBack } from '../../navigation/service';
-import { setToken } from '../../utils/auth.util';
-import { requestHandler } from '../../utils/functions';
+import { requestHandler, setToken } from '../../utils/functions';
 import {
   setAllUsers,
   setAuthLoading,
   setGoogleSigninLoading,
   setTotalItems,
-  setUser,
 } from '../slices/auth-slice';
+import { setUser } from '../slices/constant-slice';
 
-export const signup = (data, onDone) => {
+export const signup = (data) => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -20,14 +19,14 @@ export const signup = (data, onDone) => {
         isAuth: true,
         onDone: async res => {
           dispatch(setUser(res?.data?.data));
-          onDone && onDone(res);
+          goBack()
         },
       }),
     );
   };
 };
 
-export const login = (data, onDone) => {
+export const login = (data) => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -36,9 +35,27 @@ export const login = (data, onDone) => {
         param_data: data,
         isAuth: true,
         onDone: async res => {
+          await setToken(res?.data?.accessToken);
           dispatch(setUser(res?.data?.user));
-          setToken(res?.data?.accessToken);
-          onDone && onDone(res);
+          goBack()
+        },
+      }),
+    );
+  };
+};
+
+export const googleLogin = (data) => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setGoogleSigninLoading,
+        param_data: data,
+        apiService: apiServices.googleLogin,
+        isAuth: true,
+        onDone: async res => {
+          await setToken(res?.data?.accessToken)
+          dispatch(setUser(res?.data?.user));
+          goBack()
         },
       }),
     );
@@ -79,19 +96,4 @@ export const getUserProfile = () => {
   };
 };
 
-export const googleLogin = (data) => {
-  return async dispatch => {
-    dispatch(
-      requestHandler({
-        setLoading: setGoogleSigninLoading,
-        param_data: data,
-        apiService: apiServices.googleLogin,
-        isAuth: true,
-        onDone: async res => {
-          dispatch(setUser(res?.data?.user));
-          goBack()
-        },
-      }),
-    );
-  };
-};
+

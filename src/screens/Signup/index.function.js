@@ -73,7 +73,7 @@ export default () => {
       twitterLink: signUpData?.twitterLink,
       fcmToken: fcmToken,
     };
-    dispatch(signup(apiData, () => goBack()));
+    dispatch(signup(apiData));
   };
 
   const onPressButton = async () => {

@@ -38,7 +38,7 @@ const MainNavigator = () => {
   const dispatch = useDispatch();
   const Stack = createNativeStackNavigator();
 
-  const { user } = useSelector(state => state.auth);
+  const { user } = useSelector(state => state.constant);
 
   useEffect(() => {
     if (user) {

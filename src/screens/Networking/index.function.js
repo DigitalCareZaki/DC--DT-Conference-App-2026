@@ -11,6 +11,7 @@ export default () => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [search, setSearch] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -42,11 +43,12 @@ export default () => {
     auth_loading,
     all_users,
     page,
-    setPage,
     hasMore,
     setHasMore,
     onEndReached,
     isLoading,
     total_item,
+    search,
+    setSearch
   };
 };

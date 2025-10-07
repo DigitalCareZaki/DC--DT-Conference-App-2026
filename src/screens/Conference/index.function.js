@@ -8,7 +8,8 @@ export default () => {
   const dispatch = useDispatch();
 
   const { list_loading, conferences, favourites } = useSelector(state => state.main);
-  const { user, total_item } = useSelector(state => state.auth);
+  const { total_item } = useSelector(state => state.auth);
+  const { user } = useSelector(state => state.constant);
 
   const [page, setPage] = useState(1);
   const [isMore, setIsMore] = useState(false);
