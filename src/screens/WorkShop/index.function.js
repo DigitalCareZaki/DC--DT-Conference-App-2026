@@ -11,7 +11,6 @@ export default () => {
     state => state.main,
   );
 
-  console.log('favourites', favourites);
   const { user } = useSelector(state => state.auth);
   const [workShopPage, setWorkShopPage] = useState(1);
   const [favPage, setFavPage] = useState(1);

@@ -32,17 +32,21 @@ import { notificationListener } from '../utils/notification_service';
 import { getUserProfile } from '../redux/actions/auth-action';
 import { firebase_messaging } from '../utils/firebase_service';
 import { notificationTopic } from '../config';
+import { getFavourites } from '../redux/actions/main-action';
 
 const MainNavigator = () => {
   const dispatch = useDispatch();
   const Stack = createNativeStackNavigator();
+
   const { user } = useSelector(state => state.auth);
+
   useEffect(() => {
-    if (!user) {
+    if (user) {
       dispatch(getUserProfile());
+      dispatch(getFavourites());
     }
     firebase_messaging.subscribeToTopic(notificationTopic);
-    notificationListener(message => {});
+    notificationListener(message => { });
   }, []);
 
   return (

@@ -8,7 +8,7 @@ const ListEmptyText = ({ text, color, mt }) => {
         <Text
             text={text}
             mt={mt ?? SIZES.padding}
-            color={color ?? COLORS.primary}
+            color={color ?? COLORS.white}
             align={'center'}
 
         />

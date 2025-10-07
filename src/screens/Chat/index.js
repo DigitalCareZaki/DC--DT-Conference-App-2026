@@ -51,7 +51,6 @@ const Chat = ({ route }) => {
     });
 
     socket.on('chat-created', msgs => {
-      console.log('msgs-=====>', msgs);
       setChatId(msgs?.chat?._id);
 
       if (isFirstTime) {
@@ -72,7 +71,6 @@ const Chat = ({ route }) => {
     });
 
     socket.on('new-message', msg => {
-      console.log('new message', msg);
       const obj = {
         _id: msg?._id,
         text: msg?.message,

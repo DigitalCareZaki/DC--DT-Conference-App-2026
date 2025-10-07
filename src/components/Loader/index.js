@@ -6,7 +6,7 @@ const Loader = ({ style, color, size, mt }) => {
   return (
     <ActivityIndicator
       size={size ? size : 'large'}
-      color={color ?? COLORS.primary}
+      color={color ?? COLORS.white}
       style={[{ marginTop: mt ?? SIZES.padding2 }, style]}
     />
   );

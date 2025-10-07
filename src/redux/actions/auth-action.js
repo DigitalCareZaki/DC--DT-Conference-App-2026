@@ -1,4 +1,5 @@
 import apiServices from '../../api_services/request-handler';
+import { goBack } from '../../navigation/service';
 import { setToken } from '../../utils/auth.util';
 import { requestHandler } from '../../utils/functions';
 import {
@@ -66,23 +67,19 @@ export const getAllUsers = (params, array, onDone) => {
   };
 };
 
-export const getUserProfile = onDone => {
+export const getUserProfile = () => {
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setAuthLoading,
         apiService: apiServices.getProfile,
-        isAuth: true,
-        onDone: async res => {
-          dispatch(setUser(res?.data));
-          onDone && onDone(res);
-        },
+        onDone: async res => dispatch(setUser(res?.data)),
       }),
     );
   };
 };
 
-export const googleLogin = (data, onDone) => {
+export const googleLogin = (data) => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -92,7 +89,7 @@ export const googleLogin = (data, onDone) => {
         isAuth: true,
         onDone: async res => {
           dispatch(setUser(res?.data?.user));
-          onDone && onDone(res);
+          goBack()
         },
       }),
     );

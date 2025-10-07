@@ -1,63 +1,40 @@
-import { View, FlatList } from 'react-native';
-import React, { useCallback } from 'react';
+import { View, FlatList, RefreshControl } from 'react-native';
+import React from 'react';
 import Container from '../../components/Container';
 import { SIZES } from '../../constants';
 import { TextWeights } from '../../config';
 import {
   Cards,
   Header,
+  ListEmptyText,
   Loader,
-  LoaderModal,
   SizedBox,
   Text,
 } from '../../components';
 import { styles } from './index.styles';
 import { navigate } from '../../navigation/service';
-import { useFocusEffect } from '@react-navigation/native';
-import { getConferences, getFavourites } from '../../redux/actions/main-action';
 import ConferenceFunctional from './index.function';
 
 const Conference = () => {
   const {
-    main_loading,
+    list_loading,
     conferences,
     onPressHeart,
-    dispatch,
     onEndReached,
     total_item,
-    favourites,
-    setConfHasMore,
-    setFavHasMore,
-    confHasMore,
-    confLoading,
+    isMore,
+    onRefresh,
+    refreshing
   } = ConferenceFunctional();
-
-  useFocusEffect(
-    useCallback(() => {
-      const payload = {
-        limit: 10,
-        page: 1,
-      };
-      dispatch(
-        getConferences(payload, conferences, hasMore => {
-          setConfHasMore(hasMore);
-        }),
-      );
-      dispatch(
-        getFavourites(payload, favourites, hasMore => {
-          setFavHasMore(hasMore);
-        }),
-      );
-    }, []),
-  );
 
   return (
     <Container>
       <Header isMenu title={'Conferences'} />
 
-      {main_loading && !confLoading ? (
-        <LoaderModal />
+      {list_loading && !isMore ? (
+        <Loader />
       ) : (
+
         <View style={styles.main_view}>
           <Text
             text={`${total_item} Conferences Available`}
@@ -70,10 +47,12 @@ const Conference = () => {
 
           <FlatList
             data={conferences}
+            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             keyExtractor={item => item?._id?.toString()}
             showsVerticalScrollIndicator={false}
+            ListEmptyComponent={<ListEmptyText text={"No Conference Found"} />}
             ListFooterComponent={
-              confLoading && confHasMore ? (
+              list_loading && isMore ? (
                 <Loader style={styles.loader} />
               ) : (
                 <SizedBox />

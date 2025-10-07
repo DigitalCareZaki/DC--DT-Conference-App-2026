@@ -3,12 +3,13 @@ import {
   Cards,
   Container,
   Header,
+  ListEmptyText,
   Loader,
   LoaderModal,
   SizedBox,
   Text,
 } from '../../components';
-import { FlatList, View } from 'react-native';
+import { FlatList, RefreshControl, View } from 'react-native';
 import { styles } from './index.styles';
 import FavoutitesFunctional from './index.function';
 import { useFocusEffect } from '@react-navigation/native';
@@ -17,58 +18,29 @@ import { COLORS, SIZES } from '../../constants';
 
 const MyAgenda = () => {
   const {
-    main_loading,
     favourites,
     onPressHeart,
-    dispatch,
-    page,
-    setHasMore,
-    onEndReached,
-    isLoading,
-    hasMore,
+    onRefresh,
+    refreshing,
+    list_loading
   } = FavoutitesFunctional();
 
-  useFocusEffect(
-    useCallback(() => {
-      const payload = {
-        limit: 10,
-        page: page,
-      };
-      dispatch(
-        getFavourites(payload, favourites, hasMore => {
-          setHasMore(hasMore);
-        }),
-      );
-    }, []),
-  );
-  const RenderEmptyComponent = () => (
-    <View style={styles.emptyContainer}>
-      <Text text="No Favourites yet" size={SIZES.h20} color={COLORS.primary} />
-    </View>
-  );
 
   return (
     <Container>
       <Header title={'My Agenda'} rightIcon={null} />
 
-      {main_loading && !isLoading ? (
-        <LoaderModal />
-      ) : (
-        <View style={styles.main_view}>
+      <View style={styles.main_view}>
+        {list_loading ? (
+          <Loader />
+        ) : (
           <FlatList
             data={favourites}
+            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             keyExtractor={item => item?._id}
             showsVerticalScrollIndicator={false}
-            ListFooterComponent={
-              isLoading && hasMore ? (
-                <Loader style={styles.loader} />
-              ) : (
-                <SizedBox />
-              )
-            }
-            onEndReached={onEndReached}
-            onEndReachedThreshold={0.5}
-            ListEmptyComponent={<RenderEmptyComponent />}
+            ListFooterComponent={<SizedBox />}
+            ListEmptyComponent={<ListEmptyText text={"No favourite found"} />}
             renderItem={({ item }) => (
               <Cards
                 onPressHeart={() => onPressHeart(item)}
@@ -77,14 +49,9 @@ const MyAgenda = () => {
                 isFavourite={true}
               />
             )}
-            contentContainerStyle={
-              favourites?.length === 0
-                ? { flexGrow: 1, justifyContent: 'center' }
-                : null
-            }
           />
-        </View>
-      )}
+        )}
+      </View>
     </Container>
   );
 };

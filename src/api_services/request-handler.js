@@ -1,6 +1,7 @@
 import { get, post, put } from './http-provider';
 
 export const SERVICE_URLS = {
+
   // Auth Management
   register: '/auth/register',
   login: '/auth/login',
@@ -10,15 +11,16 @@ export const SERVICE_URLS = {
 
   // Main Management
   getConferences: '/conference',
-  getConferencesByID: '/conference/',
+  getConference: '/conference/',
   getWorkshops: '/workshop',
   getWorkshopsById: '/workshop/',
   getGallery: '/gallery',
   getExhibition: '/exhibition',
   getSpeakers: '/speaker',
-  favourites: '/user/favorites',
-  getFeedbacks: '/feedbacks/user',
-  postUpdateFeedback: '/feedbacks/submit-update',
+  getFavourites: '/user/favorites?page=1&limit=1000',
+  addRemoveFavourite: '/user/favorites',
+  getFeedback: '/feedbacks/user',
+  addFeedback: '/feedbacks/submit-update',
   updateLinks: '/user/update',
 };
 
@@ -31,17 +33,16 @@ const googleLogin = data => post(SERVICE_URLS.googleLogin, data);
 
 // Main Management
 const getConferences = data => get(SERVICE_URLS.getConferences, data);
-const getConferencesById = params =>
-  get(SERVICE_URLS.getConferencesByID + params);
+const getConference = params => get(SERVICE_URLS.getConference + params);
 const getWorkshops = data => get(SERVICE_URLS.getWorkshops, data);
-const getWorkshopsById = params => get(SERVICE_URLS.getWorkshopsById + params);
+const getWorkshop = params => get(SERVICE_URLS.getWorkshop + params);
 const getGallery = data => get(SERVICE_URLS.getGallery, data);
 const getExhibition = data => get(SERVICE_URLS.getExhibition, data);
 const getSpeakers = () => get(SERVICE_URLS.getSpeakers);
-const getFavourites = data => get(SERVICE_URLS.favourites, data);
-const addRemoveFavourite = data => post(SERVICE_URLS.favourites, data);
-const getFeedBacks = () => get(SERVICE_URLS.getFeedbacks);
-const postUpdateFeedback = data => put(SERVICE_URLS.postUpdateFeedback, data);
+const getFavourites = data => get(SERVICE_URLS.getFavourites, data);
+const addRemoveFavourite = data => post(SERVICE_URLS.addRemoveFavourite, data);
+const getFeedBack = () => get(SERVICE_URLS.getFeedback);
+const addFeedback = data => put(SERVICE_URLS.addFeedback, data);
 const updateLinks = data => put(SERVICE_URLS.updateLinks, data);
 
 const apiServices = {
@@ -54,16 +55,16 @@ const apiServices = {
 
   // Main Management
   getConferences,
-  getConferencesById,
+  getConference,
   getWorkshops,
-  getWorkshopsById,
+  getWorkshop,
   getGallery,
   getExhibition,
   getSpeakers,
   getFavourites,
   addRemoveFavourite,
-  getFeedBacks,
-  postUpdateFeedback,
+  getFeedBack,
+  addFeedback,
   updateLinks,
 };
 

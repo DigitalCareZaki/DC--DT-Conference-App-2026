@@ -34,6 +34,7 @@ export const getGoogleToken = async () => {
     const { data } = await GoogleSignin.signIn();
     return data;
   } catch (error) {
+    console.log("Google SIgnin eweorrr" , error)
     return null;
   }
 };

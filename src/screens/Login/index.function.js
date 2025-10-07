@@ -7,6 +7,7 @@ import {
   isSuccessResponse,
 } from '@react-native-google-signin/google-signin';
 import { setUser } from '../../redux/slices/auth-slice';
+import { getGoogleToken, showToast } from '../../utils/functions';
 
 export default () => {
   const dispatch = useDispatch();
@@ -32,36 +33,21 @@ export default () => {
   const onPressGoogleBtn = async values => {
     try {
       if (!values?.role) {
-        Alert.alert('Please select the role first');
+        showToast('error', 'Please select the role first');
         return;
       }
-      await GoogleSignin.hasPlayServices();
-      const response = await GoogleSignin.signIn();
-      if (isSuccessResponse(response)) {
+
+      const data = await getGoogleToken()
+
+      if (data?.user) {
         const apiData = {
-          email: response?.data?.user?.email,
+          email: data?.user?.email,
           role: values?.role,
         };
-        dispatch(
-          googleLogin(apiData, res => {
-            dispatch(setUser(res?.data?.user));
-            navigate('DrawerNavigation');
-          }),
-        );
+
+        dispatch(googleLogin(apiData));
       }
     } catch (error) {
-      if (isErrorWithCode(error)) {
-        switch (error.code) {
-          case statusCodes.IN_PROGRESS:
-            console.log('Signin in-progress');
-            break;
-          case statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
-            console.log('Play services not available or outdated');
-            break;
-          default:
-            console.log('some other error happened');
-        }
-      }
     }
   };
 

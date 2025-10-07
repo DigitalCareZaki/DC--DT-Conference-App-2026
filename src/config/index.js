@@ -50,10 +50,6 @@ export const notificationTopic = 'conference_app';
 // // default: "Conference Delegate" roles: "Admin" || "Conference Delegate" || "Exhibitor" || "Sponsor" || "Visitor" || "Speaker"
 export const roles = [
   {
-    id: 1,
-    name: 'Admin',
-  },
-  {
     id: 2,
     name: 'Conference Delegate',
   },

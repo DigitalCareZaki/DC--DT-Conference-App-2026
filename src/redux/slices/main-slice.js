@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   main_loading: null,
+  list_loading: null,
   conferences: null,
   single_conference: null,
   workshops: null,
@@ -10,7 +11,6 @@ const initialState = {
   exhibition: null,
   speakers: null,
   favourites: null,
-  favlist: null,
   feedback: null,
   main_post_loading: false,
 };
@@ -22,6 +22,9 @@ export const mainSlice = createSlice({
   reducers: {
     setMainLoading: (state, action) => {
       state.main_loading = action.payload;
+    },
+    setListLoading: (state, action) => {
+      state.list_loading = action.payload;
     },
     setConferences: (state, action) => {
       state.conferences = action.payload;
@@ -47,10 +50,6 @@ export const mainSlice = createSlice({
     setFavourites: (state, action) => {
       state.favourites = action.payload;
     },
-
-    setFavList: (state, action) => {
-      state.favlist = action.payload;
-    },
     setFeedback: (state, action) => {
       state.feedback = action.payload;
     },
@@ -62,6 +61,7 @@ export const mainSlice = createSlice({
 
 export const {
   setMainLoading,
+  setListLoading,
   setConferences,
   setSingleConference,
   setWorkshops,
@@ -70,7 +70,6 @@ export const {
   setExhibition,
   setSpeakers,
   setFavourites,
-  setFavList,
   setFeedback,
   setMainPostLoading,
 } = mainSlice.actions;

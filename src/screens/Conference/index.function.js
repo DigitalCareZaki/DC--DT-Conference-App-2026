@@ -1,95 +1,74 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addRemoveFav,
-  getConferences,
-  getFavourites,
-} from '../../redux/actions/main-action';
-import { useState } from 'react';
+import { addRemoveFav, getConferences } from '../../redux/actions/main-action';
+import { useEffect, useState } from 'react';
 import { navigate } from '../../navigation/service';
+import { setListLoading } from '../../redux/slices/main-slice';
 
 export default () => {
-  const { main_loading, conferences, favourites } = useSelector(
-    state => state.main,
-  );
-  const { user, total_item } = useSelector(state => state.auth);
-  const [confPage, setConfPage] = useState(1);
-  const [favPage, setFavPage] = useState(1);
-  const [confHasMore, setConfHasMore] = useState(true);
-  const [favHasMore, setFavHasMore] = useState(true);
-  const [confLoading, setConfLoading] = useState(false);
-
   const dispatch = useDispatch();
+
+  const { list_loading, conferences, favourites } = useSelector(state => state.main);
+  const { user, total_item } = useSelector(state => state.auth);
+
+  const [page, setPage] = useState(1);
+  const [isMore, setIsMore] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const getConferenceData = (pageNumber) => {
+    const payload = {
+      limit: 10,
+      page: pageNumber,
+    };
+
+    dispatch(getConferences(payload, conferences, isMore => { setIsMore(isMore) }));
+  }
+
+  useEffect(() => {
+    dispatch(setListLoading(true))
+    getConferenceData(page)
+  }, [])
+
+
+  const onRefresh = async () => {
+    setRefreshing(true)
+    setPage(1)
+    setIsMore(false)
+    await getConferenceData(1)
+    setRefreshing(false)
+  }
 
   const onPressHeart = item => {
     if (!user) {
       navigate('Login');
       return;
     }
-    const favpayload = {
-      limit: 10,
-      page: favPage,
-    };
+
     const apiData = {
       favoriteId: item?._id,
       type: 'conference',
     };
-    dispatch(
-      addRemoveFav(apiData, () => {
-        dispatch(getFavourites(favpayload, favourites, () => {}));
-      }),
-    );
+    dispatch(addRemoveFav(apiData));
   };
 
   const onEndReached = () => {
-    if (confLoading) return;
+    if (list_loading) return;
 
-    setConfLoading(true);
-
-    // Conferences pagination
-    if (confHasMore && conferences.length > 0) {
-      const nextPage = confPage + 1;
-      const payload = {
-        limit: 10,
-        page: nextPage,
-      };
-
-      dispatch(
-        getConferences(payload, conferences, hasMore => {
-          setConfHasMore(hasMore);
-          setConfPage(nextPage);
-          setConfLoading(false);
-        }),
-      );
+    if (isMore && conferences.length > 0) {
+      setPage(page + 1)
+      getConferenceData(page + 1)
     }
 
-    // Favourites pagination
-    if (favHasMore && favourites?.length > 0) {
-      const nextPage = favPage + 1;
-      const favPayload = {
-        limit: 10,
-        page: nextPage,
-      };
-
-      dispatch(
-        getFavourites(favPayload, favourites, hasMore => {
-          setFavHasMore(hasMore);
-          setFavPage(nextPage);
-        }),
-      );
-    }
   };
+
   return {
-    main_loading,
+    list_loading,
     conferences,
     onPressHeart,
-    dispatch,
     onEndReached,
-    // isLoading,
     total_item,
     favourites,
-    setConfHasMore,
-    setFavHasMore,
-    confHasMore,
-    confLoading,
+    isMore,
+    onRefresh,
+    refreshing
   };
 };

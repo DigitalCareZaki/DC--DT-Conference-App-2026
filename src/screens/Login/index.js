@@ -45,7 +45,7 @@ const Login = () => {
     onPressGoogleBtn,
     google_signin_loading,
   } = LoginFunctional();
-  GoogleSignin.configure();
+
 
   return (
     <Container>

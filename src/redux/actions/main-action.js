@@ -8,6 +8,7 @@ import {
   setFavourites,
   setFeedback,
   setGallery,
+  setListLoading,
   setMainLoading,
   setMainPostLoading,
   setSingleConference,
@@ -22,7 +23,7 @@ export const getConferences = (params, array, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
-        setLoading: setMainLoading,
+        setLoading: setListLoading,
         param_data: params,
         apiService: apiServices.getConferences,
         onDone: async res => {
@@ -39,12 +40,12 @@ export const getConferences = (params, array, onDone) => {
   };
 };
 
-export const getConferencesById = data => {
+export const getConference = data => {
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setMainLoading,
-        apiService: apiServices.getConferencesById,
+        apiService: apiServices.getConference,
         param_data: data,
         onDone: async res => {
           dispatch(setSingleConference(res?.data));
@@ -63,9 +64,7 @@ export const getWorkshops = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getWorkshops,
         onDone: async res => {
-          console.log('workshopres==>', res);
           dispatch(setTotalItems(res?.data?.pagination?.totalItems));
-
           if (params?.page === 1) {
             dispatch(setWorkshops(res?.data?.data));
           } else {
@@ -78,13 +77,13 @@ export const getWorkshops = (params, array, onDone) => {
   };
 };
 
-export const getWorkshopById = data => {
+export const getWorkshop = data => {
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setMainLoading,
         param_data: data,
-        apiService: apiServices.getWorkshopsById,
+        apiService: apiServices.getWorkshop,
         onDone: async res => {
           dispatch(setSingleWorkshop(res?.data));
         },
@@ -157,22 +156,14 @@ export const getSpeakers = () => {
 };
 
 // Favourite
-export const getFavourites = (params, array, onDone) => {
+export const getFavourites = () => {
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setMainLoading,
-        param_data: params,
         apiService: apiServices.getFavourites,
         onDone: async res => {
-          if (params?.page === 1) {
-            dispatch(setFavourites(res?.data?.favorites));
-          } else {
-            dispatch(
-              setFavourites([...array, ...(res?.data?.favorites ?? [])]),
-            );
-          }
-          onDone && onDone(res?.data?.pagination?.hasNextPage);
+          dispatch(setFavourites(res?.data?.favorites));
         },
       }),
     );
@@ -186,10 +177,7 @@ export const addRemoveFav = (data, onDone) => {
         setLoading: setMainLoading,
         apiService: apiServices.addRemoveFavourite,
         param_data: data,
-        onDone: async res => {
-          dispatch(setFavList(res?.data));
-          onDone && onDone(res);
-        },
+        onDone: () => dispatch(getFavourites())
       }),
     );
   };

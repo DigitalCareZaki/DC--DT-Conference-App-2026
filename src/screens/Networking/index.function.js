@@ -15,7 +15,6 @@ export default () => {
   const dispatch = useDispatch();
 
   const onEndReached = () => {
-    console.log('end reached called');
     if (isLoading || !hasMore) return;
 
     setIsLoading(true);
