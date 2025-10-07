@@ -12,7 +12,6 @@ import {
 } from '../../../validations_schemas/password_validation_schemas';
 
 const SetupPassword = ({ formikRef, onSubmit, data }) => {
-
   return (
     <Formik
       initialValues={password_schema(data)}
@@ -31,7 +30,7 @@ const SetupPassword = ({ formikRef, onSubmit, data }) => {
               placeholder={'Enter your Password'}
               value={values.password}
               onChangeText={handleChange('password')}
-              maxLength={6}
+              maxLength={10}
             />
             <ErrorText error={errors.password} />
 
@@ -43,7 +42,7 @@ const SetupPassword = ({ formikRef, onSubmit, data }) => {
               placeholder={'Confirm your Password'}
               value={values.confirmPassword}
               onChangeText={handleChange('confirmPassword')}
-              maxLength={6}
+              maxLength={10}
             />
             <ErrorText error={errors.confirmPassword} />
 

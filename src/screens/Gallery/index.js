@@ -1,65 +1,50 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import {
   Container,
   Header,
   Icons,
+  ListEmptyText,
   Loader,
-  LoaderModal,
   RowView,
   SizedBox,
 } from '../../components';
-import { FlatList, Modal, View } from 'react-native';
+import { FlatList, Modal, RefreshControl, View } from 'react-native';
 import { styles } from './index.styles';
 import { close_icon } from '../../assets/icons';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import { SingleGalleryView } from './components';
 import GalleryFunctional from './index.function';
-import { useFocusEffect } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
-import { getGallery } from '../../redux/actions/main-action';
 
 const Gallery = () => {
-  const dispatch = useDispatch();
   const {
-    main_loading,
     gallery,
     showModal,
     selectedIndex,
     onPressImage,
     setShowModal,
-    page,
-    setHasMore,
     onEndReached,
-    isLoading,
     hasMore,
+    list_loading,
+    refreshing,
+    onRefresh,
   } = GalleryFunctional();
-
-  useFocusEffect(
-    useCallback(() => {
-      const payload = {
-        limit: 10,
-        page: page,
-      };
-      dispatch(
-        getGallery(payload, gallery, hasMore => {
-          setHasMore(hasMore);
-        }),
-      );
-    }, []),
-  );
 
   return (
     <Container>
       <Header title={'Gallery'} rightIcon={null} />
 
-      {main_loading && !isLoading ? (
-        <LoaderModal />
+      {list_loading && !hasMore ? (
+        <Loader />
       ) : (
         <View style={styles.main_view}>
           <FlatList
             keyExtractor={item => item?.id}
+            ListEmptyComponent={<ListEmptyText text={'No Images found'} />}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
             ListFooterComponent={
-              isLoading && hasMore ? (
+              list_loading && hasMore ? (
                 <Loader style={styles.loader} />
               ) : (
                 <SizedBox />

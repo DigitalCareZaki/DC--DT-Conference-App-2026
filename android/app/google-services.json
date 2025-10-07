@@ -14,23 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "158098280930-e7njknali30130pmehtmqqsejsso2don.apps.googleusercontent.com",
+          "client_id": "896349453247-vd26jme4ecjp0mftq85pnjojld96kobm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.conference_app",
-            "certificate_hash": "f623c54823f1294b880d6a0cf26e5ed106c15287"
+            "certificate_hash": "57905eaaaec6407f91ba4c3ea0ff8f4282c23bba"
           }
         },
         {
-          "client_id": "158098280930-sb5opc9v2o0cci57nbj9o3t2a7ngi3f0.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.conference_app",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
-          "client_id": "158098280930-ulntsp6ghe3sgkpl9vcltbfp06loq8ga.apps.googleusercontent.com",
+          "client_id": "896349453247-vfftf8q4ape266jvnuc5d8vh70tkndsh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -43,11 +35,11 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "158098280930-ulntsp6ghe3sgkpl9vcltbfp06loq8ga.apps.googleusercontent.com",
+              "client_id": "896349453247-vfftf8q4ape266jvnuc5d8vh70tkndsh.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "158098280930-116b6pitgsi1esctcp1soh8vi47jadeo.apps.googleusercontent.com",
+              "client_id": "896349453247-dke6dvtf86bfdf3tvh66eout4ctrqml9.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.conference.dt"

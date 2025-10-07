@@ -54,40 +54,34 @@ const Chat = ({ route }) => {
       setChatId(msgs?.chat?._id);
 
       if (isFirstTime) {
-        const array = msgs?.messageHistory?.map(item => ({
-          _id: item?._id,
-          text: item?.message,
-          createdAt: new Date(item?.createdAt),
-          user: {
-            _id: item?.sender?._id,
-            name: item?.sender?.first_name,
-          },
-          type: item?.type,
-          attachmentUrl: item?.attachmentUrl,
-        }));
+        const array = msgs?.messageHistory?.map(item => {
+          return {
+            _id: item?._id,
+            text: item?.message,
+            createdAt: new Date(item?.createdAt),
+            user: {
+              _id: item?.sender,
+            },
+            type: item?.type,
+          };
+        });
         setMessages(array?.sort((a, b) => b?.createdAt - a?.createdAt));
         setIsFirstTime(false);
       }
     });
 
     socket.on('new-message', msg => {
-      console.log("New Messageee" , msg)
+      console.log('New Messageee', msg);
       const obj = {
-        _id: msg?._id,
-        text: msg?.message?? "",
-        createdAt: new Date(msg?.createdAt),
-        user: {
-          _id: msg?.sender?._id,
-          name: msg?.sender?.first_name,
-          avatar: msg?.sender?.profile_image,
-        },
-        type: msg?.type,
-        attachmentUrl: msg?.attachmentUrl,
+        _id: msg?.message?._id,
+        text: msg?.message?.message ?? '',
+        createdAt: new Date(msg?.message?.createdAt),
+        user: { _id: msg?.message?.sender },
+        type: msg?.message?.type,
       };
 
       setMessages(prev => GiftedChat.append(prev, [obj]));
     });
-    return socket;
   };
 
   const onSend = () => {
@@ -98,7 +92,6 @@ const Chat = ({ route }) => {
       message: msg?.trim() || '',
       type: 'text',
     };
-    console.log("message" ,message)
     mySocket?.emit('send-message', message);
     setMsg('');
   };
@@ -209,13 +202,13 @@ const Chat = ({ route }) => {
       <View style={styles.main_view}>
         <GiftedChat
           messages={messages}
-          onSend={messages => onSend(messages)}
-          user={{ _id: user?.id, name: user?.name }}
+          user={{ _id: user?._id }}
           renderBubble={renderBubble}
           showUserAvatar={false}
           renderTime={() => null}
           renderAvatar={null}
           renderComposer={renderTextInput}
+          listViewProps={{ showsVerticalScrollIndicator: false }}
           // renderInputToolbar={renderInputToolbar}
         />
       </View>

@@ -4,7 +4,6 @@ import {
   Header,
   ListEmptyText,
   Loader,
-  LoaderModal,
   SearchBar,
   SizedBox,
   Text,

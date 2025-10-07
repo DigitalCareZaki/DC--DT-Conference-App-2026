@@ -1,63 +1,47 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import {
   Container,
   Header,
+  ListEmptyText,
   Loader,
-  LoaderModal,
   SearchBar,
   SizedBox,
   Text,
 } from '../../components';
-import { FlatList, View } from 'react-native';
+import { FlatList, RefreshControl, View } from 'react-native';
 import { styles } from './index.styles';
 import { SIZES } from '../../constants';
 import { TextWeights } from '../../config';
 import { SingleUserView } from './components';
 import NetworkFunctional from './index.function';
-import { useFocusEffect } from '@react-navigation/native';
-import { getAllUsers } from '../../redux/actions/auth-action';
 import { searchArray } from '../../utils/functions';
 
 const Networking = () => {
   const {
-    auth_loading,
     all_users,
-    dispatch,
-    page,
-    setHasMore,
     onEndReached,
-    isLoading,
     hasMore,
     total_item,
     search,
-    setSearch
+    setSearch,
+    auth_loading,
+    onRefresh,
+    refreshing,
   } = NetworkFunctional();
-
-  useFocusEffect(
-    useCallback(() => {
-      const payload = {
-        limit: 10,
-        page: page,
-      };
-      dispatch(
-        getAllUsers(payload, all_users, hasMore => {
-          setHasMore(hasMore);
-        }),
-      );
-    }, []),
-  );
 
   return (
     <Container>
       <Header title={'Networking'} rightIcon={null} />
-      {auth_loading && !isLoading ? (
-        <LoaderModal />
+      {auth_loading && !hasMore ? (
+        <Loader />
       ) : (
         <View style={styles.main_view}>
           <SearchBar
             value={search}
             onChangeText={setSearch}
-            style={styles.search_bar} placeholder={'Search..'} />
+            style={styles.search_bar}
+            placeholder={'Search..'}
+          />
 
           <Text
             text={`${total_item} Users Registered`}
@@ -73,11 +57,15 @@ const Networking = () => {
             keyExtractor={item => item?._id}
             renderItem={({ item }) => <SingleUserView item={item} />}
             ListFooterComponent={
-              isLoading && hasMore ? (
+              auth_loading && hasMore ? (
                 <Loader style={styles.loader} />
               ) : (
                 <SizedBox />
               )
+            }
+            ListEmptyComponent={<ListEmptyText text={'No Network Found'} />}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }
             onEndReached={onEndReached}
             onEndReachedThreshold={0.5}

@@ -1,10 +1,11 @@
 import { FlatList, ScrollView, View } from 'react-native';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   Button,
   Cards,
   Container,
   Header,
+  Loader,
   LoaderModal,
   SizedBox,
   Text,
@@ -22,17 +23,16 @@ const WorkshopDetails = ({ route }) => {
   const { main_loading, single_workshop, dispatch, onPressHeart } =
     WorkshopDetailFunctional();
 
-  useFocusEffect(
-    useCallback(() => {
-      dispatch(getWorkshopById(id));
-    }, []),
-  );
+  useEffect(() => {
+    dispatch(getWorkshopById(id));
+  }, []);
+
   return (
     <Container>
       <Header title={'Workshop Detail'} rightIcon={null} />
 
       {main_loading ? (
-        <LoaderModal />
+        <Loader />
       ) : (
         <View style={styles.main_view}>
           <ScrollView showsVerticalScrollIndicator={false}>

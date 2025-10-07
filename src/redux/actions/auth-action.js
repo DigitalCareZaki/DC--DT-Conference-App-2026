@@ -8,8 +8,9 @@ import {
   setTotalItems,
 } from '../slices/auth-slice';
 import { setUser } from '../slices/constant-slice';
+import { setListLoading } from '../slices/main-slice';
 
-export const signup = (data) => {
+export const signup = data => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -19,14 +20,14 @@ export const signup = (data) => {
         isAuth: true,
         onDone: async res => {
           dispatch(setUser(res?.data?.data));
-          goBack()
+          goBack();
         },
       }),
     );
   };
 };
 
-export const login = (data) => {
+export const login = data => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -37,14 +38,14 @@ export const login = (data) => {
         onDone: async res => {
           await setToken(res?.data?.accessToken);
           dispatch(setUser(res?.data?.user));
-          goBack()
+          goBack();
         },
       }),
     );
   };
 };
 
-export const googleLogin = (data) => {
+export const googleLogin = data => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -53,9 +54,9 @@ export const googleLogin = (data) => {
         apiService: apiServices.googleLogin,
         isAuth: true,
         onDone: async res => {
-          await setToken(res?.data?.accessToken)
+          await setToken(res?.data?.accessToken);
           dispatch(setUser(res?.data?.user));
-          goBack()
+          goBack();
         },
       }),
     );
@@ -95,5 +96,3 @@ export const getUserProfile = () => {
     );
   };
 };
-
-

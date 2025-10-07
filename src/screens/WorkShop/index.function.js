@@ -1,95 +1,86 @@
+import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addRemoveFav, getWorkshops } from '../../redux/actions/main-action';
 import {
-  addRemoveFav,
-  getFavourites,
-  getWorkshops,
-} from '../../redux/actions/main-action';
-import { useState } from 'react';
+  setListLoading,
+  setSelectedItemIndex,
+} from '../../redux/slices/main-slice';
 
 export default () => {
-  const { main_loading, workshops, favourites } = useSelector(
-    state => state.main,
-  );
-
-  const { user } = useSelector(state => state.constant);
-  const [workShopPage, setWorkShopPage] = useState(1);
-  const [favPage, setFavPage] = useState(1);
-  const [hasMoreWorkshops, setHasMoreWorkshop] = useState(true);
-  const [favHasMore, setFavHasMore] = useState(true);
-  const [workshopLoading, setWorkshopLoading] = useState(false);
-
   const dispatch = useDispatch();
 
-  const onPressHeart = item => {
-    if (!user) {
-      navigate('Login');
-      return;
-    }
-    const apiData = {
-      favoriteId: item?._id,
-      type: 'workshop',
-    };
-    const favpayload = {
+  const { list_loading, workshops } = useSelector(state => state.main);
+
+  const { user } = useSelector(state => state.constant);
+  const [isMore, setIsMore] = useState(false);
+  const [page, setPage] = useState(1);
+  const [refreshing, setRefreshing] = useState(false);
+  const [loadingItemId, setLoadingItemId] = useState('');
+
+  const getWorkShopData = pageNumber => {
+    const payload = {
       limit: 10,
-      page: favPage,
+      page: pageNumber,
     };
 
     dispatch(
-      addRemoveFav(apiData, () => {
-        dispatch(getFavourites(favpayload, favourites, () => {}));
+      getWorkshops(payload, workshops, isMore => {
+        setIsMore(isMore);
       }),
     );
   };
 
-  const onEndReached = () => {
-    if (workshopLoading) return;
+  useEffect(() => {
+    dispatch(setListLoading(true));
+    getWorkShopData(page);
+  }, []);
 
-    setWorkshopLoading(true);
+  const onRefresh = async () => {
+    setRefreshing(true);
+    setPage(1);
+    setIsMore(false);
+    await getWorkShopData(1);
+    setRefreshing(false);
+  };
 
-    // WorkShop pagination
-    if (hasMoreWorkshops && workshops?.length > 0) {
-      const nextPage = workShopPage + 1;
-      const payload = {
-        limit: 10,
-        page: nextPage,
-      };
-
-      dispatch(
-        getWorkshops(payload, workshops, hasMore => {
-          setHasMoreWorkshop(hasMore);
-          setWorkShopPage(nextPage);
-          setWorkshopLoading(false);
-        }),
-      );
+  const onPressHeart = async (item, index) => {
+    if (!user) {
+      navigate('Login');
+      return;
     }
+    dispatch(setSelectedItemIndex(index));
 
-    // Favourites pagination
-    if (favHasMore && favourites.length > 0) {
-      const nextPage = favPage + 1;
-      const favPayload = {
-        limit: 10,
-        page: nextPage,
-      };
+    const apiData = {
+      favoriteId: item?._id,
+      type: 'workshop',
+    };
 
-      dispatch(
-        getFavourites(favPayload, favourites, hasMore => {
-          setFavHasMore(hasMore);
-          setFavPage(nextPage);
-        }),
-      );
+    try {
+      await dispatch(addRemoveFav(apiData));
+    } finally {
+      setLoadingItemId(null);
+    }
+  };
+
+  const onEndReached = () => {
+    if (list_loading) return;
+
+    if (isMore && workshops?.length > 0) {
+      setPage(page + 1);
+      getWorkShopData(page + 1);
     }
   };
 
   return {
-    main_loading,
     workshops,
-    dispatch,
     onPressHeart,
     onEndReached,
-    setHasMoreWorkshop,
-    setFavHasMore,
-    hasMoreWorkshops,
-    workshopLoading,
-    favourites,
+    isMore,
+    setIsMore,
+    setRefreshing,
+    list_loading,
+    onRefresh,
+    refreshing,
+    loadingItemId,
   };
 };

@@ -9,6 +9,7 @@ import {
   Button,
   Container,
   Icons,
+  Loader,
   LoaderModal,
   RowView,
   SizedBox,
@@ -121,7 +122,7 @@ const Signup = () => {
             <SizedBox />
 
             {auth_loading ? (
-              <LoaderModal />
+              <Loader />
             ) : (
               <Button
                 onPress={onPressButton}

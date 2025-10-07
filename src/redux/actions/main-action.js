@@ -1,6 +1,7 @@
 import apiServices from '../../api_services/request-handler';
 import { requestHandler } from '../../utils/functions';
 import { setTotalItems } from '../slices/auth-slice';
+import { setUser } from '../slices/constant-slice';
 import {
   setConferenceDetail,
   setConferences,
@@ -60,7 +61,7 @@ export const getWorkshops = (params, array, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
-        setLoading: setMainLoading,
+        setLoading: setListLoading,
         param_data: params,
         apiService: apiServices.getWorkshops,
         onDone: async res => {
@@ -98,12 +99,10 @@ export const getGallery = (params, array, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
-        setLoading: setMainLoading,
+        setLoading: setListLoading,
         param_data: params,
         apiService: apiServices.getGallery,
         onDone: async res => {
-          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
-
           if (params?.page === 1) {
             dispatch(setGallery(res?.data?.data));
           } else {
@@ -122,7 +121,7 @@ export const getExhibition = (params, array, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
-        setLoading: setMainLoading,
+        setLoading: setListLoading,
         param_data: params,
         apiService: apiServices.getExhibition,
         onDone: async res => {
@@ -175,7 +174,7 @@ export const addRemoveFav = (data) => {
         setLoading: setMainLoading,
         apiService: apiServices.addRemoveFavourite,
         param_data: data,
-        onDone: () => dispatch(getFavourites())
+        onDone: () => dispatch(getFavourites()),
       }),
     );
   };
@@ -186,7 +185,7 @@ export const getFeedBack = onDone => {
     dispatch(
       requestHandler({
         setLoading: setMainLoading,
-        apiService: apiServices.getFeedBacks,
+        apiService: apiServices.getFeedBack,
         onDone: async res => {
           dispatch(setFeedback(res?.data));
           onDone && onDone(res);
@@ -210,7 +209,7 @@ export const addFeedback = (data) => {
 };
 
 // Social Media Links
-export const updateLinks = (data, onDone) => {
+export const updateLinks = data => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -218,7 +217,7 @@ export const updateLinks = (data, onDone) => {
         param_data: data,
         apiService: apiServices.updateLinks,
         onDone: async res => {
-          onDone && onDone(res);
+          dispatch(setUser(res?.data));
         },
       }),
     );

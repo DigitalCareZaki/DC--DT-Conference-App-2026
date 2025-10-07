@@ -10,7 +10,11 @@ export const password_validation_schema = yup.object().shape({
   password: yup
     .string()
     .required('Password is required')
-    .min(6, 'Password must be at least 6 characters'),
+    .min(8, 'Password must be at least 8 characters')
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])/,
+      'Password must contain at least one uppercase letter, one lowercase letter, and one special character.',
+    ),
   confirmPassword: yup
     .string()
     .required('Confirm Password is required')

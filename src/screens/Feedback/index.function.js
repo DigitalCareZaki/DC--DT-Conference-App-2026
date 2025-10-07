@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addFeedback } from '../../redux/actions/main-action';
+import {
+  getFeedBack,
+} from '../../redux/actions/main-action';
+import { useEffect } from 'react';
 
 export default () => {
   const dispatch = useDispatch()
@@ -15,6 +19,9 @@ export default () => {
     dispatch(addFeedback(apiData));
   };
 
+  useEffect(() => {
+    dispatch(getFeedBack());
+  }, []);
 
   return {
     main_loading,

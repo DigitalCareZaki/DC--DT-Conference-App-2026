@@ -3,11 +3,10 @@ import { Button, RowView, Text } from '../../../components';
 import { TouchableOpacity } from 'react-native';
 import { COLORS, SIZES } from '../../../constants';
 import { TextWeights } from '../../../config';
-import { navigate } from '../../../navigation/service';
 import { styles } from '../index.styles';
 const ExhibitionCard = ({ item, isFav = false }) => {
   return (
-    <TouchableOpacity style={styles.grid}>
+    <TouchableOpacity style={styles.grid} disabled>
       <RowView justifyContent={'space-between'}>
         <Text
           size={SIZES.h16}

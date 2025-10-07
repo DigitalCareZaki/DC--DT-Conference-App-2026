@@ -5,6 +5,7 @@ import {
   Cards,
   Container,
   Header,
+  Loader,
   LoaderModal,
   SizedBox,
   Text,
