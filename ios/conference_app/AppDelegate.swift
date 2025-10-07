@@ -37,7 +37,7 @@ class AppDelegate: RCTAppDelegate, UNUserNotificationCenterDelegate {
     #if targetEnvironment(simulator)
       let host = "localhost"           // Simulator pe chalega
     #else
-      let host = "192.168.1.42"         // ⚡ Your Mac’s IP for real iPhone
+      let host = "10.0.0.221"         // ⚡ Your Mac’s IP for real iPhone
     #endif
     return URL(string: "http://\(host):8081/index.bundle?platform=ios&dev=true")
 #else

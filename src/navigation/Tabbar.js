@@ -21,13 +21,14 @@ import {
 } from "../assets/icons";
 import { COLORS, SIZES } from "../constants";
 import { TextWeights } from "../config";
+import { isIOS } from "../constants/theme";
 
 if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const EXPANDED_FLEX = 2;   
-const COLLAPSED_FLEX = 1; 
+const EXPANDED_FLEX = 2;
+const COLLAPSED_FLEX = 1;
 
 const Tabbar = ({ state, descriptors, navigation }) => {
     const insets = useSafeAreaInsets();
@@ -81,7 +82,7 @@ const Tabbar = ({ state, descriptors, navigation }) => {
                         activeOpacity={0.9}
                         style={[
                             styles.itemWrap,
-                            focused && { height: "70%" },
+                            focused && { height: isIOS ? "80%" : "70%" },
                             { flex: focused ? EXPANDED_FLEX : COLLAPSED_FLEX },
                         ]}
                     >

@@ -1,10 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addRemoveFav } from '../../redux/actions/main-action';
+import { addRemoveFav, getConference } from '../../redux/actions/main-action';
+import { useEffect } from 'react';
 
-export default () => {
-  const { main_loading, single_conference } = useSelector(state => state.main);
-  const { user } = useSelector(state => state.constant);
+export default ({ data }) => {
   const dispatch = useDispatch();
+
+  const { detail_loading, conference_detail } = useSelector(state => state.main);
+  const { user } = useSelector(state => state.constant);
+
+  useEffect(() => {
+    dispatch(getConference(data?._id));
+  }, [])
 
   const onPressHeart = item => {
     if (!user) {
@@ -17,10 +23,10 @@ export default () => {
     };
     dispatch(addRemoveFav(apiData));
   };
+
   return {
-    main_loading,
-    single_conference,
+    detail_loading,
+    conference_detail,
     onPressHeart,
-    dispatch,
   };
 };

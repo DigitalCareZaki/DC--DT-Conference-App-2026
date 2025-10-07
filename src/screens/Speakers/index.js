@@ -1,83 +1,77 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import {
   Container,
   Header,
+  ListEmptyText,
+  Loader,
   LoaderModal,
   SearchBar,
   SizedBox,
   Text,
 } from '../../components';
-import { FlatList, SectionList, View } from 'react-native';
+import { FlatList, RefreshControl, SectionList, View } from 'react-native';
 import { styles } from './index.styles';
-import { COLORS, SIZES } from '../../constants';
+import { SIZES } from '../../constants';
 import { TextWeights } from '../../config';
 import { SingleSpeakerView } from './components';
 import SpeakerFunctional from './index.function';
-import { useDispatch } from 'react-redux';
-import { useFocusEffect } from '@react-navigation/native';
-import { getSpeakers } from '../../redux/actions/main-action';
+import { searchArray } from '../../utils/functions';
 
 const Speakers = () => {
-  const dispatch = useDispatch();
-  const { main_loading, data } = SpeakerFunctional();
-
-  useFocusEffect(
-    useCallback(() => {
-      dispatch(getSpeakers());
-    }, []),
-  );
-
-  const RenderEmptyComponent = () => (
-    <Text
-      align={'center'}
-      mt={SIZES.padding2}
-      text="No speakers yet"
-      size={SIZES.h20}
-      color={COLORS.primary}
-    />
-  );
+  const {
+    list_loading,
+    data,
+    search,
+    setSearch,
+    onRefresh,
+    refreshing
+  } = SpeakerFunctional();
 
   return (
     <Container>
       <Header title={'Speakers'} isMenu />
-      {main_loading ? (
-        <LoaderModal />
-      ) : (
-        <View style={styles.main_view}>
-          <SearchBar placeholder={'Search by name, specialty, institute'} />
 
+      <View style={styles.main_view}>
+
+        <SearchBar
+          value={search}
+          onChangeText={setSearch}
+          placeholder={'Search by name, specialty, institute'} />
+
+        {list_loading ? (
+          <Loader />
+        ) : (
           <SectionList
             sections={data}
             keyExtractor={(item, index) => index?.toString()}
             showsVerticalScrollIndicator={false}
             ListFooterComponent={<SizedBox />}
+            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             renderSectionFooter={({ section }) => (
               <FlatList
-                data={section?.data}
+                data={search ? searchArray(section?.data, search) : section?.data}
                 numColumns={2}
-                renderItem={({ item, index }) => (
-                  <SingleSpeakerView item={item} />
-                )}
-                ListEmptyComponent={<RenderEmptyComponent />}
-                ListHeaderComponent={
-                  <>
-                    <Text
-                      text={section?.title}
-                      size={SIZES.h16}
-                      weight={TextWeights.medium}
-                      mt={SIZES.padding2}
-                    />
-                  </>
-                }
+                ListEmptyComponent={<ListEmptyText text={`No Speaker Found`} />}
                 keyExtractor={(item, index) => index?.toString()}
                 columnWrapperStyle={{ justifyContent: 'space-between' }}
                 scrollEnabled={false}
+                ListHeaderComponent={
+                  <Text
+                    text={section?.title}
+                    size={SIZES.h16}
+                    weight={TextWeights.medium}
+                    mt={SIZES.padding2}
+                  />
+                }
+                renderItem={({ item, index }) => (
+                  <SingleSpeakerView item={item} />
+                )}
               />
             )}
             renderItem={() => null}
           />
-        </View>
-      )}
+        )}
+      </View>
     </Container>
   );
 };

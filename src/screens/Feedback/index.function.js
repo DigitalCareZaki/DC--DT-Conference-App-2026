@@ -1,15 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getFeedBack,
-  postUpdateFeedback,
-} from '../../redux/actions/main-action';
+import { addFeedback } from '../../redux/actions/main-action';
 
 export default () => {
-  const { main_loading, feedback, main_post_loading } = useSelector(
-    state => state.main,
-  );
+  const dispatch = useDispatch()
 
-  const dispatch = useDispatch();
+  const { main_loading, feedback, main_post_loading } = useSelector(state => state.main);
 
   const onPressSubmit = values => {
     const apiData = {
@@ -17,8 +12,10 @@ export default () => {
       likedMost: values.likedMost,
       suggestions: values.suggestions,
     };
-    dispatch(postUpdateFeedback(apiData, () => dispatch(getFeedBack())));
+    dispatch(addFeedback(apiData));
   };
+
+
   return {
     main_loading,
     feedback,

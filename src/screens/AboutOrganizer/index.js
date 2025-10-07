@@ -9,10 +9,10 @@ import {
   SizedBox,
   Text,
 } from '../../components';
-import { ScrollView, View } from 'react-native';
+import { Linking, ScrollView, View } from 'react-native';
 import { styles } from './index.styles';
 import { COLORS, images, SIZES } from '../../constants';
-import { TextWeights } from '../../config';
+import { TextWeights, website_url } from '../../config';
 import FastImage from 'react-native-fast-image';
 import { common_styles } from '../../utils/common_styles';
 
@@ -98,7 +98,7 @@ const Dashboard = () => {
 
           </View>
 
-          <Button buttonText={'Go to Website'} />
+          <Button  onPress={() => Linking.openURL(website_url)} buttonText={'Go to Website'} />
 
           <Button style={styles.btn} color={'white'} buttonText={'Messages'} />
 

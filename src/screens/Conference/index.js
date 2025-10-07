@@ -64,7 +64,7 @@ const Conference = () => {
               <Cards
                 item={item}
                 onPressHeart={() => onPressHeart(item)}
-                onPress={() => navigate('ConferenceDetails', { id: item?._id })}
+                onPress={() => navigate('ConferenceDetails', { data: item })}
               />
             )}
           />

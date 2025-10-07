@@ -2,7 +2,9 @@ import apiServices from '../../api_services/request-handler';
 import { requestHandler } from '../../utils/functions';
 import { setTotalItems } from '../slices/auth-slice';
 import {
+  setConferenceDetail,
   setConferences,
+  setDetailLoading,
   setExhibition,
   setFavList,
   setFavourites,
@@ -44,12 +46,10 @@ export const getConference = data => {
   return async dispatch => {
     dispatch(
       requestHandler({
-        setLoading: setMainLoading,
+        setLoading: setDetailLoading,
         apiService: apiServices.getConference,
         param_data: data,
-        onDone: async res => {
-          dispatch(setSingleConference(res?.data));
-        },
+        setData: setConferenceDetail,
       }),
     );
   };
@@ -139,13 +139,11 @@ export const getExhibition = (params, array, onDone) => {
   };
 };
 
-// Speakers
-
 export const getSpeakers = () => {
   return async dispatch => {
     dispatch(
       requestHandler({
-        setLoading: setMainLoading,
+        setLoading: setListLoading,
         apiService: apiServices.getSpeakers,
         onDone: async res => {
           dispatch(setSpeakers(res?.data?.data ?? []));
@@ -170,7 +168,7 @@ export const getFavourites = () => {
   };
 };
 
-export const addRemoveFav = (data, onDone) => {
+export const addRemoveFav = (data) => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -183,7 +181,6 @@ export const addRemoveFav = (data, onDone) => {
   };
 };
 
-// Feedbacl
 export const getFeedBack = onDone => {
   return async dispatch => {
     dispatch(
@@ -199,16 +196,14 @@ export const getFeedBack = onDone => {
   };
 };
 
-export const postUpdateFeedback = (data, onDone) => {
+export const addFeedback = (data) => {
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setMainPostLoading,
         param_data: data,
-        apiService: apiServices.postUpdateFeedback,
-        onDone: async res => {
-          onDone && onDone(res);
-        },
+        apiService: apiServices.addFeedback,
+        onDone: async () => dispatch(getFeedBack())
       }),
     );
   };

@@ -1,15 +1,25 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSpeakers } from '../../redux/actions/main-action';
+import { useEffect, useState } from 'react';
+import { setListLoading } from '../../redux/slices/main-slice';
 
 export default () => {
-  const { main_loading, speakers } = useSelector(state => state.main);
+  const dispatch = useDispatch()
 
-  const nationalSpeakers = (speakers ?? []).filter(
-    item => item?.speakerType === 'National',
-  );
+  const { list_loading, speakers } = useSelector(state => state.main);
 
-  const internationalSpeakers = (speakers ?? []).filter(
-    item => item?.speakerType === 'International',
-  );
+  const [search, setSearch] = useState(null)
+  const [refreshing, setRefreshing] = useState(false)
+
+  useEffect(() => {
+    dispatch(setListLoading(true))
+    dispatch(getSpeakers());
+  }, [])
+
+  const nationalSpeakers = speakers?.filter(item => item?.speakerType?.toLowerCase() === 'national');
+
+  const internationalSpeakers = speakers?.filter(item => item?.speakerType?.toLowerCase() === 'international');
+
   const data = [
     {
       title: 'International Speakers',
@@ -20,9 +30,19 @@ export default () => {
       data: nationalSpeakers,
     },
   ];
+
+  const onRefresh = async () => {
+    setRefreshing(true)
+    await dispatch(getSpeakers());
+    setRefreshing(false)
+  }
+
   return {
     data,
-    main_loading,
-    speakers,
+    list_loading,
+    search,
+    setSearch,
+    refreshing,
+    onRefresh
   };
 };

@@ -3,13 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   main_loading: null,
   list_loading: null,
+  detail_loading: null,
   conferences: null,
-  single_conference: null,
+  conference_detail: null,
   workshops: null,
   single_workshop: null,
   gallery: null,
   exhibition: null,
-  speakers: null,
+  speakers: [],
   favourites: null,
   feedback: null,
   main_post_loading: false,
@@ -26,11 +27,14 @@ export const mainSlice = createSlice({
     setListLoading: (state, action) => {
       state.list_loading = action.payload;
     },
+    setDetailLoading: (state, action) => {
+      state.detail_loading = action.payload;
+    },
     setConferences: (state, action) => {
       state.conferences = action.payload;
     },
-    setSingleConference: (state, action) => {
-      state.single_conference = action.payload;
+    setConferenceDetail: (state, action) => {
+      state.conference_detail = action.payload;
     },
     setWorkshops: (state, action) => {
       state.workshops = action.payload;
@@ -62,8 +66,9 @@ export const mainSlice = createSlice({
 export const {
   setMainLoading,
   setListLoading,
+  setDetailLoading,
   setConferences,
-  setSingleConference,
+  setConferenceDetail,
   setWorkshops,
   setSingleWorkshop,
   setGallery,
