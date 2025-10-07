@@ -36,7 +36,6 @@ import {
   password_icon,
   role_icon,
 } from '../../assets/icons';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const Login = () => {
   const {
@@ -45,7 +44,6 @@ const Login = () => {
     onPressGoogleBtn,
     google_signin_loading,
   } = LoginFunctional();
-
 
   return (
     <Container>

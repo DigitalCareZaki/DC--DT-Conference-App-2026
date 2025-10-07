@@ -1,8 +1,9 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import {
   Container,
   Header,
-  LoaderModal,
+  ListEmptyText,
+  Loader,
   SearchBar,
   SizedBox,
   Text,
@@ -14,34 +15,15 @@ import { TextWeights } from '../../config';
 import { SingleSpeakerView } from './components';
 import SpeakerFunctional from './index.function';
 import { useDispatch } from 'react-redux';
-import { useFocusEffect } from '@react-navigation/native';
-import { getSpeakers } from '../../redux/actions/main-action';
 
 const Speakers = () => {
-  const dispatch = useDispatch();
   const { main_loading, data } = SpeakerFunctional();
-
-  useFocusEffect(
-    useCallback(() => {
-      dispatch(getSpeakers());
-    }, []),
-  );
-
-  const RenderEmptyComponent = () => (
-    <Text
-      align={'center'}
-      mt={SIZES.padding2}
-      text="No speakers yet"
-      size={SIZES.h20}
-      color={COLORS.primary}
-    />
-  );
 
   return (
     <Container>
       <Header title={'Speakers'} isMenu />
       {main_loading ? (
-        <LoaderModal />
+        <Loader />
       ) : (
         <View style={styles.main_view}>
           <SearchBar placeholder={'Search by name, specialty, institute'} />
@@ -58,7 +40,9 @@ const Speakers = () => {
                 renderItem={({ item, index }) => (
                   <SingleSpeakerView item={item} />
                 )}
-                ListEmptyComponent={<RenderEmptyComponent />}
+                ListEmptyComponent={
+                  <ListEmptyText text={`No ${section.title} Found`} />
+                }
                 ListHeaderComponent={
                   <>
                     <Text

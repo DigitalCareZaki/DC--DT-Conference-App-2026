@@ -5,6 +5,7 @@ import {
   Cards,
   Container,
   Header,
+  Loader,
   LoaderModal,
   SizedBox,
   Text,
@@ -24,14 +25,14 @@ const ConferenceDetails = ({ route }) => {
 
   useEffect(() => {
     dispatch(getConference(id));
-  });
+  }, []);
 
   return (
     <Container>
       <Header title={'Conference Detail'} rightIcon={null} />
 
       {main_loading ? (
-        <LoaderModal />
+        <Loader />
       ) : (
         <View style={styles.main_view}>
           <ScrollView showsVerticalScrollIndicator={false}>

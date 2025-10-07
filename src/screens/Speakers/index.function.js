@@ -1,7 +1,14 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSpeakers } from '../../redux/actions/main-action';
 
 export default () => {
+  const dispatch = useDispatch();
   const { main_loading, speakers } = useSelector(state => state.main);
+
+  useEffect(() => {
+    dispatch(getSpeakers());
+  }, []);
 
   const nationalSpeakers = (speakers ?? []).filter(
     item => item?.speakerType === 'National',

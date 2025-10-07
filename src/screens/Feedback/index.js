@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import {
   Button,
   Container,
@@ -7,7 +7,6 @@ import {
   Icons,
   InputField,
   Loader,
-  LoaderModal,
   RowView,
   SizedBox,
   Text,
@@ -24,27 +23,20 @@ import { grey_star_icon, yellow_star_icon } from '../../assets/icons';
 import { common_styles } from '../../utils/common_styles';
 import { keyboardAvoidingBehaviour } from '../../constants/theme';
 import FeedbackFunctional from './index.function';
-import { useFocusEffect } from '@react-navigation/native';
-import { getFeedBack } from '../../redux/actions/main-action';
 import { Formik } from 'formik';
 import {
   feedback_schema,
   feedback_validation_schema,
 } from '../../validations_schemas/feedback_validation_schema';
 const Feedback = () => {
-  const { main_loading, feedback, dispatch, onPressSubmit, main_post_loading } =
+  const { main_loading, feedback, onPressSubmit, main_post_loading } =
     FeedbackFunctional();
 
-  useFocusEffect(
-    useCallback(() => {
-      dispatch(getFeedBack());
-    }, []),
-  );
   return (
     <Container>
       <Header title={'Feedback'} rightIcon={null} />
       {main_loading ? (
-        <LoaderModal />
+        <Loader />
       ) : (
         <Formik
           initialValues={feedback_schema(feedback)}

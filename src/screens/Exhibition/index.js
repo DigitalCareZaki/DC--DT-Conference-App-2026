@@ -1,63 +1,48 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import {
   Button,
   Container,
   Header,
   ImageView,
+  ListEmptyText,
   Loader,
-  LoaderModal,
   SearchBar,
   SizedBox,
   Text,
 } from '../../components';
-import { FlatList, ScrollView, View } from 'react-native';
+import { FlatList, RefreshControl, View } from 'react-native';
 import { COLORS, images, SIZES } from '../../constants';
 import { styles } from './index.styles';
 import { TextWeights } from '../../config';
 import FastImage from 'react-native-fast-image';
 import ExhibitionCard from './component/ExhibitionCard';
 import ExhibitionFunctional from './index.function';
-import { useFocusEffect } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
-import { getExhibition } from '../../redux/actions/main-action';
 
 const Exhibition = () => {
   const {
-    main_loading,
     exhibition,
-    setHasMore,
     onEndReached,
-    page,
-    dispatch,
-    isLoading,
-    hasMore,
     total_item,
+    isMore,
+    refeshing,
+    list_loading,
+    onRefresh,
   } = ExhibitionFunctional();
-
-  useFocusEffect(
-    useCallback(() => {
-      const payload = {
-        limit: 10,
-        page: page,
-      };
-      dispatch(
-        getExhibition(payload, exhibition, hasMore => {
-          setHasMore(hasMore);
-        }),
-      );
-    }, []),
-  );
 
   return (
     <Container>
       <Header color={COLORS.white} title={'Exhibition'} />
 
-      {main_loading && !isLoading ? (
-        <LoaderModal />
+      {list_loading && !isMore ? (
+        <Loader />
       ) : (
         <View style={styles.main_view}>
           <FlatList
             showsVerticalScrollIndicator={false}
+            ListEmptyComponent={<ListEmptyText text={'No Exhibition found'} />}
+            refreshControl={
+              <RefreshControl refreshing={refeshing} onRefresh={onRefresh} />
+            }
             ListHeaderComponent={
               <>
                 <SearchBar
@@ -77,7 +62,7 @@ const Exhibition = () => {
             }
             ListFooterComponent={
               <>
-                {isLoading && hasMore ? (
+                {list_loading && isMore ? (
                   <Loader style={styles.loader} />
                 ) : (
                   <SizedBox />

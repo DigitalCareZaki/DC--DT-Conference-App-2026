@@ -33,17 +33,17 @@ const Conference = () => {
       <Header isMenu title={'Conferences'} />
 
       <View style={styles.main_view}>
-        <Text
-          text={`${total_item} Conferences Available`}
-          size={SIZES.h16}
-          weight={TextWeights.medium}
-          mt={SIZES.padding2}
-        />
-
         {list_loading && !isMore ? (
           <Loader />
         ) : (
           <>
+            <Text
+              text={`${total_item} Conferences Available`}
+              size={SIZES.h16}
+              weight={TextWeights.medium}
+              mt={SIZES.padding2}
+            />
+
             <SizedBox height={SIZES.padding2} />
 
             <FlatList

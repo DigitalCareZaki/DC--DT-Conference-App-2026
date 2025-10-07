@@ -3,6 +3,7 @@ import {
   getFeedBack,
   postUpdateFeedback,
 } from '../../redux/actions/main-action';
+import { useEffect } from 'react';
 
 export default () => {
   const { main_loading, feedback, main_post_loading } = useSelector(
@@ -19,6 +20,11 @@ export default () => {
     };
     dispatch(postUpdateFeedback(apiData, () => dispatch(getFeedBack())));
   };
+
+  useEffect(() => {
+    dispatch(getFeedBack());
+  }, []);
+
   return {
     main_loading,
     feedback,
