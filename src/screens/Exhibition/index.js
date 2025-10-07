@@ -56,76 +56,75 @@ const Exhibition = () => {
         <LoaderModal />
       ) : (
         <View style={styles.main_view}>
-          <ScrollView
-            contentContainerStyle={styles.scrollViewStyle}
+          <FlatList
             showsVerticalScrollIndicator={false}
-          >
-            <SearchBar
-              isRight
-              isLeft={false}
-              placeholder={'Search by name, industry category, city...'}
-            />
+            ListHeaderComponent={
+              <>
+                <SearchBar
+                  isRight
+                  isLeft={false}
+                  placeholder={'Search by name, industry category, city...'}
+                />
 
-            <SizedBox />
+                <SizedBox />
 
-            <Text
-              text={`${total_item} Exhibitors Participating`}
-              size={SIZES.h18}
-              weight={TextWeights.medium}
-            />
-
-            <FlatList
-              renderItem={({ item }) => <ExhibitionCard item={item} />}
-              data={exhibition}
-              keyExtractor={item => item?._id?.toString()}
-              ListHeaderComponent={<SizedBox height={SIZES.padding2} />}
-              ListFooterComponent={
-                isLoading && hasMore ? (
+                <Text
+                  text={`${total_item} Exhibitors Participating`}
+                  size={SIZES.h18}
+                  weight={TextWeights.medium}
+                />
+              </>
+            }
+            ListFooterComponent={
+              <>
+                {isLoading && hasMore ? (
                   <Loader style={styles.loader} />
                 ) : (
                   <SizedBox />
-                )
-              }
-              onEndReached={onEndReached}
-              onEndReachedThreshold={0.1}
-              contentContainerStyle={styles.flatlist}
-              scrollEnabled={false}
-            />
+                )}
 
-            <SizedBox />
+                <SizedBox />
 
-            <Button buttonText={'Download List in PDF'} />
+                <Button buttonText={'Download List in PDF'} />
 
-            <Text
-              mt={SIZES.padding + 4}
-              text={'Hall Map'}
-              size={SIZES.h18}
-              weight={TextWeights.medium}
-            />
+                <Text
+                  mt={SIZES.padding + 4}
+                  text={'Hall Map'}
+                  size={SIZES.h18}
+                  weight={TextWeights.medium}
+                />
 
-            <SizedBox />
+                <SizedBox />
 
-            <View style={styles.mapView}>
-              <ImageView
-                image={images.map_image}
-                width={SIZES.padding * 17}
-                height={SIZES.padding * 9}
-                resizeMode={FastImage.resizeMode.cover}
-                radius={SIZES.padding2}
-                style={styles.map}
-                gradientColors={['transparent', 'rgba(0,0,0,0.6)']}
-              />
-              <Text
-                style={styles.mapText}
-                weight={TextWeights.medium}
-                size={SIZES.h14}
-                lineHeight={SIZES.padding}
-                text={
-                  'Ecommerce Gateway Pakistan (Pvt) Ltd.8, Kokan Society, Dr. Azhar Hussain Road, Near Kokan Park, off: Shaheed-e-Millat Road, Karachi-74000 Pakistan'
-                }
-              />
-            </View>
-          </ScrollView>
+                <View style={styles.mapView}>
+                  <ImageView
+                    image={images.map_image}
+                    width={SIZES.padding * 17}
+                    height={SIZES.padding * 9}
+                    resizeMode={FastImage.resizeMode.cover}
+                    radius={SIZES.padding2}
+                    style={styles.map}
+                    gradientColors={['transparent', 'rgba(0,0,0,0.6)']}
+                  />
+                  <Text
+                    style={styles.mapText}
+                    weight={TextWeights.medium}
+                    size={SIZES.h14}
+                    lineHeight={SIZES.padding}
+                    text={
+                      'Ecommerce Gateway Pakistan (Pvt) Ltd.8, Kokan Society, Dr. Azhar Hussain Road, Near Kokan Park, off: Shaheed-e-Millat Road, Karachi-74000 Pakistan'
+                    }
+                  />
+                </View>
+              </>
+            }
+            renderItem={({ item }) => <ExhibitionCard item={item} />}
+            data={exhibition}
+            keyExtractor={item => item?._id?.toString()}
+            onEndReached={onEndReached}
+            onEndReachedThreshold={0.1}
+            contentContainerStyle={styles.flatlist}
+          />
         </View>
       )}
     </Container>

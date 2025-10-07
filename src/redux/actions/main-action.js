@@ -56,7 +56,6 @@ export const getConferencesById = data => {
 
 // Workshops
 export const getWorkshops = (params, array, onDone) => {
-  console.log('params', params);
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -121,7 +120,6 @@ export const getGallery = (params, array, onDone) => {
 // Exhibition
 
 export const getExhibition = (params, array, onDone) => {
-  console.log('params', params);
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -129,6 +127,7 @@ export const getExhibition = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getExhibition,
         onDone: async res => {
+          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
           if (params?.page === 1) {
             dispatch(setExhibition(res?.data?.data));
           } else {
@@ -166,7 +165,6 @@ export const getFavourites = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getFavourites,
         onDone: async res => {
-          console.log('hehehhehe', res);
           if (params?.page === 1) {
             dispatch(setFavourites(res?.data?.favorites));
           } else {
