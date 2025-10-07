@@ -60,7 +60,7 @@ export const getWorkshops = (params, array, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
-        setLoading: setMainLoading,
+        setLoading: setListLoading,
         param_data: params,
         apiService: apiServices.getWorkshops,
         onDone: async res => {
@@ -177,7 +177,7 @@ export const addRemoveFav = (data, onDone) => {
         setLoading: setMainLoading,
         apiService: apiServices.addRemoveFavourite,
         param_data: data,
-        onDone: () => dispatch(getFavourites())
+        onDone: () => dispatch(getFavourites()),
       }),
     );
   };

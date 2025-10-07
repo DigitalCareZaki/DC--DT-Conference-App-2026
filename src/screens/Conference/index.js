@@ -24,52 +24,66 @@ const Conference = () => {
     total_item,
     isMore,
     onRefresh,
-    refreshing
+    refreshing,
+    loadingItemId,
   } = ConferenceFunctional();
 
   return (
     <Container>
       <Header isMenu title={'Conferences'} />
 
-      {list_loading && !isMore ? (
-        <Loader />
-      ) : (
+      <View style={styles.main_view}>
+        <Text
+          text={`${total_item} Conferences Available`}
+          size={SIZES.h16}
+          weight={TextWeights.medium}
+          mt={SIZES.padding2}
+        />
 
-        <View style={styles.main_view}>
-          <Text
-            text={`${total_item} Conferences Available`}
-            size={SIZES.h16}
-            weight={TextWeights.medium}
-            mt={SIZES.padding2}
-          />
+        {list_loading && !isMore ? (
+          <Loader />
+        ) : (
+          <>
+            <SizedBox height={SIZES.padding2} />
 
-          <SizedBox height={SIZES.padding2} />
-
-          <FlatList
-            data={conferences}
-            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-            keyExtractor={item => item?._id?.toString()}
-            showsVerticalScrollIndicator={false}
-            ListEmptyComponent={<ListEmptyText text={"No Conference Found"} />}
-            ListFooterComponent={
-              list_loading && isMore ? (
-                <Loader style={styles.loader} />
-              ) : (
-                <SizedBox />
-              )
-            }
-            onEndReached={onEndReached}
-            onEndReachedThreshold={0.5}
-            renderItem={({ item }) => (
-              <Cards
-                item={item}
-                onPressHeart={() => onPressHeart(item)}
-                onPress={() => navigate('ConferenceDetails', { id: item?._id })}
-              />
-            )}
-          />
-        </View>
-      )}
+            <FlatList
+              data={conferences}
+              refreshControl={
+                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+              }
+              keyExtractor={item => item?._id?.toString()}
+              showsVerticalScrollIndicator={false}
+              ListEmptyComponent={
+                <ListEmptyText text={'No Conference Found'} />
+              }
+              ListFooterComponent={
+                list_loading && isMore ? (
+                  <Loader style={styles.loader} />
+                ) : (
+                  <SizedBox />
+                )
+              }
+              onEndReached={onEndReached}
+              onEndReachedThreshold={0.5}
+              renderItem={({ item }) => (
+                <>
+                  {loadingItemId === item?._id ? (
+                    <Loader />
+                  ) : (
+                    <Cards
+                      item={item}
+                      onPressHeart={() => onPressHeart(item)}
+                      onPress={() =>
+                        navigate('ConferenceDetails', { id: item?._id })
+                      }
+                    />
+                  )}
+                </>
+              )}
+            />
+          </>
+        )}
+      </View>
     </Container>
   );
 };

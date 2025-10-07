@@ -173,6 +173,7 @@ export function requestHandler({
     try {
       setLoading && dispatch(setLoading(true));
       const response = await apiService(param_data);
+      console.log('Api response', response);
       if (!response?.data?.error) {
         setData && dispatch(setData(response?.data?.data));
         isSuccessMessage &&
@@ -185,6 +186,8 @@ export function requestHandler({
         showToast('error', response?.data?.message ?? '');
       }
     } catch (error) {
+      console.log('Api err', error);
+
       onError();
       if (error?.status === 401 && !isAuth) {
         dispatch(setUser(null));
