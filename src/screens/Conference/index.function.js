@@ -12,9 +12,11 @@ export default () => {
     state => state.main,
   );
   const { user, total_item } = useSelector(state => state.auth);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [confPage, setConfPage] = useState(1);
+  const [favPage, setFavPage] = useState(1);
+  const [confHasMore, setConfHasMore] = useState(true);
+  const [favHasMore, setFavHasMore] = useState(true);
+  const [confLoading, setConfLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -23,46 +25,57 @@ export default () => {
       navigate('Login');
       return;
     }
+    const favpayload = {
+      limit: 10,
+      page: favPage,
+    };
     const apiData = {
       favoriteId: item?._id,
       type: 'conference',
     };
     dispatch(
       addRemoveFav(apiData, () => {
-        const payload = {
-          limit: 10,
-          page: page,
-        };
-        dispatch(getFavourites(payload));
+        dispatch(getFavourites(favpayload, favourites, () => {}));
       }),
     );
   };
 
   const onEndReached = () => {
-    if (isLoading || !hasMore) return;
-    setIsLoading(true);
-    const nextPage = page + 1;
-    if (hasMore && conferences?.length > 0) {
+    if (confLoading) return;
+
+    setConfLoading(true);
+
+    // Conferences pagination
+    if (confHasMore && conferences.length > 0) {
+      const nextPage = confPage + 1;
       const payload = {
         limit: 10,
         page: nextPage,
       };
+
       dispatch(
         getConferences(payload, conferences, hasMore => {
-          setHasMore(hasMore);
-          setPage(nextPage);
-          setIsLoading(false);
+          setConfHasMore(hasMore);
+          setConfPage(nextPage);
+          setConfLoading(false);
         }),
       );
+    }
+
+    // Favourites pagination
+    if (favHasMore && favourites?.length > 0) {
+      const nextPage = favPage + 1;
+      const favPayload = {
+        limit: 10,
+        page: nextPage,
+      };
+
       dispatch(
-        getFavourites(payload, favourites, hasMore => {
-          setHasMore(hasMore);
-          setPage(nextPage);
-          setIsLoading(false);
+        getFavourites(favPayload, favourites, hasMore => {
+          setFavHasMore(hasMore);
+          setFavPage(nextPage);
         }),
       );
-    } else {
-      setIsLoading(true);
     }
   };
   return {
@@ -70,13 +83,13 @@ export default () => {
     conferences,
     onPressHeart,
     dispatch,
-    page,
-    setPage,
-    hasMore,
-    setHasMore,
     onEndReached,
-    isLoading,
+    // isLoading,
     total_item,
     favourites,
+    setConfHasMore,
+    setFavHasMore,
+    confHasMore,
+    confLoading,
   };
 };

@@ -23,7 +23,6 @@ const Cards = ({
   isWorkshop = false,
 }) => {
   const { favourites } = useSelector(state => state.main);
-
   return (
     <TouchableOpacity
       disabled={isDetail}
@@ -68,7 +67,7 @@ const Cards = ({
         <Text text={'Date:'} size={SIZES.h10} color={COLORS.white + 80} />
         <Text
           text={
-            isWorkshop && item?.type === 'Workshop'
+            isWorkshop || item?.type === 'Workshop'
               ? new Date(
                   isFavourite ? item?.favoriteId?.date : item?.date,
                 ).toLocaleDateString(dateLocale, datePattern)

@@ -1,13 +1,23 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addRemoveFav, getWorkshops } from '../../redux/actions/main-action';
+import {
+  addRemoveFav,
+  getFavourites,
+  getWorkshops,
+} from '../../redux/actions/main-action';
 import { useState } from 'react';
 
 export default () => {
-  const { main_loading, workshops } = useSelector(state => state.main);
+  const { main_loading, workshops, favourites } = useSelector(
+    state => state.main,
+  );
+
+  console.log('favourites', favourites);
   const { user } = useSelector(state => state.auth);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [workShopPage, setWorkShopPage] = useState(1);
+  const [favPage, setFavPage] = useState(1);
+  const [hasMoreWorkshops, setHasMoreWorkshop] = useState(true);
+  const [favHasMore, setFavHasMore] = useState(true);
+  const [workshopLoading, setWorkshopLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -20,40 +30,67 @@ export default () => {
       favoriteId: item?._id,
       type: 'workshop',
     };
-    dispatch(addRemoveFav(apiData));
+    const favpayload = {
+      limit: 10,
+      page: favPage,
+    };
+
+    dispatch(
+      addRemoveFav(apiData, () => {
+        dispatch(getFavourites(favpayload, favourites, () => {}));
+      }),
+    );
   };
 
   const onEndReached = () => {
-    if (isLoading || !hasMore) return;
-    setIsLoading(true);
-    const nextPage = page + 1;
-    if (hasMore && workshops?.length > 0) {
+    if (workshopLoading) return;
+
+    setWorkshopLoading(true);
+
+    // WorkShop pagination
+    if (hasMoreWorkshops && workshops?.length > 0) {
+      const nextPage = workShopPage + 1;
       const payload = {
         limit: 10,
         page: nextPage,
       };
+
       dispatch(
         getWorkshops(payload, workshops, hasMore => {
-          setHasMore(hasMore);
-          setPage(nextPage);
-          setIsLoading(false);
+          setHasMoreWorkshop(hasMore);
+          setWorkShopPage(nextPage);
+          setWorkshopLoading(false);
         }),
       );
-    } else {
-      setIsLoading(false);
+    }
+
+    // Favourites pagination
+    if (favHasMore && favourites.length > 0) {
+      const nextPage = favPage + 1;
+      const favPayload = {
+        limit: 10,
+        page: nextPage,
+      };
+
+      dispatch(
+        getFavourites(favPayload, favourites, hasMore => {
+          setFavHasMore(hasMore);
+          setFavPage(nextPage);
+        }),
+      );
     }
   };
+
   return {
     main_loading,
     workshops,
     dispatch,
     onPressHeart,
-    page,
-    setPage,
-    hasMore,
-    setHasMore,
     onEndReached,
-    isLoading,
-    setIsLoading,
+    setHasMoreWorkshop,
+    setFavHasMore,
+    hasMoreWorkshops,
+    workshopLoading,
+    favourites,
   };
 };

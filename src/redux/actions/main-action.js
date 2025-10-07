@@ -26,6 +26,7 @@ export const getConferences = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getConferences,
         onDone: async res => {
+          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
           if (params?.page === 1) {
             dispatch(setConferences(res?.data?.data ?? []));
           } else {
@@ -55,6 +56,7 @@ export const getConferencesById = data => {
 
 // Workshops
 export const getWorkshops = (params, array, onDone) => {
+  console.log('params', params);
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -62,7 +64,7 @@ export const getWorkshops = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getWorkshops,
         onDone: async res => {
-          console.log('res....', res);
+          console.log('workshopres==>', res);
           dispatch(setTotalItems(res?.data?.pagination?.totalItems));
 
           if (params?.page === 1) {
@@ -164,6 +166,7 @@ export const getFavourites = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getFavourites,
         onDone: async res => {
+          console.log('hehehhehe', res);
           if (params?.page === 1) {
             dispatch(setFavourites(res?.data?.favorites));
           } else {
@@ -186,7 +189,6 @@ export const addRemoveFav = (data, onDone) => {
         apiService: apiServices.addRemoveFavourite,
         param_data: data,
         onDone: async res => {
-          console.log('res', res);
           dispatch(setFavList(res?.data));
           onDone && onDone(res);
         },

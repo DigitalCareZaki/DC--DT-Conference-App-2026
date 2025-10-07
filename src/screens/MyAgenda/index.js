@@ -75,7 +75,6 @@ const MyAgenda = () => {
                 isDetail={true}
                 item={item}
                 isFavourite={true}
-                isWorkshop
               />
             )}
             contentContainerStyle={

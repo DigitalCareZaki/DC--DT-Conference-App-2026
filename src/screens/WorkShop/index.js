@@ -11,7 +11,7 @@ import {
 import { navigate } from '../../navigation/service';
 import { styles } from './index.styles';
 import { useFocusEffect } from '@react-navigation/native';
-import { getWorkshops } from '../../redux/actions/main-action';
+import { getFavourites, getWorkshops } from '../../redux/actions/main-action';
 import WorkFunctional from './index.function';
 import { SIZES } from '../../constants';
 
@@ -21,22 +21,28 @@ const WorkShop = () => {
     workshops,
     dispatch,
     onPressHeart,
-    page,
-    setHasMore,
     onEndReached,
-    isLoading,
-    hasMore,
+    favourites,
+    setHasMoreWorkshop,
+    setFavHasMore,
+    hasMoreWorkshops,
+    workshopLoading,
   } = WorkFunctional();
 
   useFocusEffect(
     useCallback(() => {
       const payload = {
         limit: 10,
-        page: page,
+        page: 1,
       };
       dispatch(
         getWorkshops(payload, workshops, hasMore => {
-          setHasMore(hasMore);
+          setHasMoreWorkshop(hasMore);
+        }),
+      );
+      dispatch(
+        getFavourites(payload, favourites, hasMore => {
+          setFavHasMore(hasMore);
         }),
       );
     }, []),
@@ -46,7 +52,7 @@ const WorkShop = () => {
     <Container>
       <Header title={'Workshop'} rightIcon={null} />
 
-      {main_loading && !isLoading ? (
+      {main_loading && !workshopLoading ? (
         <LoaderModal />
       ) : (
         <View style={styles.main_view}>
@@ -62,7 +68,7 @@ const WorkShop = () => {
               />
             )}
             ListFooterComponent={
-              isLoading && hasMore ? (
+              workshopLoading && hasMoreWorkshops ? (
                 <Loader style={styles.loader} />
               ) : (
                 <SizedBox />

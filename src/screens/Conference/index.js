@@ -23,26 +23,31 @@ const Conference = () => {
     conferences,
     onPressHeart,
     dispatch,
-    page,
-    setHasMore,
     onEndReached,
-    isLoading,
-    hasMore,
     total_item,
+    favourites,
+    setConfHasMore,
+    setFavHasMore,
+    confHasMore,
+    confLoading,
   } = ConferenceFunctional();
 
   useFocusEffect(
     useCallback(() => {
       const payload = {
         limit: 10,
-        page: page,
+        page: 1,
       };
       dispatch(
         getConferences(payload, conferences, hasMore => {
-          setHasMore(hasMore);
+          setConfHasMore(hasMore);
         }),
       );
-      dispatch(getFavourites(payload));
+      dispatch(
+        getFavourites(payload, favourites, hasMore => {
+          setFavHasMore(hasMore);
+        }),
+      );
     }, []),
   );
 
@@ -50,7 +55,7 @@ const Conference = () => {
     <Container>
       <Header isMenu title={'Conferences'} />
 
-      {main_loading && !isLoading ? (
+      {main_loading && !confLoading ? (
         <LoaderModal />
       ) : (
         <View style={styles.main_view}>
@@ -68,7 +73,7 @@ const Conference = () => {
             keyExtractor={item => item?._id?.toString()}
             showsVerticalScrollIndicator={false}
             ListFooterComponent={
-              isLoading && hasMore ? (
+              confLoading && confHasMore ? (
                 <Loader style={styles.loader} />
               ) : (
                 <SizedBox />
