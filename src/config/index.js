@@ -119,7 +119,7 @@ export const drawer_array = [
     id: 7,
     name: 'Notifications',
     icon: drawer_notification_icon,
-    route: 'Notifications',
+    route: 'Notification',
   },
   {
     id: 8,
@@ -176,7 +176,7 @@ export const dashboard_array = [
     id: 3,
     icon: visitor_registration_icon,
     name: 'Visitor Registration',
-    route: '',
+    is_login: true
   },
   {
     id: 4,

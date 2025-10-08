@@ -12,17 +12,14 @@ export default () => {
   const [page, setPage] = useState(1);
   const [isMore, setIsMore] = useState(false);
   const [refeshing, setRefreshing] = useState(false);
+  const [search, setSearch] = useState(null);
 
   const getExhibitionData = pageNumber => {
     const payload = {
       limit: 10,
       page: pageNumber,
     };
-    dispatch(
-      getExhibition(payload, exhibition, hasMore => {
-        setIsMore(hasMore);
-      }),
-    );
+    dispatch(getExhibition(payload, exhibition, hasMore => setIsMore(hasMore)));
   };
 
   useEffect(() => {
@@ -31,11 +28,11 @@ export default () => {
   }, []);
 
   const onEndReached = () => {
-    if (list_loading) return;
-    if (isMore && exhibition?.length > 0) {
-      setPage(page + 1);
-      getExhibitionData(page + 1);
-    }
+    // if (list_loading) return;
+    // if (isMore && exhibition?.length > 0) {
+    //   setPage(page + 1);
+    //   getExhibitionData(page + 1);
+    // }
   };
 
   const onRefresh = async () => {
@@ -49,11 +46,12 @@ export default () => {
   return {
     exhibition,
     onEndReached,
-    page,
     total_item,
     isMore,
     refeshing,
     list_loading,
     onRefresh,
+    search,
+    setSearch
   };
 };

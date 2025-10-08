@@ -9,6 +9,7 @@ import gallery_img_2 from '../assets/images/gallery_img_2.png';
 import profile_img_1 from '../assets/images/profile_img_1.png';
 import profile_img_2 from '../assets/images/profile_img_2.png';
 import profile_img_3 from '../assets/images/profile_img_3.png';
+import venue_image from '../assets/images/venue_image.png';
 
 export default {
   background_image,
@@ -22,4 +23,5 @@ export default {
   profile_img_1,
   profile_img_2,
   profile_img_3,
+  venue_image
 };

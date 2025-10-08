@@ -19,7 +19,6 @@ export default () => {
     } catch (error) {
       console.error(error);
     }
-    // dispatch(logoutUser(apiData))
   };
 
   return {

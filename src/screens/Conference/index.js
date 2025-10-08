@@ -65,16 +65,14 @@ const Conference = () => {
               onEndReached={onEndReached}
               onEndReachedThreshold={0.5}
               renderItem={({ item, index }) => (
-                <>
-                  <Cards
-                    index={index}
-                    item={item}
-                    onPressHeart={() => onPressHeart(item, index)}
-                    onPress={() =>
-                      navigate('ConferenceDetails', { id: item?._id })
-                    }
-                  />
-                </>
+                <Cards
+                  index={index}
+                  item={item}
+                  onPressHeart={() => onPressHeart(item, index)}
+                  onPress={() =>
+                    navigate('ConferenceDetails', { id: item?._id })
+                  }
+                />
               )}
             />
           </>

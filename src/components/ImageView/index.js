@@ -56,7 +56,7 @@ const ImageView = ({
           colors={gradientColors}
           start={gradientStart}
           end={gradientEnd}
-          style={[StyleSheet.absoluteFillObject, { marginHorizontal: 14 }]}
+          style={[StyleSheet.absoluteFillObject]}
         />
       )}
     </TouchableOpacity>

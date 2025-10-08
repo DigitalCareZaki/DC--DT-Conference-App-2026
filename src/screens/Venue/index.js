@@ -5,49 +5,47 @@ import {
   Header,
   Icons,
   ImageView,
-  RowView,
+  SizedBox,
   Text,
 } from '../../components';
-import { ScrollView } from 'react-native';
+import { View } from 'react-native';
 import { COLORS, images, SIZES } from '../../constants';
 import { styles } from './index.styles';
 import { TextWeights } from '../../config';
 import { location_marker_icon } from '../../assets/icons';
 import FastImage from 'react-native-fast-image';
+import { common_styles } from '../../utils/common_styles';
 
 const Venue = () => {
   return (
     <Container>
       <Header color={COLORS.white} title={'Venue'} />
-      <ScrollView
-        style={styles.main_view}
-        contentContainerStyle={styles.scrollViewStyle}
-      >
-        <RowView
-          gap={SIZES.padding2 + 4}
-          direction={'column'}
-          style={styles.grid}
-        >
+
+      <View style={styles.main_view} >
+
+        <View style={styles.top_view} >
           <Icons name={location_marker_icon} />
           <Text
-            text={
-              'Expo Centre Main Main University Rd, Block 15 Gulshan-e-Iqbal, Karachi'
-            }
+            text={'Expo Centre Main Main University Rd, Block 15 Gulshan-e-Iqbal, Karachi'}
             lineHeight={20}
             size={SIZES.h16}
             weight={TextWeights.medium}
             align={'center'}
+            mt={SIZES.padding}
           />
-        </RowView>
+        </View>
+        <SizedBox  />
         <ImageView
-          width={SIZES.padding * 18}
-          height={SIZES.padding * 22 + 9}
-          image={images.map_image}
+          width={"100%"}
+          style={common_styles.flex_1}
+          image={images.venue_image}
+          radius={SIZES.padding2}
           resizeMode={FastImage.resizeMode.cover}
-          style={{ alignSelf: 'center' }}
         />
+        <SizedBox  />
         <Button buttonText={'View on Google Map'} />
-      </ScrollView>
+        <SizedBox/>
+      </View>
     </Container>
   );
 };

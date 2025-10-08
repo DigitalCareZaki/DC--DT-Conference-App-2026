@@ -4,17 +4,13 @@ import { COLORS, SIZES } from '../../constants';
 export const styles = StyleSheet.create({
   main_view: {
     flex: 1,
-    paddingHorizontal: SIZES.padding2 + 4,
-    paddingVertical: SIZES.padding,
-    marginBottom: SIZES.padding,
+    paddingHorizontal: SIZES.padding,
   },
-
-  scrollViewStyle: {
-    paddingBottom: SIZES.padding,
-  },
-  grid: {
+  top_view: {
     backgroundColor: COLORS.primary,
-    padding: SIZES.padding2 + 4,
     borderRadius: SIZES.padding2 + 4,
+    marginTop: SIZES.padding,
+    paddingVertical: SIZES.padding2,
+    paddingHorizontal: SIZES.padding2
   },
 });

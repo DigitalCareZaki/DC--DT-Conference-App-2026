@@ -5,6 +5,7 @@ import {
   setListLoading,
   setSelectedItemIndex,
 } from '../../redux/slices/main-slice';
+import { navigate } from '../../navigation/service';
 
 export default () => {
   const dispatch = useDispatch();
@@ -49,17 +50,11 @@ export default () => {
       return;
     }
     dispatch(setSelectedItemIndex(index));
-
     const apiData = {
       favoriteId: item?._id,
       type: 'workshop',
     };
-
-    try {
-      await dispatch(addRemoveFav(apiData));
-    } finally {
-      setLoadingItemId(null);
-    }
+    dispatch(addRemoveFav(apiData));
   };
 
   const onEndReached = () => {

@@ -23,11 +23,8 @@ const Cards = ({
   isFavourite = false,
   isWorkshop = false,
 }) => {
-  const { favourites, selected_item_index, main_loading } = useSelector(
-    state => state.main,
-  );
+  const { favourites, selected_item_index, favourite_loading } = useSelector(state => state.main);
 
-  console.log('selected_item_index', selected_item_index);
   return (
     <>
       <TouchableOpacity
@@ -44,7 +41,7 @@ const Cards = ({
             color={COLORS.light_blue_color}
             style={common_styles.flex_1}
           />
-          {selected_item_index === index && main_loading ? (
+          {selected_item_index === index && favourite_loading ? (
             <Loader mt={0} size={'small'} />
           ) : (
             <TouchableOpacity
@@ -55,9 +52,9 @@ const Cards = ({
               <Icons
                 name={
                   isFavourite ||
-                  favourites?.find(
-                    favItem => favItem?.favoriteId?._id === item?._id,
-                  )
+                    favourites?.find(
+                      favItem => favItem?.favoriteId?._id === item?._id,
+                    )
                     ? selected_heart_icon
                     : heart_icon
                 }
@@ -79,13 +76,13 @@ const Cards = ({
             text={
               isWorkshop || item?.type === 'Workshop'
                 ? new Date(
-                    isFavourite ? item?.favoriteId?.date : item?.date,
-                  ).toLocaleDateString(dateLocale, datePattern)
+                  isFavourite ? item?.favoriteId?.date : item?.date,
+                ).toLocaleDateString(dateLocale, datePattern)
                 : `${new Date(
-                    isFavourite ? item?.favoriteId?.startDate : item?.startDate,
-                  ).toLocaleDateString(dateLocale, datePattern)} - ${new Date(
-                    isFavourite ? item?.favoriteId?.startDate : item?.endDate,
-                  ).toLocaleDateString(dateLocale, datePattern)}`
+                  isFavourite ? item?.favoriteId?.startDate : item?.startDate,
+                ).toLocaleDateString(dateLocale, datePattern)} - ${new Date(
+                  isFavourite ? item?.favoriteId?.startDate : item?.endDate,
+                ).toLocaleDateString(dateLocale, datePattern)}`
             }
             size={SIZES.h10}
           />

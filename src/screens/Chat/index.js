@@ -71,7 +71,6 @@ const Chat = ({ route }) => {
     });
 
     socket.on('new-message', msg => {
-      console.log('New Messageee', msg);
       const obj = {
         _id: msg?.message?._id,
         text: msg?.message?.message ?? '',
@@ -163,35 +162,6 @@ const Chat = ({ route }) => {
           <Text color={COLORS.primary} text={'Send'} />
         </TouchableOpacity>
       </RowView>
-    );
-  };
-  const renderSend = props => (
-    <Send
-      {...props}
-      containerStyle={{
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: SIZES.padding2 + 4,
-      }}
-    >
-      <RowView gap={20}>
-        <Icons name={microphone_icon} color={COLORS.primary} />
-        <Icons name={attachment_icon} color={COLORS.primary} />
-      </RowView>
-    </Send>
-  );
-
-  const renderInputToolbar = props => {
-    return (
-      <InputToolbar
-        {...props}
-        containerStyle={{
-          borderTopWidth: 1,
-          borderTopColor: '#E8E8E8',
-          padding: 8,
-        }}
-        primaryStyle={{ alignItems: 'center' }}
-      />
     );
   };
 

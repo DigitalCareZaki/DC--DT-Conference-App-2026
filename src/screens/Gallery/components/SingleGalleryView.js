@@ -10,7 +10,7 @@ const SingleGalleryView = ({ item, onPress }) => {
       url={item.image}
       height={SIZES.padding * 7.5}
       width={'48%'}
-      resizeMode={FastImage.resizeMode.contain}
+      resizeMode={FastImage.resizeMode.stretch}
       radius={SIZES.padding2 * 1.3}
       style={styles.main_view}
     />

@@ -9,9 +9,14 @@ import { drawer_array, TextWeights } from '../../config';
 import { SingleDrawerView } from './components';
 import { navigate } from '../../navigation/service';
 
-const DrawerContent = ({ navigation }) => {
-  const { onPressLogout, user, setShowModal, showModal } =
-    DrawerContentFunctional();
+const DrawerContent = () => {
+
+  const {
+    onPressLogout,
+    user,
+    setShowModal,
+    showModal
+  } = DrawerContentFunctional();
 
   return (
     <Container isImage={false} background={COLORS.primary}>
@@ -21,7 +26,7 @@ const DrawerContent = ({ navigation }) => {
 
           <Text
             mt={SIZES.padding}
-            text={'Muhammad Ali'}
+            text={user?.name}
             align={'center'}
             weight={TextWeights.medium}
             size={SIZES.h22}
@@ -29,7 +34,7 @@ const DrawerContent = ({ navigation }) => {
           <Text
             mt={SIZES.padding2 / 6}
             align={'center'}
-            text={'muhammadali@gmail.com'}
+            text={user?.email}
             mb={SIZES.padding * 1.5}
           />
 

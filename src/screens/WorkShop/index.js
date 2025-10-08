@@ -13,6 +13,7 @@ import { styles } from './index.styles';
 import WorkFunctional from './index.function';
 
 const WorkShop = () => {
+
   const {
     workshops,
     onPressHeart,
@@ -21,7 +22,6 @@ const WorkShop = () => {
     isMore,
     onRefresh,
     refreshing,
-    loadingItemId,
   } = WorkFunctional();
 
   return (
@@ -34,18 +34,12 @@ const WorkShop = () => {
         ) : (
           <FlatList
             data={workshops}
-            keyExtractor={item => item.id}
+            onEndReached={onEndReached}
+            onEndReachedThreshold={0.5}
+            showsVerticalScrollIndicator={false}
             refreshControl={
               <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }
-            renderItem={({ item }) => (
-              <Cards
-                isWorkshop
-                item={item}
-                onPressHeart={() => onPressHeart(item, index)}
-                onPress={() => navigate('WorkShopDetails', { id: item?._id })}
-              />
-            )}
             ListEmptyComponent={<ListEmptyText text={'No Workshop Found'} />}
             ListFooterComponent={
               list_loading && isMore ? (
@@ -54,9 +48,17 @@ const WorkShop = () => {
                 <SizedBox />
               )
             }
-            onEndReached={onEndReached}
-            onEndReachedThreshold={0.5}
-            showsVerticalScrollIndicator={false}
+
+            renderItem={({ item, index }) => (
+              <Cards
+                key={index?.toString()}
+                isWorkshop
+                item={item}
+                index={index}
+                onPressHeart={() => onPressHeart(item, index)}
+                onPress={() => navigate('WorkShopDetails', { data: item })}
+              />
+            )}
           />
         )}
       </View>
