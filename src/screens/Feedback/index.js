@@ -115,6 +115,7 @@ const Feedback = () => {
                         onPress={handleSubmit}
                       />
                     )}
+                    <SizedBox />
                   </View>
                 </KeyboardAvoidingView>
               </>

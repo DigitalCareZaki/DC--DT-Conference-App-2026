@@ -30,6 +30,7 @@ import {
   ForgotPassword,
   Otp,
   ResetPassword,
+  AskQuestion,
 } from '../screens';
 import { notificationListener } from '../utils/notification_service';
 import { getUserProfile } from '../redux/actions/auth-action';
@@ -87,6 +88,7 @@ const MainNavigator = () => {
           <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
           <Stack.Screen name="Otp" component={Otp} />
           <Stack.Screen name="ResetPassword" component={ResetPassword} />
+          <Stack.Screen name="AskQuestion" component={AskQuestion} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast />

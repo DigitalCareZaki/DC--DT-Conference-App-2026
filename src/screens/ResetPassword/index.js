@@ -13,8 +13,7 @@ import {
 import { KeyboardAvoidingView, ScrollView, View } from 'react-native';
 import { SIZES } from '../../constants';
 import { TextWeights } from '../../config';
-import { password_icon, sms } from '../../assets/icons';
-import { navigate } from '../../navigation/service';
+import { password_icon } from '../../assets/icons';
 import { Formik } from 'formik';
 import { keyboardAvoidingBehaviour } from '../../constants/theme';
 import { common_styles } from '../../utils/common_styles';

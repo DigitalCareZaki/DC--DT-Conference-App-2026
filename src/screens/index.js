@@ -22,3 +22,4 @@ export { default as Notification } from './Notification';
 export { default as ForgotPassword } from './ForgotPassword';
 export { default as Otp } from './Otp';
 export { default as ResetPassword } from './ResetPassword';
+export { default as AskQuestion } from './AskQuestion';

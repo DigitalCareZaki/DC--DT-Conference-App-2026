@@ -24,6 +24,7 @@ export const SERVICE_URLS = {
   addFeedback: '/feedbacks/submit-update',
   updateLinks: '/user/update',
   verifyOtp: '/user/verify-otp',
+  askQuestion: '/question',
 };
 
 // Auth
@@ -49,6 +50,7 @@ const addRemoveFavourite = data => post(SERVICE_URLS.addRemoveFavourite, data);
 const getFeedBack = () => get(SERVICE_URLS.getFeedback);
 const addFeedback = data => put(SERVICE_URLS.addFeedback, data);
 const updateLinks = data => put(SERVICE_URLS.updateLinks, data);
+const askQuestion = data => post(SERVICE_URLS.askQuestion, data);
 
 const apiServices = {
   // Auth
@@ -74,6 +76,7 @@ const apiServices = {
   getFeedBack,
   addFeedback,
   updateLinks,
+  askQuestion,
 };
 
 export default apiServices;

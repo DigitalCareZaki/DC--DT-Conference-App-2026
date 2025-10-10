@@ -87,7 +87,7 @@ export const getWorkshop = data => {
         setLoading: setDetailLoading,
         param_data: data,
         apiService: apiServices.getWorkshop,
-        setData:setWorkshopDetail
+        setData: setWorkshopDetail,
       }),
     );
   };
@@ -167,7 +167,7 @@ export const getFavourites = () => {
   };
 };
 
-export const addRemoveFav = (data) => {
+export const addRemoveFav = data => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -195,14 +195,14 @@ export const getFeedBack = onDone => {
   };
 };
 
-export const addFeedback = (data) => {
+export const addFeedback = data => {
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setMainPostLoading,
         param_data: data,
         apiService: apiServices.addFeedback,
-        onDone: async () => dispatch(getFeedBack())
+        onDone: async () => dispatch(getFeedBack()),
       }),
     );
   };
@@ -219,6 +219,19 @@ export const updateLinks = data => {
         onDone: async res => {
           dispatch(setUser(res?.data));
         },
+      }),
+    );
+  };
+};
+
+// Ask A Question
+export const askQuestion = data => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setMainPostLoading,
+        param_data: data,
+        apiService: apiServices.askQuestion,
       }),
     );
   };

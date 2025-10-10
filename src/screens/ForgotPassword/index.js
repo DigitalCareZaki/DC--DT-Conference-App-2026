@@ -13,7 +13,7 @@ import {
 import { View } from 'react-native';
 import { SIZES } from '../../constants';
 import { TextWeights } from '../../config';
-import { sms } from '../../assets/icons';
+import { sms_icon } from '../../assets/icons';
 import ForgotPasswordFunctional from './index.function';
 
 const ForgotPassword = () => {
@@ -48,7 +48,7 @@ const ForgotPassword = () => {
           isrequired={true}
           label={'Email Address'}
           placeholder={'Enter your Email Address'}
-          leftIcon={sms}
+          leftIcon={sms_icon}
           value={email}
           onChangeText={text => {
             setEmail(text);

@@ -39,7 +39,6 @@ export const login = (data, onDone, onError) => {
         param_data: data,
         isAuth: true,
         onDone: async res => {
-          console.log('res====>', res);
           await setToken(res?.data?.accessToken);
           dispatch(setUser(res?.data?.user));
           onDone && onDone();

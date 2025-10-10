@@ -21,6 +21,7 @@ import {
   speakers_icon,
   exhibition_icon,
   logout_icon,
+  ask_question_icon,
 } from '../assets/icons';
 import { images } from '../constants';
 
@@ -99,60 +100,66 @@ export const drawer_array = [
   },
   {
     id: 4,
+    name: 'Ask A Question',
+    icon: ask_question_icon,
+    route: 'AskQuestion',
+  },
+  {
+    id: 5,
     name: 'Speakers',
     icon: speakers_icon,
     route: 'Speakers',
   },
   {
-    id: 5,
+    id: 6,
     name: 'Conferences',
     icon: conferences_icon,
     route: 'Conference',
   },
   {
-    id: 6,
+    id: 7,
     name: 'Workshops',
     icon: workshops_icon,
     route: 'WorkShop',
   },
   {
-    id: 7,
+    id: 8,
     name: 'Notifications',
     icon: drawer_notification_icon,
     route: 'Notification',
   },
   {
-    id: 8,
+    id: 9,
     name: 'ContactUs',
     icon: call_icon,
     route: 'Contact',
   },
   {
-    id: 9,
+    id: 10,
     name: 'Venue',
     icon: venue_icon,
     route: 'Venue',
   },
   {
-    id: 10,
+    id: 11,
     name: 'My Agenda',
     icon: my_agenda_icon,
     route: 'MyAgenda',
   },
   {
-    id: 11,
+    id: 12,
     name: 'Feedback',
     icon: feedback_icon,
     route: 'Feedback',
   },
   {
-    id: 12,
+    id: 13,
     name: 'Social Media links',
     icon: social_media_icon,
     route: 'EditSocialMedia',
   },
   {
-    id: 13,
+    id: 14,
     name: 'Logout',
     icon: logout_icon,
     isLogout: true,
@@ -176,7 +183,7 @@ export const dashboard_array = [
     id: 3,
     icon: visitor_registration_icon,
     name: 'Visitor Registration',
-    is_login: true
+    is_login: true,
   },
   {
     id: 4,
