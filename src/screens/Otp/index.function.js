@@ -3,13 +3,20 @@ import {
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
+import { useDispatch, useSelector } from 'react-redux';
+import { verifyOtp } from '../../redux/actions/auth-action';
+import { navigate } from '../../navigation/service';
 
-export default () => {
+export default ({ purpose }) => {
+  const dispatch = useDispatch();
+
   const CELL_COUNT = 4;
   const [value, setValue] = useState('');
-  const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
   const [timer, setTimer] = useState(300);
 
+  const { auth_loading, user_email } = useSelector(state => state.auth);
+
+  const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
     setValue,
@@ -31,6 +38,19 @@ export default () => {
     return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   };
 
+  const onPressSubmit = () => {
+    const apiData = {
+      email: user_email,
+      purpose: purpose,
+      otp: value,
+    };
+    dispatch(
+      verifyOtp(apiData, () => {
+        navigate('ResetPassword');
+      }),
+    );
+  };
+
   return {
     ref,
     props,
@@ -40,5 +60,7 @@ export default () => {
     setValue,
     formatTime,
     timer,
+    onPressSubmit,
+    auth_loading,
   };
 };

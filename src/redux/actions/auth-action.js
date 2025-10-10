@@ -1,11 +1,14 @@
 import apiServices from '../../api_services/request-handler';
-import { goBack } from '../../navigation/service';
+import { goBack, navigate } from '../../navigation/service';
 import { requestHandler, setToken } from '../../utils/functions';
 import {
   setAllUsers,
   setAuthLoading,
   setGoogleSigninLoading,
+  setIsUserVerified,
+  setResetPasswordToken,
   setTotalItems,
+  setUserEmail,
 } from '../slices/auth-slice';
 import { setUser } from '../slices/constant-slice';
 import { setListLoading } from '../slices/main-slice';
@@ -92,6 +95,54 @@ export const getUserProfile = () => {
         setLoading: setAuthLoading,
         apiService: apiServices.getProfile,
         onDone: async res => dispatch(setUser(res?.data)),
+      }),
+    );
+  };
+};
+
+export const sendOtp = (data, onDone) => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setAuthLoading,
+        param_data: data,
+        apiService: apiServices.sendOtp,
+        onDone: async res => {
+          dispatch(setUserEmail(res?.data?.email));
+          onDone && onDone();
+        },
+      }),
+    );
+  };
+};
+
+export const verifyOtp = (data, onDone) => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setAuthLoading,
+        param_data: data,
+        apiService: apiServices.verifyOtp,
+        onDone: async res => {
+          dispatch(setResetPasswordToken(res?.data?.resetPasswordToken));
+          dispatch(setIsUserVerified(res?.data?.isVerified));
+          onDone && onDone();
+        },
+      }),
+    );
+  };
+};
+
+export const resetPassword = (data, onDone) => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setAuthLoading,
+        param_data: data,
+        apiService: apiServices.resetPassword,
+        onDone: async res => {
+          onDone && onDone();
+        },
       }),
     );
   };

@@ -1,13 +1,14 @@
 import { get, post, put } from './http-provider';
 
 export const SERVICE_URLS = {
-
   // Auth Management
   register: '/auth/register',
   login: '/auth/login',
   getAllUser: '/user',
   getProfile: '/user/profile',
   googleLogin: '/auth/google',
+  sendOtp: '/user/send-otp',
+  resetPassword: '/user/reset-password',
 
   // Main Management
   getConferences: '/conference',
@@ -22,6 +23,7 @@ export const SERVICE_URLS = {
   getFeedback: '/feedbacks/user',
   addFeedback: '/feedbacks/submit-update',
   updateLinks: '/user/update',
+  verifyOtp: '/user/verify-otp',
 };
 
 // Auth
@@ -30,6 +32,9 @@ const login = data => post(SERVICE_URLS.login, data);
 const getAllUser = data => get(SERVICE_URLS.getAllUser, data);
 const getProfile = () => get(SERVICE_URLS.getProfile);
 const googleLogin = data => post(SERVICE_URLS.googleLogin, data);
+const sendOtp = data => post(SERVICE_URLS.sendOtp, data);
+const verifyOtp = data => post(SERVICE_URLS.verifyOtp, data);
+const resetPassword = data => post(SERVICE_URLS.resetPassword, data);
 
 // Main Management
 const getConferences = data => get(SERVICE_URLS.getConferences, data);
@@ -52,6 +57,9 @@ const apiServices = {
   getAllUser,
   getProfile,
   googleLogin,
+  sendOtp,
+  verifyOtp,
+  resetPassword,
 
   // Main Management
   getConferences,

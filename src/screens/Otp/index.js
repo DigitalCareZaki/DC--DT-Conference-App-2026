@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '../../components/Container';
 import { styles } from './index.styles';
-import { Button, Header, SizedBox, Text } from '../../components';
+import { Button, Header, Loader, SizedBox, Text } from '../../components';
 import { Platform, View } from 'react-native';
 import { COLORS, SIZES } from '../../constants';
 import { TextWeights } from '../../config';
@@ -9,7 +9,9 @@ import { navigate } from '../../navigation/service';
 import { CodeField, Cursor } from 'react-native-confirmation-code-field';
 import OtpFunctional from './index.function';
 
-const Otp = () => {
+const Otp = ({ route }) => {
+  const purpose = route?.params?.purpose ?? '';
+
   const {
     ref,
     props,
@@ -19,7 +21,9 @@ const Otp = () => {
     setValue,
     formatTime,
     timer,
-  } = OtpFunctional();
+    onPressSubmit,
+    auth_loading,
+  } = OtpFunctional({ purpose });
 
   return (
     <Container>
@@ -114,11 +118,15 @@ const Otp = () => {
           textDecorationLine={'underline'}
         />
       </View>
-      <Button
-        buttonText={'Submit'}
-        style={styles.btn}
-        onPress={() => navigate('ResetPassword')}
-      />
+      {auth_loading ? (
+        <Loader />
+      ) : (
+        <Button
+          buttonText={'Submit'}
+          style={styles.btn}
+          onPress={onPressSubmit}
+        />
+      )}
       <SizedBox />
     </Container>
   );

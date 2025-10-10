@@ -6,6 +6,7 @@ import {
   ErrorText,
   Header,
   InputField,
+  Loader,
   SizedBox,
   Text,
 } from '../../components';
@@ -21,8 +22,10 @@ import {
   reset_password_schema,
   reset_password_validation_schema,
 } from '../../validations_schemas/reset_password_validation_schema';
+import ResetPasswordFunctional from './index.function';
 
 const ResetPassword = () => {
+  const { onPressSubmit, auth_loading } = ResetPasswordFunctional();
   return (
     <Container>
       <Header rightIcon={null} />
@@ -32,7 +35,7 @@ const ResetPassword = () => {
         validateOnChange={true}
         validateOnMount={false}
         validateOnBlur={false}
-        // onSubmit={values => onPressSubmit(values)}
+        onSubmit={values => onPressSubmit(values)}
       >
         {({ handleChange, values, errors, handleSubmit, setFieldValue }) => {
           return (
@@ -85,14 +88,20 @@ const ResetPassword = () => {
                       onChangeText={handleChange('confirm_password')}
                     />
                     <ErrorText error={errors.confirm_password} />
+
+                    <SizedBox />
                   </ScrollView>
                 </View>
               </KeyboardAvoidingView>
-              <Button
-                buttonText={'Continue'}
-                style={styles.btn}
-                onPress={() => navigate('Otp')}
-              />
+              {auth_loading ? (
+                <Loader />
+              ) : (
+                <Button
+                  buttonText={'Continue'}
+                  style={styles.btn}
+                  onPress={handleSubmit}
+                />
+              )}
               <SizedBox />
             </>
           );
