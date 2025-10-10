@@ -28,4 +28,16 @@ export const styles = StyleSheet.create({
   flatlistContainer: {
     gap: SIZES.padding2 + 4,
   },
+  tabContainer: {
+    backgroundColor: 'white',
+    borderRadius: 50,
+    padding: 5,
+  },
+  tab: {
+    backgroundColor: COLORS.primary,
+    width: '48%',
+    padding: SIZES.padding2,
+    borderRadius: 50,
+    alignItems: 'center',
+  },
 });

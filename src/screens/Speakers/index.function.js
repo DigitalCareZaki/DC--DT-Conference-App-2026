@@ -4,38 +4,40 @@ import { useEffect, useState } from 'react';
 import { setListLoading } from '../../redux/slices/main-slice';
 
 export default () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const { list_loading, speakers } = useSelector(state => state.main);
 
-  const [search, setSearch] = useState(null)
-  const [refreshing, setRefreshing] = useState(false)
+  const [search, setSearch] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
+  const [activeTab, setActiveTab] = useState('internationals');
+  const [modalVisibility, setModalVisibility] = useState(false);
 
   useEffect(() => {
-    dispatch(setListLoading(true))
+    dispatch(setListLoading(true));
     dispatch(getSpeakers());
-  }, [])
+  }, []);
 
-  const nationalSpeakers = speakers?.filter(item => item?.speakerType?.toLowerCase() === 'national');
+  const nationalSpeakers = speakers?.filter(
+    item => item?.speakerType?.toLowerCase() === 'national',
+  );
 
-  const internationalSpeakers = speakers?.filter(item => item?.speakerType?.toLowerCase() === 'international');
+  const internationalSpeakers = speakers?.filter(
+    item => item?.speakerType?.toLowerCase() === 'international',
+  );
 
-  const data = [
-    {
-      title: 'International Speakers',
-      data: internationalSpeakers,
-    },
-    {
-      title: 'National Speakers',
-      data: nationalSpeakers,
-    },
-  ];
+  const data =
+    activeTab === 'internationals' ? internationalSpeakers : nationalSpeakers;
+
+  const handleTabChange = seletedtab => {
+    setActiveTab(seletedtab);
+  };
 
   const onRefresh = async () => {
-    setRefreshing(true)
+    setRefreshing(true);
     await dispatch(getSpeakers());
-    setRefreshing(false)
-  }
+    setRefreshing(false);
+  };
 
   return {
     data,
@@ -43,6 +45,11 @@ export default () => {
     search,
     setSearch,
     refreshing,
-    onRefresh
+    onRefresh,
+    handleTabChange,
+    setActiveTab,
+    activeTab,
+    setModalVisibility,
+    modalVisibility,
   };
 };
