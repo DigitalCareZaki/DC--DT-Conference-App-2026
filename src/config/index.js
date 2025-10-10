@@ -189,7 +189,7 @@ export const dashboard_array = [
     id: 4,
     icon: who_attend_icon,
     name: 'Who Should Attend',
-    route: '',
+    route: 'WhoShouldAttend',
   },
   {
     id: 5,
