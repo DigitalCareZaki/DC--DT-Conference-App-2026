@@ -5,7 +5,7 @@ const initialState = {
   all_users: null,
   google_signin_loading: null,
   total_item: null,
-  is_user_verified: null,
+  is_user_verified: false,
   reset_password_token: null,
   user_email: null,
 };

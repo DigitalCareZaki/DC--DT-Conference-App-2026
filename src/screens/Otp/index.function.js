@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { verifyOtp } from '../../redux/actions/auth-action';
 import { navigate } from '../../navigation/service';
 
-export default ({ purpose }) => {
+export default ({ purpose, email }) => {
   const dispatch = useDispatch();
 
   const CELL_COUNT = 4;
@@ -15,13 +15,13 @@ export default ({ purpose }) => {
   const [timer, setTimer] = useState(300);
 
   const { auth_loading, user_email } = useSelector(state => state.auth);
+  const { user } = useSelector(state => state.constant);
 
   const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
     setValue,
   });
-
   useEffect(() => {
     if (timer === 0) return;
 
@@ -40,13 +40,15 @@ export default ({ purpose }) => {
 
   const onPressSubmit = () => {
     const apiData = {
-      email: user_email,
+      email: purpose === 'ACCOUNT_VERIFICATION' ? email : user_email,
       purpose: purpose,
       otp: value,
     };
     dispatch(
       verifyOtp(apiData, () => {
-        navigate('ResetPassword');
+        navigate(
+          purpose === 'ACCOUNT_VERIFICATION' ? 'Login' : 'ResetPassword',
+        );
       }),
     );
   };

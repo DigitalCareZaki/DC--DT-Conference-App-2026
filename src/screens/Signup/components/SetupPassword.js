@@ -14,9 +14,9 @@ import {
 const SetupPassword = ({ formikRef, onSubmit, data }) => {
   return (
     <Formik
+      innerRef={formikRef}
       initialValues={password_schema(data)}
       validationSchema={password_validation_schema}
-      innerRef={formikRef}
       onSubmit={values => onSubmit(values)}
     >
       {({ values, errors, setFieldValue, handleChange }) => {

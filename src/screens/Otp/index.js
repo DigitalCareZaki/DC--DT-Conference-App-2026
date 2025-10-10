@@ -11,6 +11,7 @@ import OtpFunctional from './index.function';
 
 const Otp = ({ route }) => {
   const purpose = route?.params?.purpose ?? '';
+  const email = route?.params?.email ?? '';
 
   const {
     ref,
@@ -23,7 +24,7 @@ const Otp = ({ route }) => {
     timer,
     onPressSubmit,
     auth_loading,
-  } = OtpFunctional({ purpose });
+  } = OtpFunctional({ purpose, email });
 
   return (
     <Container>

@@ -64,7 +64,7 @@ export default () => {
     const apiData = {
       name: signUpData?.name,
       email: signUpData?.email,
-      password: signUpData?.password,
+      password: values.password,
       role: signUpData?.role,
       facebookLink: signUpData?.facebookLink,
       instagramLink: signUpData?.instagramLink,
@@ -73,7 +73,14 @@ export default () => {
       twitterLink: signUpData?.twitterLink,
       fcmToken: fcmToken,
     };
-    dispatch(signup(apiData));
+    dispatch(
+      signup(apiData, () => {
+        navigate('Otp', {
+          purpose: 'ACCOUNT_VERIFICATION',
+          email: signUpData?.email,
+        });
+      }),
+    );
   };
 
   const onPressButton = async () => {

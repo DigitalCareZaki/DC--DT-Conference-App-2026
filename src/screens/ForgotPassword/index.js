@@ -14,7 +14,6 @@ import { View } from 'react-native';
 import { SIZES } from '../../constants';
 import { TextWeights } from '../../config';
 import { sms } from '../../assets/icons';
-import { navigate } from '../../navigation/service';
 import ForgotPasswordFunctional from './index.function';
 
 const ForgotPassword = () => {

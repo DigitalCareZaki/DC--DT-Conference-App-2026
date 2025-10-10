@@ -13,7 +13,7 @@ import {
 import { setUser } from '../slices/constant-slice';
 import { setListLoading } from '../slices/main-slice';
 
-export const signup = data => {
+export const signup = (data, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -23,14 +23,14 @@ export const signup = data => {
         isAuth: true,
         onDone: async res => {
           dispatch(setUser(res?.data?.data));
-          goBack();
+          onDone && onDone();
         },
       }),
     );
   };
 };
 
-export const login = data => {
+export const login = (data, onDone, onError) => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -39,9 +39,13 @@ export const login = data => {
         param_data: data,
         isAuth: true,
         onDone: async res => {
+          console.log('res====>', res);
           await setToken(res?.data?.accessToken);
           dispatch(setUser(res?.data?.user));
-          goBack();
+          onDone && onDone();
+        },
+        onError: err => {
+          onError && onError(err?.message);
         },
       }),
     );
