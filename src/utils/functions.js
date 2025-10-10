@@ -34,7 +34,6 @@ export const getGoogleToken = async () => {
     const { data } = await GoogleSignin.signIn();
     return data;
   } catch (error) {
-    console.log("Google SIgnin eweorrr" , error)
     return null;
   }
 };
@@ -173,7 +172,6 @@ export function requestHandler({
     try {
       setLoading && dispatch(setLoading(true));
       const response = await apiService(param_data);
-      console.log('Api response', response);
       if (!response?.data?.error) {
         setData && dispatch(setData(response?.data?.data));
         isSuccessMessage &&
@@ -186,7 +184,6 @@ export function requestHandler({
         showToast('error', response?.data?.message ?? '');
       }
     } catch (error) {
-      console.log('Api err', error);
 
       onError();
       if (error?.status === 401 && !isAuth) {

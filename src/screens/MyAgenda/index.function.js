@@ -29,7 +29,6 @@ export default () => {
 
 
   return {
-    main_loading,
     favourites,
     onPressHeart,
     refreshing,

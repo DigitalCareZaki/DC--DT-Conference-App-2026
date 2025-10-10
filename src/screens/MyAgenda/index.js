@@ -31,7 +31,7 @@ const MyAgenda = () => {
             keyExtractor={item => item?._id}
             showsVerticalScrollIndicator={false}
             ListFooterComponent={<SizedBox />}
-            ListEmptyComponent={<ListEmptyText text={'No favourite found'} />}
+            ListEmptyComponent={<ListEmptyText text={'No Favourite found'} />}
             renderItem={({ item }) => (
               <Cards
                 onPressHeart={() => onPressHeart(item)}

@@ -55,7 +55,7 @@ const Feedback = () => {
                 >
                   <View style={styles.main_view}>
                     <ScrollView showsVerticalScrollIndicator={false}>
-                      <View style={styles.grid} gap={SIZES.padding}>
+                      <View style={styles.grid} gap={SIZES.padding2}>
                         <Text
                           align={'center'}
                           text={'Overall Experience'}
@@ -69,6 +69,7 @@ const Feedback = () => {
                               onPress={() => setFieldValue('rating', index + 1)}
                             >
                               <Icons
+                                iconHeight={SIZES.padding * 1.5}
                                 name={
                                   index < values?.rating
                                     ? yellow_star_icon
@@ -106,7 +107,7 @@ const Feedback = () => {
                     </ScrollView>
 
                     {main_post_loading ? (
-                      <Loader />
+                      <Loader mt={0} />
                     ) : (
                       <Button
                         buttonText={'Submit'}

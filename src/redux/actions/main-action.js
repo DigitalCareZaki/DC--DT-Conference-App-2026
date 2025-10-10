@@ -8,6 +8,7 @@ import {
   setDetailLoading,
   setExhibition,
   setFavList,
+  setFavouriteLoading,
   setFavourites,
   setFeedback,
   setGallery,
@@ -17,6 +18,7 @@ import {
   setSingleConference,
   setSingleWorkshop,
   setSpeakers,
+  setWorkshopDetail,
   setWorkshops,
 } from '../slices/main-slice';
 
@@ -82,12 +84,10 @@ export const getWorkshop = data => {
   return async dispatch => {
     dispatch(
       requestHandler({
-        setLoading: setMainLoading,
+        setLoading: setDetailLoading,
         param_data: data,
         apiService: apiServices.getWorkshop,
-        onDone: async res => {
-          dispatch(setSingleWorkshop(res?.data));
-        },
+        setData:setWorkshopDetail
       }),
     );
   };
@@ -171,7 +171,7 @@ export const addRemoveFav = (data) => {
   return async dispatch => {
     dispatch(
       requestHandler({
-        setLoading: setMainLoading,
+        setLoading: setFavouriteLoading,
         apiService: apiServices.addRemoveFavourite,
         param_data: data,
         onDone: () => dispatch(getFavourites()),
