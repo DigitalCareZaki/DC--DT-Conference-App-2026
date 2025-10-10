@@ -3,16 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { navigate } from '../../navigation/service';
 import { googleLogin, login } from '../../redux/actions/auth-action';
 import { getGoogleToken, showToast } from '../../utils/functions';
-import { setIsUserVerified } from '../../redux/slices/auth-slice';
 
 export default () => {
   const dispatch = useDispatch();
 
-  const { auth_loading, google_signin_loading, is_user_verified } = useSelector(
+  const { auth_loading, google_signin_loading } = useSelector(
     state => state.auth,
   );
-
-  console.log('is_user_verified', is_user_verified);
 
   const onPressLogin = async values => {
     Keyboard.dismiss();
@@ -22,19 +19,16 @@ export default () => {
       role: values?.role,
     };
     dispatch(
-      login(
-        apiData,
-        res => {
+      login(apiData, res => {
+        if (res?.data?.user?.isVerified) {
           navigate('DrawerNavigation');
-        },
-        err => {
-          if (err === 'Account not verified. OTP sent to your email.')
-            navigate('Otp', {
-              purpose: 'ACCOUNT_VERIFICATION',
-              email: values?.email,
-            });
-        },
-      ),
+        } else {
+          navigate('Otp', {
+            purpose: 'ACCOUNT_VERIFICATION',
+            email: values?.email,
+          });
+        }
+      }),
     );
   };
 

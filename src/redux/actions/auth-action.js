@@ -5,7 +5,6 @@ import {
   setAllUsers,
   setAuthLoading,
   setGoogleSigninLoading,
-  setIsUserVerified,
   setResetPasswordToken,
   setTotalItems,
   setUserEmail,
@@ -39,9 +38,9 @@ export const login = (data, onDone, onError) => {
         param_data: data,
         isAuth: true,
         onDone: async res => {
-          await setToken(res?.data?.accessToken);
+          if (res?.data?.accessToken) await setToken(res?.data?.accessToken);
           dispatch(setUser(res?.data?.user));
-          onDone && onDone();
+          onDone && onDone(res);
         },
         onError: err => {
           onError && onError(err?.message);
@@ -128,7 +127,6 @@ export const verifyOtp = (data, onDone) => {
         apiService: apiServices.verifyOtp,
         onDone: async res => {
           dispatch(setResetPasswordToken(res?.data?.resetPasswordToken));
-          dispatch(setIsUserVerified(res?.data?.isVerified));
           onDone && onDone();
         },
       }),
