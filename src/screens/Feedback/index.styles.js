@@ -23,6 +23,5 @@ export const styles = StyleSheet.create({
   btn: {
     width: '90%',
     alignSelf: 'center',
-    marginBottom: SIZES.padding,
   },
 });

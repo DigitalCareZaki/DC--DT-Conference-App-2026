@@ -40,7 +40,7 @@ const InputField = ({
         text={label}
         weight={TextWeights.medium}
         size={SIZES.h12}
-        ml={ml}
+        ml={SIZES.padding2}
         isrequired={isrequired}
       />
       <RowView style={[styles.main_view, style]}>
