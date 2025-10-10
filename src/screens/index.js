@@ -19,3 +19,6 @@ export { default as ConferenceDetails } from './ConferenceDetails';
 export { default as WorkShop } from './WorkShop';
 export { default as WorkshopDetails } from './WorkshopDetails';
 export { default as Notification } from './Notification';
+export { default as ForgotPassword } from './ForgotPassword';
+export { default as Otp } from './Otp';
+export { default as ResetPassword } from './ResetPassword';

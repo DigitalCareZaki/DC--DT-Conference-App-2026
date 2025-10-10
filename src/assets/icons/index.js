@@ -58,3 +58,4 @@ export { default as attachment_icon } from './attachment_icon';
 export { default as counter_icon } from './counter_icon';
 export { default as drawer_icon } from './drawer_icon';
 export { default as drawer_line_icon } from './drawer_line_icon';
+export { default as sms } from './sms';

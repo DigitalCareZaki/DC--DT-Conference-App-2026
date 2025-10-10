@@ -21,4 +21,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: SIZES.padding,
   },
+  forgot_text: {
+    textDecorationLine: 'underline',
+  },
 });

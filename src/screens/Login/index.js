@@ -121,6 +121,17 @@ const Login = () => {
                     />
                     <ErrorText error={errors?.password} />
 
+                    <TouchableOpacity
+                      onPress={() => navigate('ForgotPassword')}
+                    >
+                      <Text
+                        text={'Forgot Password'}
+                        align={'right'}
+                        style={styles.forgot_text}
+                        mt={SIZES.padding2}
+                        weight={TextWeights.bold}
+                      />
+                    </TouchableOpacity>
                     <SizedBox height={SIZES.padding * 2} />
 
                     {auth_loading ? (

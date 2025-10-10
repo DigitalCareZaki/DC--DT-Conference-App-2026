@@ -27,6 +27,9 @@ import {
   WorkShop,
   WorkshopDetails,
   Notification,
+  ForgotPassword,
+  Otp,
+  ResetPassword,
 } from '../screens';
 import { notificationListener } from '../utils/notification_service';
 import { getUserProfile } from '../redux/actions/auth-action';
@@ -46,7 +49,7 @@ const MainNavigator = () => {
       dispatch(getFavourites());
     }
     firebase_messaging.subscribeToTopic(notificationTopic);
-    notificationListener(message => { });
+    notificationListener(message => {});
   }, []);
 
   return (
@@ -81,6 +84,9 @@ const MainNavigator = () => {
           />
           <Stack.Screen name="WorkShop" component={WorkShop} />
           <Stack.Screen name="WorkShopDetails" component={WorkshopDetails} />
+          <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+          <Stack.Screen name="Otp" component={Otp} />
+          <Stack.Screen name="ResetPassword" component={ResetPassword} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast />
