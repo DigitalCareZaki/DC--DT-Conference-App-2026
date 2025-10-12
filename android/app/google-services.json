@@ -7,22 +7,38 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:158098280930:android:6b6a86979e461a4cda69bb",
+        "mobilesdk_app_id": "1:158098280930:android:42ff98bfb7a9fb57da69bb",
         "android_client_info": {
-          "package_name": "com.conference_app"
+          "package_name": "com.conference.dt"
         }
       },
       "oauth_client": [
         {
-          "client_id": "896349453247-vd26jme4ecjp0mftq85pnjojld96kobm.apps.googleusercontent.com",
+          "client_id": "158098280930-0376i3thtif7a774271rp8cifvo495nb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.conference_app",
-            "certificate_hash": "57905eaaaec6407f91ba4c3ea0ff8f4282c23bba"
+            "package_name": "com.conference.dt",
+            "certificate_hash": "f623c54823f1294b880d6a0cf26e5ed106c15287"
           }
         },
         {
-          "client_id": "896349453247-vfftf8q4ape266jvnuc5d8vh70tkndsh.apps.googleusercontent.com",
+          "client_id": "158098280930-3gbdojqg8eoggaopgc3jg5fg1fhj320d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.conference.dt",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "158098280930-5milrknurih5h9sdpi1v3n57ihacibej.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.conference.dt",
+            "certificate_hash": "f315d3bc1ae07c989280e918388ca2d42d372767"
+          }
+        },
+        {
+          "client_id": "158098280930-ulntsp6ghe3sgkpl9vcltbfp06loq8ga.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -35,11 +51,11 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "896349453247-vfftf8q4ape266jvnuc5d8vh70tkndsh.apps.googleusercontent.com",
+              "client_id": "158098280930-ulntsp6ghe3sgkpl9vcltbfp06loq8ga.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "896349453247-dke6dvtf86bfdf3tvh66eout4ctrqml9.apps.googleusercontent.com",
+              "client_id": "158098280930-116b6pitgsi1esctcp1soh8vi47jadeo.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.conference.dt"
