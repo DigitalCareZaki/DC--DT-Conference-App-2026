@@ -34,6 +34,7 @@ export default () => {
     }
     dispatch(deleteAccount(user?._id));
   };
+  
   return {
     dispatch,
     onPressLogout,

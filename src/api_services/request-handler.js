@@ -52,7 +52,7 @@ const getFeedBack = () => get(SERVICE_URLS.getFeedback);
 const addFeedback = data => put(SERVICE_URLS.addFeedback, data);
 const updateLinks = data => put(SERVICE_URLS.updateLinks, data);
 const askQuestion = data => post(SERVICE_URLS.askQuestion, data);
-const deleteAccount = data => post(SERVICE_URLS.deleteAccount + data);
+const deleteAccount = data => del(SERVICE_URLS.deleteAccount + data);
 
 const apiServices = {
   // Auth
