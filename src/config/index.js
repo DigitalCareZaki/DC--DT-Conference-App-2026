@@ -22,6 +22,7 @@ import {
   exhibition_icon,
   logout_icon,
   ask_question_icon,
+  delete_icon,
 } from '../assets/icons';
 import { images } from '../constants';
 
@@ -160,6 +161,11 @@ export const drawer_array = [
   },
   {
     id: 14,
+    name: 'Delete Account',
+    icon: delete_icon,
+  },
+  {
+    id: 15,
     name: 'Logout',
     icon: logout_icon,
     isLogout: true,

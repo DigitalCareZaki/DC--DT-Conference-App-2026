@@ -1,12 +1,17 @@
 import React from 'react';
-import { Modal, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  Modal,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { COLORS, SIZES } from '../../../constants';
 import { ImageView, RowView, Text } from '../../../components';
 import FastImage from 'react-native-fast-image';
 import { TextWeights } from '../../../config';
 
 const SpeakerModal = ({ visible, setVisibility, data }) => {
-  console.log('data', data);
   return (
     <Modal
       transparent
@@ -35,7 +40,7 @@ const SpeakerModal = ({ visible, setVisibility, data }) => {
           <Text
             text={data?.name}
             weight={TextWeights.medium}
-            size={SIZES.h14}
+            size={SIZES.h16}
             mt={SIZES.padding2 * 0.8}
             align={'center'}
           />
@@ -43,7 +48,7 @@ const SpeakerModal = ({ visible, setVisibility, data }) => {
           <RowView>
             <View style={styles.text_view}>
               <Text
-                size={SIZES.h10}
+                size={SIZES.h12}
                 color={COLORS.placeholder_text_color}
                 text={data?.specialty}
                 align={'center'}
@@ -52,7 +57,7 @@ const SpeakerModal = ({ visible, setVisibility, data }) => {
             </View>
             <View style={styles.text_view}>
               <Text
-                size={SIZES.h10}
+                size={SIZES.h12}
                 color={COLORS.placeholder_text_color}
                 text={data?.institute}
                 align={'center'}
@@ -60,6 +65,23 @@ const SpeakerModal = ({ visible, setVisibility, data }) => {
               />
             </View>
           </RowView>
+
+          <Text
+            size={SIZES.h12}
+            text={data?.institute}
+            align={'center'}
+            color={COLORS.light_blue_color}
+            weight={TextWeights.medium}
+            mt={SIZES.padding2}
+          />
+
+          <Text
+            size={SIZES.h12}
+            text={data?.description}
+            align={'center'}
+            mt={SIZES.padding2}
+            lineHeight={SIZES.padding2 + 4}
+          />
         </TouchableOpacity>
       </TouchableOpacity>
     </Modal>
@@ -75,6 +97,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   modal_view: {
     width: SIZES.width * 0.9,
     backgroundColor: COLORS.primary,
@@ -92,5 +115,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: SIZES.padding2 / 2,
     alignItems: 'center',
+    flex: 1,
   },
 });

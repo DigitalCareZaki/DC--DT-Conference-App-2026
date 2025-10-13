@@ -17,7 +17,7 @@ const SingleSpeakerView = ({ item }) => {
 
   return (
     <View style={styles.main_view}>
-      <RowView alignItems={'center'}>
+      <RowView>
         <ImageView
           width={SIZES.padding * 3.4}
           height={SIZES.padding * 3.4}
@@ -26,7 +26,6 @@ const SingleSpeakerView = ({ item }) => {
           style={styles.image}
           resizeMode={FastImage.resizeMode.cover}
         />
-
         <View>
           <Text
             text={item?.name}
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     borderRadius: SIZES.padding,
     paddingVertical: SIZES.padding2 / 5,
-    justifyContent: 'center',
+    paddingHorizontal: SIZES.padding2,
     marginTop: SIZES.padding2 / 2,
     alignItems: 'center',
   },

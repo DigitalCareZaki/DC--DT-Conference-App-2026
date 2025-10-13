@@ -11,7 +11,6 @@ export default () => {
   const [search, setSearch] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
   const [activeTab, setActiveTab] = useState('internationals');
-  const [modalVisibility, setModalVisibility] = useState(false);
 
   useEffect(() => {
     dispatch(setListLoading(true));
@@ -49,7 +48,5 @@ export default () => {
     handleTabChange,
     setActiveTab,
     activeTab,
-    setModalVisibility,
-    modalVisibility,
   };
 };

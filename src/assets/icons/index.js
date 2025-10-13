@@ -60,3 +60,4 @@ export { default as drawer_icon } from './drawer_icon';
 export { default as drawer_line_icon } from './drawer_line_icon';
 export { default as sms_icon } from './sms_icon';
 export { default as ask_question_icon } from './ask_question_icon';
+export { default as delete_icon } from './delete_icon';

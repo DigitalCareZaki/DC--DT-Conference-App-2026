@@ -13,7 +13,7 @@ import { FlatList, RefreshControl, TouchableOpacity, View } from 'react-native';
 import { styles } from './index.styles';
 import { COLORS, SIZES } from '../../constants';
 import { TextWeights } from '../../config';
-import { SingleSpeakerView, SpeakerModal } from './components';
+import { SingleSpeakerView } from './components';
 import SpeakerFunctional from './index.function';
 import { searchArray } from '../../utils/functions';
 
@@ -27,8 +27,6 @@ const Speakers = () => {
     refreshing,
     handleTabChange,
     activeTab,
-    modalVisibility,
-    setModalVisibility,
   } = SpeakerFunctional();
 
   return (
