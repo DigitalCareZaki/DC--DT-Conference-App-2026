@@ -1,5 +1,4 @@
 import background_image from '../assets/images/background_image.jpg';
-import counter_background from '../assets/images/counter_background.png';
 import drawer_logo from '../assets/images/drawer_logo.png';
 import home_logo from '../assets/images/home_logo.png';
 import map_image from '../assets/images/map_image.png';
@@ -10,10 +9,10 @@ import profile_img_1 from '../assets/images/profile_img_1.png';
 import profile_img_2 from '../assets/images/profile_img_2.png';
 import profile_img_3 from '../assets/images/profile_img_3.png';
 import venue_image from '../assets/images/venue_image.png';
+import counter_backgorund from '../assets/images/counter_backgorund.png';
 
 export default {
   background_image,
-  counter_background,
   drawer_logo,
   home_logo,
   map_image,
@@ -23,5 +22,6 @@ export default {
   profile_img_1,
   profile_img_2,
   profile_img_3,
-  venue_image
+  venue_image,
+  counter_backgorund,
 };

@@ -9,6 +9,7 @@ export const SERVICE_URLS = {
   googleLogin: '/auth/google',
   sendOtp: '/user/send-otp',
   resetPassword: '/user/reset-password',
+  deleteAccount: '/user/delete/',
 
   // Main Management
   getConferences: '/conference',
@@ -51,6 +52,7 @@ const getFeedBack = () => get(SERVICE_URLS.getFeedback);
 const addFeedback = data => put(SERVICE_URLS.addFeedback, data);
 const updateLinks = data => put(SERVICE_URLS.updateLinks, data);
 const askQuestion = data => post(SERVICE_URLS.askQuestion, data);
+const deleteAccount = data => post(SERVICE_URLS.deleteAccount + data);
 
 const apiServices = {
   // Auth
@@ -77,6 +79,7 @@ const apiServices = {
   addFeedback,
   updateLinks,
   askQuestion,
+  deleteAccount,
 };
 
 export default apiServices;

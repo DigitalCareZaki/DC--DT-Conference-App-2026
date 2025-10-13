@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { SvgXml } from 'react-native-svg';
+import { delete_icon } from '../../assets/icons';
 const IconComponent = ({
   name,
   style,
@@ -16,7 +17,7 @@ const IconComponent = ({
           xml={name}
           width={iconHeight}
           height={iconHeight}
-          fill={fill}
+          fill={name === delete_icon ? 'white' : fill}
         />
       ) : (
         <SvgXml stroke={stroke} xml={name} fill={fill} />

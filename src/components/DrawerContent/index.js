@@ -4,18 +4,26 @@ import { styles } from './index.styles';
 import { AskModal, Container, Icons, SizedBox, Text } from '../index';
 import DrawerContentFunctional from './index.function';
 import { COLORS, SIZES } from '../../constants';
-import { drawer_icon, drawer_line_icon } from '../../assets/icons';
+import {
+  delete_icon,
+  drawer_icon,
+  drawer_line_icon,
+  modal_logout_icon,
+} from '../../assets/icons';
 import { drawer_array, TextWeights } from '../../config';
 import { SingleDrawerView } from './components';
 import { navigate } from '../../navigation/service';
 
 const DrawerContent = () => {
-
   const {
     onPressLogout,
     user,
     setShowModal,
-    showModal
+    showModal,
+    showDeleteAccModal,
+    setShowDeleteAccModal,
+    onPressDeleteAcc,
+    auth_loading,
   } = DrawerContentFunctional();
 
   return (
@@ -46,6 +54,7 @@ const DrawerContent = () => {
             <SingleDrawerView
               onPress={() => {
                 if (item?.isLogout) setShowModal(true);
+                else if (item?.isDeleteAccount) setShowDeleteAccModal(true);
                 else
                   navigate(
                     item?.name === 'My Agenda' && !user ? 'Login' : item?.route,
@@ -58,14 +67,27 @@ const DrawerContent = () => {
 
           <SizedBox />
         </ScrollView>
-        <AskModal
-          description={'See you next time! You can log out here.'}
-          onPressClose={() => setShowModal(false)}
-          onPressYes={onPressLogout}
-          title={'Logout'}
-          visible={showModal}
-        />
       </View>
+      <AskModal
+        description={'See you next time! You can log out here.'}
+        onPressClose={() => setShowModal(false)}
+        onPressYes={onPressLogout}
+        title={'Logout'}
+        visible={showModal}
+        icon={modal_logout_icon}
+        btnText={'Logout'}
+        isLoading={auth_loading}
+      />
+      <AskModal
+        description={`Are you sure you want to delete your account?${'\n'}This action is permanent and all your data will be lost.`}
+        onPressClose={() => setShowDeleteAccModal(false)}
+        onPressYes={onPressDeleteAcc}
+        title={'Delete Account'}
+        visible={showDeleteAccModal}
+        icon={delete_icon}
+        btnText={'Delete Account'}
+        isLoading={auth_loading}
+      />
     </Container>
   );
 };

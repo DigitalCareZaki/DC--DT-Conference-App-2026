@@ -9,6 +9,14 @@ export const styles = StyleSheet.create({
   },
   list: {
     justifyContent: 'space-between',
-    gap: SIZES.padding2
-  }
+    gap: SIZES.padding2,
+  },
+  counter_card: {
+    overflow: 'hidden',
+    justifyContent: 'center',
+  },
+  text_view: {
+    position: 'absolute',
+    padding: SIZES.padding2 + 4,
+  },
 });

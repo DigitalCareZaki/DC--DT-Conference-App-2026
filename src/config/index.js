@@ -163,6 +163,7 @@ export const drawer_array = [
     id: 14,
     name: 'Delete Account',
     icon: delete_icon,
+    isDeleteAccount: true,
   },
   {
     id: 15,

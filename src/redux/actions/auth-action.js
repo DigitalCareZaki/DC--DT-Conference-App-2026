@@ -148,3 +148,15 @@ export const resetPassword = (data, onDone) => {
     );
   };
 };
+
+export const deleteAccount = data => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setAuthLoading,
+        param_data: data,
+        apiService: apiServices.deleteAccount,
+      }),
+    );
+  };
+};

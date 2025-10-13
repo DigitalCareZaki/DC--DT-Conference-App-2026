@@ -17,7 +17,7 @@ const SingleSpeakerView = ({ item }) => {
 
   return (
     <View style={styles.main_view}>
-      <RowView>
+      <RowView gap={SIZES.padding2}>
         <ImageView
           width={SIZES.padding * 3.4}
           height={SIZES.padding * 3.4}
