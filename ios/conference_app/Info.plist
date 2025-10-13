@@ -61,8 +61,14 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<key>NSCameraUsageDescription</key>
+	<string>Health Asia needs access to your Camera in order to upload docuemnts.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Health Asia needs access to your Microphone in order to upload docuemnts.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Health Asia needs access to your Camera in order to upload documents.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Health Asia needs access to your Camera in order to upload documents.</string>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UIAppFonts</key>

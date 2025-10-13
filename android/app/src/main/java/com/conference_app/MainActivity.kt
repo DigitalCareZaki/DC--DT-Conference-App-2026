@@ -1,4 +1,4 @@
-package com.conference_app
+package com.conference.dt
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
