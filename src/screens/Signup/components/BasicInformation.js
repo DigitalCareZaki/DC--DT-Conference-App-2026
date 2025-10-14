@@ -16,7 +16,7 @@ const BasicInformation = ({ onSubmit, formikRef, data }) => {
       innerRef={formikRef}
       initialValues={signup_schema(data)}
       validationSchema={signup_validation_schema}
-      validateOnChange={true}
+      validateOnChange={false}
       validateOnMount={false}
       validateOnBlur={false}
       onSubmit={val => onSubmit(val)}

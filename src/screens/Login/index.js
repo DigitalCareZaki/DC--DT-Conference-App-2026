@@ -59,7 +59,7 @@ const Login = () => {
             <Formik
               validationSchema={login_validation_schema}
               initialValues={login_schema}
-              validateOnChange={true}
+              validateOnChange={false}
               validateOnMount={false}
               validateOnBlur={false}
               onSubmit={values => onPressLogin(values)}

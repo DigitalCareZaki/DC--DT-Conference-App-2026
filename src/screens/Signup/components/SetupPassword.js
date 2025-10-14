@@ -16,6 +16,8 @@ const SetupPassword = ({ formikRef, onSubmit, data }) => {
     <Formik
       innerRef={formikRef}
       initialValues={password_schema(data)}
+      validateOnChange={false}
+      validateOnBlur={false}
       validationSchema={password_validation_schema}
       onSubmit={values => onSubmit(values)}
     >

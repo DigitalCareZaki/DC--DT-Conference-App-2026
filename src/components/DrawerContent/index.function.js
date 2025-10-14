@@ -4,6 +4,7 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { setUser } from '../../redux/slices/constant-slice';
 import { deleteAccount } from '../../redux/actions/auth-action';
 import { showToast } from '../../utils/functions';
+import { setFeedback } from '../../redux/slices/main-slice';
 
 export default () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default () => {
     try {
       await GoogleSignin.signOut();
       dispatch(setUser(null));
+      dispatch(setFeedback(null));
       setShowModal(false);
     } catch (error) {
       console.error(error);
@@ -34,7 +36,7 @@ export default () => {
     }
     dispatch(deleteAccount(user?._id));
   };
-  
+
   return {
     dispatch,
     onPressLogout,

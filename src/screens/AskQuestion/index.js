@@ -40,7 +40,7 @@ const AskQuestion = () => {
             <Formik
               initialValues={ask_question_validation}
               validationSchema={ask_question_validation_schema}
-              validateOnChange={true}
+              validateOnChange={false}
               validateOnMount={false}
               validateOnBlur={false}
               onSubmit={values => onSubmit(values)}

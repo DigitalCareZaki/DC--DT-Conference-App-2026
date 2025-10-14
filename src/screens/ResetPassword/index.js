@@ -31,7 +31,7 @@ const ResetPassword = () => {
       <Formik
         initialValues={reset_password_schema}
         validationSchema={reset_password_validation_schema}
-        validateOnChange={true}
+        validateOnChange={false}
         validateOnMount={false}
         validateOnBlur={false}
         onSubmit={values => onPressSubmit(values)}

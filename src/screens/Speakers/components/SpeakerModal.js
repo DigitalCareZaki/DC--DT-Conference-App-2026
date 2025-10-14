@@ -115,6 +115,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: SIZES.padding2 / 2,
     alignItems: 'center',
-    flex: 1,
   },
 });

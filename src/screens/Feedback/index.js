@@ -28,10 +28,12 @@ import {
   feedback_schema,
   feedback_validation_schema,
 } from '../../validations_schemas/feedback_validation_schema';
+import { TextWeights } from '../../config';
 const Feedback = () => {
   const { main_loading, feedback, onPressSubmit, main_post_loading } =
     FeedbackFunctional();
 
+  console.log('feedback', feedback);
   return (
     <Container>
       <Header title={'Feedback'} rightIcon={null} />
@@ -41,7 +43,7 @@ const Feedback = () => {
         <Formik
           initialValues={feedback_schema(feedback)}
           validationSchema={feedback_validation_schema}
-          validateOnChange={true}
+          validateOnChange={false}
           validateOnMount={false}
           validateOnBlur={false}
           onSubmit={values => onPressSubmit(values)}
@@ -64,6 +66,7 @@ const Feedback = () => {
                         <RowView>
                           {Array.from({ length: 5 }, (_, index) => (
                             <TouchableOpacity
+                              disabled={feedback}
                               key={index}
                               activeOpacity={0.6}
                               onPress={() => setFieldValue('rating', index + 1)}
@@ -88,6 +91,7 @@ const Feedback = () => {
                         inputStyle={{
                           textAlignVertical: 'top',
                         }}
+                        isEdit={!feedback}
                         value={values.likedMost}
                         onChangeText={handleChange('likedMost')}
                       />
@@ -99,6 +103,7 @@ const Feedback = () => {
                         style={styles.input}
                         inputStyle={{ textAlignVertical: 'top' }}
                         value={values.suggestions}
+                        isEdit={!feedback}
                         onChangeText={handleChange('suggestions')}
                       />
                       <ErrorText error={errors.suggestions} />
@@ -106,15 +111,26 @@ const Feedback = () => {
                       <SizedBox />
                     </ScrollView>
 
-                    {main_post_loading ? (
-                      <Loader mt={0} />
-                    ) : (
-                      <Button
-                        buttonText={'Submit'}
-                        style={styles.btn}
-                        onPress={handleSubmit}
-                      />
-                    )}
+                    <>
+                      {feedback ? (
+                        <Text
+                          mt={SIZES.padding}
+                          weight={TextWeights.bold}
+                          size={SIZES.h18}
+                          align="center"
+                          text="Thanks! You’ve already sent your feedback."
+                        />
+                      ) : main_post_loading ? (
+                        <Loader mt={0} />
+                      ) : (
+                        <Button
+                          isDisabled={feedback}
+                          buttonText="Submit"
+                          style={styles.btn}
+                          onPress={handleSubmit}
+                        />
+                      )}
+                    </>
                     <SizedBox />
                   </View>
                 </KeyboardAvoidingView>
