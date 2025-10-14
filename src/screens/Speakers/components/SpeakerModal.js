@@ -59,7 +59,7 @@ const SpeakerModal = ({ visible, setVisibility, data }) => {
               <Text
                 size={SIZES.h12}
                 color={COLORS.placeholder_text_color}
-                text={data?.institute}
+                text={data?.country ?? '-'}
                 align={'center'}
                 numberOfLines={2}
               />

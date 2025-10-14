@@ -34,7 +34,7 @@ const Contact = () => {
       >
         <Formik
           initialValues={contact_schema(user)}
-          validateOnChange={true}
+          validateOnChange={false}
           validateOnMount={false}
           validateOnBlur={false}
           validationSchema={contact_validation_schema}
@@ -65,15 +65,6 @@ const Contact = () => {
 
                     <InputField
                       isrequired
-                      label={'Email'}
-                      placeholder={'Enter your email'}
-                      value={values?.email}
-                      onChangeText={handleChange('email')}
-                    />
-                    <ErrorText error={errors.email} />
-
-                    <InputField
-                      isrequired
                       label={'Subject'}
                       placeholder={'What is this regarding'}
                       value={values?.subject}
@@ -86,7 +77,9 @@ const Contact = () => {
                       label={'Message'}
                       placeholder={'Tell us more about your inquiry...'}
                       style={styles.multi_input}
-                      inputStyle={{ textAlignVertical: 'top' }}
+                      inputStyle={{
+                        textAlignVertical: 'top',
+                      }}
                       value={values?.message}
                       onChangeText={handleChange('message')}
                     />

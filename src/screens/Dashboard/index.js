@@ -1,13 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import {
-  Container,
-  Header,
-  Icons,
-  ImageView,
-  RowView,
-  SizedBox,
-  Text,
-} from '../../components';
+import React from 'react';
+import { Container, Header, ImageView, RowView, Text } from '../../components';
 import { FlatList, View } from 'react-native';
 import { images, SIZES } from '../../constants';
 import { styles } from './index.styles';

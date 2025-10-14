@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addFeedback } from '../../redux/actions/main-action';
-import {
-  getFeedBack,
-} from '../../redux/actions/main-action';
+import { getFeedBack } from '../../redux/actions/main-action';
 import { useEffect } from 'react';
 
 export default () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const { main_loading, feedback, main_post_loading } = useSelector(state => state.main);
+  const { main_loading, feedback, main_post_loading } = useSelector(
+    state => state.main,
+  );
 
   const onPressSubmit = values => {
     const apiData = {
