@@ -9,6 +9,7 @@ export default () => {
   const { auth_loading, all_users, total_item } = useSelector(
     state => state.auth,
   );
+  const { user } = useSelector(state => state.constant);
 
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
@@ -27,10 +28,10 @@ export default () => {
     );
   };
 
-  useEffect(() => {
-    dispatch(setAuthLoading(true));
-    getNetworks(1);
-  }, []);
+  // useEffect(() => {
+  //   dispatch(setAuthLoading(true));
+  //   getNetworks(1);
+  // }, []);
 
   const onRefresh = async () => {
     setRefreshing(true);
@@ -62,5 +63,6 @@ export default () => {
     auth_loading,
     refreshing,
     onRefresh,
+    user,
   };
 };

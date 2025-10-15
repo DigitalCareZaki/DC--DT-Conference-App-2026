@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Container,
   Header,
@@ -14,7 +14,8 @@ import { SIZES } from '../../constants';
 import { TextWeights } from '../../config';
 import { SingleUserView } from './components';
 import NetworkFunctional from './index.function';
-import { searchArray } from '../../utils/functions';
+import { getToken, searchArray } from '../../utils/functions';
+import { io } from 'socket.io-client';
 
 const Networking = () => {
   const {
@@ -27,7 +28,26 @@ const Networking = () => {
     auth_loading,
     onRefresh,
     refreshing,
+    user,
   } = NetworkFunctional();
+
+  let socket;
+
+  const connectSocket = async () => {
+    const token = await getToken();
+    socket = io(`http://51.83.237.63:5041?token=${token}`);
+    socket.on('connect', () => {
+      console.log('Connected to socket');
+
+      socket.emit('get-chats', msgs => {
+        console.log('msgs====>', msgs);
+      });
+    });
+  };
+
+  useEffect(() => {
+    connectSocket();
+  }, []);
 
   return (
     <Container>

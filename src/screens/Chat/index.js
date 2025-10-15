@@ -45,11 +45,13 @@ const Chat = ({ route }) => {
     const token = await getToken();
     socket = io(`http://51.83.237.63:5041?token=${token}`);
     setSocket(socket);
-
     socket.on('connect', () => {
       socket.emit('create-chat', { receiverId: _id }, msgs => {});
     });
 
+    socket.on('read-messages', { chatId: chatId }, readMsg => {
+      console.log('readMsg===>', readMsg);
+    });
     socket.on('chat-created', msgs => {
       setChatId(msgs?.chat?._id);
 
