@@ -38,8 +38,8 @@ export const getGoogleToken = async () => {
   }
 };
 
-export const getToken = () => AsyncStorage.getItem("token");
-export const setToken = (token) => AsyncStorage.setItem("token", token);
+export const getToken = () => AsyncStorage.getItem('token');
+export const setToken = token => AsyncStorage.setItem('token', token);
 
 export const openImagePicker = (onDone, multiple = false) => {
   ImagePicker.openPicker({
@@ -172,6 +172,7 @@ export function requestHandler({
     try {
       setLoading && dispatch(setLoading(true));
       const response = await apiService(param_data);
+      console.log('Api response', response);
       if (!response?.data?.error) {
         setData && dispatch(setData(response?.data?.data));
         isSuccessMessage &&
@@ -184,8 +185,9 @@ export function requestHandler({
         showToast('error', response?.data?.message ?? '');
       }
     } catch (error) {
+      console.log('Api err', error);
 
-      onError();
+      onError(error?.data);
       if (error?.status === 401 && !isAuth) {
         dispatch(setUser(null));
         await AsyncStorage.clear();

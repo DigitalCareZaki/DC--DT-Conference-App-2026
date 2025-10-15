@@ -9,6 +9,7 @@ export default () => {
   const { main_loading, feedback, main_post_loading } = useSelector(
     state => state.main,
   );
+  const { user } = useSelector(state => state.constant);
 
   const onPressSubmit = values => {
     const apiData = {
@@ -20,7 +21,9 @@ export default () => {
   };
 
   useEffect(() => {
-    dispatch(getFeedBack());
+    {
+      user && dispatch(getFeedBack());
+    }
   }, []);
 
   return {
@@ -29,5 +32,6 @@ export default () => {
     dispatch,
     onPressSubmit,
     main_post_loading,
+    user,
   };
 };
