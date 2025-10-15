@@ -23,6 +23,9 @@ const SocialMediaLinks = ({ onSubmit, formikRef, data }) => {
       validationSchema={socialMedia_validation_schema}
       innerRef={formikRef}
       onSubmit={values => onSubmit(values)}
+      validateOnChange={false}
+      validateOnMount={false}
+      validateOnBlur={false}
     >
       {({ values, errors, setFieldValue, handleChange }) => {
         return (

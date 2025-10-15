@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import RowView from '../RowView';
-import { Icons, Text } from '../index';
+import { Icons, InputField, Text } from '../index';
 import { styles } from './index.styles';
 import {
   Animated,
@@ -27,11 +27,13 @@ const DropDown = ({
   label,
   isrequired,
   leftIcon,
+  isSearch = false,
+  isEditable = true,
   ml,
 }) => {
   const [open, setOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-
+  const [search, setSearch] = useState('');
   const animationValue = useRef(new Animated.Value(0)).current;
 
   const itemHeight = SIZES.padding * 2.6;
@@ -39,7 +41,11 @@ const DropDown = ({
   const dropdownHeight =
     array && array.length > 0 ? Math.min(array?.length * itemHeight, 300) : 20;
 
-  const toggleDropdown = (isKeyboard = true) => {
+  const filtered_arr = array?.filter(item =>
+    item?.[value_key]?.toLowerCase()?.includes(search?.toLowerCase()),
+  );
+
+  const toggleDropdown = (isKeyboard = true, item) => {
     try {
       if (isKeyboard) Keyboard.dismiss();
       setIsAnimating(true);
@@ -50,9 +56,14 @@ const DropDown = ({
         useNativeDriver: false,
       }).start(() => {
         setIsAnimating(false);
-        if (toValue === 0) setOpen(false);
+        if (toValue === 0) {
+          setOpen(false), setSearch(item?.[value_key]);
+        }
       });
-      if (toValue === 1) setOpen(true);
+      if (toValue === 1) {
+        setOpen(true);
+        setSearch('');
+      }
     } catch (error) {}
   };
 
@@ -78,22 +89,35 @@ const DropDown = ({
         <TouchableOpacity
           activeOpacity={1}
           onPress={toggleDropdown}
+          disabled={!isEditable}
           style={[open ? styles.open_main_view : styles.main_view, style]}
         >
-          <RowView alignItems={'center'}>
+          <RowView alignItems="center">
             {leftIcon && <Icons name={leftIcon} />}
-            <Text
-              style={[{ flex: 1 }, textStyle]}
-              color={
-                textColor
-                  ? textColor
-                  : value
-                  ? COLORS.black
-                  : COLORS.placeholder_text_color
-              }
-              text={value || placeholder}
-              size={SIZES.h12}
-            />
+
+            {isSearch && open ? (
+              <InputField
+                value={search}
+                onChangeText={text => setSearch(text)}
+                placeholder={placeholder}
+                mainStyle={[styles.input_container]}
+                style={[styles.input]}
+              />
+            ) : (
+              <Text
+                style={[{ flex: 1 }, textStyle]}
+                color={
+                  textColor
+                    ? textColor
+                    : value
+                    ? COLORS.black
+                    : COLORS.placeholder_text_color
+                }
+                text={value || placeholder}
+                size={SIZES.h12}
+              />
+            )}
+
             <Icons name={icon || dropdown_icon} />
           </RowView>
         </TouchableOpacity>
@@ -103,23 +127,25 @@ const DropDown = ({
               nestedScrollEnabled
               keyboardShouldPersistTaps={'handled'}
             >
-              {array?.map((item, index) => (
-                <TouchableOpacity
-                  key={index?.toString()}
-                  style={styles.text_view}
-                  activeOpacity={0.6}
-                  onPress={() => {
-                    toggleDropdown();
-                    onPressValue(item);
-                  }}
-                >
-                  <Text
-                    size={SIZES.h12}
-                    text={item?.[value_key]}
-                    color={COLORS.black}
-                  />
-                </TouchableOpacity>
-              ))}
+              {(isSearch ? filtered_arr : array)?.map((item, index) => {
+                return (
+                  <TouchableOpacity
+                    key={index?.toString()}
+                    style={styles.text_view}
+                    activeOpacity={0.6}
+                    onPress={() => {
+                      toggleDropdown(item);
+                      onPressValue(item);
+                    }}
+                  >
+                    <Text
+                      size={SIZES.h12}
+                      text={item?.[value_key]}
+                      color={COLORS.black}
+                    />
+                  </TouchableOpacity>
+                );
+              })}
             </ScrollView>
           </Animated.View>
         )}

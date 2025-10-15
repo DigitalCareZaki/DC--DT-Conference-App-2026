@@ -2,16 +2,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addRemoveFav, getConference } from '../../redux/actions/main-action';
 import { useEffect } from 'react';
 import { setSelectedItemIndex } from '../../redux/slices/main-slice';
+import { Alert, Linking } from 'react-native';
 
-export default ({ data }) => {
+export default ({ id }) => {
   const dispatch = useDispatch();
 
-  const { detail_loading, conference_detail } = useSelector(state => state.main);
+  const { detail_loading, conference_detail } = useSelector(
+    state => state.main,
+  );
   const { user } = useSelector(state => state.constant);
 
   useEffect(() => {
-    dispatch(getConference(data?._id));
-  }, [])
+    dispatch(getConference(id));
+  }, []);
 
   const onPressHeart = (item, index) => {
     if (!user) {
@@ -27,9 +30,17 @@ export default ({ data }) => {
     dispatch(addRemoveFav(apiData));
   };
 
+  const onPressRegister = () => {
+    const url = `mailto:${conference_detail?.url}`;
+
+    Linking.openURL(url).catch(e => {
+      Alert.alert('Error', 'Could not open mail app');
+    });
+  };
   return {
     detail_loading,
     conference_detail,
     onPressHeart,
+    onPressRegister,
   };
 };

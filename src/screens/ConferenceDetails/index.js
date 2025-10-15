@@ -5,7 +5,6 @@ import {
   Cards,
   Container,
   Header,
-  Loader,
   LoaderModal,
   SizedBox,
   Text,
@@ -18,13 +17,10 @@ import ConferenceFunctional from './index.function';
 import { useIsFocused } from '@react-navigation/native';
 
 const ConferenceDetails = ({ route }) => {
-  const isFocused = useIsFocused()
-  const { data } = route?.params;
-  const {
-    detail_loading,
-    conference_detail,
-    onPressHeart
-  } = ConferenceFunctional({ data });
+  const id = route?.params?.id;
+  const isFocused = useIsFocused();
+  const { detail_loading, conference_detail, onPressHeart, onPressRegister } =
+    ConferenceFunctional({ id });
 
   return (
     <Container>
@@ -55,7 +51,7 @@ const ConferenceDetails = ({ route }) => {
         </ScrollView>
 
         <SizedBox height={SIZES.padding2} />
-        <Button buttonText={'Register Online'} />
+        <Button buttonText={'Register Online'} onPress={onPressRegister} />
 
         <Button
           style={styles.download_btn}

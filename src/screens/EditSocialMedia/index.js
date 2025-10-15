@@ -33,7 +33,7 @@ const EditSocialMedia = () => {
       <Formik
         initialValues={socialMedia_schema(user)}
         validationSchema={socialMedia_validation_schema}
-        validateOnChange={true}
+        validateOnChange={false}
         validateOnMount={false}
         validateOnBlur={false}
         onSubmit={values => onPressSubmit(values)}

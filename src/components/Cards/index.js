@@ -23,8 +23,9 @@ const Cards = ({
   isFavourite = false,
   isWorkshop = false,
 }) => {
-  const { favourites, selected_item_index, favourite_loading } = useSelector(state => state.main);
-
+  const { favourites, selected_item_index, favourite_loading } = useSelector(
+    state => state.main,
+  );
   return (
     <>
       <TouchableOpacity
@@ -52,9 +53,9 @@ const Cards = ({
               <Icons
                 name={
                   isFavourite ||
-                    favourites?.find(
-                      favItem => favItem?.favoriteId?._id === item?._id,
-                    )
+                  favourites?.find(
+                    favItem => favItem?.favoriteId?._id === item?._id,
+                  )
                     ? selected_heart_icon
                     : heart_icon
                 }
@@ -76,13 +77,13 @@ const Cards = ({
             text={
               isWorkshop || item?.type === 'Workshop'
                 ? new Date(
-                  isFavourite ? item?.favoriteId?.date : item?.date,
-                ).toLocaleDateString(dateLocale, datePattern)
+                    isFavourite ? item?.favoriteId?.date : item?.date,
+                  ).toLocaleDateString(dateLocale, datePattern)
                 : `${new Date(
-                  isFavourite ? item?.favoriteId?.startDate : item?.startDate,
-                ).toLocaleDateString(dateLocale, datePattern)} - ${new Date(
-                  isFavourite ? item?.favoriteId?.startDate : item?.endDate,
-                ).toLocaleDateString(dateLocale, datePattern)}`
+                    isFavourite ? item?.favoriteId?.startDate : item?.startDate,
+                  ).toLocaleDateString(dateLocale, datePattern)} - ${new Date(
+                    isFavourite ? item?.favoriteId?.startDate : item?.endDate,
+                  ).toLocaleDateString(dateLocale, datePattern)}`
             }
             size={SIZES.h10}
           />

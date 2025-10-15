@@ -60,6 +60,7 @@ const AskQuestion = () => {
                         keyboardShouldPersistTaps={'handled'}
                       >
                         <DropDown
+                          isSearch={true}
                           placeholder={'Select Speaker'}
                           array={speakers}
                           onPressValue={val => {
