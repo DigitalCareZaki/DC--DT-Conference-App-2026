@@ -5,14 +5,18 @@ import { COLORS, SIZES } from '../../../constants';
 import { chat_icon } from '../../../assets/icons';
 import { TextWeights } from '../../../config';
 import { navigate } from '../../../navigation/service';
+import { common_styles } from '../../../utils/common_styles';
 
 const SingleUserView = ({ item }) => {
   return (
     <RowView onPress={() => navigate('UserProfile')} style={styles.main_view}>
-      <View style={styles.text_view}>
-        <Text text={item?.name} size={SIZES.h14} weight={TextWeights.medium} />
-        <Text text={item?.email} mt={SIZES.padding2 / 2} />
-      </View>
+      <Text
+        style={common_styles.flex_1}
+        numberOfLines={2}
+        text={item?.name}
+        size={SIZES.h14}
+        weight={TextWeights.medium}
+      />
 
       <RowView
         onPress={() => navigate('Chat', { user: item })}

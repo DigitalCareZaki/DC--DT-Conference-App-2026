@@ -19,16 +19,15 @@ import { io } from 'socket.io-client';
 
 const Networking = () => {
   const {
-    all_users,
     onEndReached,
     hasMore,
-    total_item,
     search,
     setSearch,
     auth_loading,
     onRefresh,
     refreshing,
-    user,
+    setUsers,
+    users,
   } = NetworkFunctional();
 
   let socket;
@@ -37,10 +36,8 @@ const Networking = () => {
     const token = await getToken();
     socket = io(`http://51.83.237.63:5041?token=${token}`);
     socket.on('connect', () => {
-      console.log('Connected to socket');
-
-      socket.emit('get-chats', msgs => {
-        console.log('msgs====>', msgs);
+      socket.on('chat-list-updated', msgs => {
+        setUsers(msgs?.chats?.data);
       });
     });
   };
@@ -52,7 +49,7 @@ const Networking = () => {
   return (
     <Container>
       <Header title={'Networking'} rightIcon={null} />
-      {auth_loading && !hasMore ? (
+      {!users && !hasMore ? (
         <Loader />
       ) : (
         <View style={styles.main_view}>
@@ -64,7 +61,7 @@ const Networking = () => {
           />
 
           <Text
-            text={`${total_item} Users Registered`}
+            text={`${users?.length} Users Registered`}
             size={SIZES.h16}
             weight={TextWeights.medium}
           />
@@ -73,7 +70,7 @@ const Networking = () => {
 
           <FlatList
             showsVerticalScrollIndicator={false}
-            data={search ? searchArray(all_users, search) : all_users}
+            data={search ? searchArray(users, search) : users}
             keyExtractor={item => item?._id}
             renderItem={({ item }) => <SingleUserView item={item} />}
             ListFooterComponent={

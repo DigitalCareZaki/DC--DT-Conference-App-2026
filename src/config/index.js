@@ -107,9 +107,9 @@ export const drawer_array = user => [
   },
   {
     id: 5,
-    name: 'Speakers',
-    icon: speakers_icon,
-    route: 'Speakers',
+    name: 'Who Should Attend',
+    icon: who_attend_icon,
+    route: 'WhoShouldAttend',
   },
   {
     id: 6,
@@ -194,15 +194,9 @@ export const dashboard_array = [
   },
   {
     id: 4,
-    icon: who_attend_icon,
-    name: 'Who Should Attend',
-    route: 'WhoShouldAttend',
-  },
-  {
-    id: 5,
-    icon: organizer_detail_icon,
-    name: 'Organizers Details',
-    route: 'AboutOrganizer',
+    icon: speakers_icon,
+    name: 'Speakers',
+    route: 'Speakers',
   },
   {
     id: 6,

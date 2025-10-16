@@ -6,15 +6,14 @@ import { setAuthLoading } from '../../redux/slices/auth-slice';
 export default () => {
   const dispatch = useDispatch();
 
-  const { auth_loading, all_users, total_item } = useSelector(
-    state => state.auth,
-  );
+  const { auth_loading, all_users } = useSelector(state => state.auth);
   const { user } = useSelector(state => state.constant);
 
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
   const [search, setSearch] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
+  const [users, setUsers] = useState(null);
 
   const getNetworks = pageNumber => {
     const payload = {
@@ -57,12 +56,13 @@ export default () => {
     hasMore,
     setHasMore,
     onEndReached,
-    total_item,
     search,
     setSearch,
     auth_loading,
     refreshing,
     onRefresh,
     user,
+    setUsers,
+    users,
   };
 };
