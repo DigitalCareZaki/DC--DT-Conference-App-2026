@@ -50,11 +50,13 @@ const DrawerContent = () => {
 
           <SizedBox height={SIZES.padding2} />
 
-          {drawer_array?.map((item, index) => (
+          {drawer_array(user)?.map((item, index) => (
             <SingleDrawerView
               onPress={() => {
-                if (item?.isLogout) setShowModal(true);
-                else if (item?.isDeleteAccount) setShowDeleteAccModal(true);
+                if (item?.isLogout) {
+                  if (user) setShowModal(true);
+                  else navigate('Login');
+                } else if (item?.isDeleteAccount) setShowDeleteAccModal(true);
                 else
                   navigate(
                     item?.name === 'My Agenda' && !user ? 'Login' : item?.route,

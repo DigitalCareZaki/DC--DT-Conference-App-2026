@@ -23,6 +23,7 @@ export default () => {
       dispatch(setUser(null));
       dispatch(setFeedback(null));
       setShowModal(false);
+      showToast('success', 'Logout Sucessfully');
     } catch (error) {
       console.error(error);
     }

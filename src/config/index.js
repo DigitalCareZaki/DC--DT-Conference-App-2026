@@ -80,7 +80,7 @@ export const signup_steps = [
   'Agreement & Submission',
 ];
 
-export const drawer_array = [
+export const drawer_array = user => [
   {
     id: 1,
     name: 'Home',
@@ -167,7 +167,7 @@ export const drawer_array = [
   },
   {
     id: 15,
-    name: 'Logout',
+    name: user ? 'Logout' : 'Login',
     icon: logout_icon,
     isLogout: true,
   },
