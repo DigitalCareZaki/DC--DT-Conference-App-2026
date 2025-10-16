@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { askQuestion, getSpeakers } from '../../redux/actions/main-action';
+import { showToast } from '../../utils/functions';
 
 export default () => {
   const dispatch = useDispatch();
@@ -13,12 +14,17 @@ export default () => {
     dispatch(getSpeakers());
   }, []);
 
-  const onSubmit = values => {
+  const onSubmit = (values, formActions) => {
     const apiData = {
       speakerId: values?.speaker,
       questionText: values?.question,
     };
-    dispatch(askQuestion(apiData));
+    dispatch(
+      askQuestion(apiData, res => {
+        showToast('success', 'Your question has been submitted successfully!');
+        formActions.resetForm();
+      }),
+    );
   };
   return {
     onSubmit,

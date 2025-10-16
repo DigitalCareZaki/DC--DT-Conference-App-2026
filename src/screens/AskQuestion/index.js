@@ -43,7 +43,7 @@ const AskQuestion = () => {
               validateOnChange={false}
               validateOnMount={false}
               validateOnBlur={false}
-              onSubmit={values => onSubmit(values)}
+              onSubmit={(values, formActions) => onSubmit(values, formActions)}
             >
               {({
                 handleSubmit,

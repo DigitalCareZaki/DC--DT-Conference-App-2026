@@ -222,13 +222,14 @@ export const updateLinks = data => {
 };
 
 // Ask A Question
-export const askQuestion = data => {
+export const askQuestion = (data, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setMainPostLoading,
         param_data: data,
         apiService: apiServices.askQuestion,
+        onDone: res => onDone && onDone(res),
       }),
     );
   };
