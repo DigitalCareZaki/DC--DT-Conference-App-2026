@@ -28,6 +28,16 @@ const SingleUserView = ({ item }) => {
           weight={TextWeights.medium}
           text={'Chat'}
         />
+
+        {item?.unreadCount > 0 && (
+          <View style={styles?.unread_count_view}>
+            <Text
+              color={COLORS.primary}
+              weight={TextWeights.medium}
+              text={item?.unreadCount}
+            />
+          </View>
+        )}
       </RowView>
     </RowView>
   );
@@ -52,5 +62,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.padding,
     borderRadius: SIZES.padding * 2,
     backgroundColor: COLORS.white,
+  },
+  unread_count_view: {
+    borderRadius: SIZES.padding * 2,
+    borderColor: COLORS.primary,
+    borderWidth: 1,
+    height: SIZES.padding2 * 1.5,
+    width: SIZES.padding2 * 1.5,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

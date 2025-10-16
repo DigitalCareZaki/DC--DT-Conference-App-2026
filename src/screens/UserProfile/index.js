@@ -20,38 +20,61 @@ const UserProfile = () => {
       <Header title={'User Profile'} rightIcon={null} />
 
       <View style={styles.main_view}>
-
-        <View style={styles.detail_view} >
-
+        <View style={styles.detail_view}>
           <RowView>
-            <View style={styles.left_view} >
-              <Text size={SIZES.h11} text={"Name"} weight={TextWeights.light} />
-              <Text weight={TextWeights.medium} mt={SIZES.padding2 / 2} text={"Muhammad Ali"} />
+            <View style={styles.left_view}>
+              <Text size={SIZES.h11} text={'Name'} weight={TextWeights.light} />
+              <Text
+                weight={TextWeights.medium}
+                mt={SIZES.padding2 / 2}
+                text={'Muhammad Ali'}
+              />
             </View>
 
-            <View style={common_styles.flex_1} >
-              <Text size={SIZES.h11} text={"Mobile"} weight={TextWeights.light} />
-              <Text weight={TextWeights.medium} mt={SIZES.padding2 / 2} text={"+92 300 0568711"} />
+            <View style={common_styles.flex_1}>
+              <Text
+                size={SIZES.h11}
+                text={'Mobile'}
+                weight={TextWeights.light}
+              />
+              <Text
+                weight={TextWeights.medium}
+                mt={SIZES.padding2 / 2}
+                text={'+92 300 0568711'}
+              />
             </View>
           </RowView>
 
           <SizedBox height={SIZES.padding2} />
 
           <RowView>
-            <View style={styles.left_view} >
-              <Text size={SIZES.h11} text={"Email"} weight={TextWeights.light} />
-              <Text weight={TextWeights.medium} mt={SIZES.padding2 / 2} text={"muhammadali@gmail.com"} />
+            <View style={styles.left_view}>
+              <Text
+                size={SIZES.h11}
+                text={'Date of Birth'}
+                weight={TextWeights.light}
+              />
+              <Text
+                weight={TextWeights.medium}
+                mt={SIZES.padding2 / 2}
+                text={'10-10-2024'}
+              />
             </View>
 
-            <View style={common_styles.flex_1} >
-              <Text size={SIZES.h11} text={"Date of Birth"} weight={TextWeights.light} />
-              <Text weight={TextWeights.medium} mt={SIZES.padding2 / 2} text={"10-10-2024"} />
+            <View style={common_styles.flex_1}>
+              <Text
+                mt={SIZES.padding2}
+                size={SIZES.h11}
+                text={'City'}
+                weight={TextWeights.light}
+              />
+              <Text
+                weight={TextWeights.medium}
+                mt={SIZES.padding2 / 2}
+                text={'Karachi,Pakistan'}
+              />
             </View>
           </RowView>
-
-          <Text mt={SIZES.padding2} size={SIZES.h11} text={"City"} weight={TextWeights.light} />
-          <Text weight={TextWeights.medium} mt={SIZES.padding2 / 2} text={"Karachi,Pakistan"} />
-
         </View>
 
         <Text

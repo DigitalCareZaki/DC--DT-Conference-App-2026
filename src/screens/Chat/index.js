@@ -46,6 +46,7 @@ const Chat = ({ route }) => {
     const token = await getToken();
     socket = io(`http://51.83.237.63:5041?token=${token}`);
     setSocket(socket);
+
     socket.on('connect', () => {
       socket.emit('create-chat', { receiverId: receiverID }, msgs => {});
     });

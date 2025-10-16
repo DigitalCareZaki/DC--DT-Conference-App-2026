@@ -1,9 +1,9 @@
 import { ScrollView, View } from 'react-native';
 import React from 'react';
 import { styles } from './index.styles';
-import { AskModal, Container, Icons, SizedBox, Text } from '../index';
+import { AskModal, Container, Icons, ImageView, SizedBox, Text } from '../index';
 import DrawerContentFunctional from './index.function';
-import { COLORS, SIZES } from '../../constants';
+import { COLORS, images, SIZES } from '../../constants';
 import {
   delete_icon,
   drawer_icon,
@@ -30,7 +30,7 @@ const DrawerContent = () => {
     <Container isImage={false} background={COLORS.primary}>
       <View style={styles.main_view}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Icons name={drawer_icon} />
+          <ImageView image={images.drawer_logo} height={SIZES.padding * 2} width={'100%'} radius={0} />
 
           <Text
             mt={SIZES.padding}

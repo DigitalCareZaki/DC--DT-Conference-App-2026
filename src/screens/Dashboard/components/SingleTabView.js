@@ -51,7 +51,7 @@ export default SingleTabView;
 
 const styles = StyleSheet.create({
   main_view: {
-    flex: 1,
+    width: '48%',
     height: SIZES.padding * 5.5,
     backgroundColor: COLORS.primary,
     borderRadius: SIZES.padding2 * 1.2,
