@@ -23,7 +23,7 @@ import ChatFunctional from './index.function';
 import { getToken } from '../../utils/functions';
 
 const Chat = ({ route }) => {
-  const { _id, name } = route?.params?.user;
+  const { name, participants } = route?.params?.user;
   const {
     messages,
     setMessages,
@@ -38,6 +38,8 @@ const Chat = ({ route }) => {
     mySocket,
   } = ChatFunctional();
 
+  const receiverID = participants?.filter(item => item !== user?._id)?.[0];
+
   let socket;
 
   const connectSocket = async () => {
@@ -45,16 +47,10 @@ const Chat = ({ route }) => {
     socket = io(`http://51.83.237.63:5041?token=${token}`);
     setSocket(socket);
     socket.on('connect', () => {
-      socket.emit('create-chat', { receiverId: _id }, msgs => {
-        console.log('create-chat', msgs);
-      });
+      socket.emit('create-chat', { receiverId: receiverID }, msgs => {});
     });
 
-    socket.on('read-messages', { chatId: chatId }, readMsg => {
-      console.log('readMsg===>', readMsg);
-    });
     socket.on('chat-created', msgs => {
-      console.log('chat created', msgs);
       setChatId(msgs?.chat?._id);
 
       if (isFirstTime) {
