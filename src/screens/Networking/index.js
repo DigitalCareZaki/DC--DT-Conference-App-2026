@@ -18,18 +18,8 @@ import { getToken, searchArray } from '../../utils/functions';
 import { io } from 'socket.io-client';
 
 const Networking = () => {
-  const {
-    onEndReached,
-    hasMore,
-    search,
-    setSearch,
-    auth_loading,
-    onRefresh,
-    refreshing,
-    setUsers,
-    users,
-  } = NetworkFunctional();
-
+  const { search, setSearch, auth_loading, allUsers, setAllUsers } =
+    NetworkFunctional();
   let socket;
 
   const connectSocket = async () => {
@@ -37,7 +27,7 @@ const Networking = () => {
     socket = io(`http://51.83.237.63:5041?token=${token}`);
     socket.on('connect', () => {
       socket.on('chat-list-updated', msgs => {
-        setUsers(msgs?.chats?.data);
+        setAllUsers(msgs?.chats?.data);
       });
     });
   };
@@ -49,7 +39,7 @@ const Networking = () => {
   return (
     <Container>
       <Header title={'Networking'} rightIcon={null} />
-      {!users && !hasMore ? (
+      {!allUsers ? (
         <Loader />
       ) : (
         <View style={styles.main_view}>
@@ -61,7 +51,7 @@ const Networking = () => {
           />
 
           <Text
-            text={`${users?.length} Users Registered`}
+            text={`${allUsers?.length} Users Registered`}
             size={SIZES.h16}
             weight={TextWeights.medium}
           />
@@ -70,22 +60,11 @@ const Networking = () => {
 
           <FlatList
             showsVerticalScrollIndicator={false}
-            data={search ? searchArray(users, search) : users}
+            data={search ? searchArray(allUsers, search) : allUsers}
             keyExtractor={item => item?._id}
             renderItem={({ item }) => <SingleUserView item={item} />}
-            ListFooterComponent={
-              auth_loading && hasMore ? (
-                <Loader style={styles.loader} />
-              ) : (
-                <SizedBox />
-              )
-            }
+            ListFooterComponent={<SizedBox />}
             ListEmptyComponent={<ListEmptyText text={'No Network Found'} />}
-            refreshControl={
-              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-            }
-            onEndReached={onEndReached}
-            onEndReachedThreshold={0.5}
           />
         </View>
       )}

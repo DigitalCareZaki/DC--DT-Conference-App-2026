@@ -6,63 +6,19 @@ import { setAuthLoading } from '../../redux/slices/auth-slice';
 export default () => {
   const dispatch = useDispatch();
 
-  const { auth_loading, all_users } = useSelector(state => state.auth);
+  const { auth_loading } = useSelector(state => state.auth);
   const { user } = useSelector(state => state.constant);
 
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(false);
   const [search, setSearch] = useState(null);
-  const [refreshing, setRefreshing] = useState(false);
-  const [users, setUsers] = useState(null);
-
-  const getNetworks = pageNumber => {
-    const payload = {
-      limit: 10,
-      page: pageNumber,
-    };
-    dispatch(
-      getAllUsers(payload, all_users, hasMore => {
-        setHasMore(hasMore);
-      }),
-    );
-  };
-
-  // useEffect(() => {
-  //   dispatch(setAuthLoading(true));
-  //   getNetworks(1);
-  // }, []);
-
-  const onRefresh = async () => {
-    setRefreshing(true);
-    setPage(1);
-    setHasMore(false);
-    await getNetworks(1);
-    setRefreshing(false);
-  };
-
-  const onEndReached = () => {
-    if (auth_loading) return;
-
-    if (hasMore && all_users?.length > 0) {
-      setPage(page + 1);
-      getNetworks(page + 1);
-    }
-  };
+  const [allUsers, setAllUsers] = useState(null);
 
   return {
     dispatch,
-    all_users,
-    page,
-    hasMore,
-    setHasMore,
-    onEndReached,
     search,
     setSearch,
     auth_loading,
-    refreshing,
-    onRefresh,
     user,
-    setUsers,
-    users,
+    setAllUsers,
+    allUsers,
   };
 };
