@@ -9,7 +9,10 @@ import { common_styles } from '../../../utils/common_styles';
 
 const SingleUserView = ({ item }) => {
   return (
-    <RowView onPress={() => navigate('UserProfile', { user: item })} style={styles.main_view}>
+    <RowView
+      onPress={() => navigate('UserProfile', { user: item })}
+      style={styles.main_view}
+    >
       <View style={common_styles.flex_1}>
         <Text
           numberOfLines={2}
@@ -37,6 +40,7 @@ const SingleUserView = ({ item }) => {
               color={COLORS.primary}
               weight={TextWeights.medium}
               text={item?.unreadCount}
+              align={'center'}
             />
           </View>
         )}

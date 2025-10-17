@@ -15,8 +15,8 @@ import { Linking } from 'react-native';
 import { common_styles } from '../../utils/common_styles';
 
 const UserProfile = ({ route }) => {
-  const { user } = route.params;
-  console.log('user ', user)
+  const { user } = route?.params;
+  console.log('user ', user);
 
   return (
     <Container>
@@ -35,11 +35,7 @@ const UserProfile = ({ route }) => {
             </View>
 
             <View style={common_styles.flex_1}>
-              <Text
-                size={SIZES.h11}
-                text={'Role'}
-                weight={TextWeights.light}
-              />
+              <Text size={SIZES.h11} text={'Role'} weight={TextWeights.light} />
               <Text
                 weight={TextWeights.medium}
                 mt={SIZES.padding2 / 2}
@@ -61,7 +57,7 @@ const UserProfile = ({ route }) => {
         <RowView justifyContent={'space-between'}>
           {social_links.map(item => (
             <RowView onPress={() => Linking.openURL(item.link)}>
-              <Icons iconHeight={54} name={item.icon} />
+              <Icons iconHeight={SIZES.padding * 2.7} name={item.icon} />
             </RowView>
           ))}
         </RowView>
