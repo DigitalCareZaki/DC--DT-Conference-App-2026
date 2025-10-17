@@ -16,6 +16,7 @@ const initialState = {
   feedback: null,
   main_post_loading: false,
   selected_item_index: null,
+  single_user: null,
 };
 
 export const mainSlice = createSlice({
@@ -68,6 +69,9 @@ export const mainSlice = createSlice({
     setSelectedItemIndex: (state, action) => {
       state.selected_item_index = action.payload;
     },
+    setSingleUser: (state, action) => {
+      state.single_user = action.payload;
+    },
   },
 });
 
@@ -87,6 +91,7 @@ export const {
   setFeedback,
   setMainPostLoading,
   setSelectedItemIndex,
+  setSingleUser,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

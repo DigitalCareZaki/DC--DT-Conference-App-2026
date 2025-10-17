@@ -15,6 +15,7 @@ import {
   setListLoading,
   setMainLoading,
   setMainPostLoading,
+  setSingleUser,
   setSpeakers,
   setWorkshopDetail,
   setWorkshops,
@@ -235,6 +236,23 @@ export const askQuestion = (data, onDone) => {
         param_data: data,
         apiService: apiServices.askQuestion,
         onDone: res => onDone && onDone(res),
+      }),
+    );
+  };
+};
+
+// User Details
+export const getSingleUserDetails = (data, onDone) => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setMainLoading,
+        param_data: data,
+        apiService: apiServices.getSingleUser,
+        onDone: res => {
+          dispatch(setSingleUser(res?.data));
+          onDone && onDone(res);
+        },
       }),
     );
   };

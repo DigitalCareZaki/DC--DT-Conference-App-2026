@@ -8,9 +8,12 @@ import { navigate } from '../../../navigation/service';
 import { common_styles } from '../../../utils/common_styles';
 
 const SingleUserView = ({ item }) => {
+  console.log('item', item);
   return (
     <RowView
-      onPress={() => navigate('UserProfile', { user: item })}
+      onPress={() =>
+        navigate('UserProfile', { participants: item?.participants })
+      }
       style={styles.main_view}
     >
       <View style={common_styles.flex_1}>

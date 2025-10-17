@@ -1,17 +1,21 @@
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { getUserProfile } from '../../redux/actions/auth-action';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSingleUserDetails } from '../../redux/actions/main-action';
+import { useEffect } from 'react';
 
-// export default () => {
-//   const dispatch = useDispatch();
+export default ({ participants }) => {
+  const dispatch = useDispatch();
 
-//   const { user } = useSelector(state => state.constant);
+  const { user } = useSelector(state => state.constant);
+  const { single_user, main_loading } = useSelector(state => state.main);
+  const userID = participants?.filter(item => item !== user?._id)?.[0];
 
-//   useEffect(() => {
-//     dispatch(getUserProfile());
-//   }, []);
+  useEffect(() => {
+    dispatch(getSingleUserDetails(userID));
+  }, []);
 
-//   return {
-//     user,
-//   };
-// };
+  return {
+    user,
+    main_loading,
+    single_user,
+  };
+};

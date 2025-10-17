@@ -251,26 +251,26 @@ export const registered_users = [
   },
 ];
 
-export const social_links = [
+export const social_links = links => [
   {
     icon: facebook_icon,
-    link: 'https://www.facebook.com',
+    link: links?.facebookLink,
   },
   {
     icon: instagram_icon,
-    link: 'https://www.instagram.com',
+    link: links?.instagramLink,
   },
   {
     icon: linked_in_icon,
-    link: 'https://www.linkedin.com',
+    link: links?.linkedinLink,
   },
   {
     icon: youtube_icon,
-    link: 'https://www.youtube.com',
+    link: links?.youtubeLink,
   },
   {
     icon: twitter_icon,
-    link: 'https://www.twitter.com',
+    link: links?.twitterLink,
   },
 ];
 

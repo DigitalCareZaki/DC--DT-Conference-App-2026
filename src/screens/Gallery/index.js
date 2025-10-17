@@ -69,7 +69,7 @@ const Gallery = () => {
       <Modal transparent visible={showModal}>
         <ImageViewer
           imageUrls={gallery?.map(item => ({
-            url: item.image,
+            url: item.media || item?.image,
           }))}
           renderHeader={() => (
             <RowView

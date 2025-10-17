@@ -10,6 +10,7 @@ export const SERVICE_URLS = {
   sendOtp: '/user/send-otp',
   resetPassword: '/user/reset-password',
   deleteAccount: '/user/delete/',
+  singleUser: '/user/',
 
   // Main Management
   getConferences: '/conference',
@@ -52,6 +53,7 @@ const getFeedBack = () => get(SERVICE_URLS.getFeedback);
 const addFeedback = data => put(SERVICE_URLS.addFeedback, data);
 const updateLinks = data => put(SERVICE_URLS.updateLinks, data);
 const askQuestion = data => post(SERVICE_URLS.askQuestion, data);
+const getSingleUser = data => get(SERVICE_URLS.singleUser + data);
 const deleteAccount = data => del(SERVICE_URLS.deleteAccount + data);
 
 const apiServices = {
@@ -80,6 +82,7 @@ const apiServices = {
   updateLinks,
   askQuestion,
   deleteAccount,
+  getSingleUser,
 };
 
 export default apiServices;
