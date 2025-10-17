@@ -21,9 +21,7 @@ export default () => {
   };
 
   useEffect(() => {
-    {
-      user && dispatch(getFeedBack());
-    }
+    user && dispatch(getFeedBack());
   }, []);
 
   return {

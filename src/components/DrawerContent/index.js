@@ -59,7 +59,7 @@ const DrawerContent = () => {
                 } else if (item?.isDeleteAccount) setShowDeleteAccModal(true);
                 else
                   navigate(
-                    item?.name === 'My Agenda' && !user ? 'Login' : item?.route,
+                    (item?.name === 'My Agenda' || item?.name === 'Ask A Question') && !user ? 'Login' : item?.route,
                   );
               }}
               key={item?.id}

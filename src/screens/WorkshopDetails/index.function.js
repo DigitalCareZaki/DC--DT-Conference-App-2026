@@ -3,6 +3,7 @@ import { addRemoveFav, getWorkshop } from '../../redux/actions/main-action';
 import { useEffect } from 'react';
 import { navigate } from '../../navigation/service';
 import { setSelectedItemIndex } from '../../redux/slices/main-slice';
+import { Alert, Linking } from 'react-native';
 
 export default ({ data }) => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ export default ({ data }) => {
       navigate('Login');
       return;
     }
-    dispatch(setSelectedItemIndex(12))
+    dispatch(setSelectedItemIndex(12));
     const apiData = {
       favoriteId: item?._id,
       type: 'workshop',
@@ -28,10 +29,21 @@ export default ({ data }) => {
     dispatch(addRemoveFav(apiData));
   };
 
+  const onPressRegister = () => {
+    if (workshop_detail?.url) {
+      const url = workshop_detail?.url;
+      Linking.openURL(url).catch(e => {
+        Alert.alert('Error', e);
+      });
+      return;
+    }
+  };
+
   return {
     detail_loading,
     workshop_detail,
     onPressHeart,
     dispatch,
+    onPressRegister,
   };
 };

@@ -7,7 +7,7 @@ const SingleGalleryView = ({ item, onPress }) => {
   return (
     <ImageView
       onPress={onPress}
-      url={item.image}
+      url={item?.image || item?.media}
       height={SIZES.padding * 7.5}
       width={'48%'}
       resizeMode={FastImage.resizeMode.stretch}

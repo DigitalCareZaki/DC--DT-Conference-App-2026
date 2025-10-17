@@ -14,7 +14,10 @@ import { social_links, TextWeights } from '../../config';
 import { Linking } from 'react-native';
 import { common_styles } from '../../utils/common_styles';
 
-const UserProfile = () => {
+const UserProfile = ({ route }) => {
+  const { user } = route.params;
+  console.log('user ', user)
+
   return (
     <Container>
       <Header title={'User Profile'} rightIcon={null} />
@@ -27,51 +30,20 @@ const UserProfile = () => {
               <Text
                 weight={TextWeights.medium}
                 mt={SIZES.padding2 / 2}
-                text={'Muhammad Ali'}
+                text={user?.name}
               />
             </View>
 
             <View style={common_styles.flex_1}>
               <Text
                 size={SIZES.h11}
-                text={'Mobile'}
+                text={'Role'}
                 weight={TextWeights.light}
               />
               <Text
                 weight={TextWeights.medium}
                 mt={SIZES.padding2 / 2}
-                text={'+92 300 0568711'}
-              />
-            </View>
-          </RowView>
-
-          <SizedBox height={SIZES.padding2} />
-
-          <RowView>
-            <View style={styles.left_view}>
-              <Text
-                size={SIZES.h11}
-                text={'Date of Birth'}
-                weight={TextWeights.light}
-              />
-              <Text
-                weight={TextWeights.medium}
-                mt={SIZES.padding2 / 2}
-                text={'10-10-2024'}
-              />
-            </View>
-
-            <View style={common_styles.flex_1}>
-              <Text
-                mt={SIZES.padding2}
-                size={SIZES.h11}
-                text={'City'}
-                weight={TextWeights.light}
-              />
-              <Text
-                weight={TextWeights.medium}
-                mt={SIZES.padding2 / 2}
-                text={'Karachi,Pakistan'}
+                text={user?.role}
               />
             </View>
           </RowView>

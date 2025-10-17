@@ -1,4 +1,4 @@
-import { get, post, put } from './http-provider';
+import { del, get, post, put } from './http-provider';
 
 export const SERVICE_URLS = {
   // Auth Management

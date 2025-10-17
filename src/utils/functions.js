@@ -163,6 +163,7 @@ export function requestHandler({
   setData,
   setLoading,
   isSuccessMessage = false,
+  isErrorMessage = true,
   param_data,
   onDone,
   isAuth,
@@ -192,7 +193,9 @@ export function requestHandler({
         dispatch(setUser(null));
         await AsyncStorage.clear();
       }
-      showToast('error', error?.data?.msg ?? error?.data?.message ?? '');
+      if (isErrorMessage) {
+        showToast('error', error?.data?.msg ?? error?.data?.message ?? '');
+      }
     } finally {
       setLoading && dispatch(setLoading(false));
     }

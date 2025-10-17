@@ -32,7 +32,7 @@ export default ({ id }) => {
   };
 
   const onPressRegister = () => {
-    if (user) {
+    if (conference_detail?.url) {
       const url = conference_detail?.url;
       Linking.openURL(url).catch(e => {
         Alert.alert('Error', e);
@@ -40,6 +40,7 @@ export default ({ id }) => {
       return;
     }
   };
+  
   return {
     detail_loading,
     conference_detail,

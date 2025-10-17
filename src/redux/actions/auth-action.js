@@ -1,5 +1,5 @@
 import apiServices from '../../api_services/request-handler';
-import { goBack, navigate } from '../../navigation/service';
+import { goBack, navigate, resetNavigationStack } from '../../navigation/service';
 import { requestHandler, setToken } from '../../utils/functions';
 import {
   setAllUsers,
@@ -149,13 +149,19 @@ export const resetPassword = (data, onDone) => {
   };
 };
 
-export const deleteAccount = data => {
+export const deleteAccount = (data, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
         setLoading: setAuthLoading,
         param_data: data,
         apiService: apiServices.deleteAccount,
+        isSuccessMessage: true,
+        onDone: async res => {
+          dispatch(setUser(null));
+          onDone && onDone();
+          resetNavigationStack('Tabs');
+        },
       }),
     );
   };

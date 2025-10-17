@@ -1,4 +1,5 @@
 import apiServices from '../../api_services/request-handler';
+import { goBack } from '../../navigation/service';
 import { requestHandler } from '../../utils/functions';
 import { setTotalItems } from '../slices/auth-slice';
 import { setUser } from '../slices/constant-slice';
@@ -187,6 +188,7 @@ export const getFeedBack = onDone => {
           dispatch(setFeedback(res?.data));
           onDone && onDone(res);
         },
+        isErrorMessage: false,
       }),
     );
   };
@@ -199,7 +201,10 @@ export const addFeedback = data => {
         setLoading: setMainPostLoading,
         param_data: data,
         apiService: apiServices.addFeedback,
-        onDone: async () => dispatch(getFeedBack()),
+        onDone: async () => {
+          goBack();
+        },
+        isSuccessMessage: true,
       }),
     );
   };

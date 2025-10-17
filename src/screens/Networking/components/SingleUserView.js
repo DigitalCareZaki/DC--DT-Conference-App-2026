@@ -9,14 +9,16 @@ import { common_styles } from '../../../utils/common_styles';
 
 const SingleUserView = ({ item }) => {
   return (
-    <RowView onPress={() => navigate('UserProfile')} style={styles.main_view}>
-      <Text
-        style={common_styles.flex_1}
-        numberOfLines={2}
-        text={item?.name}
-        size={SIZES.h14}
-        weight={TextWeights.medium}
-      />
+    <RowView onPress={() => navigate('UserProfile', { user: item })} style={styles.main_view}>
+      <View style={common_styles.flex_1}>
+        <Text
+          numberOfLines={2}
+          text={item?.name}
+          size={SIZES.h14}
+          weight={TextWeights.medium}
+        />
+        <Text text={item?.role} mt={SIZES.padding2 / 2} />
+      </View>
 
       <RowView
         onPress={() => navigate('Chat', { user: item })}

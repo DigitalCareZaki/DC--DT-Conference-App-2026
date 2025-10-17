@@ -1,32 +1,27 @@
 import { FlatList, ScrollView, View } from 'react-native';
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import {
   Button,
   Cards,
   Container,
   Header,
-  Loader,
   LoaderModal,
   SizedBox,
   Text,
 } from '../../components';
 import ShopModules from './components/ShopModules';
 import { TextWeights } from '../../config';
-import { COLORS, SIZES } from '../../constants';
+import { SIZES } from '../../constants';
 import { styles } from './index.styles';
 import WorkshopDetailFunctional from './index.function';
-import { useFocusEffect, useIsFocused } from '@react-navigation/native';
-import { getWorkshopById } from '../../redux/actions/main-action';
+import { useIsFocused } from '@react-navigation/native';
 
 const WorkshopDetails = ({ route }) => {
-  const isFocused = useIsFocused()
+  const isFocused = useIsFocused();
   const { data } = route?.params;
 
-  const {
-    detail_loading,
-    workshop_detail,
-    onPressHeart
-  } = WorkshopDetailFunctional({ data });
+  const { detail_loading, workshop_detail, onPressHeart, onPressRegister } =
+    WorkshopDetailFunctional({ data });
 
   return (
     <Container>
@@ -52,7 +47,9 @@ const WorkshopDetails = ({ route }) => {
           <FlatList
             data={workshop_detail?.modules}
             scrollEnabled={false}
-            renderItem={({ item  , index}) => <ShopModules  key={index?.toString()} item={item} />}
+            renderItem={({ item, index }) => (
+              <ShopModules key={index?.toString()} item={item} />
+            )}
             showsVerticalScrollIndicator={false}
             ListFooterComponent={<SizedBox />}
           />
@@ -60,19 +57,23 @@ const WorkshopDetails = ({ route }) => {
 
         <SizedBox height={SIZES.padding2} />
 
-        <Button
+        {/* <Button
           buttonText={'Download Materials'}
           color={COLORS.white}
           style={styles.transparent_btn}
-        />
-
-        <Button buttonText={'Register Online'} style={styles.btn} />
+        /> */}
 
         <Button
+          buttonText={'Register Online'}
+          onPress={onPressRegister}
+          style={styles.btn}
+        />
+
+        {/* <Button
           buttonText={'Ask Workshop Leader'}
           color={COLORS.white}
           style={styles.transparent_btn}
-        />
+        /> */}
 
         <SizedBox height={SIZES.padding2} />
 

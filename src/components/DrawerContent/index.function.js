@@ -35,7 +35,7 @@ export default () => {
       showToast('error', 'User Not Found');
       return;
     }
-    dispatch(deleteAccount(user?._id));
+    dispatch(deleteAccount(user?._id, () => setShowDeleteAccModal(false)));
   };
 
   return {
