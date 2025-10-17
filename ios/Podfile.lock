@@ -1841,6 +1841,34 @@ PODS:
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
     - SocketRocket
+  - react-native-cameraroll (7.10.2):
+    - boost
+    - DoubleConversion
+    - fast_float
+    - fmt
+    - glog
+    - hermes-engine
+    - RCT-Folly
+    - RCT-Folly/Fabric
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - SocketRocket
+    - Yoga
   - react-native-date-picker (5.0.13):
     - boost
     - DoubleConversion
@@ -2518,6 +2546,8 @@ PODS:
     - React-perflogger (= 0.81.4)
     - React-utils (= 0.81.4)
     - SocketRocket
+  - rn-fetch-blob (0.12.0):
+    - React-Core
   - RNCAsyncStorage (2.2.0):
     - boost
     - DoubleConversion
@@ -3029,6 +3059,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
+  - "react-native-cameraroll (from `../node_modules/@react-native-camera-roll/camera-roll`)"
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
   - react-native-keyboard-controller (from `../node_modules/react-native-keyboard-controller`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
@@ -3062,6 +3093,7 @@ DEPENDENCIES:
   - ReactAppDependencyProvider (from `build/generated/ios`)
   - ReactCodegen (from `build/generated/ios`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - rn-fetch-blob (from `../node_modules/rn-fetch-blob`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCPushNotificationIOS (from `../node_modules/@react-native-community/push-notification-ios`)"
   - RNFastImage (from `../node_modules/react-native-fast-image`)
@@ -3184,6 +3216,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   React-microtasksnativemodule:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
+  react-native-cameraroll:
+    :path: "../node_modules/@react-native-camera-roll/camera-roll"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
   react-native-keyboard-controller:
@@ -3250,6 +3284,8 @@ EXTERNAL SOURCES:
     :path: build/generated/ios
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  rn-fetch-blob:
+    :path: "../node_modules/rn-fetch-blob"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCPushNotificationIOS:
@@ -3335,6 +3371,7 @@ SPEC CHECKSUMS:
   React-logger: a3cb5b29c32b8e447b5a96919340e89334062b48
   React-Mapbuffer: e4a65db5f4df53369f39558c0cf2f480f6d3d6c7
   React-microtasksnativemodule: 86334c5c06315e0bccb7b6e6f2c905e92f98b615
+  react-native-cameraroll: ae31ba7ee17d31c5ee05d7bb248742e3af482783
   react-native-date-picker: 64ccae6c3a8104a168cef950fea8e1fe616cda82
   react-native-keyboard-controller: 6c84ad97a448da86dae5f5f89419d96839973c77
   react-native-safe-area-context: ee1e8e2a7abf737a8d4d9d1a5686a7f2e7466236
@@ -3368,6 +3405,7 @@ SPEC CHECKSUMS:
   ReactAppDependencyProvider: 433ddfb4536948630aadd5bd925aff8a632d2fe3
   ReactCodegen: 2cfa890e84ecf7f3a708f1ed9c0f2c0b22a23c9a
   ReactCommon: e9ab32f1d1482d207867b4fdd139361302b9dcc6
+  rn-fetch-blob: 25612b6d6f6e980c6f17ed98ba2f58f5696a51ca
   RNCAsyncStorage: fd44f4b03e007e642e98df6726737bc66e9ba609
   RNCPushNotificationIOS: 6c4ca3388c7434e4a662b92e4dfeeee858e6f440
   RNFastImage: 462a183c4b0b6b26fdfd639e1ed6ba37536c3b87
@@ -3386,6 +3424,6 @@ SPEC CHECKSUMS:
   TOCropViewController: 80b8985ad794298fb69d3341de183f33d1853654
   Yoga: 9b30b783a17681321b52ac507a37219d7d795ace
 
-PODFILE CHECKSUM: fc8240518e106acc92633d06f87dbe87d3ea6284
+PODFILE CHECKSUM: 4c1aae973e83cb7a5309b6295fe524bce53f0e7d
 
 COCOAPODS: 1.16.2

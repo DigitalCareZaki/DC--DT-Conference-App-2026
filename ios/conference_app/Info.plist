@@ -69,6 +69,8 @@
 	<string>Health Asia needs access to your Camera in order to upload documents.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Health Asia needs access to your Camera in order to upload documents.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We need permission to save images to your gallery.</string>	
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UIAppFonts</key>

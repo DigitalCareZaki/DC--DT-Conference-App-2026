@@ -1,4 +1,11 @@
-import { View, FlatList, ScrollView } from 'react-native';
+import {
+  View,
+  FlatList,
+  ScrollView,
+  Alert,
+  Platform,
+  PermissionsAndroid,
+} from 'react-native';
 import React from 'react';
 import {
   Button,
@@ -15,6 +22,7 @@ import SessionCard from './components/SessionCard';
 import { styles } from './index.styles';
 import ConferenceFunctional from './index.function';
 import { useIsFocused } from '@react-navigation/native';
+import RNFetchBlob from 'rn-fetch-blob';
 
 const ConferenceDetails = ({ route }) => {
   const id = route?.params?.id;
@@ -22,6 +30,49 @@ const ConferenceDetails = ({ route }) => {
   const { detail_loading, conference_detail, onPressHeart, onPressRegister } =
     ConferenceFunctional({ id });
 
+  const downloadImg = async imageUrl => {
+    console.log('imageUrl', imageUrl);
+    RNFetchBlob.config({
+      fileCache: true,
+    })
+      .fetch('GET', imageUrl, {})
+      .then(res => {
+        console.log('The file saved to ', res.path());
+      });
+  };
+
+  // const saveImage = async imageUrl => {
+  //   try {
+  //     if (Platform.OS === 'android') {
+  //       const granted = await PermissionsAndroid.request(
+  //         PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+  //         {
+  //           title: 'Storage Permission Required',
+  //           message: 'App needs access to your storage to download images',
+  //         },
+  //       );
+  //       if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
+  //         Alert.alert(
+  //           'Permission Denied',
+  //           'Cannot save image without permission',
+  //         );
+  //         return;
+  //       }
+  //     }
+  //     RNFetchBlob.config({
+  //       fileCache: true,
+  //     })
+  //       .fetch('GET', imageUrl, {})
+  //       .then(res => {
+  //         console.log('The file saved to ', res.path());
+  //       });
+  //   } catch (error) {
+  //     console.error(error);
+  //     Alert.alert('Error', 'Failed to save image.');
+  //   }
+  // };
+
+  console.log('conference_detail', conference_detail);
   return (
     <Container>
       <Header title={'Conference Detail'} rightIcon={null} />
@@ -57,6 +108,7 @@ const ConferenceDetails = ({ route }) => {
           style={styles.download_btn}
           buttonText={'Download Brochure'}
           color={COLORS.white}
+          onPress={() => downloadImg(conference_detail?.brochure)}
         />
 
         <LoaderModal visible={detail_loading && isFocused} />
