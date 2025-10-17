@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   Container,
   Header,
@@ -17,6 +17,7 @@ import NetworkFunctional from './index.function';
 import { searchArray } from '../../utils/functions';
 import { getToken } from '../../utils/functions';
 import { io } from 'socket.io-client';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Networking = () => {
   const { search, setSearch, auth_loading, allUsers, setAllUsers } =
@@ -25,19 +26,26 @@ const Networking = () => {
 
   const connectSocket = async () => {
     const token = await getToken();
-    console.log('token', token);
     socket = io(`http://51.83.237.63:5041?token=${token}`);
     socket.on('connect', () => {
       socket.on('chat-list-updated', msgs => {
-        console.log('chat-list-updated', msgs?.chats?.data);
+        console.log('Received chat-list-updated event ', msgs);
         setAllUsers(msgs?.chats?.data);
       });
     });
   };
 
-  useEffect(() => {
-    connectSocket();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      connectSocket();
+      return () => {
+        if (socket && socket?.connected) {
+          socket.disconnect();
+          console.log('Socket killed on screen leave');
+        }
+      };
+    }, []),
+  );
 
   return (
     <Container>

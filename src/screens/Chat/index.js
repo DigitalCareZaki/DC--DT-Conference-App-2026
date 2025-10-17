@@ -23,7 +23,7 @@ import ChatFunctional from './index.function';
 import { getToken } from '../../utils/functions';
 
 const Chat = ({ route }) => {
-  const { name, participants } = route?.params?.user;
+  const { name, participants, id } = route?.params?.user;
   const {
     messages,
     setMessages,
@@ -48,7 +48,10 @@ const Chat = ({ route }) => {
     setSocket(socket);
 
     socket.on('connect', () => {
-      socket.emit('create-chat', { receiverId: receiverID }, msgs => {});
+      socket.emit('create-chat', { receiverId: receiverID }, msgs => {
+      });
+
+      socket.emit('read-messages', { chatId: id });
     });
 
     socket.on('chat-created', msgs => {

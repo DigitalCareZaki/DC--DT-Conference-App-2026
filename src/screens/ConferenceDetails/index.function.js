@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { setSelectedItemIndex } from '../../redux/slices/main-slice';
 import { Alert, Linking } from 'react-native';
 import { website_url } from '../../config';
+import { url_regix } from '../../utils/functions';
 
 export default ({ id }) => {
   const dispatch = useDispatch();
@@ -32,15 +33,16 @@ export default ({ id }) => {
   };
 
   const onPressRegister = () => {
-    if (conference_detail?.url) {
-      const url = conference_detail?.url;
-      Linking.openURL(url).catch(e => {
-        Alert.alert('Error', e);
-      });
+    if (conference_detail?.url && url_regix.test(conference_detail?.url)) {
+      const formattedLink = conference_detail?.url?.startsWith('http')
+        ? conference_detail?.url
+        : `https://${conference_detail?.url}`;
+
+      Linking.openURL(formattedLink);
       return;
     }
   };
-  
+
   return {
     detail_loading,
     conference_detail,

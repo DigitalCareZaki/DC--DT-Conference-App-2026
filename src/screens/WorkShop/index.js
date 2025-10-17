@@ -26,7 +26,7 @@ const WorkShop = () => {
 
   return (
     <Container>
-      <Header title={'Workshop'} rightIcon={null} />
+      <Header title={'Workshops'} rightIcon={null} />
 
       <View style={styles.main_view}>
         {list_loading && !isMore ? (

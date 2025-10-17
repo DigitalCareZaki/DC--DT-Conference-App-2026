@@ -219,6 +219,7 @@ export const updateLinks = data => {
         setLoading: setMainLoading,
         param_data: data,
         apiService: apiServices.updateLinks,
+        isSuccessMessage: true,
         onDone: async res => {
           dispatch(setUser(res?.data));
         },

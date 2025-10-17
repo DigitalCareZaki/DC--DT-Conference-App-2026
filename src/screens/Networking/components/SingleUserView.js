@@ -8,7 +8,6 @@ import { navigate } from '../../../navigation/service';
 import { common_styles } from '../../../utils/common_styles';
 
 const SingleUserView = ({ item }) => {
-  console.log('item', item);
   return (
     <RowView
       onPress={() =>
@@ -38,14 +37,13 @@ const SingleUserView = ({ item }) => {
         />
 
         {item?.unreadCount > 0 && (
-          <View style={styles?.unread_count_view}>
             <Text
               color={COLORS.primary}
               weight={TextWeights.medium}
-              text={item?.unreadCount}
+              text={item?.unreadCount?.toString()?.padStart(2, '0')}
               align={'center'}
+              size={SIZES.h14}
             />
-          </View>
         )}
       </RowView>
     </RowView>
@@ -71,14 +69,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.padding,
     borderRadius: SIZES.padding * 2,
     backgroundColor: COLORS.white,
-  },
-  unread_count_view: {
-    borderRadius: SIZES.padding * 2,
-    borderColor: COLORS.primary,
-    borderWidth: 1,
-    height: SIZES.padding2 * 1.5,
-    width: SIZES.padding2 * 1.5,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });

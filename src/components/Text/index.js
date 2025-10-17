@@ -1,7 +1,6 @@
 import React from "react";
 import { Text } from "react-native";
 import { COLORS, SIZES } from "../../constants";
-import { isIOS } from "../../constants/theme";
 import { TextWeights } from "../../config";
 
 const CustomText = ({ style, text, onPress, numberOfLines, onLayout, size, align, weight, color, mt, ml, mr, mb, isrequired = false, lineHeight, letterSpacing, textDecorationLine }) => {

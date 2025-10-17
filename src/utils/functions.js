@@ -11,6 +11,8 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { setUser } from '../redux/slices/constant-slice';
 
+export const url_regix = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/i;
+
 // first letter capitalize
 export const capitalize = str => str?.charAt(0).toUpperCase() + str?.slice(1);
 

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { navigate } from '../../navigation/service';
 import { setSelectedItemIndex } from '../../redux/slices/main-slice';
 import { Alert, Linking } from 'react-native';
+import { url_regix } from '../../utils/functions';
 
 export default ({ data }) => {
   const dispatch = useDispatch();
@@ -30,11 +31,12 @@ export default ({ data }) => {
   };
 
   const onPressRegister = () => {
-    if (workshop_detail?.url) {
-      const url = workshop_detail?.url;
-      Linking.openURL(url).catch(e => {
-        Alert.alert('Error', e);
-      });
+    if (workshop_detail?.url && url_regix.test(workshop_detail?.url)) {
+      const formattedLink = workshop_detail?.url?.startsWith('http')
+        ? workshop_detail?.url
+        : `https://${workshop_detail?.url}`;
+
+      Linking.openURL(formattedLink);
       return;
     }
   };

@@ -15,6 +15,7 @@ import { social_links, TextWeights } from '../../config';
 import { Linking } from 'react-native';
 import { common_styles } from '../../utils/common_styles';
 import UserProfileFunctional from './index.function';
+import { url_regix } from '../../utils/functions';
 
 const UserProfile = ({ route }) => {
   const { participants } = route?.params;
@@ -71,8 +72,12 @@ const UserProfile = ({ route }) => {
               <RowView
                 key={index}
                 onPress={() => {
-                  if (item?.link) {
-                    Linking.openURL(item.link);
+                  if (item?.link && url_regix.test(item.link)) {
+                    const formattedLink = item.link.startsWith('http')
+                      ? item.link
+                      : `https://${item.link}`;
+
+                    Linking.openURL(formattedLink);
                   }
                 }}
               >

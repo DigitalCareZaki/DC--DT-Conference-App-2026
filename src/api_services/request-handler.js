@@ -10,7 +10,7 @@ export const SERVICE_URLS = {
   sendOtp: '/user/send-otp',
   resetPassword: '/user/reset-password',
   deleteAccount: '/user/delete/',
-  singleUser: '/user/',
+  singleUser: '/user/details/',
 
   // Main Management
   getConferences: '/conference',
