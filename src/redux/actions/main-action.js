@@ -66,7 +66,6 @@ export const getWorkshops = (params, array, onDone) => {
         param_data: params,
         apiService: apiServices.getWorkshops,
         onDone: async res => {
-          dispatch(setTotalItems(res?.data?.pagination?.totalItems));
           if (params?.page === 1) {
             dispatch(setWorkshops(res?.data?.data));
           } else {

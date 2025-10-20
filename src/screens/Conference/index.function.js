@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addRemoveFav, getConferences } from '../../redux/actions/main-action';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { navigate } from '../../navigation/service';
 import {
   setListLoading,
   setSelectedItemIndex,
 } from '../../redux/slices/main-slice';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default () => {
   const dispatch = useDispatch();
@@ -34,10 +35,12 @@ export default () => {
     );
   };
 
-  useEffect(() => {
-    dispatch(setListLoading(true));
-    getConferenceData(page);
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(setListLoading(true));
+      getConferenceData(page);
+    }, []),
+  );
 
   const onRefresh = async () => {
     setRefreshing(true);

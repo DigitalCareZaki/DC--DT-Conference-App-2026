@@ -5,6 +5,7 @@ import {
   Cards,
   Container,
   Header,
+  Loader,
   LoaderModal,
   SizedBox,
   Text,
@@ -26,59 +27,48 @@ const WorkshopDetails = ({ route }) => {
   return (
     <Container>
       <Header title={'Workshop Detail'} rightIcon={null} />
+      {detail_loading && isFocused ? (
+        <Loader />
+      ) : (
+        <View style={styles.main_view}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <Cards
+              index={12}
+              isWorkshop
+              isDetail={true}
+              item={workshop_detail}
+              onPressHeart={() => onPressHeart(workshop_detail)}
+            />
 
-      <View style={styles.main_view}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <Cards
-            index={12}
-            isWorkshop
-            isDetail={true}
-            item={workshop_detail}
-            onPressHeart={() => onPressHeart(workshop_detail)}
+            <Text
+              mt={SIZES.padding2}
+              text={'Workshop Modules'}
+              size={SIZES.h16}
+              weight={TextWeights.medium}
+            />
+
+            <FlatList
+              data={workshop_detail?.modules}
+              scrollEnabled={false}
+              renderItem={({ item, index }) => (
+                <ShopModules key={index?.toString()} item={item} />
+              )}
+              showsVerticalScrollIndicator={false}
+              ListFooterComponent={<SizedBox />}
+            />
+          </ScrollView>
+
+          <SizedBox height={SIZES.padding2} />
+
+          <Button
+            buttonText={'Register Online'}
+            onPress={onPressRegister}
+            style={styles.btn}
           />
 
-          <Text
-            mt={SIZES.padding2}
-            text={'Workshop Modules'}
-            size={SIZES.h16}
-            weight={TextWeights.medium}
-          />
-
-          <FlatList
-            data={workshop_detail?.modules}
-            scrollEnabled={false}
-            renderItem={({ item, index }) => (
-              <ShopModules key={index?.toString()} item={item} />
-            )}
-            showsVerticalScrollIndicator={false}
-            ListFooterComponent={<SizedBox />}
-          />
-        </ScrollView>
-
-        <SizedBox height={SIZES.padding2} />
-
-        {/* <Button
-          buttonText={'Download Materials'}
-          color={COLORS.white}
-          style={styles.transparent_btn}
-        /> */}
-
-        <Button
-          buttonText={'Register Online'}
-          onPress={onPressRegister}
-          style={styles.btn}
-        />
-
-        {/* <Button
-          buttonText={'Ask Workshop Leader'}
-          color={COLORS.white}
-          style={styles.transparent_btn}
-        /> */}
-
-        <SizedBox height={SIZES.padding2} />
-
-        <LoaderModal visible={detail_loading && isFocused} />
-      </View>
+          <SizedBox height={SIZES.padding2} />
+        </View>
+      )}
     </Container>
   );
 };

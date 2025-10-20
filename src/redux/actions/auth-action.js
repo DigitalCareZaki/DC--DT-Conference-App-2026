@@ -1,5 +1,9 @@
 import apiServices from '../../api_services/request-handler';
-import { goBack, navigate, resetNavigationStack } from '../../navigation/service';
+import {
+  goBack,
+  navigate,
+  resetNavigationStack,
+} from '../../navigation/service';
 import { requestHandler, setToken } from '../../utils/functions';
 import {
   setAllUsers,
@@ -61,7 +65,7 @@ export const googleLogin = data => {
         onDone: async res => {
           await setToken(res?.data?.accessToken);
           dispatch(setUser(res?.data?.user));
-          goBack();
+          resetNavigationStack('DrawerNavigation');
         },
       }),
     );
