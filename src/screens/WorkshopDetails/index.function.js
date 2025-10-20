@@ -31,14 +31,7 @@ export default ({ data }) => {
   };
 
   const onPressRegister = () => {
-    if (workshop_detail?.url && url_regix.test(workshop_detail?.url)) {
-      const formattedLink = workshop_detail?.url?.startsWith('http')
-        ? workshop_detail?.url
-        : `https://${workshop_detail?.url}`;
-
-      Linking.openURL(formattedLink);
-      return;
-    }
+    Linking.openURL('https://health-asia.com/');
   };
 
   return {

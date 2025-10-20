@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 import React, { useState } from 'react';
-import { COLORS, SIZES } from '../../../constants';
+import { COLORS, images, SIZES } from '../../../constants';
 import {
   Button,
   ImageView,
@@ -23,6 +23,7 @@ const SingleSpeakerView = ({ item }) => {
           height={SIZES.padding * 3.4}
           radius={SIZES.padding * 4.65}
           url={item?.profileImage}
+          image={images.profile_placeholder}
           style={styles.image}
           resizeMode={FastImage.resizeMode.cover}
         />

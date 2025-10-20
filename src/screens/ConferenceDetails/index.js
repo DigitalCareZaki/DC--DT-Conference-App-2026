@@ -42,21 +42,21 @@ const ConferenceDetails = ({ route }) => {
               onPressHeart={() => onPressHeart(conference_detail)}
             />
 
-            <Text
+            {/* <Text
               text={'Program Sessions'}
               size={SIZES.h16}
               weight={TextWeights.medium}
               mt={SIZES.padding2}
-            />
+            /> */}
 
-            <FlatList
+            {/* <FlatList
               data={conference_detail?.sessions}
               scrollEnabled={false}
               keyExtractor={item => item.id}
               ListFooterComponent={<SizedBox />}
               showsVerticalScrollIndicator={false}
               renderItem={({ item }) => <SessionCard item={item} />}
-            />
+            /> */}
           </ScrollView>
 
           <SizedBox height={SIZES.padding2} />
