@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-export default () => {
-
+export default ({ participants }) => {
   const [messages, setMessages] = useState([]);
   const [isFirstTime, setIsFirstTime] = useState(true);
   const [chatId, setChatId] = useState('');
@@ -10,6 +9,8 @@ export default () => {
   const [mySocket, setSocket] = useState(null);
 
   const { user } = useSelector(state => state.constant);
+
+  const receiverID = participants?.filter(item => item !== user?._id)?.[0];
 
   return {
     user,
@@ -23,5 +24,6 @@ export default () => {
     msg,
     setSocket,
     mySocket,
+    receiverID,
   };
 };

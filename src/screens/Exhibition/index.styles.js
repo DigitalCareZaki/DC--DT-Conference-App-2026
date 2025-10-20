@@ -5,14 +5,14 @@ export const styles = StyleSheet.create({
   main_view: {
     flex: 1,
     paddingHorizontal: SIZES.padding,
-    paddingTop: SIZES.padding
+    paddingTop: SIZES.padding,
   },
   map_view: {
-    width: "100%", height: SIZES.padding * 7.93,
+    width: '100%',
+    height: SIZES.padding * 7.93,
     borderRadius: SIZES.padding2,
-    backgroundColor: "red",
-    justifyContent: "flex-end",
-    marginTop: SIZES.padding2
+    justifyContent: 'flex-end',
+    marginTop: SIZES.padding2,
   },
   loader: {
     paddingVertical: SIZES.padding,

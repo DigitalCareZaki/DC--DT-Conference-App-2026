@@ -37,13 +37,13 @@ const SingleUserView = ({ item }) => {
         />
 
         {item?.unreadCount > 0 && (
-            <Text
-              color={COLORS.primary}
-              weight={TextWeights.medium}
-              text={item?.unreadCount?.toString()?.padStart(2, '0')}
-              align={'center'}
-              size={SIZES.h14}
-            />
+          <Text
+            color={COLORS.primary}
+            weight={TextWeights.medium}
+            text={item?.unreadCount?.toString()?.padStart(2, '0')}
+            align={'center'}
+            size={SIZES.h14}
+          />
         )}
       </RowView>
     </RowView>

@@ -1,23 +1,10 @@
 import React, { useEffect } from 'react';
-import {
-  Container,
-  Header,
-  Icons,
-  InputField,
-  RowView,
-  Text,
-} from '../../components';
+import { Container, Header, InputField, RowView, Text } from '../../components';
 import { TouchableOpacity, View } from 'react-native';
 import { COLORS, SIZES } from '../../constants';
-import {
-  Bubble,
-  GiftedChat,
-  InputToolbar,
-  Send,
-} from 'react-native-gifted-chat';
+import { Bubble, GiftedChat } from 'react-native-gifted-chat';
 import { styles } from './index.styles';
 import { TextWeights } from '../../config';
-import { attachment_icon, microphone_icon } from '../../assets/icons';
 import io from 'socket.io-client';
 import ChatFunctional from './index.function';
 import { getToken } from '../../utils/functions';
@@ -36,9 +23,8 @@ const Chat = ({ route }) => {
     msg,
     setSocket,
     mySocket,
-  } = ChatFunctional();
-
-  const receiverID = participants?.filter(item => item !== user?._id)?.[0];
+    receiverID,
+  } = ChatFunctional({ participants });
 
   let socket;
 
@@ -48,8 +34,7 @@ const Chat = ({ route }) => {
     setSocket(socket);
 
     socket.on('connect', () => {
-      socket.emit('create-chat', { receiverId: receiverID }, msgs => {
-      });
+      socket.emit('create-chat', { receiverId: receiverID }, msgs => {});
 
       socket.emit('read-messages', { chatId: id });
     });

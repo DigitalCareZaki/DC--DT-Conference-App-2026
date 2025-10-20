@@ -66,7 +66,10 @@ const ConferenceDetails = ({ route }) => {
       if (Platform.OS === 'android') {
         const hasPermission = await requestStoragePermission();
         if (!hasPermission) {
-          Alert.alert('Permission Denied', 'Cannot save image without permission.');
+          Alert.alert(
+            'Permission Denied',
+            'Cannot save image without permission.',
+          );
           return;
         }
       }
