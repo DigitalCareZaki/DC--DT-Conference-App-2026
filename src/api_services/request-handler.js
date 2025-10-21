@@ -11,6 +11,7 @@ export const SERVICE_URLS = {
   resetPassword: '/user/reset-password',
   deleteAccount: '/user/delete/',
   singleUser: '/user/details/',
+  notifications: '/notification',
 
   // Main Management
   getConferences: '/conference',
@@ -38,6 +39,7 @@ const googleLogin = data => post(SERVICE_URLS.googleLogin, data);
 const sendOtp = data => post(SERVICE_URLS.sendOtp, data);
 const verifyOtp = data => post(SERVICE_URLS.verifyOtp, data);
 const resetPassword = data => post(SERVICE_URLS.resetPassword, data);
+const getNotifications = params => get(SERVICE_URLS.notifications, params);
 
 // Main Management
 const getConferences = data => get(SERVICE_URLS.getConferences, data);
@@ -83,6 +85,7 @@ const apiServices = {
   askQuestion,
   deleteAccount,
   getSingleUser,
+  getNotifications,
 };
 
 export default apiServices;

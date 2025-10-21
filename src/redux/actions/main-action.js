@@ -15,6 +15,7 @@ import {
   setListLoading,
   setMainLoading,
   setMainPostLoading,
+  setNotifications,
   setSingleUser,
   setSpeakers,
   setWorkshopDetail,
@@ -252,6 +253,26 @@ export const getSingleUserDetails = (data, onDone) => {
         onDone: res => {
           dispatch(setSingleUser(res?.data));
           onDone && onDone(res);
+        },
+      }),
+    );
+  };
+};
+
+export const getNotifications = (params, array, onDone) => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setListLoading,
+        param_data: params,
+        apiService: apiServices.getNotifications,
+        onDone: async res => {
+          if (params?.page === 1) {
+            dispatch(setNotifications(res?.data?.data ?? []));
+          } else {
+            dispatch(setNotifications([...array, ...(res?.data?.data ?? [])]));
+          }
+          onDone && onDone(res?.data?.pagination?.hasNextPage);
         },
       }),
     );

@@ -51,7 +51,9 @@ const MainNavigator = () => {
       dispatch(getFavourites());
     }
     firebase_messaging.subscribeToTopic(notificationTopic);
-    notificationListener(message => {});
+    notificationListener(message => {
+      console.log('New message received:', message);
+    });
   }, []);
 
   return (

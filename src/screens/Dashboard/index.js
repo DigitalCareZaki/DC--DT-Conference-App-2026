@@ -10,7 +10,6 @@ import DashboardFunctional from './index.function';
 
 const Dashboard = () => {
   const { daysLeft } = DashboardFunctional();
-
   return (
     <Container>
       <Header isDashBoard isMenu />
@@ -30,31 +29,42 @@ const Dashboard = () => {
               />
 
               <View style={styles.text_view}>
-                <Text
-                  text={'The countdown is on!'}
-                  size={SIZES.h18}
-                  weight={TextWeights.medium}
-                />
-
-                <RowView justifyContent={'center'}>
+                {daysLeft === 0 ? (
                   <Text
-                    text={'Only '}
+                    text={`The biggest health${'\n'}sector event of${'\n'}pakistan has started${'\n'}Join today at the expo${'\n'}center`}
                     size={SIZES.h18}
                     weight={TextWeights.medium}
+                    lineHeight={SIZES.padding + 4}
                   />
-                  <Text
-                    text={String(daysLeft)}
-                    size={SIZES.h35}
-                    weight={TextWeights.medium}
-                  />
-                </RowView>
+                ) : (
+                  <>
+                    <Text
+                      text={'The countdown is on!'}
+                      size={SIZES.h18}
+                      weight={TextWeights.medium}
+                    />
 
-                <Text
-                  text={`days left until Health${'\n'}Asia begins`}
-                  size={SIZES.h18}
-                  align={'center'}
-                  weight={TextWeights.medium}
-                />
+                    <RowView justifyContent={'center'}>
+                      <Text
+                        text={'Only '}
+                        size={SIZES.h18}
+                        weight={TextWeights.medium}
+                      />
+                      <Text
+                        text={String(daysLeft)}
+                        size={SIZES.h35}
+                        weight={TextWeights.medium}
+                      />
+                    </RowView>
+
+                    <Text
+                      text={`days left until Health${'\n'}Asia begins`}
+                      size={SIZES.h18}
+                      align={'center'}
+                      weight={TextWeights.medium}
+                    />
+                  </>
+                )}
               </View>
             </View>
           )}
