@@ -31,8 +31,8 @@ const Dashboard = () => {
               <View style={styles.text_view}>
                 {daysLeft === 0 ? (
                   <Text
-                    text={`The biggest health${'\n'}sector event of${'\n'}pakistan has started${'\n'}Join today at the expo${'\n'}center`}
-                    size={SIZES.h18}
+                    text={`The biggest health${'\n'}sector event of${'\n'}pakistan has started${'\n'}Join today at the Expo${'\n'}Center`}
+                    size={SIZES.h16}
                     weight={TextWeights.medium}
                     lineHeight={SIZES.padding + 4}
                   />

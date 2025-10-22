@@ -112,6 +112,7 @@ export const sendOtp = (data, onDone) => {
       requestHandler({
         setLoading: setAuthLoading,
         param_data: data,
+        isSuccessMessage:true,
         apiService: apiServices.sendOtp,
         onDone: async res => {
           dispatch(setUserEmail(res?.data?.email));

@@ -108,7 +108,6 @@ export default ({ id }) => {
       })
         .fetch('GET', imageUrl)
         .then(res => {
-          console.log('File saved to:', res.path());
           if (Platform.OS === 'ios') {
             RNFetchBlob.fs.writeFile(res.path(), 'base64');
           }
@@ -119,7 +118,6 @@ export default ({ id }) => {
           Alert.alert('Error', 'Failed to download brochure.');
         });
     } catch (error) {
-      console.log('Save error:', error);
       Alert.alert('Error', 'Something went wrong while saving the image.');
     }
   };

@@ -29,7 +29,6 @@ const Networking = () => {
     socket = io(`http://51.83.237.63:5041?token=${token}`);
     socket.on('connect', () => {
       socket.on('chat-list-updated', msgs => {
-        console.log('Received chat-list-updated event ', msgs);
         setAllUsers(msgs?.chats?.data);
       });
     });
@@ -41,7 +40,6 @@ const Networking = () => {
       return () => {
         if (socket && socket?.connected) {
           socket.disconnect();
-          console.log('Socket killed on screen leave');
         }
       };
     }, []),

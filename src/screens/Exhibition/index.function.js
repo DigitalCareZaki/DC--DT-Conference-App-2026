@@ -105,18 +105,15 @@ export default () => {
       })
         .fetch('GET', 'http://51.83.237.63:5041/uploads/1760964790660-55834903.pdf')
         .then(res => {
-          console.log('File saved to:', res.path());
           if (Platform.OS === 'ios') {
             RNFetchBlob.fs.writeFile(res.path(), 'base64');
           }
           Alert.alert('Success', 'Brochure downloaded successfully.');
         })
         .catch(error => {
-          console.log('Download error:', error);
           Alert.alert('Error', 'Failed to download brochure.');
         });
     } catch (error) {
-      console.log('Save error:', error);
       Alert.alert('Error', 'Something went wrong while saving the image.');
     }
   };

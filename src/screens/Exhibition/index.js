@@ -50,7 +50,7 @@ const Exhibition = () => {
       ? `http://maps.apple.com/?ll=${latitude},${longitude}&q=${label}`
       : `geo:${latitude},${longitude}?q=${label}`;
 
-    Linking.openURL(url).catch(err => console.log('Failed to open maps:', err));
+    Linking.openURL(url).catch(err => {});
   };
 
   return (

@@ -4,7 +4,7 @@ import {
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 import { useDispatch, useSelector } from 'react-redux';
-import { verifyOtp } from '../../redux/actions/auth-action';
+import { sendOtp, verifyOtp } from '../../redux/actions/auth-action';
 import { navigate } from '../../navigation/service';
 
 export default ({ purpose, email }) => {
@@ -53,6 +53,12 @@ export default ({ purpose, email }) => {
     );
   };
 
+  const onPressResend = () => {
+    dispatch(
+      sendOtp({ email: user_email }, () => setTimer(300)),
+    );
+  }
+
   return {
     ref,
     props,
@@ -64,5 +70,6 @@ export default ({ purpose, email }) => {
     timer,
     onPressSubmit,
     auth_loading,
+    onPressResend
   };
 };

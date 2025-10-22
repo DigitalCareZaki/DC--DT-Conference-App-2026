@@ -21,8 +21,8 @@ const ForgotPassword = () => {
     ForgotPasswordFunctional();
   return (
     <Container>
+      <Header rightIcon={null} />
       <View style={styles.main_view}>
-        <Header rightIcon={null} />
 
         <SizedBox height={SIZES.padding + SIZES.padding2} />
 
@@ -50,6 +50,7 @@ const ForgotPassword = () => {
           placeholder={'Enter your Email Address'}
           leftIcon={sms_icon}
           value={email}
+          keyboardType={'email-address'}
           onChangeText={text => {
             setEmail(text);
             setError('');

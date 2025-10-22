@@ -33,7 +33,7 @@ import {
   AskQuestion,
   WhoShouldAttend,
 } from '../screens';
-import { notificationListener } from '../utils/notification_service';
+import { notificationListener, requestUserPermission } from '../utils/notification_service';
 import { getUserProfile } from '../redux/actions/auth-action';
 import { firebase_messaging } from '../utils/firebase_service';
 import { notificationTopic } from '../config';
@@ -51,9 +51,8 @@ const MainNavigator = () => {
       dispatch(getFavourites());
     }
     firebase_messaging.subscribeToTopic(notificationTopic);
-    notificationListener(message => {
-      console.log('New message received:', message);
-    });
+    requestUserPermission()
+    notificationListener();
   }, []);
 
   return (

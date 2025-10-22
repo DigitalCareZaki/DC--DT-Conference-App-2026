@@ -1,10 +1,7 @@
 import messaging from '@react-native-firebase/messaging';
-import PushNotification from 'react-native-push-notification';
-import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import { isIOS } from '../constants/theme';
 import { firebase_messaging } from './firebase_service';
-import { PermissionsAndroid, Platform } from 'react-native';
-import { setToken } from './auth.util';
+import { Alert, PermissionsAndroid, Platform } from 'react-native';
 
 // Get FCM token
 const getFcmToken = async () => {
@@ -57,19 +54,7 @@ export async function requestUserPermission() {
   }
 }
 
-const showIOSLocal = ({ title, body }) => {
-  // run on main thread for safety
-  requestAnimationFrame(() => {
-    PushNotificationIOS.addNotificationRequest({
-      id: String(Date.now()),
-      title: title || 'New Notification',
-      body: body || 'You have a new message',
-      sound: 'default',
-      badge: 1,
-      threadId: 'default',
-    });
-  });
-};
+
 
 // Notification listener
 export const notificationListener = async onDone => {
@@ -85,39 +70,11 @@ export const notificationListener = async onDone => {
 
   // Foreground message handler
   firebase_messaging.onMessage(async remoteMessage => {
-    onDone(remoteMessage);
-
     const title =
       remoteMessage?.notification?.title ?? remoteMessage?.data?.title;
     const body = remoteMessage?.notification?.body ?? remoteMessage?.data?.body;
 
-    if (isIOS) {
-      showIOSLocal({ title, body });
-    } else {
-      PushNotification.localNotification({
-        channelId: 'default-channel-id',
-        title: title || 'New Notification',
-        message: body || 'You have a new message',
-        playSound: true,
-        soundName: 'default',
-        smallIcon: 'ic_launcher',
-        importance: 4,
-      });
-    }
+    Alert.alert(title, body)
   });
 };
 
-export const createNotificationChannel = () => {
-  PushNotification.createChannel(
-    {
-      channelId: 'default-channel-id', // must match with localNotification
-      channelName: 'Default Channel', // visible to user in settings
-      channelDescription: 'General notifications',
-      playSound: true,
-      soundName: 'default',
-      importance: 4, // max: 5
-      vibrate: true,
-    },
-    created => {}, // log whether new or existing
-  );
-};
