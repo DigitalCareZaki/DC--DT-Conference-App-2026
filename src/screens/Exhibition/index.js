@@ -72,7 +72,7 @@ const Exhibition = () => {
           mb={SIZES.padding2}
         />
 
-        <Button buttonText={'Download List in PDF'} onPress={() => savePdf()} />
+        <Button buttonText={'Download Exhibitor List and Map'} onPress={() => savePdf()} />
 
         <Text
           mt={SIZES.padding2}

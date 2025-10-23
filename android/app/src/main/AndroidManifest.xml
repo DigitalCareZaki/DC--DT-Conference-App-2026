@@ -25,5 +25,10 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+
+      <receiver
+            android:name="com.RNFetchBlob.DownloadReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_STICKY" />
     </application>
 </manifest>
