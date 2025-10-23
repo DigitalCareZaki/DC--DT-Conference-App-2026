@@ -49,9 +49,10 @@ const Contact = () => {
 
                     <Text
                       mt={SIZES.padding}
-                      text={'Send Us A Message'}
+                      text={"Have a question? We're here to help! Get in touch with us."}
                       size={SIZES.h16}
                       weight={TextWeights.medium}
+                      lineHeight={SIZES.padding2 * 1.5}
                     />
 
                     <InputField

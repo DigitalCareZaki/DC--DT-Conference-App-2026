@@ -12,12 +12,13 @@ const ContactCard = () => {
       <Text
         weight={TextWeights.medium}
         mt={SIZES.padding2 / 2}
-        text={'123 Conference Center Drive Tech City, TC 12345'}
+        lineHeight={SIZES.padding2 * 1.5}
+        text={'8-Kokan Society, Dr. Azhar Hussain Road, Near Kokan Park, Off Shaheed-e-Millat Road, Karachi, Pakistan'}
       />
 
       <SizedBox height={SIZES.padding2} />
 
-      <RowView>
+      <RowView alignItems={'flex-start'} >
         <View style={styles.left_view}>
           <Text size={SIZES.h11} text={'Email'} weight={TextWeights.light} />
           <Text
@@ -31,13 +32,15 @@ const ContactCard = () => {
           <Text size={SIZES.h11} text={'Mobile'} weight={TextWeights.light} />
           <Text
             weight={TextWeights.medium}
+            lineHeight={SIZES.padding2 * 1.5}
             mt={SIZES.padding2 / 2}
-            text={'+1 (555) 123-4567'}
+            text={`(021) 111 222 444
+(021) 3870 9970`}
           />
         </View>
       </RowView>
 
-      <Text
+      {/* <Text
         mt={SIZES.padding2}
         size={SIZES.h11}
         text={'Office Hours'}
@@ -52,7 +55,7 @@ const ContactCard = () => {
         weight={TextWeights.medium}
         mt={SIZES.padding2 / 5}
         text={'Saturday: 10:00 AM - 4:00 PM'}
-      />
+      /> */}
     </View>
   );
 };

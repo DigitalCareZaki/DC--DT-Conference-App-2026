@@ -11,7 +11,7 @@ const SingleTabView = ({ item }) => {
 
   const onPressTab = () => {
     if (item?.is_login && user) {
-      Linking.openURL(website_url);
+      Linking.openURL("https://forms.ecgexhibitions.com/E-Pass/8/Karachi/web");
       return;
     }
     if (item?.is_login && !user) {
