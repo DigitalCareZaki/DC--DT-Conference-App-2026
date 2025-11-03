@@ -58,7 +58,7 @@ const Tabbar = ({ state, descriptors, navigation }) => {
     };
 
     return (
-        <View style={[styles.tabbar, { paddingBottom: Math.max(insets.bottom, 8) }]}>
+        <View style={[styles.tabbar, { marginBottom: insets.bottom }]}>
             {state.routes.map((route, index) => {
                 const focused = state.index === index;
 
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
         borderTopColor: COLORS.primary,
         borderTopWidth: 1,
         paddingHorizontal: SIZES.padding2,
-        height: SIZES.padding * 3.8,
+        height: SIZES.padding * 3,
     },
     itemWrap: {
         height: "100%",

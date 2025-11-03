@@ -113,7 +113,7 @@ export const drawer_array = user => [
   },
   {
     id: 6,
-    name: 'Conferences',
+    name: 'Pharma Conference',
     icon: conferences_icon,
     route: 'Conference',
   },
@@ -177,15 +177,15 @@ export const dashboard_array = [
   {
     id: 1,
     icon: conferences_icon,
-    name: 'Conferences',
+    name: 'Pharma Conference',
     route: 'Conference',
   },
-  {
-    id: 2,
-    icon: workshops_icon,
-    name: 'WorkShops',
-    route: 'WorkShop',
-  },
+  // {
+  //   id: 2,
+  //   icon: workshops_icon,
+  //   name: 'WorkShops',
+  //   route: 'WorkShop',
+  // },
   {
     id: 3,
     icon: visitor_registration_icon,
@@ -204,12 +204,12 @@ export const dashboard_array = [
     name: 'Networking',
     route: 'Networking',
   },
-  {
-    id: 7,
-    icon: gallery_icon,
-    name: 'Gallery',
-    route: 'Gallery',
-  },
+  // {
+  //   id: 7,
+  //   icon: gallery_icon,
+  //   name: 'Gallery',
+  //   route: 'Gallery',
+  // },
   {
     id: 8,
     icon: my_agenda_icon,
