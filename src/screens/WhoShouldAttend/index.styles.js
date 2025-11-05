@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: SIZES.padding,
   },
   grid: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.light_purple,
     padding: SIZES.padding2 + 4,
     borderRadius: SIZES.padding2 + 4,
     gap: SIZES.padding2 + 4,

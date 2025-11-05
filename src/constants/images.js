@@ -1,4 +1,4 @@
-import background_image from '../assets/images/background_image.jpg';
+import background_image from '../assets/images/background_image.png';
 import drawer_logo from '../assets/images/drawer_logo.png';
 import home_logo from '../assets/images/home_logo.png';
 import map_image from '../assets/images/map_image.png';

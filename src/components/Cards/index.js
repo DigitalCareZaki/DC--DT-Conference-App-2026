@@ -117,7 +117,7 @@ const Cards = ({
           ) : isFavourite ? (
             <View style={styles.type_view}>
               <Text
-                color={COLORS.placeholder_text_color}
+                color={COLORS.mehroon_color}
                 text={capitalize(item?.type)}
               />
             </View>

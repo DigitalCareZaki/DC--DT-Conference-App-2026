@@ -67,7 +67,7 @@ export default SingleSpeakerView;
 const styles = StyleSheet.create({
   main_view: {
     marginTop: SIZES.padding2,
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.light_purple,
     borderRadius: SIZES.padding2,
     padding: SIZES.padding2,
   },

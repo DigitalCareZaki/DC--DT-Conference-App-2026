@@ -65,7 +65,7 @@ export default ContactCard;
 export const styles = StyleSheet.create({
   detail_view: {
     marginTop: SIZES.padding2,
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.light_purple,
     borderRadius: SIZES.padding,
     paddingHorizontal: SIZES.padding2,
     paddingVertical: SIZES.padding,

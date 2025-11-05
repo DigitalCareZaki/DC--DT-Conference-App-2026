@@ -27,7 +27,7 @@ const DrawerContent = () => {
   } = DrawerContentFunctional();
 
   return (
-    <Container isImage={false} background={COLORS.primary}>
+    <Container isImage={false} background={COLORS.light_purple}>
       <View style={styles.main_view}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <ImageView image={images.drawer_logo} height={SIZES.padding * 2} width={'100%'} radius={0} />

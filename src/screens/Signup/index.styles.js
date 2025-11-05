@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
         marginTop: SIZES.padding2
     },
     selected_tab: {
-        backgroundColor: COLORS.primary
+        backgroundColor: COLORS.mehroon_color
     }
 
 })
