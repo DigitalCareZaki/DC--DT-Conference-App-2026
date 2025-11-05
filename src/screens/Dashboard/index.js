@@ -11,7 +11,7 @@ import DashboardFunctional from './index.function';
 const Dashboard = () => {
   const { daysLeft } = DashboardFunctional();
   return (
-    <Container>
+    <Container isTab={true} >
       <Header isDashBoard isMenu />
 
       <View style={styles.main_view}>
@@ -58,7 +58,7 @@ const Dashboard = () => {
                     </RowView>
 
                     <Text
-                      text={`days left until Health${'\n'}Asia begins`}
+                      text={`days left until Pharma${'\n'}Asia begins`}
                       size={SIZES.h18}
                       align={'center'}
                       weight={TextWeights.medium}

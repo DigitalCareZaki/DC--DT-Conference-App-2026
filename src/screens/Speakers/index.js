@@ -30,7 +30,7 @@ const Speakers = () => {
   } = SpeakerFunctional();
 
   return (
-    <Container>
+    <Container isTab={true}>
       <Header title={'Speakers'} isMenu />
 
       <View style={styles.main_view}>

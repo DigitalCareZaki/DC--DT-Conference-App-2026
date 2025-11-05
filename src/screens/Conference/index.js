@@ -28,8 +28,8 @@ const Conference = () => {
   } = ConferenceFunctional();
 
   return (
-    <Container>
-      <Header isMenu title={'Conferences'} />
+    <Container isTab={true} >
+      <Header isMenu title={'Sessions'} />
 
       <View style={styles.main_view}>
         {list_loading && !isMore ? (
@@ -37,7 +37,7 @@ const Conference = () => {
         ) : (
           <>
             <Text
-              text={`${total_item} Conferences Available`}
+              text={`${total_item} Sessions Available`}
               size={SIZES.h16}
               weight={TextWeights.medium}
               mt={SIZES.padding2}
@@ -53,7 +53,7 @@ const Conference = () => {
               keyExtractor={item => item?._id?.toString()}
               showsVerticalScrollIndicator={false}
               ListEmptyComponent={
-                <ListEmptyText text={'No Conference Found'} />
+                <ListEmptyText text={'No Session Found'} />
               }
               ListFooterComponent={
                 list_loading && isMore ? (

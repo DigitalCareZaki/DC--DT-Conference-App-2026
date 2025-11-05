@@ -26,7 +26,7 @@ const Contact = () => {
   const { user, onSubmit } = ContactFunctional();
 
   return (
-    <Container>
+    <Container  isTab={true} >
       <Header color={COLORS.white} title={'Contact'} />
       <KeyboardAvoidingView
         style={common_styles.flex_1}

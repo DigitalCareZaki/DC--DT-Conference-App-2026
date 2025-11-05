@@ -30,7 +30,7 @@ const ConferenceDetails = ({ route }) => {
 
   return (
     <Container>
-      <Header title={'Conference Detail'} rightIcon={null} />
+      <Header title={'Session Detail'} rightIcon={null} />
       {detail_loading && isFocused ? (
         <Loader />
       ) : (

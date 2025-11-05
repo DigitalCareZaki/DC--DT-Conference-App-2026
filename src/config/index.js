@@ -117,12 +117,12 @@ export const drawer_array = user => [
     icon: conferences_icon,
     route: 'Conference',
   },
-  {
-    id: 7,
-    name: 'Workshops',
-    icon: workshops_icon,
-    route: 'WorkShop',
-  },
+  // {
+  //   id: 7,
+  //   name: 'Workshops',
+  //   icon: workshops_icon,
+  //   route: 'WorkShop',
+  // },
   {
     id: 8,
     name: 'Notifications',
