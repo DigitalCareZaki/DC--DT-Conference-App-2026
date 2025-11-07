@@ -4,7 +4,7 @@ import { COLORS, SIZES } from "../../constants";
 
 export const styles = StyleSheet.create({
   main_view: {
-    backgroundColor: COLORS.light_purple,
+    backgroundColor: COLORS.primary,
     borderRadius: SIZES.padding2,
     padding: SIZES.padding2,
     marginTop: SIZES.padding2

@@ -7,7 +7,13 @@ import ImageView from '../ImageView';
 import FastImage from 'react-native-fast-image';
 import { common_styles } from '../../utils/common_styles';
 
-const Container = ({ children, background, barStyle, isImage = true , isTab = false }) => {
+const Container = ({
+  children,
+  background,
+  barStyle,
+  isImage = true,
+  isTab = false,
+}) => {
   return (
     <View
       style={[
@@ -19,7 +25,7 @@ const Container = ({ children, background, barStyle, isImage = true , isTab = fa
         <ImageView
           radius={0}
           resizeMode={FastImage.resizeMode.cover}
-          image={images.background_image}
+          image={images.pharma_background_img}
           style={styles.image}
         />
       )}
@@ -29,7 +35,12 @@ const Container = ({ children, background, barStyle, isImage = true , isTab = fa
         backgroundColor={background ?? COLORS.white}
         translucent
       />
-      <SafeAreaView  edges={["left" , "right", "top" ,!isTab && "bottom" ]} style={common_styles.flex_1}>{children}</SafeAreaView>
+      <SafeAreaView
+        edges={['left', 'right', 'top', !isTab && 'bottom']}
+        style={common_styles.flex_1}
+      >
+        {children}
+      </SafeAreaView>
     </View>
   );
 };

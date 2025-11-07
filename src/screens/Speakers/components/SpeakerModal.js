@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
 
   modal_view: {
     width: SIZES.width * 0.9,
-    backgroundColor: COLORS.light_purple,
+    backgroundColor: COLORS.primary,
     borderRadius: SIZES.padding,
     padding: SIZES.padding,
     height: SIZES.height * 0.4,

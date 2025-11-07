@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   detail_view: {
     marginTop: SIZES.padding2,
     marginBottom: SIZES.padding,
-    backgroundColor: COLORS.light_purple,
+    backgroundColor: COLORS.primary,
     borderRadius: SIZES.padding,
     paddingHorizontal: SIZES.padding2,
     paddingVertical: SIZES.padding
