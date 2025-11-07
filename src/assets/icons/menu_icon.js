@@ -1,9 +1,9 @@
 export default `<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_13_31)">
 <path d="M8 28C8 15.8497 17.8497 6 30 6C42.1503 6 52 15.8497 52 28C52 40.1503 42.1503 50 30 50C17.8497 50 8 40.1503 8 28Z" fill="white" shape-rendering="crispEdges"/>
-<path d="M21 23H39" stroke="#3B2E8A" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M21 28H39" stroke="#3B2E8A" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M21 33H39" stroke="#3B2E8A" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M21 23H39" stroke="#1C5BA8" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M21 28H39" stroke="#1C5BA8" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M21 33H39" stroke="#1C5BA8" stroke-width="1.5" stroke-linecap="round"/>
 </g>
 <defs>
 <filter id="filter0_d_13_31" x="0" y="0" width="60" height="60" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
