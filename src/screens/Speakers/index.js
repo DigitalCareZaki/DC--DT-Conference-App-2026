@@ -4,30 +4,18 @@ import {
   Header,
   ListEmptyText,
   Loader,
-  RowView,
   SearchBar,
   SizedBox,
-  Text,
 } from '../../components';
-import { FlatList, RefreshControl, TouchableOpacity, View } from 'react-native';
+import { FlatList, RefreshControl, View } from 'react-native';
 import { styles } from './index.styles';
-import { COLORS, SIZES } from '../../constants';
-import { TextWeights } from '../../config';
 import { SingleSpeakerView } from './components';
 import SpeakerFunctional from './index.function';
 import { searchArray } from '../../utils/functions';
 
 const Speakers = () => {
-  const {
-    list_loading,
-    data,
-    search,
-    setSearch,
-    onRefresh,
-    refreshing,
-    handleTabChange,
-    activeTab,
-  } = SpeakerFunctional();
+  const { list_loading, search, setSearch, onRefresh, refreshing, speakers } =
+    SpeakerFunctional();
 
   return (
     <Container isTab={true}>
@@ -41,56 +29,12 @@ const Speakers = () => {
         />
 
         <SizedBox />
-        <RowView
-          alignItems={'center'}
-          justifyContent={'space-between'}
-          style={styles.tabContainer}
-        >
-          <TouchableOpacity
-            style={[
-              styles.tab,
-              {
-                backgroundColor:
-                  activeTab === 'internationals'
-                    ? COLORS.primary
-                    : COLORS.white,
-              },
-            ]}
-            onPress={() => handleTabChange('internationals')}
-          >
-            <Text
-              size={SIZES.h14}
-              weight={TextWeights.medium}
-              text={'Internationals'}
-              color={
-                activeTab === 'internationals' ? COLORS.white : COLORS.primary
-              }
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              styles.tab,
-              {
-                backgroundColor:
-                  activeTab === 'nationals' ? COLORS.primary : COLORS.white,
-              },
-            ]}
-            onPress={() => handleTabChange('nationals')}
-          >
-            <Text
-              size={SIZES.h14}
-              weight={TextWeights.medium}
-              text={'Nationals'}
-              color={activeTab === 'nationals' ? COLORS.white : COLORS.primary}
-            />
-          </TouchableOpacity>
-        </RowView>
 
         {list_loading ? (
           <Loader />
         ) : (
           <FlatList
-            data={search ? searchArray(data, search) : data}
+            data={search ? searchArray(speakers, search) : speakers}
             ListEmptyComponent={<ListEmptyText text={`No Speaker Found`} />}
             keyExtractor={(item, index) => index?.toString()}
             renderItem={({ item, index }) => <SingleSpeakerView item={item} />}

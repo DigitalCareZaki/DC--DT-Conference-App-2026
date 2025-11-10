@@ -10,27 +10,11 @@ export default () => {
 
   const [search, setSearch] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
-  const [activeTab, setActiveTab] = useState('internationals');
 
   useEffect(() => {
     dispatch(setListLoading(true));
     dispatch(getSpeakers());
   }, []);
-
-  const nationalSpeakers = speakers?.filter(
-    item => item?.speakerType?.toLowerCase() === 'national',
-  );
-
-  const internationalSpeakers = speakers?.filter(
-    item => item?.speakerType?.toLowerCase() === 'international',
-  );
-
-  const data =
-    activeTab === 'internationals' ? internationalSpeakers : nationalSpeakers;
-
-  const handleTabChange = seletedtab => {
-    setActiveTab(seletedtab);
-  };
 
   const onRefresh = async () => {
     setRefreshing(true);
@@ -39,14 +23,11 @@ export default () => {
   };
 
   return {
-    data,
     list_loading,
     search,
     setSearch,
     refreshing,
     onRefresh,
-    handleTabChange,
-    setActiveTab,
-    activeTab,
+    speakers,
   };
 };
