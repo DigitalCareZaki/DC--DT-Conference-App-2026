@@ -75,7 +75,7 @@ export const roles = [
 
 export const signup_steps = [
   'Basic Information',
-  'Select Your Category',
+  // 'Select Your Category',
   'Social Media Links',
   'Agreement & Submission',
 ];
@@ -198,12 +198,12 @@ export const dashboard_array = [
     name: 'Speakers',
     route: 'Speakers',
   },
-  {
-    id: 6,
-    icon: networking_icon,
-    name: 'Networking',
-    route: 'Networking',
-  },
+  // {
+  //   id: 6,
+  //   icon: networking_icon,
+  //   name: 'Networking',
+  //   route: 'Networking',
+  // },
   // {
   //   id: 7,
   //   icon: gallery_icon,

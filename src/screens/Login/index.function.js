@@ -16,7 +16,7 @@ export default () => {
     const apiData = {
       email: values.email,
       password: values?.password,
-      role: values?.role,
+      role: 'Visitor',
     };
     dispatch(
       login(apiData, res => {

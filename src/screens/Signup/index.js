@@ -87,7 +87,7 @@ const Signup = () => {
             </RowView>
 
             <Text
-              text={`Step 0${selectedIndex + 1}/04`}
+              text={`Step 0${selectedIndex + 1}/03`}
               mt={SIZES.padding2}
               weight={TextWeights.medium}
             />
@@ -98,20 +98,20 @@ const Signup = () => {
                 data={signUpData}
               />
             )}
-            {selectedIndex === 1 && (
+            {/* {selectedIndex === 1 && (
               <SelectCategory
                 selectedRole={selectedRole}
                 setSelectedRole={setSelectedRole}
               />
-            )}
-            {selectedIndex === 2 && (
+            )} */}
+            {selectedIndex === 1 && (
               <SocialMedialinks
                 formikRef={socialMediaLinksRef}
                 onSubmit={submitSocialMedia}
                 data={signUpData}
               />
             )}
-            {selectedIndex === 3 && (
+            {selectedIndex === 2 && (
               <SetupPassword
                 formikRef={passworkRef}
                 onSubmit={submitPassword}
@@ -126,7 +126,7 @@ const Signup = () => {
             ) : (
               <Button
                 onPress={onPressButton}
-                buttonText={selectedIndex < 3 ? 'Next' : 'Submit'}
+                buttonText={selectedIndex < 2 ? 'Next' : 'Submit'}
               />
             )}
 

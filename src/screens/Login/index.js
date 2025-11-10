@@ -90,8 +90,9 @@ const Login = () => {
                       label={'Are you a:'}
                       placeholder={'Select your role'}
                       leftIcon={role_icon}
-                      value={values?.role}
+                      value={'Visitor'}
                       value_key={'name'}
+                      isEditable={false}
                       array={roles}
                       onPressValue={val => setFieldValue('role', val?.name)}
                     />
