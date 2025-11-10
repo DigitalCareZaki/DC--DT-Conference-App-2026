@@ -52,7 +52,7 @@ const Exhibition = () => {
         />
 
         <Text
-          text={`${total_item} Exhibitors Participating`}
+          text={`${3} Exhibitors Participating`}
           size={SIZES.h16}
           weight={TextWeights.medium}
           mt={SIZES.padding2}
@@ -87,6 +87,9 @@ const Exhibition = () => {
           />
         )}
       </View>
+
+      <SizedBox height={SIZES.padding2} />
+
       <Button
         style={styles.btn}
         buttonText={'Download List in PDF'}

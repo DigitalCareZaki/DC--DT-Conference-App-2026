@@ -10,6 +10,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { setUser } from '../redux/slices/constant-slice';
+import { setToastData } from '../redux/slices/auth-slice';
 
 export const url_regix = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/i;
 
@@ -175,16 +176,32 @@ export function requestHandler({
     try {
       setLoading && dispatch(setLoading(true));
       const response = await apiService(param_data);
+      console.log('response', response);
       if (!response?.data?.error) {
         setData && dispatch(setData(response?.data?.data));
         isSuccessMessage &&
-          showToast(
-            'success',
-            response?.data?.msg ?? response?.data?.message ?? '',
-          );
+          setTimeout(() => {
+            dispatch(
+              setToastData({
+                show_toast_modal: true,
+                toast_description:
+                  response?.data?.msg ?? response?.data?.message ?? '',
+                is_error: false,
+              }),
+            );
+          }, 500);
+
         onDone && onDone(response?.data);
       } else {
-        showToast('error', response?.data?.message ?? '');
+        setTimeout(() => {
+          dispatch(
+            setToastData({
+              show_toast_modal: true,
+              toast_description: response?.data?.message ?? '',
+              is_error: true,
+            }),
+          );
+        }, 500);
       }
     } catch (error) {
       onError(error?.data);
@@ -193,7 +210,15 @@ export function requestHandler({
         await AsyncStorage.clear();
       }
       if (isErrorMessage) {
-        showToast('error', error?.data?.msg ?? error?.data?.message ?? '');
+        setTimeout(() => {
+          dispatch(
+            setToastData({
+              show_toast_modal: true,
+              toast_description: error?.data?.msg ?? error?.data?.message ?? '',
+              is_error: true,
+            }),
+          );
+        }, 300);
       }
     } finally {
       setLoading && dispatch(setLoading(false));
