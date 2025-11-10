@@ -89,88 +89,98 @@ export const drawer_array = user => [
   },
   {
     id: 2,
-    name: 'About Organizers',
-    icon: organizer_detail_icon,
-    route: 'AboutOrganizer',
-  },
-  {
-    id: 3,
     name: 'Exhibition',
     icon: exhibition_icon,
     route: 'Exhibition',
   },
   {
-    id: 4,
-    name: 'Ask A Question',
-    icon: ask_question_icon,
-    route: 'AskQuestion',
-  },
-  {
-    id: 5,
-    name: 'Who Should Attend',
-    icon: who_attend_icon,
-    route: 'WhoShouldAttend',
-  },
-  {
-    id: 6,
+    id: 3,
     name: 'Pharma Conference',
     icon: conferences_icon,
     route: 'Conference',
   },
-  // {
-  //   id: 7,
-  //   name: 'Workshops',
-  //   icon: workshops_icon,
-  //   route: 'WorkShop',
-  // },
   {
-    id: 8,
-    name: 'Notifications',
-    icon: drawer_notification_icon,
-    route: 'Notification',
+    id: 4,
+    name: 'My Favourites',
+    icon: my_agenda_icon,
+    route: 'MyAgenda',
   },
+
   {
-    id: 9,
+    id: 5,
     name: 'ContactUs',
     icon: call_icon,
     route: 'Contact',
   },
   {
-    id: 10,
+    id: 6,
+    name: 'About Us',
+    icon: organizer_detail_icon,
+    route: 'AboutOrganizer',
+  },
+  {
+    id: 7,
     name: 'Venue',
     icon: venue_icon,
     route: 'Venue',
   },
   {
-    id: 11,
-    name: 'My Favourites',
-    icon: my_agenda_icon,
-    route: 'MyAgenda',
-  },
-  {
-    id: 12,
-    name: 'Feedback',
-    icon: feedback_icon,
-    route: 'Feedback',
-  },
-  {
-    id: 13,
+    id: 8,
     name: 'Social Media links',
     icon: social_media_icon,
     route: 'EditSocialMedia',
   },
   {
-    id: 14,
+    id: 9,
+    name: 'Feedback',
+    icon: feedback_icon,
+    route: 'Feedback',
+  },
+  {
+    id: 10,
     name: 'Delete Account',
     icon: delete_icon,
     isDeleteAccount: true,
   },
   {
-    id: 15,
+    id: 11,
     name: user ? 'Logout' : 'Login',
     icon: logout_icon,
     isLogout: true,
   },
+
+  // {
+  //   id: 2,
+  //   name: 'About Organizers',
+  //   icon: organizer_detail_icon,
+  //   route: 'AboutOrganizer',
+  // },
+
+  // {
+  //   id: 4,
+  //   name: 'Ask A Question',
+  //   icon: ask_question_icon,
+  //   route: 'AskQuestion',
+  // },
+  // {
+  //   id: 5,
+  //   name: 'Who Should Attend',
+  //   icon: who_attend_icon,
+  //   route: 'WhoShouldAttend',
+  // },
+
+  // // {
+  // //   id: 7,
+  // //   name: 'Workshops',
+  // //   icon: workshops_icon,
+  // //   route: 'WorkShop',
+  // // },
+  // {
+  //   id: 8,
+  //   name: 'Notifications',
+  //   icon: drawer_notification_icon,
+  //   route: 'Notification',
+  // },
 ];
 
 export const dashboard_array = [
