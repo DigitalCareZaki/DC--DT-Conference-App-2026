@@ -58,11 +58,11 @@ const Exhibition = () => {
       <Header color={COLORS.white} title={'Exhibition'} />
 
       <View style={styles.main_view}>
-        {/* <SearchBar
+        <SearchBar
           placeholder={'Search by name, industry category, city...'}
           value={search}
           onChangeText={setSearch}
-        /> */}
+        />
 
         <Text
           text={`${197} Exhibitors Participating`}
@@ -72,36 +72,7 @@ const Exhibition = () => {
           mb={SIZES.padding2}
         />
 
-        <Button buttonText={'Download Exhibitor List and Map'} onPress={() => savePdf()} />
-
-        <Text
-          mt={SIZES.padding2}
-          text={'Hall Map'}
-          size={SIZES.h18}
-          weight={TextWeights.medium}
-        />
-
-        <TouchableOpacity activeOpacity={0.6} onPress={handleOpenMaps}>
-          <FastImage
-            style={styles.map_view}
-            resizeMode={FastImage.resizeMode.contain}
-            source={images.map_image}
-          >
-            <Text
-              weight={TextWeights.medium}
-              size={SIZES.h14}
-              lineHeight={SIZES.padding}
-              ml={SIZES.padding2}
-              mr={SIZES.padding2}
-              mb={SIZES.padding2}
-              text={
-                'Ecommerce Gateway Pakistan (Pvt) Ltd.8, Kokan Society, Dr. Azhar Hussain Road, Near Kokan Park, off: Shaheed-e-Millat Road, Karachi-74000 Pakistan'
-              }
-            />
-          </FastImage>
-        </TouchableOpacity>
-
-        {/* {list_loading && !isMore ? (
+        {list_loading && !isMore ? (
           <Loader />
         ) : (
           <FlatList
@@ -118,7 +89,10 @@ const Exhibition = () => {
                   <SizedBox />
                 )}
 
-                <Button buttonText={'Download List in PDF'} />
+                <Button
+                  buttonText={'Download List in PDF'}
+                  onPress={() => savePdf()}
+                />
 
                 <Text
                   mt={SIZES.padding2}
@@ -127,23 +101,25 @@ const Exhibition = () => {
                   weight={TextWeights.medium}
                 />
 
-                <FastImage
-                  style={styles.map_view}
-                  resizeMode={FastImage.resizeMode.contain}
-                  source={images.map_image}
-                >
-                  <Text
-                    weight={TextWeights.medium}
-                    size={SIZES.h14}
-                    lineHeight={SIZES.padding}
-                    ml={SIZES.padding2}
-                    mr={SIZES.padding2}
-                    mb={SIZES.padding2}
-                    text={
-                      'Ecommerce Gateway Pakistan (Pvt) Ltd.8, Kokan Society, Dr. Azhar Hussain Road, Near Kokan Park, off: Shaheed-e-Millat Road, Karachi-74000 Pakistan'
-                    }
-                  />
-                </FastImage>
+                <TouchableOpacity activeOpacity={0.6} onPress={handleOpenMaps}>
+                  <FastImage
+                    style={styles.map_view}
+                    resizeMode={FastImage.resizeMode.contain}
+                    source={images.map_image}
+                  >
+                    <Text
+                      weight={TextWeights.medium}
+                      size={SIZES.h14}
+                      lineHeight={SIZES.padding}
+                      ml={SIZES.padding2}
+                      mr={SIZES.padding2}
+                      mb={SIZES.padding2}
+                      text={
+                        'Ecommerce Gateway Pakistan (Pvt) Ltd.8, Kokan Society, Dr. Azhar Hussain Road, Near Kokan Park, off: Shaheed-e-Millat Road, Karachi-74000 Pakistan'
+                      }
+                    />
+                  </FastImage>
+                </TouchableOpacity>
 
                 <SizedBox />
               </>
@@ -155,7 +131,7 @@ const Exhibition = () => {
             onEndReachedThreshold={0.1}
             // contentContainerStyle={styles.flatlist}
           />
-        )} */}
+        )}
       </View>
     </Container>
   );

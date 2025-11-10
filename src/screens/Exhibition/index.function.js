@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getExhibition } from '../../redux/actions/main-action';
-import { setListLoading } from '../../redux/slices/main-slice';
+import { addRemoveFav, getExhibition } from '../../redux/actions/main-action';
+import {
+  setListLoading,
+  setSelectedItemIndex,
+} from '../../redux/slices/main-slice';
 import { Alert, PermissionsAndroid, Platform } from 'react-native';
 import RNFetchBlob from 'react-native-blob-util';
+import { navigate } from '../../navigation/service';
 
 export default () => {
   const { list_loading, exhibition } = useSelector(state => state.main);
   const { total_item } = useSelector(state => state.auth);
+  const { user } = useSelector(state => state.constant);
 
   const dispatch = useDispatch();
 
@@ -30,11 +35,11 @@ export default () => {
   }, []);
 
   const onEndReached = () => {
-    // if (list_loading) return;
-    // if (isMore && exhibition?.length > 0) {
-    //   setPage(page + 1);
-    //   getExhibitionData(page + 1);
-    // }
+    if (list_loading) return;
+    if (isMore && exhibition?.length > 0) {
+      setPage(page + 1);
+      getExhibitionData(page + 1);
+    }
   };
 
   const onRefresh = async () => {
@@ -98,6 +103,20 @@ export default () => {
     }
   };
 
+  const onPressHeart = async (item, index) => {
+    if (!user) {
+      navigate('Login');
+      return;
+    }
+    dispatch(setSelectedItemIndex(index));
+
+    const apiData = {
+      favoriteId: item?._id,
+      type: 'conference',
+    };
+    dispatch(addRemoveFav(apiData));
+  };
+
   return {
     exhibition,
     onEndReached,
@@ -109,5 +128,6 @@ export default () => {
     search,
     setSearch,
     savePdf,
+    onPressHeart,
   };
 };

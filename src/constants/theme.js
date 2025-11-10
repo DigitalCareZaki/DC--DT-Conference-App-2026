@@ -6,9 +6,9 @@ export const isIOS = Platform.OS === 'ios';
 export const keyboardAvoidingBehaviour = isIOS ? 'padding' : 'padding';
 
 export const COLORS = {
-  primary: '#1C5BA8', 
+  primary: '#1C5BA8',
   light_purple: '#453F7F',
-  mehroon_color: "#A41E67",
+  mehroon_color: '#A41E67',
   text_black: '#1F1F1F',
   text_gray_color: '#999999',
   text_gray_color2: '#808080',
@@ -32,6 +32,7 @@ export const COLORS = {
   transparent: 'transparent',
   keys_color: 'rgba(255, 255, 255, 0.8)',
   border_light_grey_color: 'rgba(119, 119, 119, 0.2)',
+  gold: '#DAA511',
 };
 
 export const SIZES = {
