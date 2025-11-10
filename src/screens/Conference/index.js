@@ -29,7 +29,7 @@ const Conference = () => {
 
   return (
     <Container isTab={true} >
-      <Header isMenu title={'Sessions'} />
+      <Header isMenu title={'Conferences'} />
 
       <View style={styles.main_view}>
         {list_loading && !isMore ? (
@@ -37,7 +37,7 @@ const Conference = () => {
         ) : (
           <>
             <Text
-              text={`${total_item} Sessions Available`}
+              text={`${total_item} Conferences Available`}
               size={SIZES.h16}
               weight={TextWeights.medium}
               mt={SIZES.padding2}

@@ -36,7 +36,7 @@ export const TextWeights = {
   thin: 'HelveticaNeue-Thin',
 };
 
-export const website_url = 'https://health-asia.com/';
+export const website_url = 'https://pharmaasia.com.pk/';
 export const privacy_policy_link = 'https://health-asia.com/privacy-policy.php';
 export const terms_link = 'https://health-asia.com/terms-and-conditions.php';
 export const dateLocale = 'en-US';
@@ -95,7 +95,7 @@ export const drawer_array = user => [
   },
   {
     id: 3,
-    name: 'Pharma Conference',
+    name: 'Conference',
     icon: conferences_icon,
     route: 'Conference',
   },
@@ -187,7 +187,7 @@ export const dashboard_array = [
   {
     id: 1,
     icon: conferences_icon,
-    name: 'Pharma Conference',
+    name: 'Conference',
     route: 'Conference',
   },
   // {

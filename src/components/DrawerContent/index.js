@@ -55,12 +55,12 @@ const DrawerContent = () => {
             mt={SIZES.padding2 / 6}
             align={'center'}
             text={user?.email}
-            mb={SIZES.padding * 1.5}
+            mb={SIZES.padding2}
           />
 
           <Icons name={drawer_line_icon} />
 
-          <SizedBox height={SIZES.padding2} />
+          {/* <SizedBox height={SIZES.padding2} /> */}
 
           {drawer_array(user)?.map((item, index) => (
             <SingleDrawerView
