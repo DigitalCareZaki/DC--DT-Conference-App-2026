@@ -36,4 +36,16 @@ export const styles = StyleSheet.create({
   loader: {
     paddingVertical: SIZES.padding,
   },
+  tabContainer: {
+    backgroundColor: 'white',
+    borderRadius: SIZES.padding + SIZES.padding + 10,
+    padding: 5,
+  },
+  tab: {
+    backgroundColor: COLORS.primary,
+    width: '48%',
+    padding: SIZES.padding2,
+    borderRadius: SIZES.padding + SIZES.padding + 10,
+    alignItems: 'center',
+  },
 });

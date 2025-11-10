@@ -7,17 +7,22 @@ export default () => {
 
   const { list_loading, favourites } = useSelector(state => state.main);
 
-  const [refreshing, setRefreshing] = useState(false)
+  const [refreshing, setRefreshing] = useState(false);
+  const [activeTab, setActiveTab] = useState('favConferences');
+
+  const handleTabChange = seletedtab => {
+    setActiveTab(seletedtab);
+  };
 
   useEffect(() => {
     dispatch(getFavourites());
-  }, [])
+  }, []);
 
   const onRefresh = async () => {
-    setRefreshing(true)
-    await dispatch(getFavourites())
-    setRefreshing(false)
-  }
+    setRefreshing(true);
+    await dispatch(getFavourites());
+    setRefreshing(false);
+  };
 
   const onPressHeart = item => {
     const apiData = {
@@ -27,12 +32,14 @@ export default () => {
     dispatch(addRemoveFav(apiData));
   };
 
-
   return {
     favourites,
     onPressHeart,
     refreshing,
     onRefresh,
-    list_loading
+    list_loading,
+    handleTabChange,
+    setActiveTab,
+    activeTab,
   };
 };

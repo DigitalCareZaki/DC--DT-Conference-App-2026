@@ -11,7 +11,7 @@ const SingleTabView = ({ item }) => {
 
   const onPressTab = () => {
     if (item?.is_login && user) {
-      Linking.openURL("https://forms.ecgexhibitions.com/E-Pass/8/Karachi/web");
+      Linking.openURL('https://forms.ecgexhibitions.com/E-Pass/8/Karachi/web');
       return;
     }
     if (item?.is_login && !user) {
@@ -42,6 +42,8 @@ const SingleTabView = ({ item }) => {
         weight={TextWeights.medium}
         text={item?.name}
         mt={SIZES.padding2}
+        align={'center'}
+        lineHeight={16}
       />
     </TouchableOpacity>
   );

@@ -1,7 +1,7 @@
 import { View, TouchableOpacity } from 'react-native';
 import React, { useEffect } from 'react';
 import RowView from '../RowView';
-import { Icons, Loader, SizedBox, Text } from '..';
+import { Button, Icons, Loader, SizedBox, Text } from '..';
 import {
   forward_arrow_icon,
   heart_icon,
@@ -26,6 +26,7 @@ const Cards = ({
   const { favourites, selected_item_index, favourite_loading } = useSelector(
     state => state.main,
   );
+
   return (
     <>
       <TouchableOpacity
@@ -42,6 +43,15 @@ const Cards = ({
             color={COLORS.light_blue_color}
             style={common_styles.flex_1}
           />
+
+          {item.type === 'Exhibitors' && (
+            <View style={[styles.type_view, { marginRight: SIZES.padding2 }]}>
+              <Text
+                color={COLORS.placeholder_text_color}
+                text={'Booth A-101'}
+              />
+            </View>
+          )}
           {selected_item_index === index && favourite_loading ? (
             <Loader mt={0} size={'small'} />
           ) : (
@@ -123,6 +133,8 @@ const Cards = ({
             </View>
           ) : null}
         </RowView>
+        <SizedBox />
+        {item?.type === 'Exhibitors' ? <Button buttonText={'Chat'} /> : null}
       </TouchableOpacity>
     </>
   );
