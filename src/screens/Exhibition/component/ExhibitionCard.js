@@ -9,7 +9,10 @@ import { navigate } from '../../../navigation/service';
 
 const ExhibitionCard = ({ item, isFav = false }) => {
   return (
-    <View style={styles.main_view} disabled>
+    <TouchableOpacity
+      style={styles.main_view}
+      onPress={() => navigate('ExhibitorDetail')}
+    >
       <RowView>
         <Text
           style={common_styles.flex_1}
@@ -74,7 +77,7 @@ const ExhibitionCard = ({ item, isFav = false }) => {
       <SizedBox />
 
       <Button buttonText={'Chat'} />
-    </View>
+    </TouchableOpacity>
   );
 };
 

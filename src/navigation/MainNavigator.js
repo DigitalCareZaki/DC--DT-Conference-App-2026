@@ -33,6 +33,7 @@ import {
   AskQuestion,
   WhoShouldAttend,
   SocialMediaLinks,
+  ExhibitorDetail,
 } from '../screens';
 import {
   notificationListener,
@@ -100,6 +101,7 @@ const MainNavigator = () => {
           <Stack.Screen name="AskQuestion" component={AskQuestion} />
           <Stack.Screen name="WhoShouldAttend" component={WhoShouldAttend} />
           <Stack.Screen name="SocialMediaLinks" component={SocialMediaLinks} />
+          <Stack.Screen name="ExhibitorDetail" component={ExhibitorDetail} />
         </Stack.Navigator>
       </NavigationContainer>
       <ToastModal

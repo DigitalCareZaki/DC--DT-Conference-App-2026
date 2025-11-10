@@ -25,3 +25,4 @@ export { default as ResetPassword } from './ResetPassword';
 export { default as AskQuestion } from './AskQuestion';
 export { default as SocialMediaLinks } from './SocialMediaLinks';
 export { default as WhoShouldAttend } from './WhoShouldAttend';
+export { default as ExhibitorDetail } from './ExhibitorDetail';
