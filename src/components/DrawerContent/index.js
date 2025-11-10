@@ -1,7 +1,14 @@
 import { ScrollView, View } from 'react-native';
 import React from 'react';
 import { styles } from './index.styles';
-import { AskModal, Container, Icons, ImageView, SizedBox, Text } from '../index';
+import {
+  AskModal,
+  Container,
+  Icons,
+  ImageView,
+  SizedBox,
+  Text,
+} from '../index';
 import DrawerContentFunctional from './index.function';
 import { COLORS, images, SIZES } from '../../constants';
 import {
@@ -30,7 +37,12 @@ const DrawerContent = () => {
     <Container isImage={false} background={COLORS.primary}>
       <View style={styles.main_view}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <ImageView image={images.drawer_logo} height={SIZES.padding * 2} width={'100%'} radius={0} />
+          <ImageView
+            image={images.drawer_logo}
+            height={SIZES.padding * 2}
+            width={'100%'}
+            radius={0}
+          />
 
           <Text
             mt={SIZES.padding}
@@ -59,7 +71,11 @@ const DrawerContent = () => {
                 } else if (item?.isDeleteAccount) setShowDeleteAccModal(true);
                 else
                   navigate(
-                    (item?.name === 'My Agenda' || item?.name === 'Ask A Question') && !user ? 'Login' : item?.route,
+                    (item?.name === 'My Favourites' ||
+                      item?.name === 'Ask A Question') &&
+                      !user
+                      ? 'Login'
+                      : item?.route,
                   );
               }}
               key={item?.id}

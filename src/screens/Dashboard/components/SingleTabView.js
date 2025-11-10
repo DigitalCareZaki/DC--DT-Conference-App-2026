@@ -19,7 +19,10 @@ const SingleTabView = ({ item }) => {
       return;
     }
 
-    if ((item?.name === 'My Agenda' || item?.name === 'Networking') && !user) {
+    if (
+      (item?.name === 'My Favourites' || item?.name === 'Networking') &&
+      !user
+    ) {
       navigate('Login');
       return;
     }

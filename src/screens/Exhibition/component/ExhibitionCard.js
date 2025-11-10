@@ -15,7 +15,7 @@ const ExhibitionCard = ({ item, isFav = false }) => {
           style={common_styles.flex_1}
           size={SIZES.h16}
           weight={TextWeights.medium}
-          text={'hey'}
+          text={'TechCorp Solutions'}
           // text={isFav ? item?.favoriteId?.title : item.title}
         />
         <View style={styles.text_view}>
@@ -45,7 +45,7 @@ const ExhibitionCard = ({ item, isFav = false }) => {
           <>
             <Text text={'Venue:'} color={COLORS.keys_color} />
             <Text
-              text={'hey'}
+              text={'Main Exhibition Hall'}
               //  text={isFav ? item?.favoriteId?.venue : item.venue}
             />
           </>
@@ -57,7 +57,7 @@ const ExhibitionCard = ({ item, isFav = false }) => {
         text={
           <>
             <Text text={'Exhibitor category:'} color={COLORS.keys_color} />
-            <Text text={'Gold'} color={COLORS.gold} />
+            <Text text={'Gold'} color={COLORS.gold} weight={TextWeights.bold} />
           </>
         }
       />

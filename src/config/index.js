@@ -143,7 +143,7 @@ export const drawer_array = user => [
   },
   {
     id: 11,
-    name: 'My Agenda',
+    name: 'My Favourites',
     icon: my_agenda_icon,
     route: 'MyAgenda',
   },
@@ -213,7 +213,7 @@ export const dashboard_array = [
   {
     id: 8,
     icon: my_agenda_icon,
-    name: 'My Agenda',
+    name: 'My Favourites',
     route: 'MyAgenda',
   },
 ];

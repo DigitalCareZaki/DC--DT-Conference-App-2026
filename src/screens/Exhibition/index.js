@@ -19,7 +19,7 @@ import {
 } from 'react-native';
 import { COLORS, images, SIZES } from '../../constants';
 import { styles } from './index.styles';
-import { TextWeights } from '../../config';
+import { signup_steps, TextWeights } from '../../config';
 import FastImage from 'react-native-fast-image';
 import ExhibitionCard from './component/ExhibitionCard';
 import ExhibitionFunctional from './index.function';
@@ -37,21 +37,8 @@ const Exhibition = () => {
     onRefresh,
     search,
     setSearch,
-    openLocalPDF,
     savePdf,
   } = ExhibitionFunctional();
-
-  const handleOpenMaps = () => {
-    const latitude = 24.9019;
-    const longitude = 67.0767;
-    const label = 'Expo Centre Karachi Block 15';
-
-    const url = isIOS
-      ? `http://maps.apple.com/?ll=${latitude},${longitude}&q=${label}`
-      : `geo:${latitude},${longitude}?q=${label}`;
-
-    Linking.openURL(url).catch(err => {});
-  };
 
   return (
     <Container>
@@ -89,42 +76,14 @@ const Exhibition = () => {
                   <SizedBox />
                 )}
 
-                {/* <Text
-                  mt={SIZES.padding2}
-                  text={'Hall Map'}
-                  size={SIZES.h18}
-                  weight={TextWeights.medium}
-                />
-
-                <TouchableOpacity activeOpacity={0.6} onPress={handleOpenMaps}>
-                  <FastImage
-                    style={styles.map_view}
-                    resizeMode={FastImage.resizeMode.contain}
-                    source={images.map_image}
-                  >
-                    <Text
-                      weight={TextWeights.medium}
-                      size={SIZES.h14}
-                      lineHeight={SIZES.padding}
-                      ml={SIZES.padding2}
-                      mr={SIZES.padding2}
-                      mb={SIZES.padding2}
-                      text={
-                        'Ecommerce Gateway Pakistan (Pvt) Ltd.8, Kokan Society, Dr. Azhar Hussain Road, Near Kokan Park, off: Shaheed-e-Millat Road, Karachi-74000 Pakistan'
-                      }
-                    />
-                  </FastImage>
-                </TouchableOpacity> */}
-
                 <SizedBox />
               </>
             }
             renderItem={({ item }) => <ExhibitionCard item={item} />}
-            data={search ? searchArray(exhibition, search) : exhibition}
+            data={search ? searchArray(signup_steps, search) : signup_steps}
             keyExtractor={item => item?._id?.toString()}
             onEndReached={onEndReached}
             onEndReachedThreshold={0.1}
-            // contentContainerStyle={styles.flatlist}
           />
         )}
       </View>
