@@ -64,7 +64,7 @@ const ResetPassword = () => {
                       mt={SIZES.padding2}
                     />
 
-                    <SizedBox height={SIZES.padding + SIZES.padding} />
+                    <SizedBox height={SIZES.padding * 2} />
 
                     <InputField
                       isrequired={true}

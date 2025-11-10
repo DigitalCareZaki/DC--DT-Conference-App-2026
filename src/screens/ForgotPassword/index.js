@@ -23,7 +23,6 @@ const ForgotPassword = () => {
     <Container>
       <Header rightIcon={null} />
       <View style={styles.main_view}>
-
         <SizedBox height={SIZES.padding + SIZES.padding2} />
 
         <Text
@@ -43,7 +42,7 @@ const ForgotPassword = () => {
           mt={SIZES.padding2}
         />
 
-        <SizedBox height={SIZES.padding + SIZES.padding} />
+        <SizedBox height={SIZES.padding * 2} />
         <InputField
           isrequired={true}
           label={'Email Address'}

@@ -25,7 +25,7 @@ const Otp = ({ route }) => {
     timer,
     onPressSubmit,
     auth_loading,
-    onPressResend
+    onPressResend,
   } = OtpFunctional({ purpose, email });
 
   return (
@@ -50,7 +50,7 @@ const Otp = ({ route }) => {
           mt={SIZES.padding2}
         />
 
-        <SizedBox height={SIZES.padding + SIZES.padding} />
+        <SizedBox height={SIZES.padding * 2} />
 
         <CodeField
           ref={ref}
@@ -86,8 +86,8 @@ const Otp = ({ route }) => {
               />
             );
           }}
-        // onSubmitEditing={onPressSubmit}
-        // onEndEditing={onPressSubmit}
+          // onSubmitEditing={onPressSubmit}
+          // onEndEditing={onPressSubmit}
         />
 
         <SizedBox height={SIZES.padding2 + 4} />
@@ -114,12 +114,19 @@ const Otp = ({ route }) => {
 
         <SizedBox height={SIZES.padding2 + 4} />
 
-        <TouchableOpacity  onPress={onPressResend} disabled={timer > 0 || auth_loading} activeOpacity={0.6} hitSlop={common_styles.hitslop} >
+        <TouchableOpacity
+          onPress={onPressResend}
+          disabled={timer > 0 || auth_loading}
+          activeOpacity={0.6}
+          hitSlop={common_styles.hitslop}
+        >
           <Text
             text={'Resend Code'}
             weight={TextWeights.bold}
             size={SIZES.h12}
-            color={(timer > 0 || auth_loading) ? COLORS.text_gray_color : COLORS.white}
+            color={
+              timer > 0 || auth_loading ? COLORS.text_gray_color : COLORS.white
+            }
             textDecorationLine={'underline'}
           />
         </TouchableOpacity>

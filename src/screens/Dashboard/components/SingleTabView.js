@@ -35,7 +35,7 @@ const SingleTabView = ({ item }) => {
     >
       <Icons
         name={item?.icon}
-        iconHeight={item?.name === 'Speakers' && SIZES.padding + SIZES.padding}
+        iconHeight={item?.name === 'Speakers' && SIZES.padding * 2}
       />
       <Text
         size={SIZES.h14}

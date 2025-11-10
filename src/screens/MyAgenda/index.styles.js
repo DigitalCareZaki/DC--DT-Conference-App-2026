@@ -38,14 +38,14 @@ export const styles = StyleSheet.create({
   },
   tabContainer: {
     backgroundColor: 'white',
-    borderRadius: SIZES.padding + SIZES.padding + 10,
+    borderRadius: SIZES.padding * 2 + 10,
     padding: 5,
   },
   tab: {
     backgroundColor: COLORS.primary,
     width: '48%',
     padding: SIZES.padding2,
-    borderRadius: SIZES.padding + SIZES.padding + 10,
+    borderRadius: SIZES.padding * 2 + 10,
     alignItems: 'center',
   },
 });

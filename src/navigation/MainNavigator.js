@@ -32,8 +32,12 @@ import {
   ResetPassword,
   AskQuestion,
   WhoShouldAttend,
+  SocialMediaLinks,
 } from '../screens';
-import { notificationListener, requestUserPermission } from '../utils/notification_service';
+import {
+  notificationListener,
+  requestUserPermission,
+} from '../utils/notification_service';
 import { getUserProfile } from '../redux/actions/auth-action';
 import { firebase_messaging } from '../utils/firebase_service';
 import { notificationTopic } from '../config';
@@ -51,7 +55,7 @@ const MainNavigator = () => {
       dispatch(getFavourites());
     }
     firebase_messaging.subscribeToTopic(notificationTopic);
-    requestUserPermission()
+    requestUserPermission();
     notificationListener();
   }, []);
 
@@ -92,6 +96,7 @@ const MainNavigator = () => {
           <Stack.Screen name="ResetPassword" component={ResetPassword} />
           <Stack.Screen name="AskQuestion" component={AskQuestion} />
           <Stack.Screen name="WhoShouldAttend" component={WhoShouldAttend} />
+          <Stack.Screen name="SocialMediaLinks" component={SocialMediaLinks} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast />
