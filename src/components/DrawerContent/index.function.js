@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { setUser } from '../../redux/slices/constant-slice';
 import { deleteAccount } from '../../redux/actions/auth-action';
-import { showToast } from '../../utils/functions';
 import { setFeedback } from '../../redux/slices/main-slice';
+import { setToastData } from '../../redux/slices/auth-slice';
 
 export default () => {
   const dispatch = useDispatch();
@@ -23,7 +23,15 @@ export default () => {
       dispatch(setUser(null));
       dispatch(setFeedback(null));
       setShowModal(false);
-      showToast('success', 'Logout Sucessfully');
+      setTimeout(() => {
+        dispatch(
+          setToastData({
+            show_toast_modal: true,
+            toast_description: 'Logout Successfully',
+            is_error: false,
+          }),
+        );
+      }, 500);
     } catch (error) {
       console.error(error);
     }
@@ -32,7 +40,15 @@ export default () => {
   const onPressDeleteAcc = () => {
     if (!user) {
       setShowDeleteAccModal(false);
-      showToast('error', 'User Not Found');
+      setTimeout(() => {
+        dispatch(
+          setToastData({
+            show_toast_modal: true,
+            toast_description: 'User Not Found',
+            is_error: true,
+          }),
+        );
+      }, 500);
       return;
     }
     dispatch(deleteAccount(user?._id, () => setShowDeleteAccModal(false)));

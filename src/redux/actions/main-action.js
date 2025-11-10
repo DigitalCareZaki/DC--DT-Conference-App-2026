@@ -202,9 +202,6 @@ export const addFeedback = data => {
         setLoading: setMainPostLoading,
         param_data: data,
         apiService: apiServices.addFeedback,
-        onDone: async () => {
-          goBack();
-        },
         isSuccessMessage: true,
       }),
     );

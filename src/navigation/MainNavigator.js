@@ -42,12 +42,15 @@ import { getUserProfile } from '../redux/actions/auth-action';
 import { firebase_messaging } from '../utils/firebase_service';
 import { notificationTopic } from '../config';
 import { getFavourites } from '../redux/actions/main-action';
+import { ToastModal } from '../components';
 
 const MainNavigator = () => {
   const dispatch = useDispatch();
   const Stack = createNativeStackNavigator();
 
   const { user } = useSelector(state => state.constant);
+  const { show_toast_modal, toast_title, toast_description, is_error } =
+    useSelector(state => state.auth);
 
   useEffect(() => {
     if (user) {
@@ -99,7 +102,12 @@ const MainNavigator = () => {
           <Stack.Screen name="SocialMediaLinks" component={SocialMediaLinks} />
         </Stack.Navigator>
       </NavigationContainer>
-      <Toast />
+      <ToastModal
+        description={toast_description}
+        isError={is_error}
+        title={toast_title}
+        visible={show_toast_modal}
+      />
     </>
   );
 };

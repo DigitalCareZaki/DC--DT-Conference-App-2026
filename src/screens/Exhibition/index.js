@@ -65,7 +65,7 @@ const Exhibition = () => {
         />
 
         <Text
-          text={`${197} Exhibitors Participating`}
+          text={`${total_item} Exhibitors Participating`}
           size={SIZES.h16}
           weight={TextWeights.medium}
           mt={SIZES.padding2}
@@ -89,12 +89,7 @@ const Exhibition = () => {
                   <SizedBox />
                 )}
 
-                <Button
-                  buttonText={'Download List in PDF'}
-                  onPress={() => savePdf()}
-                />
-
-                <Text
+                {/* <Text
                   mt={SIZES.padding2}
                   text={'Hall Map'}
                   size={SIZES.h18}
@@ -119,7 +114,7 @@ const Exhibition = () => {
                       }
                     />
                   </FastImage>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
                 <SizedBox />
               </>
@@ -133,6 +128,12 @@ const Exhibition = () => {
           />
         )}
       </View>
+      <Button
+        style={styles.btn}
+        buttonText={'Download List in PDF'}
+        onPress={() => savePdf()}
+      />
+      <SizedBox />
     </Container>
   );
 };

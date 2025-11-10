@@ -17,4 +17,8 @@ export const styles = StyleSheet.create({
   loader: {
     paddingVertical: SIZES.padding,
   },
+  btn: {
+    alignSelf: 'center',
+    width: '90%',
+  },
 });

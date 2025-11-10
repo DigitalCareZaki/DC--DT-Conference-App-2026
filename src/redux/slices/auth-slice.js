@@ -7,6 +7,10 @@ const initialState = {
   total_item: null,
   reset_password_token: null,
   user_email: null,
+  show_toast_modal: null,
+  toast_title: null,
+  toast_description: null,
+  is_error: false,
 };
 
 export const authSlice = createSlice({
@@ -32,6 +36,12 @@ export const authSlice = createSlice({
     setUserEmail: (state, action) => {
       state.user_email = action.payload;
     },
+    setToastData: (state, action) => {
+      state.show_toast_modal = action.payload?.show_toast_modal;
+      state.toast_title = action.payload?.toast_title;
+      state.toast_description = action.payload?.toast_description;
+      state.is_error = action.payload?.is_error;
+    },
   },
 });
 
@@ -43,6 +53,7 @@ export const {
   setTotalItems,
   setResetPasswordToken,
   setUserEmail,
+  setToastData,
 } = authSlice.actions;
 
 export default authSlice.reducer;

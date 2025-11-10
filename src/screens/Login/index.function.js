@@ -34,17 +34,17 @@ export default () => {
 
   const onPressGoogleBtn = async values => {
     try {
-      if (!values?.role) {
-        showToast('error', 'Please select the role first');
-        return;
-      }
+      // if (!values?.role) {
+      //   showToast('error', 'Please select the role first');
+      //   return;
+      // }
 
       const data = await getGoogleToken();
 
       if (data?.user) {
         const apiData = {
           email: data?.user?.email,
-          role: values?.role,
+          role: 'Visitor',
         };
 
         dispatch(googleLogin(apiData));

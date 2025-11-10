@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { askQuestion, getSpeakers } from '../../redux/actions/main-action';
-import { showToast } from '../../utils/functions';
 
 export default () => {
   const dispatch = useDispatch();
@@ -21,7 +20,16 @@ export default () => {
     };
     dispatch(
       askQuestion(apiData, res => {
-        showToast('success', 'Your question has been submitted successfully!');
+        setTimeout(() => {
+          dispatch(
+            setToastData({
+              show_toast_modal: true,
+              toast_description:
+                'Your question has been submitted successfully!',
+              is_error: false,
+            }),
+          );
+        }, 500);
         formActions.resetForm();
       }),
     );
