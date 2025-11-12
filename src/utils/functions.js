@@ -203,8 +203,13 @@ export function requestHandler({
         }, 500);
       }
     } catch (error) {
-      onError(error?.data);
-      if (error?.status === 401 && !isAuth) {
+      console.log('error', error);
+      const errData = error?.response?.data ?? error?.data ?? {};
+      const errStatus = error?.response?.status ?? error?.status;
+
+      onError(errData);
+
+      if (errStatus === 401 && !isAuth) {
         dispatch(setUser(null));
         await AsyncStorage.clear();
       }
@@ -213,7 +218,8 @@ export function requestHandler({
           dispatch(
             setToastData({
               show_toast_modal: true,
-              toast_description: error?.data?.msg ?? error?.data?.message ?? '',
+              toast_description:
+                errData?.msg ?? errData?.message ?? 'Something went wrong',
               is_error: true,
             }),
           );

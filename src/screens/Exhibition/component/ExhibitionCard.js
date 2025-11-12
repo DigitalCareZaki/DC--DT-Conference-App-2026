@@ -56,16 +56,6 @@ const ExhibitionCard = ({ item, isFav = false }) => {
       />
 
       <Text
-        mt={SIZES.padding2 / 2}
-        text={
-          <>
-            <Text text={'Exhibitor category:'} color={COLORS.keys_color} />
-            <Text text={'Gold'} color={COLORS.gold} weight={TextWeights.bold} />
-          </>
-        }
-      />
-
-      <Text
         mt={SIZES.padding2}
         text={
           'Leading provider Of enterprise software solutions and cloud services.'
@@ -73,10 +63,6 @@ const ExhibitionCard = ({ item, isFav = false }) => {
         // text={isFav ? item?.favoriteId?.description : item.description}
         lineHeight={SIZES.padding2 * 1.5}
       />
-
-      <SizedBox />
-
-      <Button buttonText={'Chat'} />
     </TouchableOpacity>
   );
 };

@@ -50,28 +50,15 @@ const SingleExhibitorView = () => {
 
       <SizedBox height={SIZES.padding2} />
 
-      <RowView>
-        <View style={common_styles.flex_1}>
-          <Text text={'Venue'} color={COLORS.keys_color} />
-          <Text
-            mt={SIZES.padding2 / 2}
-            size={SIZES.h14}
-            weight={TextWeights.medium}
-            text={'Venue: Main Exhibition Hall'}
-          />
-        </View>
-
-        <View>
-          <Text text={'Exhibitor category'} color={COLORS.keys_color} />
-          <Text
-            mt={SIZES.padding2 / 2}
-            size={SIZES.h14}
-            color={COLORS.gold}
-            weight={TextWeights.bold}
-            text={'Gold'}
-          />
-        </View>
-      </RowView>
+      <View>
+        <Text text={'Venue'} color={COLORS.keys_color} />
+        <Text
+          mt={SIZES.padding2 / 2}
+          size={SIZES.h14}
+          weight={TextWeights.medium}
+          text={'Venue: Main Exhibition Hall'}
+        />
+      </View>
 
       <SizedBox height={SIZES.padding2 + 4} />
 
@@ -90,10 +77,6 @@ const SingleExhibitorView = () => {
           />
         </RowView>
       </View>
-
-      <SizedBox height={SIZES.padding} />
-
-      <Button buttonText={'Chat'} />
     </View>
   );
 };

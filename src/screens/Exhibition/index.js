@@ -52,7 +52,7 @@ const Exhibition = () => {
         />
 
         <Text
-          text={`${3} Exhibitors Participating`}
+          text={`${4} Exhibitors Participating`}
           size={SIZES.h16}
           weight={TextWeights.medium}
           mt={SIZES.padding2}
