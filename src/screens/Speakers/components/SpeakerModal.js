@@ -10,6 +10,7 @@ import { COLORS, SIZES } from '../../../constants';
 import { ImageView, RowView, Text } from '../../../components';
 import FastImage from 'react-native-fast-image';
 import { TextWeights } from '../../../config';
+import { common_styles } from '../../../utils/common_styles';
 
 const SpeakerModal = ({ visible, setVisibility, data }) => {
   return (
@@ -45,8 +46,8 @@ const SpeakerModal = ({ visible, setVisibility, data }) => {
             align={'center'}
           />
 
-          <RowView>
-            <View style={styles.text_view}>
+          <RowView style={common_styles.flex_1}>
+            <View style={[styles.text_view, common_styles.flex_1]}>
               <Text
                 size={SIZES.h12}
                 color={COLORS.placeholder_text_color}
@@ -55,7 +56,7 @@ const SpeakerModal = ({ visible, setVisibility, data }) => {
                 numberOfLines={2}
               />
             </View>
-            <View style={styles.text_view}>
+            <View style={[styles.text_view, common_styles.flex_1]}>
               <Text
                 size={SIZES.h12}
                 color={COLORS.placeholder_text_color}

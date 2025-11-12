@@ -38,6 +38,7 @@ const Exhibition = () => {
     search,
     setSearch,
     savePdf,
+    onPressHeart,
   } = ExhibitionFunctional();
 
   return (
@@ -52,7 +53,7 @@ const Exhibition = () => {
         />
 
         <Text
-          text={`${4} Exhibitors Participating`}
+          text={`${exhibition?.length ?? 0} Exhibitors Participating`}
           size={SIZES.h16}
           weight={TextWeights.medium}
           mt={SIZES.padding2}
@@ -79,8 +80,13 @@ const Exhibition = () => {
                 <SizedBox />
               </>
             }
-            renderItem={({ item }) => <ExhibitionCard item={item} />}
-            data={search ? searchArray(signup_steps, search) : signup_steps}
+            renderItem={({ item, index }) => (
+              <ExhibitionCard
+                item={item}
+                onPressHeart={() => onPressHeart(item, index)}
+              />
+            )}
+            data={search ? searchArray(exhibition, search) : exhibition}
             keyExtractor={item => item?._id?.toString()}
             onEndReached={onEndReached}
             onEndReachedThreshold={0.1}

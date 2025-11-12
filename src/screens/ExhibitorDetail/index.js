@@ -1,15 +1,17 @@
 import React from 'react';
 import { Container, Header, SizedBox, Text } from '../../components';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
-import { COLORS, images, SIZES } from '../../constants';
+import { COLORS, SIZES } from '../../constants';
 import { styles } from './index.styles';
 import { TextWeights } from '../../config';
 import FastImage from 'react-native-fast-image';
 import ExhibitionDetailFunctional from './index.function';
 import { SingleExhibitorView } from './components';
+import { navigate } from '../../navigation/service';
 
-const ExhibitorDetail = () => {
-  const { handleOpenMaps } = ExhibitionDetailFunctional();
+const ExhibitorDetail = ({ route }) => {
+  const item = route?.params?.item;
+  const { handleOpenMaps, onPressHeart } = ExhibitionDetailFunctional(item);
 
   return (
     <Container>
@@ -17,7 +19,7 @@ const ExhibitorDetail = () => {
 
       <View style={styles.main_view}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <SingleExhibitorView />
+          <SingleExhibitorView item={item} onPressHeart={onPressHeart} />
 
           <Text
             mt={SIZES.padding2}
@@ -26,13 +28,13 @@ const ExhibitorDetail = () => {
             weight={TextWeights.medium}
           />
 
-          <TouchableOpacity activeOpacity={0.6} onPress={handleOpenMaps}>
+          <TouchableOpacity activeOpacity={0.6} onPress={() => navigate('ImageView', { image: item?.location })}>
             <FastImage
               style={styles.map_view}
-              resizeMode={FastImage.resizeMode.contain}
-              source={images.map_image}
+              resizeMode={FastImage.resizeMode.cover}
+              source={{uri: item?.location}}
             >
-              <Text
+              {/* <Text
                 weight={TextWeights.medium}
                 size={SIZES.h14}
                 lineHeight={SIZES.padding}
@@ -42,7 +44,7 @@ const ExhibitorDetail = () => {
                 text={
                   'Ecommerce Gateway Pakistan (Pvt) Ltd.8, Kokan Society, Dr. Azhar Hussain Road, Near Kokan Park, off: Shaheed-e-Millat Road, Karachi-74000 Pakistan'
                 }
-              />
+              /> */}
             </FastImage>
           </TouchableOpacity>
 

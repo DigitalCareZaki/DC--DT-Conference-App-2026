@@ -24,6 +24,7 @@ const MyAgenda = () => {
     list_loading,
     activeTab,
     handleTabChange,
+    filteredFavourites,
   } = FavoutitesFunctional();
 
   return (
@@ -41,19 +42,19 @@ const MyAgenda = () => {
               styles.tab,
               {
                 backgroundColor:
-                  activeTab === 'favConferences'
+                  activeTab === 'conference'
                     ? COLORS.primary
                     : COLORS.white,
               },
             ]}
-            onPress={() => handleTabChange('favConferences')}
+            onPress={() => handleTabChange('conference')}
           >
             <Text
               size={SIZES.h13}
               weight={TextWeights.medium}
               text={'Favorite conferences'}
               color={
-                activeTab === 'favConferences' ? COLORS.white : COLORS.primary
+                activeTab === 'conference' ? COLORS.white : COLORS.primary
               }
             />
           </TouchableOpacity>
@@ -62,17 +63,17 @@ const MyAgenda = () => {
               styles.tab,
               {
                 backgroundColor:
-                  activeTab === 'favExhibitors' ? COLORS.primary : COLORS.white,
+                  activeTab === 'exhibition' ? COLORS.primary : COLORS.white,
               },
             ]}
-            onPress={() => handleTabChange('favExhibitors')}
+            onPress={() => handleTabChange('exhibition')}
           >
             <Text
               size={SIZES.h13}
               weight={TextWeights.medium}
               text={'Favorite Exhibitors'}
               color={
-                activeTab === 'favExhibitors' ? COLORS.white : COLORS.primary
+                activeTab === 'exhibition' ? COLORS.white : COLORS.primary
               }
             />
           </TouchableOpacity>
@@ -81,7 +82,7 @@ const MyAgenda = () => {
           <Loader />
         ) : (
           <FlatList
-            data={favourites}
+            data={filteredFavourites}
             refreshControl={
               <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }

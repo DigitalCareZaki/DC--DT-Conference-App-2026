@@ -11,13 +11,14 @@ import {
 import { TextWeights } from '../../../config';
 import FastImage from 'react-native-fast-image';
 import SpeakerModal from './SpeakerModal';
+import { common_styles } from '../../../utils/common_styles';
 
 const SingleSpeakerView = ({ item }) => {
   const [modalVisibility, setModalVisibility] = useState(false);
 
   return (
     <View style={styles.main_view}>
-      <RowView gap={SIZES.padding2 + 4}>
+      <RowView gap={SIZES.padding2 + 4}style={common_styles.flex_1}>
         <ImageView
           width={SIZES.padding * 3.4}
           height={SIZES.padding * 3.4}
@@ -27,7 +28,7 @@ const SingleSpeakerView = ({ item }) => {
           style={styles.image}
           resizeMode={FastImage.resizeMode.cover}
         />
-        <View>
+        <View style={common_styles.flex_1}>
           <Text
             text={item?.name}
             weight={TextWeights.medium}
@@ -40,7 +41,6 @@ const SingleSpeakerView = ({ item }) => {
               size={SIZES.h10}
               color={COLORS.placeholder_text_color}
               text={item?.specialty}
-              align={'center'}
               numberOfLines={2}
             />
           </View>

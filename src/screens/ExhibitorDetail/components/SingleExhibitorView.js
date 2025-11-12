@@ -4,9 +4,16 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { COLORS, SIZES } from '../../../constants';
 import { TextWeights } from '../../../config';
 import { common_styles } from '../../../utils/common_styles';
-import { heart_icon, website_icon } from '../../../assets/icons';
+import {
+  heart_icon,
+  selected_heart_icon,
+  website_icon,
+} from '../../../assets/icons';
+import { useSelector } from 'react-redux';
 
-const SingleExhibitorView = () => {
+const SingleExhibitorView = ({ item, onPressHeart }) => {
+  const { favourites } = useSelector(state => state.main);
+
   return (
     <View style={styles.main_view}>
       <RowView>
@@ -14,11 +21,23 @@ const SingleExhibitorView = () => {
           style={common_styles.flex_1}
           size={SIZES.h16}
           weight={TextWeights.medium}
-          text={'TechCorp Solutions'}
+          text={item?.title}
         />
 
-        <TouchableOpacity activeOpacity={0.6} hitSlop={common_styles.hitslop2}>
-          <Icons name={heart_icon} />
+        <TouchableOpacity
+          activeOpacity={0.6}
+          hitSlop={common_styles.hitslop2}
+          onPress={onPressHeart}
+        >
+          <Icons
+            name={
+              favourites?.find(
+                favItem => favItem?.favoriteId?._id === item?._id,
+              )
+                ? selected_heart_icon
+                : heart_icon
+            }
+          />
         </TouchableOpacity>
       </RowView>
 
@@ -26,14 +45,14 @@ const SingleExhibitorView = () => {
 
       <View style={styles.booth_view}>
         <Text
-          text={'Booth A-101'}
+          text={`Booth ${item?.booth ?? ''}`}
           color={COLORS.placeholder_text_color}
           size={SIZES.h12}
         />
       </View>
 
       <Text
-        text={'Seattle,USA - Software Development'}
+        text={`${item?.address} - ${item?.industry}`}
         color={COLORS.light_blue_color}
         mt={SIZES.padding2}
       />
@@ -43,9 +62,7 @@ const SingleExhibitorView = () => {
         weight={TextWeights.medium}
         size={SIZES.h14}
         lineHeight={SIZES.padding}
-        text={
-          'As a leading provider of enterprise software solutions and cloud services, we deliver innovative technologies that help organizations optimize performance, scale efficiently, and stay ahead in an ever-evolving digital world.'
-        }
+        text={item?.description}
       />
 
       <SizedBox height={SIZES.padding2} />
@@ -56,7 +73,7 @@ const SingleExhibitorView = () => {
           mt={SIZES.padding2 / 2}
           size={SIZES.h14}
           weight={TextWeights.medium}
-          text={'Venue: Main Exhibition Hall'}
+          text={item?.venue}
         />
       </View>
 
@@ -72,7 +89,7 @@ const SingleExhibitorView = () => {
           <Icons name={website_icon} />
           <Text
             size={SIZES.h14}
-            text={'techcorpsolutions.com'}
+            text={item?.contactLink}
             textDecorationLine={'underline'}
           />
         </RowView>
@@ -90,14 +107,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.padding2,
     borderRadius: SIZES.padding2,
     marginTop: SIZES.padding2,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
   booth_view: {
     backgroundColor: COLORS.white,
     borderRadius: SIZES.padding,
-    height: SIZES.padding * 1.2,
-    width: 102,
     paddingHorizontal: SIZES.padding2,
     justifyContent: 'center',
-    marginRight: SIZES.padding2,
+    paddingVertical: SIZES.padding * 0.3,
   },
 });

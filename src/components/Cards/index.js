@@ -44,7 +44,7 @@ const Cards = ({
             style={common_styles.flex_1}
           />
 
-          {item.type === 'Exhibitors' && (
+          {item?.type === 'Exhibitors' && (
             <View style={[styles.type_view, { marginRight: SIZES.padding2 }]}>
               <Text
                 color={COLORS.placeholder_text_color}

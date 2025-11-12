@@ -8,7 +8,7 @@ export default () => {
   const { list_loading, favourites } = useSelector(state => state.main);
 
   const [refreshing, setRefreshing] = useState(false);
-  const [activeTab, setActiveTab] = useState('favConferences');
+  const [activeTab, setActiveTab] = useState('conference');
 
   const handleTabChange = seletedtab => {
     setActiveTab(seletedtab);
@@ -32,6 +32,8 @@ export default () => {
     dispatch(addRemoveFav(apiData));
   };
 
+  const filteredFavourites = favourites.filter(item => activeTab === item?.type?.toLowerCase());
+
   return {
     favourites,
     onPressHeart,
@@ -41,5 +43,6 @@ export default () => {
     handleTabChange,
     setActiveTab,
     activeTab,
+    filteredFavourites,
   };
 };

@@ -30,7 +30,7 @@ const Chat = ({ route }) => {
 
   const connectSocket = async () => {
     const token = await getToken();
-    socket = io(`http://51.83.237.63:5041?token=${token}`);
+    socket = io(`http://51.83.237.63:5051?token=${token}`);
     setSocket(socket);
 
     socket.on('connect', () => {

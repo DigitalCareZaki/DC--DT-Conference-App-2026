@@ -173,7 +173,10 @@ export const addRemoveFav = data => {
         setLoading: setFavouriteLoading,
         apiService: apiServices.addRemoveFavourite,
         param_data: data,
-        onDone: () => dispatch(getFavourites()),
+        onDone: (res) => {
+          dispatch(getFavourites())
+        
+        },
       }),
     );
   };

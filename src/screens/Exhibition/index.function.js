@@ -57,7 +57,7 @@ export default () => {
       const ext = 'pdf';
       const fileName = `exhibitor_list_${date.getTime()}.${ext}`;
       const downloadUrl =
-        'http://51.83.237.63:5041/uploads/1760973291595-706686920.pdf';
+        'http://51.83.237.63:5051/uploads/1760973291595-706686920.pdf';
 
       // Define storage directory
       const dirs = fs.dirs;
@@ -112,7 +112,7 @@ export default () => {
 
     const apiData = {
       favoriteId: item?._id,
-      type: 'conference',
+      type: 'exhibition',
     };
     dispatch(addRemoveFav(apiData));
   };

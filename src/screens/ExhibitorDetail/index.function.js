@@ -1,6 +1,14 @@
 import { Linking } from 'react-native';
 import { isIOS } from '../../constants/theme';
-export default () => {
+import { navigate } from '../../navigation/service';
+import { useDispatch, useSelector } from 'react-redux';
+import { addRemoveFav } from '../../redux/actions/main-action';
+
+export default (item) => {
+  const dispatch = useDispatch();
+
+  const { user } = useSelector(state => state.constant);
+
   const handleOpenMaps = () => {
     const latitude = 24.9019;
     const longitude = 67.0767;
@@ -13,7 +21,21 @@ export default () => {
     Linking.openURL(url).catch(err => {});
   };
 
+  const onPressHeart = async () => {
+      if (!user) {
+        navigate('Login');
+        return;
+      }
+  
+      const apiData = {
+        favoriteId: item?._id,
+        type: 'exhibition',
+      };
+      dispatch(addRemoveFav(apiData));
+    };
+
   return {
     handleOpenMaps,
+    onPressHeart,
   };
 };
