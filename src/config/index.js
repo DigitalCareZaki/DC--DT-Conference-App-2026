@@ -60,6 +60,17 @@ export const roles = [
   },
 ];
 
+export const login_roles = [
+  {
+    id: 1,
+    name: 'Exhibitor',
+  },
+  {
+    id: 2,
+    name: 'Visitor',
+  },
+];
+
 export const signup_steps = [
   'Basic Information',
   'Select Your Category',

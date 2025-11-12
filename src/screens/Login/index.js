@@ -19,7 +19,7 @@ import {
 } from '../../components';
 import { styles } from './index.styles';
 import { COLORS, SIZES } from '../../constants';
-import { roles, TextWeights } from '../../config';
+import { login_roles, TextWeights } from '../../config';
 import { common_styles } from '../../utils/common_styles';
 import { navigate } from '../../navigation/service';
 import { keyboardAvoidingBehaviour } from '../../constants/theme';
@@ -92,7 +92,7 @@ const Login = () => {
                       leftIcon={role_icon}
                       value={values?.role}
                       value_key={'name'}
-                      array={roles}
+                      array={login_roles}
                       onPressValue={val => setFieldValue('role', val?.name)}
                     />
                     <ErrorText error={errors?.role} />

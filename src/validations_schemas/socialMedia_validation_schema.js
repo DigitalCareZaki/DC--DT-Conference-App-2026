@@ -1,5 +1,11 @@
 import * as yup from 'yup';
-import { urlReg } from '../utils/functions';
+import {
+  facebookReg,
+  instagramReg,
+  linkedinReg,
+  twitterReg,
+  youtubeReg,
+} from '../utils/functions';
 
 export const socialMedia_schema = data => ({
   facebookLink: data?.facebookLink ?? '',
@@ -12,16 +18,22 @@ export const socialMedia_schema = data => ({
 export const socialMedia_validation_schema = yup.object().shape({
   facebookLink: yup
     .string()
-    .matches(urlReg, 'Invalid Facebook link')
+    .matches(facebookReg, 'Invalid Facebook link')
     .nullable(),
   instagramLink: yup
     .string()
-    .matches(urlReg, 'Invalid Instagram link')
+    .matches(instagramReg, 'Invalid Instagram link')
     .nullable(),
   linkedinLink: yup
     .string()
-    .matches(urlReg, 'Invalid LinkedIn link')
+    .matches(linkedinReg, 'Invalid LinkedIn link')
     .nullable(),
-  youtubeLink: yup.string().matches(urlReg, 'Invalid YouTube link').nullable(),
-  twitterLink: yup.string().matches(urlReg, 'Invalid Twitter link').nullable(),
+  youtubeLink: yup
+    .string()
+    .matches(youtubeReg, 'Invalid YouTube link')
+    .nullable(),
+  twitterLink: yup
+    .string()
+    .matches(twitterReg, 'Invalid Twitter link')
+    .nullable(),
 });

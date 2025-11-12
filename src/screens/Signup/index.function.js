@@ -61,11 +61,16 @@ export default () => {
       ...values,
     }));
 
+    const cleanedRole =
+      signUpData?.role === 'Exhibitor (Stall Owner)'
+        ? 'Exhibitor'
+        : signUpData?.role;
+
     const apiData = {
       name: signUpData?.name,
       email: signUpData?.email,
       password: values.password,
-      role: 'Visitor',
+      role: cleanedRole,
       facebookLink: signUpData?.facebookLink,
       instagramLink: signUpData?.instagramLink,
       linkedinLink: signUpData?.linkedinLink,
@@ -73,6 +78,7 @@ export default () => {
       twitterLink: signUpData?.twitterLink,
       fcmToken: fcmToken,
     };
+
     dispatch(
       signup(apiData, () => {
         navigate('Otp', {

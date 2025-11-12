@@ -235,7 +235,17 @@ export const emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 export const urlReg =
   /^(http[s]?:\/\/(www\.)?|ftp:\/\/(www\.)?|www\.){1}([0-9A-Za-z-\@:%_\+~#=]+)+((\.[a-zA-Z]{2,3})+)(\/(.)*)?(\?(.)*)?/g;
 
-export const numberReg = /^\+|0{1,}(?:[0-9] ?){6,14}[0-9]$/;
+export const facebookReg = /^(https?:\/\/)?(www\.)?facebook\.com(\/.*)?$/i;
+
+export const instagramReg = /^(https?:\/\/)?(www\.)?instagram\.com(\/.*)?$/i;
+
+export const linkedinReg = /^(https?:\/\/)?(www\.)?linkedin\.com(\/.*)?$/i;
+
+export const youtubeReg =
+  /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)(\/.*)?$/i;
+
+export const twitterReg =
+  /^(https?:\/\/)?(www\.)?(twitter\.com|x\.com)(\/.*)?$/i;
 
 const { width, height } = Dimensions.get('window');
 const guidelineBaseWidth = 350;
