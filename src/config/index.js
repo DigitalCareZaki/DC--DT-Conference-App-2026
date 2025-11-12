@@ -49,33 +49,20 @@ export const datePattern = {
 
 export const notificationTopic = 'conference_app';
 
-// // default: "Conference Delegate" roles: "Admin" || "Conference Delegate" || "Exhibitor" || "Sponsor" || "Visitor" || "Speaker"
 export const roles = [
   {
+    id: 1,
+    name: 'Exhibitor (Stall Owner)',
+  },
+  {
     id: 2,
-    name: 'Conference Delegate',
-  },
-  {
-    id: 3,
-    name: 'Exhibitor',
-  },
-  {
-    id: 4,
-    name: 'Sponsor',
-  },
-  {
-    id: 5,
     name: 'Visitor',
-  },
-  {
-    id: 6,
-    name: 'Speaker',
   },
 ];
 
 export const signup_steps = [
   'Basic Information',
-  // 'Select Your Category',
+  'Select Your Category',
   'Social Media Links',
   'Agreement & Submission',
 ];
@@ -186,6 +173,12 @@ export const drawer_array = user => [
 export const dashboard_array = [
   {
     id: 1,
+    name: 'Exhibitor',
+    icon: exhibition_icon,
+    route: 'Exhibition',
+  },
+  {
+    id: 2,
     icon: conferences_icon,
     name: 'Conference',
     route: 'Conference',
@@ -209,22 +202,22 @@ export const dashboard_array = [
     route: 'Speakers',
   },
   // {
-  //   id: 6,
-  //   icon: networking_icon,
-  //   name: 'Networking',
-  //   route: 'Networking',
-  // },
-  // {
   //   id: 7,
   //   icon: gallery_icon,
   //   name: 'Gallery',
   //   route: 'Gallery',
   // },
   {
-    id: 8,
+    id: 5,
     icon: my_agenda_icon,
     name: 'My Favourites',
     route: 'MyAgenda',
+  },
+  {
+    id: 6,
+    icon: networking_icon,
+    name: 'Networking',
+    route: 'Networking',
   },
 ];
 

@@ -35,10 +35,10 @@ export default () => {
   };
 
   const submitCategory = () => {
-    // if (!selectedRole) {
-    //   Alert.alert('Please choose your role first');
-    //   return;
-    // }
+    if (!selectedRole) {
+      Alert.alert('Please choose your role first');
+      return;
+    }
     setSignUpData(prev => ({
       ...prev,
       role: selectedRole?.name,
@@ -93,15 +93,13 @@ export default () => {
             basicInfoRef.current?.handleSubmit();
             break;
           case 1:
-            socialMediaLinksRef.current?.handleSubmit();
-          // submitCategory();
+            submitCategory();
           case 2:
-            passworkRef.current?.handleSubmit();
-            // socialMediaLinksRef.current?.handleSubmit();
+            socialMediaLinksRef.current?.handleSubmit();
             break;
-          // case 3:
-          //   passworkRef.current?.handleSubmit();
-          //   break;
+          case 3:
+            passworkRef.current?.handleSubmit();
+            break;
           default:
             setSelectedIndex(selectedIndex + 1);
             break;

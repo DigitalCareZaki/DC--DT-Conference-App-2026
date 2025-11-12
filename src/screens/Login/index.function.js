@@ -2,7 +2,8 @@ import { Keyboard } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { navigate } from '../../navigation/service';
 import { googleLogin, login } from '../../redux/actions/auth-action';
-import { getGoogleToken, showToast } from '../../utils/functions';
+import { getGoogleToken } from '../../utils/functions';
+import { setToastData } from '../../redux/slices/auth-slice';
 
 export default () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export default () => {
     const apiData = {
       email: values.email,
       password: values?.password,
-      role: 'Visitor',
+      role: values?.role,
     };
     dispatch(
       login(apiData, res => {
@@ -34,17 +35,23 @@ export default () => {
 
   const onPressGoogleBtn = async values => {
     try {
-      // if (!values?.role) {
-      //   showToast('error', 'Please select the role first');
-      //   return;
-      // }
+      if (!values?.role) {
+        dispatch(
+          setToastData({
+            show_toast_modal: true,
+            toast_description: 'Please select the role first',
+            is_error: true,
+          }),
+        );
+        return;
+      }
 
       const data = await getGoogleToken();
 
       if (data?.user) {
         const apiData = {
           email: data?.user?.email,
-          role: 'Visitor',
+          role: values?.role,
         };
 
         dispatch(googleLogin(apiData));
