@@ -39,6 +39,7 @@ export const TextWeights = {
 export const website_url = 'https://pharmaasia.com.pk/';
 export const privacy_policy_link = 'https://health-asia.com/privacy-policy.php';
 export const terms_link = 'https://health-asia.com/terms-and-conditions.php';
+export const organizer_url = 'https://www.ecgateway.net/';
 export const dateLocale = 'en-US';
 export const datePattern = {
   weekday: 'long',
@@ -184,14 +185,14 @@ export const drawer_array = user => [
 export const dashboard_array = [
   {
     id: 1,
-    name: 'Exhibitor',
+    name: 'Exhibitor List',
     icon: exhibition_icon,
     route: 'Exhibition',
   },
   {
     id: 2,
     icon: conferences_icon,
-    name: 'Conference',
+    name: 'Conferences',
     route: 'Conference',
   },
   // {

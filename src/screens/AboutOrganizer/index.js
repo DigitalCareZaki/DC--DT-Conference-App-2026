@@ -12,7 +12,7 @@ import {
 import { Alert, Linking, ScrollView, View } from 'react-native';
 import { styles } from './index.styles';
 import { COLORS, images, SIZES } from '../../constants';
-import { TextWeights, website_url } from '../../config';
+import { organizer_url, TextWeights, website_url } from '../../config';
 import FastImage from 'react-native-fast-image';
 import { common_styles } from '../../utils/common_styles';
 
@@ -136,14 +136,14 @@ const AboutOrganizer = () => {
           </View>
 
           <Button
-            onPress={() => Linking.openURL(website_url)}
+            onPress={() => Linking.openURL(organizer_url)}
             buttonText={'Go to Website'}
           />
 
           <Button
             style={styles.btn}
             color={'white'}
-            buttonText={'Messages'}
+            buttonText={'Message Us'}
             onPress={onPressMessage}
           />
 

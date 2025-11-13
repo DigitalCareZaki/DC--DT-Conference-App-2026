@@ -11,7 +11,7 @@ import { navigate } from '../../navigation/service';
 
 const ExhibitorDetail = ({ route }) => {
   const item = route?.params?.item;
-  const { handleOpenMaps, onPressHeart } = ExhibitionDetailFunctional(item);
+  const { handleOpenMaps, onPressHeart, onPressLink } = ExhibitionDetailFunctional(item);
 
   return (
     <Container>
@@ -19,7 +19,7 @@ const ExhibitorDetail = ({ route }) => {
 
       <View style={styles.main_view}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <SingleExhibitorView item={item} onPressHeart={onPressHeart} />
+          <SingleExhibitorView item={item} onPressHeart={onPressHeart} onPressLink={onPressLink} />
 
           <Text
             mt={SIZES.padding2}

@@ -11,7 +11,7 @@ import {
 } from '../../../assets/icons';
 import { useSelector } from 'react-redux';
 
-const SingleExhibitorView = ({ item, onPressHeart }) => {
+const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
   const { favourites } = useSelector(state => state.main);
 
   return (
@@ -85,7 +85,7 @@ const SingleExhibitorView = ({ item, onPressHeart }) => {
           color={COLORS.keys_color}
           mb={SIZES.padding2 / 2}
         />
-        <RowView>
+        <RowView onPress={onPressLink}>
           <Icons name={website_icon} />
           <Text
             size={SIZES.h14}

@@ -96,12 +96,12 @@ const Exhibition = () => {
 
       <SizedBox height={SIZES.padding2} />
 
-      <Button
+      {/* <Button
         style={styles.btn}
         buttonText={'Download List in PDF'}
         onPress={() => savePdf()}
       />
-      <SizedBox />
+      <SizedBox /> */}
     </Container>
   );
 };
