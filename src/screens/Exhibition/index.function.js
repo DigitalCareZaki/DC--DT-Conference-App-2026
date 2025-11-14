@@ -129,5 +129,6 @@ export default () => {
     setSearch,
     savePdf,
     onPressHeart,
+    total_item,
   };
 };

@@ -27,6 +27,7 @@ const Exhibition = () => {
     search,
     setSearch,
     onPressHeart,
+    total_item,
   } = ExhibitionFunctional();
 
   return (
@@ -39,47 +40,50 @@ const Exhibition = () => {
           value={search}
           onChangeText={setSearch}
         />
-
-        <Text
-          text={`${exhibition?.length ?? 0} Exhibitors Participating`}
-          size={SIZES.h16}
-          weight={TextWeights.medium}
-          mt={SIZES.padding2}
-          mb={SIZES.padding2}
-        />
-
         {list_loading && !isMore ? (
           <Loader />
         ) : (
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            ListEmptyComponent={<ListEmptyText text={'No Exhibition found'} />}
-            refreshControl={
-              <RefreshControl refreshing={refeshing} onRefresh={onRefresh} />
-            }
-            ListFooterComponent={
-              <>
-                {list_loading && isMore ? (
-                  <Loader style={styles.loader} />
-                ) : (
-                  <SizedBox />
-                )}
+          <>
+            <Text
+              text={`${total_item} Exhibitors Participating`}
+              size={SIZES.h16}
+              weight={TextWeights.medium}
+              mt={SIZES.padding2}
+              mb={SIZES.padding2}
+            />
 
-                <SizedBox />
-              </>
-            }
-            renderItem={({ item, index }) => (
-              <ExhibitionCard
-                index={index}
-                item={item}
-                onPressHeart={() => onPressHeart(item, index)}
-              />
-            )}
-            data={search ? searchArray(exhibition, search) : exhibition}
-            keyExtractor={item => item?._id?.toString()}
-            onEndReached={onEndReached}
-            onEndReachedThreshold={0.1}
-          />
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              ListEmptyComponent={
+                <ListEmptyText text={'No Exhibition found'} />
+              }
+              refreshControl={
+                <RefreshControl refreshing={refeshing} onRefresh={onRefresh} />
+              }
+              ListFooterComponent={
+                <>
+                  {list_loading && isMore ? (
+                    <Loader style={styles.loader} />
+                  ) : (
+                    <SizedBox />
+                  )}
+
+                  <SizedBox />
+                </>
+              }
+              renderItem={({ item, index }) => (
+                <ExhibitionCard
+                  index={index}
+                  item={item}
+                  onPressHeart={() => onPressHeart(item, index)}
+                />
+              )}
+              data={search ? searchArray(exhibition, search) : exhibition}
+              keyExtractor={item => item?._id?.toString()}
+              onEndReached={onEndReached}
+              onEndReachedThreshold={0.1}
+            />
+          </>
         )}
       </View>
 

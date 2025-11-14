@@ -18,7 +18,7 @@ import { common_styles } from '../../utils/common_styles';
 
 const AboutOrganizer = () => {
   const onPressMessage = () => {
-    const url = 'mailto:info@health-asia.com';
+    const url = 'mailto:Info@ecgateway.net';
 
     Linking.openURL(url).catch(e => {
       Alert.alert('Error', 'Could not open mail app');
