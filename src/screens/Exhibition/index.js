@@ -1,43 +1,31 @@
 import React from 'react';
 import {
-  Button,
   Container,
   Header,
-  ImageView,
   ListEmptyText,
   Loader,
   SearchBar,
   SizedBox,
   Text,
 } from '../../components';
-import {
-  FlatList,
-  Linking,
-  RefreshControl,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { COLORS, images, SIZES } from '../../constants';
+import { FlatList, RefreshControl, View } from 'react-native';
+import { COLORS, SIZES } from '../../constants';
 import { styles } from './index.styles';
-import { signup_steps, TextWeights } from '../../config';
-import FastImage from 'react-native-fast-image';
+import { TextWeights } from '../../config';
 import ExhibitionCard from './component/ExhibitionCard';
 import ExhibitionFunctional from './index.function';
 import { searchArray } from '../../utils/functions';
-import { isIOS } from '../../constants/theme';
 
 const Exhibition = () => {
   const {
     exhibition,
     onEndReached,
-    total_item,
     isMore,
     refeshing,
     list_loading,
     onRefresh,
     search,
     setSearch,
-    savePdf,
     onPressHeart,
   } = ExhibitionFunctional();
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { styles } from './index.styles';
 import { Button, Icons, Loader, RowView, SizedBox, Text } from '..';
 import { close_icon } from '../../assets/icons';
-import { SIZES } from '../../constants';
+import { COLORS, SIZES } from '../../constants';
 import { common_styles } from '../../utils/common_styles';
 import { TextWeights } from '../../config';
 
@@ -74,7 +74,8 @@ const AskModal = ({
               <Button
                 buttonText={'Edit'}
                 onPress={onPressEdit}
-                style={{ width: '50%' }}
+                color={COLORS.white}
+                style={styles.edit_btn}
               />
             ) : null}
           </RowView>

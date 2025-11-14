@@ -57,13 +57,15 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
         mt={SIZES.padding2}
       />
 
-      <Text
-        mt={SIZES.normal}
-        weight={TextWeights.medium}
-        size={SIZES.h14}
-        lineHeight={SIZES.padding}
-        text={item?.description}
-      />
+      {item?.description ? (
+        <Text
+          mt={SIZES.normal}
+          weight={TextWeights.medium}
+          size={SIZES.h14}
+          lineHeight={SIZES.padding}
+          text={item?.description}
+        />
+      ) : null}
 
       <SizedBox height={SIZES.padding2} />
 

@@ -13,7 +13,6 @@ import DrawerContentFunctional from './index.function';
 import { COLORS, images, SIZES } from '../../constants';
 import {
   delete_icon,
-  drawer_icon,
   drawer_line_icon,
   modal_logout_icon,
 } from '../../assets/icons';

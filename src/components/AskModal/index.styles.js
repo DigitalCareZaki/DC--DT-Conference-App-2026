@@ -14,8 +14,14 @@ export const styles = StyleSheet.create({
     padding: SIZES.padding,
   },
   icon_view: {
-    position: "absolute",
+    position: 'absolute',
     right: SIZES.padding2,
-    top: SIZES.padding2
+    top: SIZES.padding2,
+  },
+  edit_btn: {
+    width: '50%',
+    backgroundColor: COLORS.primary,
+    borderWidth: 1,
+    borderColor: COLORS.white,
   },
 });
