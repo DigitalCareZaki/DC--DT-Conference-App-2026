@@ -31,7 +31,7 @@ const Exhibition = () => {
 
   return (
     <Container>
-      <Header color={COLORS.white} title={'Exhibition'} />
+      <Header color={COLORS.white} title={'Exhibitors'} />
 
       <View style={styles.main_view}>
         <SearchBar

@@ -89,7 +89,7 @@ export const drawer_array = user => [
   },
   {
     id: 2,
-    name: 'Exhibition',
+    name: 'Exhibitors',
     icon: exhibition_icon,
     route: 'Exhibition',
   },
@@ -148,80 +148,42 @@ export const drawer_array = user => [
     icon: logout_icon,
     isLogout: true,
   },
-
-  // {
-  //   id: 2,
-  //   name: 'About Organizers',
-  //   icon: organizer_detail_icon,
-  //   route: 'AboutOrganizer',
-  // },
-
-  // {
-  //   id: 4,
-  //   name: 'Ask A Question',
-  //   icon: ask_question_icon,
-  //   route: 'AskQuestion',
-  // },
-  // {
-  //   id: 5,
-  //   name: 'Who Should Attend',
-  //   icon: who_attend_icon,
-  //   route: 'WhoShouldAttend',
-  // },
-
-  // // {
-  // //   id: 7,
-  // //   name: 'Workshops',
-  // //   icon: workshops_icon,
-  // //   route: 'WorkShop',
-  // // },
-  // {
-  //   id: 8,
-  //   name: 'Notifications',
-  //   icon: drawer_notification_icon,
-  //   route: 'Notification',
-  // },
 ];
 
 export const dashboard_array = [
   {
     id: 1,
-    name: 'Exhibitor List',
+    name: 'Exhibitors',
     icon: exhibition_icon,
     route: 'Exhibition',
   },
   {
     id: 2,
+    icon: floor_plan_icon,
+    name: 'Floor Plan',
+    route: 'FloorPlan',
+  },
+  {
+    id: 3,
     icon: conferences_icon,
     name: 'Conferences',
     route: 'Conference',
   },
-  // {
-  //   id: 2,
-  //   icon: workshops_icon,
-  //   name: 'WorkShops',
-  //   route: 'WorkShop',
-  // },
   {
-    id: 3,
+    id: 4,
     icon: visitor_registration_icon,
     name: 'Visitor Registration',
     is_login: true,
   },
   {
-    id: 4,
+    id: 5,
     icon: speakers_icon,
     name: 'Speakers',
     route: 'Speakers',
   },
-  // {
-  //   id: 7,
-  //   icon: gallery_icon,
-  //   name: 'Gallery',
-  //   route: 'Gallery',
-  // },
+
   {
-    id: 5,
+    id: 6,
     icon: my_agenda_icon,
     name: 'My Favourites',
     route: 'MyAgenda',
@@ -231,12 +193,6 @@ export const dashboard_array = [
     icon: networking_icon,
     name: 'Networking',
     route: 'Networking',
-  },
-  {
-    id: 7,
-    icon: floor_plan_icon,
-    name: 'Floor Plan',
-    route: 'FloorPlan',
   },
 ];
 
