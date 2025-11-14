@@ -82,6 +82,7 @@ const Exhibition = () => {
             }
             renderItem={({ item, index }) => (
               <ExhibitionCard
+                index={index}
                 item={item}
                 onPressHeart={() => onPressHeart(item, index)}
               />

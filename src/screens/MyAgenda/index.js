@@ -14,6 +14,7 @@ import { styles } from './index.styles';
 import FavoutitesFunctional from './index.function';
 import { COLORS, SIZES } from '../../constants';
 import { TextWeights } from '../../config';
+import ExhibitionCard from '../Exhibition/component/ExhibitionCard';
 
 const MyAgenda = () => {
   const {
@@ -42,9 +43,7 @@ const MyAgenda = () => {
               styles.tab,
               {
                 backgroundColor:
-                  activeTab === 'conference'
-                    ? COLORS.primary
-                    : COLORS.white,
+                  activeTab === 'conference' ? COLORS.primary : COLORS.white,
               },
             ]}
             onPress={() => handleTabChange('conference')}
@@ -53,9 +52,7 @@ const MyAgenda = () => {
               size={SIZES.h13}
               weight={TextWeights.medium}
               text={'Favorite conferences'}
-              color={
-                activeTab === 'conference' ? COLORS.white : COLORS.primary
-              }
+              color={activeTab === 'conference' ? COLORS.white : COLORS.primary}
             />
           </TouchableOpacity>
           <TouchableOpacity
@@ -72,9 +69,7 @@ const MyAgenda = () => {
               size={SIZES.h13}
               weight={TextWeights.medium}
               text={'Favorite Exhibitors'}
-              color={
-                activeTab === 'exhibition' ? COLORS.white : COLORS.primary
-              }
+              color={activeTab === 'exhibition' ? COLORS.white : COLORS.primary}
             />
           </TouchableOpacity>
         </RowView>
@@ -90,14 +85,22 @@ const MyAgenda = () => {
             showsVerticalScrollIndicator={false}
             ListFooterComponent={<SizedBox />}
             ListEmptyComponent={<ListEmptyText text={'No Favourite found'} />}
-            renderItem={({ item }) => (
-              <Cards
-                onPressHeart={() => onPressHeart(item)}
-                isDetail={true}
-                item={item}
-                isFavourite={true}
-              />
-            )}
+            renderItem={({ item }) =>
+              item?.type === 'Exhibition' ? (
+                <ExhibitionCard
+                  item={item}
+                  isFav={true}
+                  onPressHeart={() => onPressHeart(item)}
+                />
+              ) : (
+                <Cards
+                  onPressHeart={() => onPressHeart(item)}
+                  isDetail={true}
+                  item={item}
+                  isFavourite={true}
+                />
+              )
+            }
           />
         )}
       </View>
