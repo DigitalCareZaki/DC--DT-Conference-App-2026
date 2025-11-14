@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Alert, Image, Platform } from 'react-native';
+import { Image } from 'react-native';
 import RNFetchBlob from 'react-native-blob-util';
 import { useDispatch } from 'react-redux';
 import { setToastData } from '../../redux/slices/auth-slice';
@@ -44,8 +44,15 @@ export default () => {
         );
       }, 500);
     } catch (error) {
-      console.log('Download local error:', error);
-      Alert.alert('Error', 'Failed to download image.');
+      setTimeout(() => {
+        dispatch(
+          setToastData({
+            show_toast_modal: true,
+            toast_description: 'Failed to download image.',
+            is_error: true,
+          }),
+        );
+      }, 500);
     }
   };
 

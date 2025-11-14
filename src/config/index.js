@@ -134,7 +134,7 @@ export const drawer_array = user => [
     id: 9,
     name: 'Feedback',
     icon: feedback_icon,
-    route: 'Feedback',
+    isFeedback: true,
   },
   {
     id: 10,

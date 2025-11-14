@@ -27,10 +27,10 @@ const DrawerContent = () => {
     user,
     setShowModal,
     showModal,
-    showDeleteAccModal,
-    setShowDeleteAccModal,
     onPressDeleteAcc,
     auth_loading,
+    feedback,
+    onDrawerItemPress,
   } = DrawerContentFunctional();
 
   return (
@@ -64,20 +64,7 @@ const DrawerContent = () => {
 
           {drawer_array(user)?.map((item, index) => (
             <SingleDrawerView
-              onPress={() => {
-                if (item?.isLogout) {
-                  if (user) setShowModal(true);
-                  else navigate('Login');
-                } else if (item?.isDeleteAccount) setShowDeleteAccModal(true);
-                else
-                  navigate(
-                    (item?.name === 'My Favourites' ||
-                      item?.name === 'Ask A Question') &&
-                      !user
-                      ? 'Login'
-                      : item?.route,
-                  );
-              }}
+              onPress={() => onDrawerItemPress(item)}
               key={item?.id}
               item={item}
             />
@@ -88,23 +75,61 @@ const DrawerContent = () => {
       </View>
       <AskModal
         description={'See you next time! You can log out here.'}
-        onPressClose={() => setShowModal(false)}
+        onPressClose={() =>
+          setShowModal(prev => ({
+            ...prev,
+            logoutModal: false,
+          }))
+        }
         onPressYes={onPressLogout}
         title={'Logout'}
-        visible={showModal}
+        visible={showModal.logoutModal}
         icon={modal_logout_icon}
         btnText={'Logout'}
         isLoading={auth_loading}
       />
       <AskModal
         description={`Are you sure you want to delete your account?${'\n'}This action is permanent and all your data will be lost.`}
-        onPressClose={() => setShowDeleteAccModal(false)}
+        onPressClose={() =>
+          setShowModal(prev => ({
+            ...prev,
+            deleteModal: false,
+          }))
+        }
         onPressYes={onPressDeleteAcc}
         title={'Delete Account'}
-        visible={showDeleteAccModal}
+        visible={showModal.deleteModal}
         icon={delete_icon}
         btnText={'Delete Account'}
         isLoading={auth_loading}
+      />
+
+      <AskModal
+        isEdit={true}
+        description={`You’ve already sent your feedback.`}
+        onPressClose={() =>
+          setShowModal(prev => ({
+            ...prev,
+            feedbackModal: false,
+          }))
+        }
+        onPressYes={() =>
+          setShowModal(prev => ({
+            ...prev,
+            feedbackModal: false,
+          }))
+        }
+        onPressEdit={() => {
+          navigate('Feedback');
+          setShowModal(prev => ({
+            ...prev,
+            feedbackModal: false,
+          }));
+        }}
+        title={'Thanks!'}
+        visible={showModal.feedbackModal}
+        icon={null}
+        btnText={'Ok'}
       />
     </Container>
   );

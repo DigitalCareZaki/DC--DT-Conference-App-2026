@@ -44,7 +44,7 @@ import {
 import { getUserProfile } from '../redux/actions/auth-action';
 import { firebase_messaging } from '../utils/firebase_service';
 import { notificationTopic } from '../config';
-import { getFavourites } from '../redux/actions/main-action';
+import { getFavourites, getFeedBack } from '../redux/actions/main-action';
 import { ToastModal } from '../components';
 
 const MainNavigator = () => {

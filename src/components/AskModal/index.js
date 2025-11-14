@@ -1,8 +1,8 @@
-import { View, Modal, TouchableOpacity } from 'react-native';
+import { Modal, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { styles } from './index.styles';
-import { Button, Icons, Loader, SizedBox, Text } from '..';
-import { close_icon, modal_logout_icon } from '../../assets/icons';
+import { Button, Icons, Loader, RowView, SizedBox, Text } from '..';
+import { close_icon } from '../../assets/icons';
 import { SIZES } from '../../constants';
 import { common_styles } from '../../utils/common_styles';
 import { TextWeights } from '../../config';
@@ -16,6 +16,8 @@ const AskModal = ({
   icon,
   btnText,
   isLoading,
+  isEdit = false,
+  onPressEdit,
 }) => {
   return (
     <Modal animationType="fade" transparent visible={visible}>
@@ -40,7 +42,7 @@ const AskModal = ({
 
           <SizedBox />
 
-          <Icons name={icon} fill="white" />
+          <Icons name={icon} />
 
           <Text
             align={'center'}
@@ -57,11 +59,25 @@ const AskModal = ({
           />
 
           <SizedBox />
-          {isLoading ? (
-            <Loader />
-          ) : (
-            <Button buttonText={btnText} onPress={onPressYes} />
-          )}
+
+          <RowView justifyContent={'center'}>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <Button
+                buttonText={btnText}
+                onPress={onPressYes}
+                style={{ width: isEdit ? '50%' : '100%' }}
+              />
+            )}
+            {isEdit ? (
+              <Button
+                buttonText={'Edit'}
+                onPress={onPressEdit}
+                style={{ width: '50%' }}
+              />
+            ) : null}
+          </RowView>
         </TouchableOpacity>
       </TouchableOpacity>
     </Modal>

@@ -27,8 +27,6 @@ const Cards = ({
     state => state.main,
   );
 
-  console.log('item', item);
-
   return (
     <>
       <TouchableOpacity
