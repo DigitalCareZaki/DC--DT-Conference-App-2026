@@ -39,6 +39,7 @@ export const SIZES = {
   // global sizes
   padding: scale(20),
   padding2: scale(12),
+  normal: scale(16),
 
   // font sizes
   h6: scale(6),
