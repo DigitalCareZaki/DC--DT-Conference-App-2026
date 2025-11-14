@@ -35,6 +35,7 @@ import {
   SocialMediaLinks,
   ExhibitorDetail,
   ImageView,
+  FloorPlan,
 } from '../screens';
 import {
   notificationListener,
@@ -104,6 +105,7 @@ const MainNavigator = () => {
           <Stack.Screen name="SocialMediaLinks" component={SocialMediaLinks} />
           <Stack.Screen name="ExhibitorDetail" component={ExhibitorDetail} />
           <Stack.Screen name="ImageView" component={ImageView} />
+          <Stack.Screen name="FloorPlan" component={FloorPlan} />
         </Stack.Navigator>
       </NavigationContainer>
       <ToastModal

@@ -23,6 +23,7 @@ import {
   logout_icon,
   ask_question_icon,
   delete_icon,
+  floor_plan_icon,
 } from '../assets/icons';
 import { images } from '../constants';
 
@@ -231,6 +232,12 @@ export const dashboard_array = [
     name: 'Networking',
     route: 'Networking',
   },
+  {
+    id: 7,
+    icon: floor_plan_icon,
+    name: 'Floor Plan',
+    route: 'FloorPlan',
+  },
 ];
 
 export const registered_users = [
@@ -263,6 +270,27 @@ export const registered_users = [
     id: 6,
     name: 'Syed Hassan',
     email: 'muhammadali@gmail.com',
+  },
+];
+
+export const maps = [
+  {
+    title: 'Download Hall Map 1',
+  },
+  {
+    title: 'Download Hall Map 2',
+  },
+  {
+    title: 'Download Hall Map 3',
+  },
+  {
+    title: 'Download Hall Map 4',
+  },
+  {
+    title: 'Download Hall Map 5',
+  },
+  {
+    title: 'Download Hall Map 6',
   },
 ];
 

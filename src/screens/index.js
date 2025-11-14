@@ -27,3 +27,4 @@ export { default as SocialMediaLinks } from './SocialMediaLinks';
 export { default as WhoShouldAttend } from './WhoShouldAttend';
 export { default as ExhibitorDetail } from './ExhibitorDetail';
 export { default as ImageView } from './ImageView';
+export { default as FloorPlan } from './FloorPlan';

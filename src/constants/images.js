@@ -12,6 +12,7 @@ import profile_placeholder from '../assets/images/profile_placeholder.png';
 import venue_image from '../assets/images/venue_image.png';
 import counter_backgorund from '../assets/images/counter_backgorund.png';
 import pharma_background_img from '../assets/images/pharma_background_img.png';
+import hall_1 from '../assets/images/hall_1.png';
 
 export default {
   background_image,
@@ -28,4 +29,5 @@ export default {
   counter_backgorund,
   profile_placeholder,
   pharma_background_img,
+  hall_1,
 };

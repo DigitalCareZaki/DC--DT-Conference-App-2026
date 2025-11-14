@@ -1,5 +1,12 @@
 import React from 'react';
-import { Container, Header, ImageView, RowView, Text } from '../../components';
+import {
+  Container,
+  Header,
+  ImageView,
+  RowView,
+  SizedBox,
+  Text,
+} from '../../components';
 import { FlatList, View } from 'react-native';
 import { images, SIZES } from '../../constants';
 import { styles } from './index.styles';
@@ -11,7 +18,7 @@ import DashboardFunctional from './index.function';
 const Dashboard = () => {
   const { daysLeft } = DashboardFunctional();
   return (
-    <Container isTab={true} >
+    <Container isTab={true}>
       <Header isDashBoard isMenu />
 
       <View style={styles.main_view}>
@@ -68,6 +75,7 @@ const Dashboard = () => {
               </View>
             </View>
           )}
+          ListFooterComponent={<SizedBox />}
           showsVerticalScrollIndicator={false}
           numColumns={2}
           keyExtractor={item => item?.id}
