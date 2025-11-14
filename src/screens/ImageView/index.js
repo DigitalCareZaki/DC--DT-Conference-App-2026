@@ -13,7 +13,10 @@ const ImageView = ({ route }) => {
       <Header color={COLORS.white} rightIcon={null} />
 
       <View style={styles.main_view}>
-        <Button buttonText={'Download Hall Map'} onPress={() => onPressDownload(image)} />
+        <Button
+          buttonText={'Download Hall Map'}
+          onPress={() => onPressDownload(image)}
+        />
       </View>
     </Container>
   );

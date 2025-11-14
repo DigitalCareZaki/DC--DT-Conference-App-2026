@@ -13,46 +13,37 @@ export default () => {
   const onPressDownload = async localImg => {
     try {
       const assetUri = Image.resolveAssetSource(localImg).uri;
-      const { config, android } = RNFetchBlob;
       const date = new Date();
-
       const fileName = `image_${date.getTime()}.png`;
-
-      const downloadPath = `${RNFetchBlob.fs.dirs.DownloadDir}/${fileName}`;
 
       const options = {
         addAndroidDownloads: {
           useDownloadManager: true,
           notification: true,
           mime: 'image/png',
-          path: downloadPath,
-          title: fileName,
           description: 'Downloading image...',
+          title: fileName,
           mediaScannable: true,
         },
       };
 
-      await config(options).fetch('GET', assetUri);
+      await RNFetchBlob.config(options).fetch('GET', assetUri);
 
-      setTimeout(() => {
-        dispatch(
-          setToastData({
-            show_toast_modal: true,
-            toast_description: 'Image downloaded successfully!',
-            is_error: false,
-          }),
-        );
-      }, 500);
+      dispatch(
+        setToastData({
+          show_toast_modal: true,
+          toast_description: 'Image downloaded successfully!',
+          is_error: false,
+        }),
+      );
     } catch (error) {
-      setTimeout(() => {
-        dispatch(
-          setToastData({
-            show_toast_modal: true,
-            toast_description: 'Failed to download image.',
-            is_error: true,
-          }),
-        );
-      }, 500);
+      dispatch(
+        setToastData({
+          show_toast_modal: true,
+          toast_description: 'Failed to download image.',
+          is_error: true,
+        }),
+      );
     }
   };
 
