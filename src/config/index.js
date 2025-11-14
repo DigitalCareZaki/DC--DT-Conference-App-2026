@@ -95,7 +95,7 @@ export const drawer_array = user => [
   },
   {
     id: 3,
-    name: 'Conference',
+    name: 'Conferences',
     icon: conferences_icon,
     route: 'Conference',
   },
