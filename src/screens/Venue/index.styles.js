@@ -8,9 +8,9 @@ export const styles = StyleSheet.create({
   },
   top_view: {
     backgroundColor: COLORS.primary,
-    borderRadius: SIZES.padding2 + 4,
+    borderRadius: SIZES.normal,
     marginTop: SIZES.padding,
     paddingVertical: SIZES.padding2,
-    paddingHorizontal: SIZES.padding2
+    paddingHorizontal: SIZES.padding2,
   },
 });

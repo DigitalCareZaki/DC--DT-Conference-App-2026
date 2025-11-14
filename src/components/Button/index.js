@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { Text } from '../index';
+import { Icons, Text } from '../index';
 import { COLORS, SIZES } from '../../constants';
 import { TextWeights } from '../../config';
 
@@ -13,7 +13,7 @@ const CustomButton = ({
   color,
   size,
   weight,
-  bgColor,
+  icon,
 }) => {
   return (
     <TouchableOpacity
@@ -25,11 +25,13 @@ const CustomButton = ({
           backgroundColor: isDisabled
             ? COLORS.background_grey_color
             : COLORS.white,
+          gap: icon ? 10 : 0,
         },
         style,
       ]}
       disabled={isDisabled}
     >
+      {icon ? <Icons name={icon} /> : null}
       <Text
         text={buttonText}
         style={textStyle}

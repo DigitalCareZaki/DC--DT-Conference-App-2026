@@ -8,8 +8,8 @@ export const styles = StyleSheet.create({
   },
   grid: {
     backgroundColor: COLORS.primary,
-    padding: SIZES.padding2 + 4,
-    borderRadius: SIZES.padding2 + 4,
-    gap: SIZES.padding2 + 4,
+    padding: SIZES.normal,
+    borderRadius: SIZES.normal,
+    gap: SIZES.normal,
   },
 });

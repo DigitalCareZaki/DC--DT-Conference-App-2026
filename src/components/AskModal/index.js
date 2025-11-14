@@ -53,7 +53,7 @@ const AskModal = ({
             align={'center'}
             text={description}
             mt={SIZES.padding2 / 2}
-            lineHeight={SIZES.padding2 + 4}
+            lineHeight={SIZES.normal}
           />
 
           <SizedBox />

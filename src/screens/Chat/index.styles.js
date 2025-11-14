@@ -4,7 +4,7 @@ import { COLORS, SIZES } from '../../constants';
 export const styles = StyleSheet.create({
   main_view: {
     flex: 1,
-    paddingHorizontal: SIZES.padding2 + 4,
+    paddingHorizontal: SIZES.normal,
     paddingVertical: SIZES.padding,
   },
   rightBubbleStyle: {
@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
   },
   input_view: {
     flex: 1,
-    height: "90%",
+    height: '90%',
     justifyContent: 'center',
     marginTop: -SIZES.padding2 * 1.2,
     padding: 0,

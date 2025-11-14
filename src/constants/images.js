@@ -13,6 +13,11 @@ import venue_image from '../assets/images/venue_image.png';
 import counter_backgorund from '../assets/images/counter_backgorund.png';
 import pharma_background_img from '../assets/images/pharma_background_img.png';
 import hall_1 from '../assets/images/hall_1.png';
+import hall_2 from '../assets/images/hall_2.png';
+import hall_3 from '../assets/images/hall_3.png';
+import hall_4 from '../assets/images/hall_4.png';
+import hall_5 from '../assets/images/hall_5.png';
+import hall_6 from '../assets/images/hall_6.png';
 
 export default {
   background_image,
@@ -30,4 +35,9 @@ export default {
   profile_placeholder,
   pharma_background_img,
   hall_1,
+  hall_2,
+  hall_3,
+  hall_4,
+  hall_5,
+  hall_6,
 };

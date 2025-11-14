@@ -90,7 +90,7 @@ const Otp = ({ route }) => {
           // onEndEditing={onPressSubmit}
         />
 
-        <SizedBox height={SIZES.padding2 + 4} />
+        <SizedBox height={SIZES.normal} />
 
         <Text
           text={
@@ -112,7 +112,7 @@ const Otp = ({ route }) => {
           size={SIZES.h14}
         />
 
-        <SizedBox height={SIZES.padding2 + 4} />
+        <SizedBox height={SIZES.normal} />
 
         <TouchableOpacity
           onPress={onPressResend}

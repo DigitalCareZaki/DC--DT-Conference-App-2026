@@ -20,13 +20,13 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.primary,
     width: SIZES.padding * 8,
     paddingVertical: SIZES.padding2,
-    borderRadius: SIZES.padding2 + 4,
+    borderRadius: SIZES.normal,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: SIZES.padding2 + 4,
+    paddingHorizontal: SIZES.normal,
   },
   flatlistContainer: {
-    gap: SIZES.padding2 + 4,
+    gap: SIZES.normal,
   },
   tabContainer: {
     backgroundColor: 'white',

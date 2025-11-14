@@ -64,3 +64,4 @@ export { default as delete_icon } from './delete_icon';
 export { default as cross_icon } from './cross_icon';
 export { default as floor_plan_icon } from './floor_plan_icon';
 export { default as success_icon } from './success_icon';
+export { default as zoom_icon } from './zoom_icon';

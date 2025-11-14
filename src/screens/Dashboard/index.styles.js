@@ -17,6 +17,6 @@ export const styles = StyleSheet.create({
   },
   text_view: {
     position: 'absolute',
-    padding: SIZES.padding2 + 4,
+    padding: SIZES.normal,
   },
 });

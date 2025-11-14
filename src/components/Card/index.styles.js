@@ -4,8 +4,8 @@ import { COLORS, SIZES } from '../../constants';
 export const styles = StyleSheet.create({
   grid: {
     backgroundColor: COLORS.primary,
-    padding: SIZES.padding - 4,
-    borderRadius: SIZES.padding - 4,
+    padding: SIZES.normal,
+    borderRadius: SIZES.normal,
   },
 
   gap: {

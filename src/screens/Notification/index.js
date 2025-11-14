@@ -71,7 +71,7 @@ const Notification = () => {
       ) : (
         <View style={styles.main_view}>
           <FlatList
-            contentContainerStyle={{ gap: SIZES.padding2 + 4 }}
+            contentContainerStyle={{ gap: SIZES.normal }}
             renderItem={renderItem}
             data={notifications}
             showsVerticalScrollIndicator={false}

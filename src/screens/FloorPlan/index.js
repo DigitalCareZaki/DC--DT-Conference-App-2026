@@ -1,31 +1,79 @@
 import React from 'react';
-import { Button, Container, Header, SizedBox } from '../../components';
-import { View } from 'react-native';
+import {
+  Button,
+  Container,
+  Header,
+  Icons,
+  RowView,
+  SizedBox,
+} from '../../components';
+import { Modal, View } from 'react-native';
 import { styles } from './index.styles';
 import FloorPlanFunctional from './index.function';
-import { images, SIZES } from '../../constants';
-import { maps } from '../../config';
-import ImageView from '../ImageView';
-import { navigate } from '../../navigation/service';
+import { COLORS, SIZES } from '../../constants';
+import { hallMapList, TextWeights } from '../../config';
+import ImageViewer from 'react-native-image-zoom-viewer';
+import { close_icon, zoom_icon } from '../../assets/icons';
 
 const FloorPlan = () => {
-  const {} = FloorPlanFunctional();
+  const { showModal, setShowModal, setHallImg, hallImg, onPressDownload } =
+    FloorPlanFunctional();
 
   return (
     <Container>
       <Header title={'Floor Plan'} rightIcon={null} />
 
       <View style={styles.main_view}>
-        {maps?.map(item => (
+        {hallMapList?.map(item => (
           <>
             <Button
               buttonText={item.title}
-              onPress={() => navigate('ImageView', { image: images.hall_1 })}
+              onPress={() => {
+                setShowModal(true);
+                setHallImg(item.image);
+              }}
             />
             <SizedBox height={SIZES.normal} />
           </>
         ))}
       </View>
+
+      <Modal transparent visible={showModal}>
+        <View style={{ flex: 1, backgroundColor: COLORS.black }}>
+          <ImageViewer
+            imageUrls={[{ props: { source: hallImg } }]}
+            renderHeader={() => (
+              <RowView
+                onPress={() => setShowModal(false)}
+                style={styles.iconContainer}
+              >
+                <Icons name={close_icon} style={styles.icon} />
+              </RowView>
+            )}
+            enableSwipeDown
+            onSwipeDown={() => setShowModal(false)}
+            onCancel={() => setShowModal(false)}
+            saveToLocalByLongPress={false}
+            index={0}
+            renderIndicator={() => null}
+          />
+          <Button
+            buttonText={'Pinch to Zoom'}
+            style={styles.zoom_btn}
+            color={COLORS.text_gray_color}
+            weight={TextWeights.regular}
+            icon={zoom_icon}
+            isDisabled={true}
+          />
+
+          <Button
+            buttonText={'Download Hall Map'}
+            style={styles.btn}
+            onPress={() => onPressDownload(hallImg)}
+          />
+          <SizedBox />
+        </View>
+      </Modal>
     </Container>
   );
 };

@@ -18,7 +18,7 @@ const SingleSpeakerView = ({ item }) => {
 
   return (
     <View style={styles.main_view}>
-      <RowView gap={SIZES.padding2 + 4}style={common_styles.flex_1}>
+      <RowView gap={SIZES.normal} style={common_styles.flex_1}>
         <ImageView
           width={SIZES.padding * 3.4}
           height={SIZES.padding * 3.4}
@@ -46,7 +46,7 @@ const SingleSpeakerView = ({ item }) => {
           </View>
         </View>
       </RowView>
-      <SizedBox height={SIZES.padding2 + 4} />
+      <SizedBox height={SIZES.normal} />
       <Button
         buttonText={'View Details'}
         style={{ height: SIZES.padding * 1.6 }}

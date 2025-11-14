@@ -273,24 +273,30 @@ export const registered_users = [
   },
 ];
 
-export const maps = [
+export const hallMapList = [
   {
     title: 'Download Hall Map 1',
+    image: images.hall_1,
   },
   {
     title: 'Download Hall Map 2',
+    image: images.hall_2,
   },
   {
     title: 'Download Hall Map 3',
+    image: images.hall_3,
   },
   {
     title: 'Download Hall Map 4',
+    image: images.hall_4,
   },
   {
     title: 'Download Hall Map 5',
+    image: images.hall_5,
   },
   {
     title: 'Download Hall Map 6',
+    image: images.hall_6,
   },
 ];
 

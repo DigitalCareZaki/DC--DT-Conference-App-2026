@@ -81,7 +81,7 @@ const SpeakerModal = ({ visible, setVisibility, data }) => {
             text={data?.description}
             align={'center'}
             mt={SIZES.padding2}
-            lineHeight={SIZES.padding2 + 4}
+            lineHeight={SIZES.normal}
           />
         </TouchableOpacity>
       </TouchableOpacity>

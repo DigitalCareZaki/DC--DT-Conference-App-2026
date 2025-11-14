@@ -58,7 +58,7 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
       />
 
       <Text
-        mt={SIZES.padding2 + 4}
+        mt={SIZES.normal}
         weight={TextWeights.medium}
         size={SIZES.h14}
         lineHeight={SIZES.padding}
@@ -77,7 +77,7 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
         />
       </View>
 
-      <SizedBox height={SIZES.padding2 + 4} />
+      <SizedBox height={SIZES.normal} />
 
       <View>
         <Text

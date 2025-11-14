@@ -4,15 +4,15 @@ import { COLORS, SIZES } from '../../constants';
 export const styles = StyleSheet.create({
   main_view: {
     flex: 1,
-    paddingHorizontal: SIZES.padding2 + 4,
+    paddingHorizontal: SIZES.normal,
     paddingVertical: SIZES.padding,
     marginBottom: SIZES.padding,
   },
   grid: {
     backgroundColor: COLORS.primary,
     paddingVertical: SIZES.padding + 4,
-    paddingHorizontal: SIZES.padding2 + 4,
-    borderRadius: SIZES.padding2 + 4,
+    paddingHorizontal: SIZES.normal,
+    borderRadius: SIZES.normal,
   },
   width: {
     width: '100%',
@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   flatList: {
-    gap: SIZES.padding2 + 4,
+    gap: SIZES.normal,
   },
   emptyContainer: {
     flex: 1,

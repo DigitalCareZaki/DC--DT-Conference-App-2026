@@ -13,8 +13,8 @@ export const styles = StyleSheet.create({
   grid: {
     backgroundColor: COLORS.primary,
     paddingVertical: SIZES.padding + 4,
-    paddingHorizontal: SIZES.padding2 + 4,
-    borderRadius: SIZES.padding2 + 4,
+    paddingHorizontal: SIZES.normal,
+    borderRadius: SIZES.normal,
     alignItems: 'center',
   },
   input: {
