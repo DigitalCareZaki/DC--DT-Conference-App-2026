@@ -39,9 +39,15 @@ const FloorPlan = () => {
       </View>
 
       <Modal transparent visible={showModal}>
-        <View style={{ flex: 1, backgroundColor: COLORS.black }}>
+        <View style={styles.modal_view}>
           <ImageViewer
-            imageUrls={[{ props: { source: hallImg } }]}
+            imageUrls={[
+              {
+                props: {
+                  source: hallImg,
+                },
+              },
+            ]}
             renderHeader={() => (
               <RowView
                 onPress={() => setShowModal(false)}

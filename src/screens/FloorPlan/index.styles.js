@@ -28,4 +28,5 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: COLORS.white,
   },
+  modal_view: { flex: 1, backgroundColor: COLORS.black },
 });
