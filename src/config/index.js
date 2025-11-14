@@ -108,7 +108,7 @@ export const drawer_array = user => [
 
   {
     id: 5,
-    name: 'ContactUs',
+    name: 'Contact Us',
     icon: call_icon,
     route: 'Contact',
   },

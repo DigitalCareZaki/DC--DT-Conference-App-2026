@@ -17,10 +17,7 @@ const SearchBar = ({
   editable,
 }) => {
   return (
-    <RowView
-      onPress={onPress}
-      style={[styles.main_view, style]}
-    >
+    <RowView onPress={onPress} style={[styles.main_view, style]}>
       <TextInput
         onChangeText={onChangeText}
         placeholder={placeholder}
