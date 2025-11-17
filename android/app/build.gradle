@@ -79,12 +79,12 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.conference.dt"
+    namespace "com.pharmaasia"
     defaultConfig {
-        applicationId "com.conference.dt"
+        applicationId "com.pharmaasia"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 7
+        versionCode 8
         versionName "1.0"
     }
     signingConfigs {

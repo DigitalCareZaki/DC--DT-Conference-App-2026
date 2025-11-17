@@ -1,4 +1,4 @@
-package com.conference.dt
+package com.pharmaasia
 
 import android.app.Application
 import com.facebook.react.PackageList

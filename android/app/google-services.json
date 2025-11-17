@@ -1,64 +1,56 @@
 {
   "project_info": {
-    "project_number": "158098280930",
-    "project_id": "conferenceapp-95d84",
-    "storage_bucket": "conferenceapp-95d84.firebasestorage.app"
+    "project_number": "352568168192",
+    "project_id": "pharma-asia",
+    "storage_bucket": "pharma-asia.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:158098280930:android:42ff98bfb7a9fb57da69bb",
+        "mobilesdk_app_id": "1:352568168192:android:e3d4bf6d08894fa395ade5",
         "android_client_info": {
-          "package_name": "com.conference.dt"
+          "package_name": "com.pharmaasia"
         }
       },
       "oauth_client": [
         {
-          "client_id": "158098280930-0376i3thtif7a774271rp8cifvo495nb.apps.googleusercontent.com",
+          "client_id": "352568168192-aiqc7ce1l8tinc2k2mcdke9uolsbggag.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.conference.dt",
-            "certificate_hash": "f623c54823f1294b880d6a0cf26e5ed106c15287"
+            "package_name": "com.pharmaasia",
+            "certificate_hash": "6fc7e55a26d88b38e9cfa1a930237e5f6dfe9a25"
           }
         },
         {
-          "client_id": "158098280930-3gbdojqg8eoggaopgc3jg5fg1fhj320d.apps.googleusercontent.com",
+          "client_id": "352568168192-ihb2usc23eal0gim82a81ge141m322vq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.conference.dt",
+            "package_name": "com.pharmaasia",
             "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
           }
         },
         {
-          "client_id": "158098280930-5milrknurih5h9sdpi1v3n57ihacibej.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.conference.dt",
-            "certificate_hash": "f315d3bc1ae07c989280e918388ca2d42d372767"
-          }
-        },
-        {
-          "client_id": "158098280930-ulntsp6ghe3sgkpl9vcltbfp06loq8ga.apps.googleusercontent.com",
+          "client_id": "352568168192-6io1p6pg012r79p32o43409s44gad1m3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAhlFqGLWbTh6yXIiOYJVR6pX3hvKl2j6w"
+          "current_key": "AIzaSyA8MlElwXAlOAu_6IUuQurM_6cQFHQrxQw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "158098280930-ulntsp6ghe3sgkpl9vcltbfp06loq8ga.apps.googleusercontent.com",
+              "client_id": "352568168192-6io1p6pg012r79p32o43409s44gad1m3.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "158098280930-116b6pitgsi1esctcp1soh8vi47jadeo.apps.googleusercontent.com",
+              "client_id": "352568168192-mu9h69mgbcbm7tbcs7f80tcl0kcq49ue.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.conference.dt"
+                "bundle_id": "com.pharmaasia"
               }
             }
           ]
