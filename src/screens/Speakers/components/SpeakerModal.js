@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { COLORS, SIZES } from '../../../constants';
+import { COLORS, images, SIZES } from '../../../constants';
 import { ImageView, RowView, Text } from '../../../components';
 import FastImage from 'react-native-fast-image';
 import { TextWeights } from '../../../config';
@@ -37,6 +37,7 @@ const SpeakerModal = ({ visible, setVisibility, data }) => {
             url={data?.profileImage}
             style={styles.image}
             resizeMode={FastImage.resizeMode.cover}
+            image={images.profile_placeholder}
           />
           <Text
             text={data?.name}
@@ -46,7 +47,7 @@ const SpeakerModal = ({ visible, setVisibility, data }) => {
             align={'center'}
           />
 
-          <RowView style={common_styles.flex_1}>
+          {/* <RowView style={common_styles.flex_1}>
             <View style={[styles.text_view, common_styles.flex_1]}>
               <Text
                 size={SIZES.h12}
@@ -65,7 +66,7 @@ const SpeakerModal = ({ visible, setVisibility, data }) => {
                 numberOfLines={2}
               />
             </View>
-          </RowView>
+          </RowView> */}
 
           <Text
             size={SIZES.h12}
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary,
     borderRadius: SIZES.padding,
     padding: SIZES.padding,
-    height: SIZES.height * 0.4,
+    height: SIZES.height * 0.3,
     alignItems: 'center',
   },
 

@@ -5,7 +5,7 @@ export default () => {
   const { user } = useSelector(state => state.constant);
 
   const onSubmit = values => {
-    const url = `mailto:${'info@globaltechconf.com'}?subject=${encodeURIComponent(
+    const url = `mailto:${'info@ecgateway.net'}?subject=${encodeURIComponent(
       values?.subject,
     )}&body=${encodeURIComponent(values?.message)}`;
 
