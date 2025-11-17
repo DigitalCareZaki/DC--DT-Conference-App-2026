@@ -24,7 +24,7 @@ const ContactCard = () => {
           <Text
             weight={TextWeights.medium}
             mt={SIZES.padding2 / 2}
-            text={'info@globaltechconf.com'}
+            text={'info@ecgateway.net'}
           />
         </View>
 

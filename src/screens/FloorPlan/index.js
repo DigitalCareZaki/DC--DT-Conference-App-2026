@@ -30,7 +30,7 @@ const FloorPlan = () => {
               buttonText={item.title}
               onPress={() => {
                 setShowModal(true);
-                setHallImg(item.image);
+                setHallImg(item);
               }}
             />
             <SizedBox height={SIZES.normal} />
@@ -44,7 +44,7 @@ const FloorPlan = () => {
             imageUrls={[
               {
                 props: {
-                  source: hallImg,
+                  source: hallImg?.image,
                 },
               },
             ]}
@@ -75,7 +75,7 @@ const FloorPlan = () => {
           <Button
             buttonText={'Download Hall Map'}
             style={styles.btn}
-            onPress={() => onPressDownload(hallImg)}
+            onPress={() => onPressDownload(hallImg?.url)}
           />
           <SizedBox />
         </View>
