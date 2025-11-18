@@ -19,4 +19,28 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     padding: SIZES.normal,
   },
+  imageWrapper: {
+    position: 'relative',
+  },
+  dotsOverlay: {
+    position: 'absolute',
+    bottom: SIZES.padding2 - 2,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  dot: {
+    width: SIZES.padding2,
+    height: SIZES.padding2 - 6,
+    borderRadius: SIZES.padding2 / 2,
+    marginHorizontal: SIZES.radius_sm,
+  },
+  dotActive: {
+    backgroundColor: COLORS.primary,
+    width: SIZES.padding,
+  },
+  dotInactive: {
+    backgroundColor: COLORS.background_grey_color,
+  },
 });

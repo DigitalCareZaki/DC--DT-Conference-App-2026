@@ -26,7 +26,7 @@ import {
   BasicInformation,
   SelectCategory,
   SetupPassword,
-  SocialMedialinks,
+  SocialMediaLinks,
 } from './components';
 
 const Signup = () => {
@@ -105,7 +105,7 @@ const Signup = () => {
               />
             )}
             {selectedIndex === 2 && (
-              <SocialMedialinks
+              <SocialMediaLinks
                 formikRef={socialMediaLinksRef}
                 onSubmit={submitSocialMedia}
                 data={signUpData}

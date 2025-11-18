@@ -1,6 +1,6 @@
 import { Keyboard } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { navigate } from '../../navigation/service';
+import { navigate, resetNavigationStack } from '../../navigation/service';
 import { googleLogin, login } from '../../redux/actions/auth-action';
 import { getGoogleToken } from '../../utils/functions';
 import { setToastData } from '../../redux/slices/auth-slice';
@@ -46,7 +46,9 @@ export default () => {
         return;
       }
 
-      const data = await getGoogleToken();
+      const { data, hasSignedInBefore } = await getGoogleToken();
+
+      console.log('hasSignedInBefore', hasSignedInBefore);
 
       if (data?.user) {
         const apiData = {
@@ -54,7 +56,15 @@ export default () => {
           role: values?.role,
         };
 
-        dispatch(googleLogin(apiData));
+        dispatch(
+          googleLogin(apiData, () => {
+            if (hasSignedInBefore) {
+              resetNavigationStack('DrawerNavigation');
+            } else {
+              navigate('BasicInformation');
+            }
+          }),
+        );
       }
     } catch (error) {}
   };
