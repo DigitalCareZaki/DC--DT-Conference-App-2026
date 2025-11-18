@@ -80,6 +80,33 @@ export const signup_steps = [
   'Agreement & Submission',
 ];
 
+export const images_array = [
+  {
+    id: 1,
+    image: images.counter_backgorund,
+  },
+  {
+    id: 2,
+    image: images.background_image,
+  },
+  {
+    id: 3,
+    image: images.gallery_img_1,
+  },
+  {
+    id: 4,
+    image: images.counter_backgorund,
+  },
+  {
+    id: 5,
+    image: images.background_image,
+  },
+  {
+    id: 6,
+    image: images.background_image,
+  },
+];
+
 export const drawer_array = user => [
   {
     id: 1,
@@ -253,7 +280,7 @@ export const hallMapList = [
   {
     title: 'Download Hall Map 5',
     image: images.hall_5,
-    url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1763176706/hall_5_wqusbs.png'
+    url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1763176706/hall_5_wqusbs.png',
   },
   {
     title: 'Download Hall Map 6',
