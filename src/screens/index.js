@@ -28,3 +28,4 @@ export { default as WhoShouldAttend } from './WhoShouldAttend';
 export { default as ExhibitorDetail } from './ExhibitorDetail';
 export { default as ImageView } from './ImageView';
 export { default as FloorPlan } from './FloorPlan';
+export { default as BasicInformation } from './BasicInformation';
