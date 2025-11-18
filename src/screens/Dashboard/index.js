@@ -1,22 +1,15 @@
 import React from 'react';
-import {
-  Container,
-  Header,
-  ImageView,
-  RowView,
-  SizedBox,
-  Text,
-} from '../../components';
+import { Container, Header, ImageView, SizedBox } from '../../components';
 import { FlatList, View } from 'react-native';
-import { images, SIZES } from '../../constants';
+import { SIZES } from '../../constants';
 import { styles } from './index.styles';
-import { dashboard_array, images_array, TextWeights } from '../../config';
+import { dashboard_array } from '../../config';
 import FastImage from 'react-native-fast-image';
 import { SingleTabView } from './components';
 import DashboardFunctional from './index.function';
 
 const Dashboard = () => {
-  const { daysLeft, activeIndex, onScroll } = DashboardFunctional();
+  const { activeIndex, onScroll, banners } = DashboardFunctional();
 
   return (
     <Container isTab={true}>
@@ -25,7 +18,7 @@ const Dashboard = () => {
       <View style={styles.main_view}>
         <View style={styles.imageWrapper}>
           <FlatList
-            data={images_array}
+            data={banners}
             pagingEnabled
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -37,14 +30,14 @@ const Dashboard = () => {
               return (
                 <View style={styles.counter_card}>
                   <ImageView
-                    image={item?.image}
+                    url={item?.media}
                     width={SIZES.width * 0.87}
                     height={SIZES.padding * 8}
                     resizeMode={FastImage.resizeMode.cover}
                     radius={SIZES.padding2}
                   />
 
-                  <View style={styles.text_view}>
+                  {/* <View style={styles.text_view}>
                     {daysLeft === 0 ? (
                       <Text
                         text={`The biggest health${'\n'}sector event of${'\n'}pakistan has started${'\n'}Join today at the Expo${'\n'}Center`}
@@ -81,13 +74,13 @@ const Dashboard = () => {
                         />
                       </>
                     )}
-                  </View>
+                  </View> */}
                 </View>
               );
             }}
           />
           <View style={styles.dotsOverlay}>
-            {images_array?.map((_, index) => (
+            {banners?.map((_, index) => (
               <View
                 key={index}
                 style={[

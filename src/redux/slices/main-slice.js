@@ -18,6 +18,7 @@ const initialState = {
   selected_item_index: null,
   single_user: null,
   notifications: null,
+  banners: [],
 };
 
 export const mainSlice = createSlice({
@@ -76,6 +77,9 @@ export const mainSlice = createSlice({
     setNotifications: (state, action) => {
       state.notifications = action.payload;
     },
+    setBanners: (state, action) => {
+      state.banners = action.payload;
+    },
   },
 });
 
@@ -97,6 +101,7 @@ export const {
   setSelectedItemIndex,
   setSingleUser,
   setNotifications,
+  setBanners,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

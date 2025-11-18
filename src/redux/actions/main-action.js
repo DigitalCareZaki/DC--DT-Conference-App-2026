@@ -4,6 +4,7 @@ import { requestHandler } from '../../utils/functions';
 import { setTotalItems } from '../slices/auth-slice';
 import { setUser } from '../slices/constant-slice';
 import {
+  setBanners,
   setConferenceDetail,
   setConferences,
   setDetailLoading,
@@ -173,9 +174,8 @@ export const addRemoveFav = data => {
         setLoading: setFavouriteLoading,
         apiService: apiServices.addRemoveFavourite,
         param_data: data,
-        onDone: (res) => {
-          dispatch(getFavourites())
-        
+        onDone: res => {
+          dispatch(getFavourites());
         },
       }),
     );
@@ -273,6 +273,20 @@ export const getNotifications = (params, array, onDone) => {
             dispatch(setNotifications([...array, ...(res?.data?.data ?? [])]));
           }
           onDone && onDone(res?.data?.pagination?.hasNextPage);
+        },
+      }),
+    );
+  };
+};
+
+export const getBanners = () => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setListLoading,
+        apiService: apiServices.getBanner,
+        onDone: async res => {
+          dispatch(setBanners(res?.data?.data ?? []));
         },
       }),
     );

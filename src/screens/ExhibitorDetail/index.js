@@ -11,7 +11,8 @@ import { navigate } from '../../navigation/service';
 
 const ExhibitorDetail = ({ route }) => {
   const item = route?.params?.item;
-  const { handleOpenMaps, onPressHeart, onPressLink } = ExhibitionDetailFunctional(item);
+  const { handleOpenMaps, onPressHeart, onPressLink } =
+    ExhibitionDetailFunctional(item);
 
   return (
     <Container>
@@ -19,20 +20,31 @@ const ExhibitorDetail = ({ route }) => {
 
       <View style={styles.main_view}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <SingleExhibitorView item={item} onPressHeart={onPressHeart} onPressLink={onPressLink} />
-
-          <Text
-            mt={SIZES.padding2}
-            text={'Hall Map'}
-            size={SIZES.h18}
-            weight={TextWeights.medium}
+          <SingleExhibitorView
+            item={item}
+            onPressHeart={onPressHeart}
+            onPressLink={onPressLink}
           />
 
-          <TouchableOpacity activeOpacity={0.6} onPress={() => navigate('ImageView', { image: item?.location })}>
+          {item?.location ? (
+            <Text
+              mt={SIZES.padding2}
+              text={'Hall Map'}
+              size={SIZES.h18}
+              weight={TextWeights.medium}
+            />
+          ) : null}
+
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() =>
+              item?.location && navigate('ImageView', { image: item?.location })
+            }
+          >
             <FastImage
               style={styles.map_view}
               resizeMode={FastImage.resizeMode.cover}
-              source={{uri: item?.location}}
+              source={{ uri: item?.location }}
             >
               {/* <Text
                 weight={TextWeights.medium}

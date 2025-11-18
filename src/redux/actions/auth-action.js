@@ -54,7 +54,8 @@ export const login = (data, onDone, onError) => {
   };
 };
 
-export const googleLogin = (data, onDone) => {
+// export const googleLogin = (data, onDone) => {
+export const googleLogin = data => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -65,7 +66,8 @@ export const googleLogin = (data, onDone) => {
         onDone: async res => {
           await setToken(res?.data?.accessToken);
           dispatch(setUser(res?.data?.user));
-          onDone && onDone();
+          resetNavigationStack('DrawerNavigation');
+          // onDone && onDone();
         },
       }),
     );

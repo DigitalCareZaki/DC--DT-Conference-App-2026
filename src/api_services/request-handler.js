@@ -28,6 +28,7 @@ export const SERVICE_URLS = {
   updateLinks: '/user/update',
   verifyOtp: '/user/verify-otp',
   askQuestion: '/question',
+  getBanner: '/gallery?limit=100',
 };
 
 // Auth
@@ -57,6 +58,7 @@ const updateLinks = data => put(SERVICE_URLS.updateLinks, data);
 const askQuestion = data => post(SERVICE_URLS.askQuestion, data);
 const getSingleUser = data => get(SERVICE_URLS.singleUser + data);
 const deleteAccount = data => del(SERVICE_URLS.deleteAccount + data);
+const getBanner = data => get(SERVICE_URLS.getBanner);
 
 const apiServices = {
   // Auth
@@ -86,6 +88,7 @@ const apiServices = {
   deleteAccount,
   getSingleUser,
   getNotifications,
+  getBanner,
 };
 
 export default apiServices;

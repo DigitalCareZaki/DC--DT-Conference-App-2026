@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
     right: 0,
     flexDirection: 'row',
     justifyContent: 'center',
+    gap: SIZES.padding2 * 0.5,
   },
   dot: {
     width: SIZES.padding2,

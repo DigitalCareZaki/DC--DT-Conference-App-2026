@@ -1,15 +1,17 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { SIZES } from '../../constants';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBanners } from '../../redux/actions/main-action';
 
 export default () => {
+  const dispatch = useDispatch();
+
+  const { list_loading, banners } = useSelector(state => state.main);
+
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const daysLeft = useMemo(() => {
-    const today = new Date();
-    const eventDate = new Date(2025, 11, 2);
-    const diffTime = eventDate.getTime() - today.getTime();
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays > 0 ? diffDays : 0;
+  useEffect(() => {
+    dispatch(getBanners());
   }, []);
 
   const onScroll = e => {
@@ -21,9 +23,8 @@ export default () => {
   };
 
   return {
-    daysLeft,
-    setActiveIndex,
     activeIndex,
     onScroll,
+    banners,
   };
 };

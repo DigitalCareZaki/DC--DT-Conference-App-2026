@@ -46,7 +46,8 @@ export default () => {
         return;
       }
 
-      const { data, hasSignedInBefore } = await getGoogleToken();
+      const data = await getGoogleToken();
+      // const { data, hasSignedInBefore } = await getGoogleToken();
 
       console.log('hasSignedInBefore', hasSignedInBefore);
 
@@ -56,15 +57,16 @@ export default () => {
           role: values?.role,
         };
 
-        dispatch(
-          googleLogin(apiData, () => {
-            if (hasSignedInBefore) {
-              resetNavigationStack('DrawerNavigation');
-            } else {
-              navigate('BasicInformation');
-            }
-          }),
-        );
+        dispatch(googleLogin(apiData));
+        // dispatch(
+        //   googleLogin(apiData, () => {
+        //     if (hasSignedInBefore) {
+        //       resetNavigationStack('DrawerNavigation');
+        //     } else {
+        //       navigate('BasicInformation');
+        //     }
+        //   }),
+        // );
       }
     } catch (error) {}
   };

@@ -45,5 +45,6 @@ export const styles = StyleSheet.create({
   input: {
     marginBottom: 0,
     marginTop: 0,
+    backgroundColor: COLORS.transparent,
   },
 });
