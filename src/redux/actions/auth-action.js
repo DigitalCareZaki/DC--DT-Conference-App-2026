@@ -54,7 +54,7 @@ export const login = (data, onDone, onError) => {
   };
 };
 
-export const googleLogin = data => {
+export const googleLogin = (data, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
@@ -65,7 +65,7 @@ export const googleLogin = data => {
         onDone: async res => {
           await setToken(res?.data?.accessToken);
           dispatch(setUser(res?.data?.user));
-          resetNavigationStack('DrawerNavigation');
+          onDone && onDone();
         },
       }),
     );
@@ -112,7 +112,7 @@ export const sendOtp = (data, onDone) => {
       requestHandler({
         setLoading: setAuthLoading,
         param_data: data,
-        isSuccessMessage:true,
+        isSuccessMessage: true,
         apiService: apiServices.sendOtp,
         onDone: async res => {
           dispatch(setUserEmail(res?.data?.email));

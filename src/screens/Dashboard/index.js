@@ -98,6 +98,7 @@ const Dashboard = () => {
             ))}
           </View>
         </View>
+        <SizedBox height={SIZES.padding2} />
         <FlatList
           data={dashboard_array}
           columnWrapperStyle={styles.list}

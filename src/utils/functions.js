@@ -11,6 +11,7 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { setUser } from '../redux/slices/constant-slice';
 import { setToastData } from '../redux/slices/auth-slice';
+import { navigate, resetNavigationStack } from '../navigation/service';
 
 export const url_regix = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/i;
 
@@ -19,24 +20,28 @@ export const capitalize = str => str?.charAt(0).toUpperCase() + str?.slice(1);
 
 export const getGoogleToken = async () => {
   try {
-    const isGoogleSignin = await GoogleSignin.hasPreviousSignIn();
-    const googleuser = await GoogleSignin.getCurrentUser();
-    if (isGoogleSignin) {
-      await GoogleSignin.revokeAccess();
-      await GoogleSignin.signOut();
-    }
-  } catch (error) {}
-
-  try {
     GoogleSignin.configure({
-      scopes: ['profile', 'email'], // what API you want to access on behalf of the user, default is email and profile
+      scopes: ['profile', 'email'],
       webClientId: GOOGLE_WEB_CLIENT_ID,
       offlineAccess: true,
     });
-    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-    const { data } = await GoogleSignin.signIn();
-    return data;
+
+    const hasSignedInBefore = await GoogleSignin.hasPreviousSignIn();
+    let data;
+    if (hasSignedInBefore) {
+      data = await GoogleSignin.getCurrentUser();
+      console.log('Existing Google user:', data);
+    } else {
+      await GoogleSignin.hasPlayServices({
+        showPlayServicesUpdateDialog: true,
+      });
+      data = await GoogleSignin.signIn();
+      console.log('New Google user:', data);
+    }
+
+    return { data, hasSignedInBefore };
   } catch (error) {
+    console.log('Google login error:', error);
     return null;
   }
 };
@@ -176,6 +181,7 @@ export function requestHandler({
     try {
       setLoading && dispatch(setLoading(true));
       const response = await apiService(param_data);
+      console.log('response', response);
       if (!response?.data?.error) {
         setData && dispatch(setData(response?.data?.data));
         isSuccessMessage &&
