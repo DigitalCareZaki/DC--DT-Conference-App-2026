@@ -1,34 +1,31 @@
 import React from 'react';
 import {
   Modal,
-  ScrollView,
   StyleSheet,
   TouchableOpacity,
-  View,
 } from 'react-native';
 import { COLORS, images, SIZES } from '../../../constants';
 import { ImageView, RowView, Text } from '../../../components';
 import FastImage from 'react-native-fast-image';
 import { TextWeights } from '../../../config';
-import { common_styles } from '../../../utils/common_styles';
 
-const SpeakerModal = ({ visible, setVisibility, data }) => {
+const SpeakerModal = ({ visible, onPressClose, data }) => {
   return (
     <Modal
       transparent
       animationType="slide"
       visible={visible}
-      onRequestClose={() => setVisibility(false)}
+      onRequestClose={onPressClose}
     >
       <TouchableOpacity
-        onPress={() => setVisibility(false)}
+        onPress={onPressClose}
         activeOpacity={1}
         style={styles.main_view}
       >
         <TouchableOpacity
           activeOpacity={1}
-          onPress={() => {}}
-          style={styles.modal_view}
+          onPress={() => { }}
+          style={styles.sub_view}
         >
           <ImageView
             width={120}
@@ -100,7 +97,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  modal_view: {
+  sub_view: {
     width: SIZES.width * 0.9,
     backgroundColor: COLORS.primary,
     borderRadius: SIZES.padding,
@@ -108,7 +105,6 @@ const styles = StyleSheet.create({
     height: SIZES.height * 0.3,
     alignItems: 'center',
   },
-
   text_view: {
     backgroundColor: COLORS.white,
     borderRadius: SIZES.padding,

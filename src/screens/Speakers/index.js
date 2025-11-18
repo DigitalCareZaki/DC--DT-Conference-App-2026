@@ -12,6 +12,7 @@ import { styles } from './index.styles';
 import { SingleSpeakerView } from './components';
 import SpeakerFunctional from './index.function';
 import { searchArray } from '../../utils/functions';
+import { SIZES } from '../../constants';
 
 const Speakers = () => {
   const { list_loading, search, setSearch, onRefresh, refreshing, speakers } =
@@ -28,8 +29,6 @@ const Speakers = () => {
           placeholder={'Search by name, specialty, institute'}
         />
 
-        <SizedBox />
-
         {list_loading ? (
           <Loader />
         ) : (
@@ -39,7 +38,8 @@ const Speakers = () => {
             keyExtractor={(item, index) => index?.toString()}
             renderItem={({ item, index }) => <SingleSpeakerView item={item} />}
             showsVerticalScrollIndicator={false}
-            ListHeaderComponent={<SizedBox />}
+            ListHeaderComponent={<SizedBox height={SIZES.padding2} />}
+            ListFooterComponent={<SizedBox />}
             refreshControl={
               <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }

@@ -14,7 +14,12 @@ import SpeakerModal from './SpeakerModal';
 import { common_styles } from '../../../utils/common_styles';
 
 const SingleSpeakerView = ({ item }) => {
-  const [modalVisibility, setModalVisibility] = useState(false);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModal = val => setShowModal(val)
+
+  console.log("showModal" ,showModal)
 
   return (
     <View style={styles.main_view}>
@@ -50,12 +55,12 @@ const SingleSpeakerView = ({ item }) => {
       <Button
         buttonText={'View Details'}
         style={{ height: SIZES.padding * 1.6 }}
-        onPress={() => setModalVisibility(true)}
+        onPress={() => handleModal(true)}
       />
 
       <SpeakerModal
-        visible={modalVisibility}
-        setVisibility={setModalVisibility}
+        visible={showModal}
+        onPressClose={() => handleModal(false)}
         data={item}
       />
     </View>
