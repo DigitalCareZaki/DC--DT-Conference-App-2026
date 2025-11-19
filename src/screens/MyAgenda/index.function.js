@@ -32,7 +32,9 @@ export default () => {
     dispatch(addRemoveFav(apiData));
   };
 
-  const filteredFavourites = favourites.filter(item => activeTab === item?.type?.toLowerCase());
+  const filteredFavourites = favourites?.filter(
+    item => activeTab === item?.type?.toLowerCase(),
+  );
 
   return {
     favourites,
