@@ -1,6 +1,14 @@
 import React from 'react';
-import { Container, Header, SizedBox, Text } from '../../components';
-import { ScrollView, TouchableOpacity, View } from 'react-native';
+import {
+  Button,
+  Container,
+  Header,
+  Icons,
+  RowView,
+  SizedBox,
+  Text,
+} from '../../components';
+import { Modal, ScrollView, TouchableOpacity, View } from 'react-native';
 import { COLORS, SIZES } from '../../constants';
 import { styles } from './index.styles';
 import { TextWeights } from '../../config';
@@ -8,11 +16,19 @@ import FastImage from 'react-native-fast-image';
 import ExhibitionDetailFunctional from './index.function';
 import { SingleExhibitorView } from './components';
 import { navigate } from '../../navigation/service';
+import ImageViewer from 'react-native-image-zoom-viewer';
+import { close_icon, zoom_icon } from '../../assets/icons';
 
 const ExhibitorDetail = ({ route }) => {
   const item = route?.params?.item;
-  const { handleOpenMaps, onPressHeart, onPressLink } =
-    ExhibitionDetailFunctional(item);
+  const {
+    handleOpenMaps,
+    onPressHeart,
+    onPressLink,
+    showModal,
+    setShowModal,
+    onPressDownload,
+  } = ExhibitionDetailFunctional(item);
 
   return (
     <Container>
@@ -37,8 +53,9 @@ const ExhibitorDetail = ({ route }) => {
 
           <TouchableOpacity
             activeOpacity={0.6}
-            onPress={() =>
-              item?.location && navigate('ImageView', { image: item?.location })
+            onPress={
+              () => setShowModal(true)
+              // item?.location && navigate('ImageView', { image: item?.location })
             }
           >
             <FastImage
@@ -63,6 +80,47 @@ const ExhibitorDetail = ({ route }) => {
           <SizedBox />
         </ScrollView>
       </View>
+
+      <Modal transparent visible={showModal}>
+        <View style={styles.modal_view}>
+          <ImageViewer
+            imageUrls={[
+              {
+                url: item?.location,
+              },
+            ]}
+            renderHeader={() => (
+              <RowView
+                onPress={() => setShowModal(false)}
+                style={styles.iconContainer}
+              >
+                <Icons name={close_icon} style={styles.icon} />
+              </RowView>
+            )}
+            enableSwipeDown
+            onSwipeDown={() => setShowModal(false)}
+            onCancel={() => setShowModal(false)}
+            saveToLocalByLongPress={false}
+            index={0}
+            renderIndicator={() => null}
+          />
+          <Button
+            buttonText={'Pinch to Zoom'}
+            style={styles.zoom_btn}
+            color={COLORS.text_gray_color}
+            weight={TextWeights.regular}
+            icon={zoom_icon}
+            isDisabled={true}
+          />
+
+          <Button
+            buttonText={'Download Hall Map'}
+            style={styles.btn}
+            onPress={() => onPressDownload(item?.location)}
+          />
+          <SizedBox />
+        </View>
+      </Modal>
     </Container>
   );
 };
