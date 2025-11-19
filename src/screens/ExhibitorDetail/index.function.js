@@ -12,6 +12,8 @@ export default item => {
 
   const { user } = useSelector(state => state.constant);
 
+  const [showModal, setShowModal] = useState(false);
+
   const handleOpenMaps = () => {
     const latitude = 24.9019;
     const longitude = 67.0767;
