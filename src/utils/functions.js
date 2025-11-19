@@ -38,21 +38,6 @@ export const getGoogleToken = async () => {
     await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
     const { data } = await GoogleSignin.signIn();
     return data;
-
-    // const hasSignedInBefore = await GoogleSignin.hasPreviousSignIn();
-    // let data;
-    // if (hasSignedInBefore) {
-    //   data = await GoogleSignin.getCurrentUser();
-    //   console.log('Existing Google user:', data);
-    // } else {
-    //   await GoogleSignin.hasPlayServices({
-    //     showPlayServicesUpdateDialog: true,
-    //   });
-    //   data = await GoogleSignin.signIn();
-    //   console.log('New Google user:', data);
-    // }
-
-    // return { data, hasSignedInBefore };
   } catch (error) {
     console.log('Google login error:', error);
     return null;

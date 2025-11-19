@@ -47,9 +47,6 @@ export default () => {
       }
 
       const data = await getGoogleToken();
-      // const { data, hasSignedInBefore } = await getGoogleToken();
-
-      console.log('hasSignedInBefore', hasSignedInBefore);
 
       if (data?.user) {
         const apiData = {
@@ -58,15 +55,6 @@ export default () => {
         };
 
         dispatch(googleLogin(apiData));
-        // dispatch(
-        //   googleLogin(apiData, () => {
-        //     if (hasSignedInBefore) {
-        //       resetNavigationStack('DrawerNavigation');
-        //     } else {
-        //       navigate('BasicInformation');
-        //     }
-        //   }),
-        // );
       }
     } catch (error) {}
   };
