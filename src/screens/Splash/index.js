@@ -3,7 +3,7 @@ import { Linking, View } from 'react-native';
 import { Container, Icons, ImageView, RowView, SizedBox, Text } from '../../components';
 import { styles } from './index.styles';
 import { COLORS, images, SIZES } from '../../constants';
-import { splash_logo, website_icon } from '../../assets/icons';
+import { website_icon } from '../../assets/icons';
 import { TextWeights, website_url } from '../../config';
 import { isIOS } from '../../constants/theme';
 import { resetNavigationStack } from '../../navigation/service';
@@ -27,7 +27,7 @@ const Splash = () => {
             <Icons name={website_icon} />
             <Text
               color={COLORS.white}
-              text={'pharma-asia.com'}
+              text={'pharmaasia.com.pk'}
               textDecorationLine={'underline'}
               weight={TextWeights.medium}
               size={SIZES.h14}

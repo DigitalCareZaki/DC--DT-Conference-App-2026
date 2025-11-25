@@ -75,6 +75,7 @@ const Exhibition = () => {
                 <ExhibitionCard
                   index={index}
                   item={item}
+                  isDescription={false}
                   onPressHeart={() => onPressHeart(item, index)}
                 />
               )}

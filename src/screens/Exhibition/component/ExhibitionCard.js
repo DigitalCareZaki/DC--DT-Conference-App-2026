@@ -15,7 +15,7 @@ import { heart_icon, selected_heart_icon } from '../../../assets/icons';
 import { navigate } from '../../../navigation/service';
 import { useSelector } from 'react-redux';
 
-const ExhibitionCard = ({ index, item, isFav = false, onPressHeart }) => {
+const ExhibitionCard = ({ isDescription = true, index, item, isFav = false, onPressHeart }) => {
   const { favourites, selected_item_index, favourite_loading } = useSelector(
     state => state.main,
   );
@@ -25,13 +25,14 @@ const ExhibitionCard = ({ index, item, isFav = false, onPressHeart }) => {
       style={styles.main_view}
       onPress={() => navigate('ExhibitorDetail', { item })}
       disabled={isFav}
+      activeOpacity={0.8}
     >
       <RowView>
         <Text
           style={common_styles.flex_1}
           size={SIZES.h16}
           weight={TextWeights.medium}
-          text={isFav ? item?.favoriteId?.title : item.title}
+          text={isFav ? item?.favoriteId?.title : item?.title}
           lineHeight={16}
         />
         <View style={styles.booth_view}>
@@ -64,9 +65,8 @@ const ExhibitionCard = ({ index, item, isFav = false, onPressHeart }) => {
       </RowView>
 
       <Text
-        text={`${isFav ? item?.favoriteId?.address : item.address} - ${
-          isFav ? item?.favoriteId?.industry : item.industry
-        }`}
+        text={`${isFav ? item?.favoriteId?.address : item?.address} - ${isFav ? item?.favoriteId?.industry : item?.industry
+          }`}
         color={COLORS.light_blue_color}
         mt={SIZES.padding2}
       />
@@ -75,14 +75,14 @@ const ExhibitionCard = ({ index, item, isFav = false, onPressHeart }) => {
         text={
           <>
             <Text text={'Venue:'} color={COLORS.keys_color} />
-            <Text text={isFav ? item?.favoriteId?.venue : item.venue} />
+            <Text text={isFav ? item?.favoriteId?.venue : item?.venue} />
           </>
         }
       />
-      {item.description ? (
+      {(item?.description && isDescription) ? (
         <Text
           mt={SIZES.padding2}
-          text={isFav ? item?.favoriteId?.description : item.description}
+          text={isFav ? item?.favoriteId?.description : item?.description}
           lineHeight={SIZES.padding2 * 1.5}
         />
       ) : null}
