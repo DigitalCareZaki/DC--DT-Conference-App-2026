@@ -13,7 +13,7 @@ const Container = ({
   barStyle,
   isImage = true,
   isTab = false,
-  backgroundImage
+  backgroundImage,
 }) => {
   return (
     <View
@@ -26,7 +26,7 @@ const Container = ({
         <ImageView
           radius={0}
           resizeMode={FastImage.resizeMode.cover}
-          image={images.pharma_background_img}
+          image={images.build_asia_background_img}
           url={backgroundImage}
           style={styles.image}
         />

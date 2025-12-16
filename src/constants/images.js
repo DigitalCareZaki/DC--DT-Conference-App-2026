@@ -12,6 +12,7 @@ import profile_placeholder from '../assets/images/profile_placeholder.png';
 import venue_image from '../assets/images/venue_image.png';
 import counter_backgorund from '../assets/images/counter_backgorund.png';
 import pharma_background_img from '../assets/images/pharma_background_img.png';
+import build_asia_background_img from '../assets/images/build_asia_background_img.png';
 import hall_1 from '../assets/images/hall_1.png';
 import hall_2 from '../assets/images/hall_2.png';
 import hall_3 from '../assets/images/hall_3.png';
@@ -34,6 +35,7 @@ export default {
   counter_backgorund,
   profile_placeholder,
   pharma_background_img,
+  build_asia_background_img,
   hall_1,
   hall_2,
   hall_3,
