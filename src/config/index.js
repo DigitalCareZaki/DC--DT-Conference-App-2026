@@ -185,12 +185,6 @@ export const dashboard_array = [
     route: 'Exhibition',
   },
   {
-    id: 2,
-    icon: floor_plan_icon,
-    name: 'Floor Plan',
-    route: 'FloorPlan',
-  },
-  {
     id: 3,
     icon: conferences_icon,
     name: 'Conferences',
@@ -216,11 +210,18 @@ export const dashboard_array = [
     route: 'MyAgenda',
   },
   {
-    id: 6,
-    icon: networking_icon,
-    name: 'Networking',
-    route: 'Networking',
+    id: 2,
+    icon: floor_plan_icon,
+    name: 'Floor Plan',
+    route: 'FloorPlan',
   },
+
+  // {
+  //   id: 6,
+  //   icon: networking_icon,
+  //   name: 'Networking',
+  //   route: 'Networking',
+  // },
 ];
 
 export const registered_users = [

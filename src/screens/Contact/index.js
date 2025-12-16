@@ -26,7 +26,7 @@ const Contact = () => {
   const { user, onSubmit } = ContactFunctional();
 
   return (
-    <Container  isTab={true} >
+    <Container isTab={true}>
       <Header color={COLORS.white} title={'Contact'} />
       <KeyboardAvoidingView
         style={common_styles.flex_1}
@@ -49,7 +49,7 @@ const Contact = () => {
 
                     <Text
                       mt={SIZES.padding}
-                      text={"Have a question? We're here to help! Get in touch with us."}
+                      text={'Send Us A Message'}
                       size={SIZES.h16}
                       weight={TextWeights.medium}
                       lineHeight={SIZES.padding2 * 1.5}

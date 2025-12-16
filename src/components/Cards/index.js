@@ -101,6 +101,8 @@ const Cards = ({
           />
         </RowView>
 
+        {isDetail && <SizedBox height={SIZES.normal / 2} />}
+
         <RowView>
           <Text
             text={'Venue:'}
@@ -125,7 +127,6 @@ const Cards = ({
             </View>
           ) : null}
         </RowView>
-        <SizedBox />
       </TouchableOpacity>
     </>
   );

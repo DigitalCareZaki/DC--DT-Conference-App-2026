@@ -69,15 +69,28 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
 
       <SizedBox height={SIZES.padding2} />
 
-      <View>
-        <Text text={'Venue'} color={COLORS.keys_color} />
-        <Text
-          mt={SIZES.padding2 / 2}
-          size={SIZES.h14}
-          weight={TextWeights.medium}
-          text={item?.venue}
-        />
-      </View>
+      <RowView>
+        <View style={common_styles.flex_1}>
+          <Text text={'Venue'} color={COLORS.keys_color} />
+          <Text
+            mt={SIZES.normal / 2}
+            size={SIZES.h14}
+            weight={TextWeights.medium}
+            text={item?.venue}
+          />
+        </View>
+
+        <View>
+          <Text text={'Exhibitor Category'} color={COLORS.keys_color} />
+          <Text
+            mt={SIZES.normal / 2}
+            size={SIZES.h14}
+            weight={TextWeights.heavy}
+            text={'Gold'}
+            color={COLORS.gold}
+          />
+        </View>
+      </RowView>
 
       <SizedBox height={SIZES.normal} />
 
@@ -85,7 +98,7 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
         <Text
           text={'Contact Link'}
           color={COLORS.keys_color}
-          mb={SIZES.padding2 / 2}
+          mb={SIZES.normal / 2}
         />
         <RowView onPress={onPressLink}>
           <Icons name={website_icon} />
@@ -96,6 +109,10 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
           />
         </RowView>
       </View>
+
+      <SizedBox />
+
+      <Button buttonText={'Chat'} onPress={() => navigate('Networking')} />
     </View>
   );
 };

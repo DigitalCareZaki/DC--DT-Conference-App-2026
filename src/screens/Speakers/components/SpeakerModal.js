@@ -1,13 +1,10 @@
 import React from 'react';
-import {
-  Modal,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import { Modal, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { COLORS, images, SIZES } from '../../../constants';
 import { ImageView, RowView, Text } from '../../../components';
 import FastImage from 'react-native-fast-image';
 import { TextWeights } from '../../../config';
+import { common_styles } from '../../../utils/common_styles';
 
 const SpeakerModal = ({ visible, onPressClose, data }) => {
   return (
@@ -24,7 +21,7 @@ const SpeakerModal = ({ visible, onPressClose, data }) => {
       >
         <TouchableOpacity
           activeOpacity={1}
-          onPress={() => { }}
+          onPress={() => {}}
           style={styles.sub_view}
         >
           <ImageView
@@ -44,26 +41,26 @@ const SpeakerModal = ({ visible, onPressClose, data }) => {
             align={'center'}
           />
 
-          {/* <RowView style={common_styles.flex_1}>
-            <View style={[styles.text_view, common_styles.flex_1]}>
+          <RowView>
+            <View style={styles.text_view}>
               <Text
                 size={SIZES.h12}
                 color={COLORS.placeholder_text_color}
-                text={data?.specialty}
+                text={'AI Machine Learning'}
                 align={'center'}
                 numberOfLines={2}
               />
             </View>
-            <View style={[styles.text_view, common_styles.flex_1]}>
+            <View style={styles.text_view}>
               <Text
                 size={SIZES.h12}
                 color={COLORS.placeholder_text_color}
-                text={data?.country ?? '-'}
+                text={'USA'}
                 align={'center'}
                 numberOfLines={2}
               />
             </View>
-          </RowView> */}
+          </RowView>
 
           <Text
             size={SIZES.h12}
@@ -76,7 +73,9 @@ const SpeakerModal = ({ visible, onPressClose, data }) => {
 
           <Text
             size={SIZES.h12}
-            text={data?.description}
+            text={
+              'Leading researcher in artificial intelligence with 15+ years of experience specializing in machine learning, deep learning, and data-driven innovation. Proven track record in developing cutting-edge AI models, leading cross-functional research teams'
+            }
             align={'center'}
             mt={SIZES.padding2}
             lineHeight={SIZES.normal}
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary,
     borderRadius: SIZES.padding,
     padding: SIZES.padding,
-    height: SIZES.height * 0.3,
+    // height: SIZES.height * 0.3,
     alignItems: 'center',
   },
   text_view: {

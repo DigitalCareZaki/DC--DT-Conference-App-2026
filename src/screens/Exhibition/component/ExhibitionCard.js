@@ -15,10 +15,18 @@ import { heart_icon, selected_heart_icon } from '../../../assets/icons';
 import { navigate } from '../../../navigation/service';
 import { useSelector } from 'react-redux';
 
-const ExhibitionCard = ({ isDescription = true, index, item, isFav = false, onPressHeart }) => {
+const ExhibitionCard = ({
+  isDescription = true,
+  index,
+  item,
+  isFav = false,
+  onPressHeart,
+}) => {
   const { favourites, selected_item_index, favourite_loading } = useSelector(
     state => state.main,
   );
+
+  console.log('item', item);
 
   return (
     <TouchableOpacity
@@ -65,13 +73,14 @@ const ExhibitionCard = ({ isDescription = true, index, item, isFav = false, onPr
       </RowView>
 
       <Text
-        text={`${isFav ? item?.favoriteId?.address : item?.address} - ${isFav ? item?.favoriteId?.industry : item?.industry
-          }`}
+        text={`${isFav ? item?.favoriteId?.address : item?.address} - ${
+          isFav ? item?.favoriteId?.industry : item?.industry
+        }`}
         color={COLORS.light_blue_color}
         mt={SIZES.padding2}
       />
       <Text
-        mt={SIZES.padding2 / 2}
+        mt={SIZES.normal / 2}
         text={
           <>
             <Text text={'Venue:'} color={COLORS.keys_color} />
@@ -79,13 +88,35 @@ const ExhibitionCard = ({ isDescription = true, index, item, isFav = false, onPr
           </>
         }
       />
-      {(item?.description && isDescription) ? (
+
+      <Text
+        mt={SIZES.normal / 2}
+        text={
+          <>
+            <Text text={'Exhibitor Category:'} color={COLORS.keys_color} />
+            <Text
+              color={COLORS.gold}
+              text={'Gold'}
+              weight={TextWeights.heavy}
+            />
+          </>
+        }
+      />
+      {item?.description || item?.favoriteId?.description ? (
         <Text
           mt={SIZES.padding2}
           text={isFav ? item?.favoriteId?.description : item?.description}
           lineHeight={SIZES.padding2 * 1.5}
+          numberOfLines={2}
         />
       ) : null}
+
+      {!isFav && (
+        <>
+          <SizedBox />
+          <Button buttonText={'Chat'} onPress={() => navigate('Networking')} />
+        </>
+      )}
     </TouchableOpacity>
   );
 };

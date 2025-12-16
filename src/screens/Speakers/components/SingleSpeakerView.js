@@ -14,12 +14,9 @@ import SpeakerModal from './SpeakerModal';
 import { common_styles } from '../../../utils/common_styles';
 
 const SingleSpeakerView = ({ item }) => {
-
   const [showModal, setShowModal] = useState(false);
 
-  const handleModal = val => setShowModal(val)
-
-  console.log("showModal" ,showModal)
+  const handleModal = val => setShowModal(val);
 
   return (
     <View style={styles.main_view}>
@@ -33,7 +30,7 @@ const SingleSpeakerView = ({ item }) => {
           style={styles.image}
           resizeMode={FastImage.resizeMode.cover}
         />
-        <View style={common_styles.flex_1}>
+        <View>
           <Text
             text={item?.name}
             weight={TextWeights.medium}
@@ -41,14 +38,14 @@ const SingleSpeakerView = ({ item }) => {
             mt={SIZES.padding2 * 0.8}
           />
 
-          {/* <View style={styles.text_view}>
+          <View style={styles.text_view}>
             <Text
               size={SIZES.h10}
               color={COLORS.placeholder_text_color}
-              text={item?.specialty}
+              text={'AI and Machine Learning'}
               numberOfLines={2}
             />
-          </View> */}
+          </View>
         </View>
       </RowView>
       <SizedBox height={SIZES.normal} />
@@ -80,7 +77,7 @@ const styles = StyleSheet.create({
   text_view: {
     backgroundColor: COLORS.white,
     borderRadius: SIZES.padding,
-    paddingVertical: SIZES.padding2 / 5,
+    paddingVertical: SIZES.normal / 2,
     paddingHorizontal: SIZES.padding2,
     marginTop: SIZES.padding2 / 2,
     alignItems: 'center',
