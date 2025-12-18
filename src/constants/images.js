@@ -13,6 +13,9 @@ import venue_image from '../assets/images/venue_image.png';
 import counter_backgorund from '../assets/images/counter_backgorund.png';
 import pharma_background_img from '../assets/images/pharma_background_img.png';
 import build_asia_background_img from '../assets/images/build_asia_background_img.png';
+import build_asia_logo from '../assets/images/build_asia_logo.png';
+import organization_banner from '../assets/images/organization_banner.png';
+
 import hall_1 from '../assets/images/hall_1.png';
 import hall_2 from '../assets/images/hall_2.png';
 import hall_3 from '../assets/images/hall_3.png';
@@ -42,4 +45,6 @@ export default {
   hall_4,
   hall_5,
   hall_6,
+  build_asia_logo,
+  organization_banner,
 };

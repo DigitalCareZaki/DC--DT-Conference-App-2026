@@ -1,6 +1,13 @@
 import React, { useEffect } from 'react';
 import { Linking, View } from 'react-native';
-import { Container, Icons, ImageView, RowView, SizedBox, Text } from '../../components';
+import {
+  Container,
+  Icons,
+  ImageView,
+  RowView,
+  SizedBox,
+  Text,
+} from '../../components';
 import { styles } from './index.styles';
 import { COLORS, images, SIZES } from '../../constants';
 import { website_icon } from '../../assets/icons';
@@ -20,14 +27,19 @@ const Splash = () => {
       <View style={styles.main_view}>
         <SizedBox />
 
-        <ImageView image={images.drawer_logo} height={SIZES.padding * 2} width={'100%'} radius={0} />
+        <ImageView
+          image={images.build_asia_logo}
+          height={SIZES.padding * 10}
+          width={'100%'}
+          radius={0}
+        />
 
         <View>
           <RowView onPress={() => Linking.openURL(website_url)}>
             <Icons name={website_icon} />
             <Text
               color={COLORS.white}
-              text={'pharmaasia.com.pk'}
+              text={'Buildasia.net'}
               textDecorationLine={'underline'}
               weight={TextWeights.medium}
               size={SIZES.h14}

@@ -25,14 +25,12 @@ const ExhibitionCard = ({
   const { favourites, selected_item_index, favourite_loading } = useSelector(
     state => state.main,
   );
-
-  console.log('item', item);
-
   return (
     <TouchableOpacity
       style={styles.main_view}
-      onPress={() => navigate('ExhibitorDetail', { item })}
-      disabled={isFav}
+      onPress={() =>
+        navigate('ExhibitorDetail', { item: isFav ? item.favoriteId : item })
+      }
       activeOpacity={0.8}
     >
       <RowView>

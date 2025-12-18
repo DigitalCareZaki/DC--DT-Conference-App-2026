@@ -15,6 +15,7 @@ import FavoutitesFunctional from './index.function';
 import { COLORS, SIZES } from '../../constants';
 import { TextWeights } from '../../config';
 import ExhibitionCard from '../Exhibition/component/ExhibitionCard';
+import { navigate } from '../../navigation/service';
 
 const MyAgenda = () => {
   const {
@@ -98,6 +99,9 @@ const MyAgenda = () => {
                   isDetail={true}
                   item={item}
                   isFavourite={true}
+                  onPress={() =>
+                    navigate('ConferenceDetails', { id: item?._id })
+                  }
                 />
               )
             }

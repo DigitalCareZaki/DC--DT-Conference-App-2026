@@ -35,7 +35,7 @@ const Header = ({
 
       {isDashBoard ? (
         <ImageView
-          image={images.home_logo}
+          image={images.build_asia_logo}
           width={SIZES.padding * 6}
           height={SIZES.padding * 3}
           resizeMode={FastImage.resizeMode.contain}

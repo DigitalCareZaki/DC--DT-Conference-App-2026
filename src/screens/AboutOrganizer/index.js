@@ -32,7 +32,7 @@ const AboutOrganizer = () => {
       <View style={styles.main_view}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <ImageView
-            image={images.organizer_banner_image}
+            image={images.organization_banner}
             height={SIZES.padding * 6.5}
             width={'100%'}
             radius={SIZES.padding2}

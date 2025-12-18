@@ -30,7 +30,6 @@ const Cards = ({
   return (
     <>
       <TouchableOpacity
-        disabled={isDetail}
         activeOpacity={0.6}
         onPress={onPress}
         style={styles.main_view}
