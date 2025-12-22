@@ -42,7 +42,7 @@ const ContactCard = () => {
         </View>
       </RowView>
 
-      <Text
+      {/* <Text
         mt={SIZES.padding2}
         size={SIZES.h11}
         text={'Office Hours'}
@@ -57,7 +57,7 @@ const ContactCard = () => {
         weight={TextWeights.medium}
         mt={SIZES.padding2 / 5}
         text={'Saturday: 10:00 AM - 4:00 PM'}
-      />
+      /> */}
     </View>
   );
 };
