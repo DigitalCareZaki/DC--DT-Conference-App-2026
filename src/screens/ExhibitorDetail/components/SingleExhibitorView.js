@@ -10,6 +10,7 @@ import {
   website_icon,
 } from '../../../assets/icons';
 import { useSelector } from 'react-redux';
+import { navigate } from '../../../navigation/service';
 
 const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
   const { favourites } = useSelector(state => state.main);

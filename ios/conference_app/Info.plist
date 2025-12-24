@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Pharma Asia</string>
+	<string>Build Asia</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -62,13 +62,13 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Pharma Asia needs access to your Camera in order to upload docuemnts.</string>
+	<string>Build Asia needs access to your Camera in order to upload docuemnts.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Pharma Asia needs access to your Microphone in order to upload docuemnts.</string>
+	<string>Build Asia needs access to your Microphone in order to upload docuemnts.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>We need permission to save images to your gallery.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Pharma Asia needs access to your Camera in order to upload documents.</string>
+	<string>Build Asia needs access to your Camera in order to upload documents.</string>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UIAppFonts</key>

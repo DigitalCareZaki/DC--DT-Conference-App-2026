@@ -62,15 +62,16 @@ const SpeakerModal = ({ visible, onPressClose, data }) => {
             </View>
           </RowView>
 
-          <Text
-            size={SIZES.h12}
-            text={data?.institute}
-            align={'center'}
-            color={COLORS.light_blue_color}
-            weight={TextWeights.medium}
-            mt={SIZES.padding2}
-          />
-
+          {data?.institute && (
+            <Text
+              size={SIZES.h12}
+              text={data?.institute}
+              align={'center'}
+              color={COLORS.light_blue_color}
+              weight={TextWeights.medium}
+              mt={SIZES.padding2}
+            />
+          )}
           <Text
             size={SIZES.h12}
             text={
