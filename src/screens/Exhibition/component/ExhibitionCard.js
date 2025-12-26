@@ -86,20 +86,21 @@ const ExhibitionCard = ({
           </>
         }
       />
-
-      <Text
-        mt={SIZES.normal / 2}
-        text={
-          <>
-            <Text text={'Exhibitor Category:'} color={COLORS.keys_color} />
-            <Text
-              color={COLORS.gold}
-              text={'Gold'}
-              weight={TextWeights.heavy}
-            />
-          </>
-        }
-      />
+      {!item.category === 'none' && (
+        <Text
+          mt={SIZES.normal / 2}
+          text={
+            <>
+              <Text text={'Exhibitor Category:'} color={COLORS.keys_color} />
+              <Text
+                color={COLORS.gold}
+                text={item.category}
+                weight={TextWeights.heavy}
+              />
+            </>
+          }
+        />
+      )}
       {item?.description || item?.favoriteId?.description ? (
         <Text
           mt={SIZES.padding2}
@@ -112,7 +113,10 @@ const ExhibitionCard = ({
       {!isFav && (
         <>
           <SizedBox />
-          <Button buttonText={'Chat'} onPress={() => navigate('Networking')} />
+          <Button
+            buttonText={'Chat'}
+            onPress={() => navigate('Chat', { user: item })}
+          />
         </>
       )}
     </TouchableOpacity>

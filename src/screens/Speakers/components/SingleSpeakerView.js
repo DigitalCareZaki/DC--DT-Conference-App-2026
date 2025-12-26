@@ -42,7 +42,7 @@ const SingleSpeakerView = ({ item }) => {
             <Text
               size={SIZES.h10}
               color={COLORS.placeholder_text_color}
-              text={'AI and Machine Learning'}
+              text={item.specialty}
               numberOfLines={2}
             />
           </View>

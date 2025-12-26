@@ -46,7 +46,7 @@ const SpeakerModal = ({ visible, onPressClose, data }) => {
               <Text
                 size={SIZES.h12}
                 color={COLORS.placeholder_text_color}
-                text={'AI Machine Learning'}
+                text={data.specialty}
                 align={'center'}
                 numberOfLines={2}
               />
@@ -55,7 +55,7 @@ const SpeakerModal = ({ visible, onPressClose, data }) => {
               <Text
                 size={SIZES.h12}
                 color={COLORS.placeholder_text_color}
-                text={'USA'}
+                text={data.country}
                 align={'center'}
                 numberOfLines={2}
               />
@@ -74,9 +74,7 @@ const SpeakerModal = ({ visible, onPressClose, data }) => {
           )}
           <Text
             size={SIZES.h12}
-            text={
-              'Leading researcher in artificial intelligence with 15+ years of experience specializing in machine learning, deep learning, and data-driven innovation. Proven track record in developing cutting-edge AI models, leading cross-functional research teams'
-            }
+            text={data.description}
             align={'center'}
             mt={SIZES.padding2}
             lineHeight={SIZES.normal}

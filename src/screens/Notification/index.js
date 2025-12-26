@@ -65,7 +65,7 @@ const Notification = () => {
   };
   return (
     <Container>
-      <Header color={COLORS.white} title={'Notifications'} />
+      <Header color={COLORS.white} title={'Notifications'} rightIcon={null} />
       {list_loading && !isMore ? (
         <Loader />
       ) : (

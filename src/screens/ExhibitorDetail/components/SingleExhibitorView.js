@@ -81,16 +81,18 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
           />
         </View>
 
-        <View>
-          <Text text={'Exhibitor Category'} color={COLORS.keys_color} />
-          <Text
-            mt={SIZES.normal / 2}
-            size={SIZES.h14}
-            weight={TextWeights.heavy}
-            text={'Gold'}
-            color={COLORS.gold}
-          />
-        </View>
+        {!item.category === 'none' && (
+          <View>
+            <Text text={'Exhibitor Category'} color={COLORS.keys_color} />
+            <Text
+              mt={SIZES.normal / 2}
+              size={SIZES.h14}
+              weight={TextWeights.heavy}
+              text={item.category}
+              color={COLORS.gold}
+            />
+          </View>
+        )}
       </RowView>
 
       <SizedBox height={SIZES.normal} />
@@ -113,7 +115,10 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
 
       <SizedBox />
 
-      <Button buttonText={'Chat'} onPress={() => navigate('Networking')} />
+      <Button
+        buttonText={'Chat'}
+        onPress={() => navigate('Chat', { user: item })}
+      />
     </View>
   );
 };

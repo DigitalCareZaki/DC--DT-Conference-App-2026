@@ -26,7 +26,7 @@ const Networking = () => {
 
   const connectSocket = async () => {
     const token = await getToken();
-    socket = io(`http://51.83.237.63:5051?token=${token}`);
+    socket = io(`http://51.83.237.63:5057?token=${token}`);
     socket.on('connect', () => {
       socket.on('chat-list-updated', msgs => {
         setAllUsers(msgs?.chats?.data);

@@ -10,7 +10,8 @@ import ChatFunctional from './index.function';
 import { getToken } from '../../utils/functions';
 
 const Chat = ({ route }) => {
-  const { name, participants, id } = route?.params?.user;
+  const { name, participants, id, exhibitor } = route?.params?.user;
+
   const {
     messages,
     setMessages,
@@ -35,7 +36,6 @@ const Chat = ({ route }) => {
 
     socket.on('connect', () => {
       socket.emit('create-chat', { receiverId: receiverID }, msgs => {});
-
       socket.emit('read-messages', { chatId: id });
     });
 
@@ -156,7 +156,7 @@ const Chat = ({ route }) => {
 
   return (
     <Container>
-      <Header title={name} rightIcon={null} />
+      <Header title={name || exhibitor.name} rightIcon={null} />
 
       <View style={styles.main_view}>
         <GiftedChat
