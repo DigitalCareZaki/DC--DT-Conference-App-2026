@@ -3,6 +3,7 @@ import {
   Container,
   Header,
   Icons,
+  ListEmptyText,
   Loader,
   RowView,
   SizedBox,
@@ -79,6 +80,9 @@ const Notification = () => {
             onEndReachedThreshold={0.1}
             refreshControl={
               <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
+            ListEmptyComponent={
+              <ListEmptyText text={'No Notification found'} />
             }
             ListFooterComponent={
               list_loading && isMore ? <Loader /> : <SizedBox />

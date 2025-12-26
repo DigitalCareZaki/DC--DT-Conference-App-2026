@@ -34,7 +34,7 @@ const Container = ({
 
       <StatusBar
         barStyle={barStyle || 'light-content'}
-        backgroundColor={background ?? COLORS.white}
+        backgroundColor={background ?? COLORS.transparent}
         translucent
       />
       <SafeAreaView
