@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Container, Header, InputField, RowView, Text } from '../../components';
 import { TouchableOpacity, View } from 'react-native';
 import { COLORS, SIZES } from '../../constants';
@@ -8,6 +8,7 @@ import { TextWeights } from '../../config';
 import io from 'socket.io-client';
 import ChatFunctional from './index.function';
 import { getToken } from '../../utils/functions';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Chat = ({ route }) => {
   const { name, participants, id, exhibitor } = route?.params?.user;
@@ -84,9 +85,16 @@ const Chat = ({ route }) => {
     setMsg('');
   };
 
-  useEffect(() => {
-    connectSocket();
-  }, []);
+  useFocusEffect(
+      useCallback(() => {
+        connectSocket();
+        return () => {
+          if (socket && socket?.connected) {
+            socket.disconnect();
+          }
+        };
+      }, []),
+    );
 
   const renderBubble = props => {
     const { currentMessage, position } = props;

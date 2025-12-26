@@ -43,7 +43,6 @@ export default () => {
         );
       }, 500);
     } catch (error) {
-      console.error(error);
     }
   };
 
