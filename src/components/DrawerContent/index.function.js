@@ -72,7 +72,9 @@ export default () => {
     }
 
     const requiresLogin =
-      (item?.name === 'My Favourites' || item?.name === 'Ask A Question') &&
+      (item?.name === 'My Favourites' ||
+        item?.name === 'Ask A Question' ||
+        item.name === 'Social Media links') &&
       !user;
 
     if (requiresLogin) {

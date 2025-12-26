@@ -75,7 +75,7 @@ export const login_roles = [
 
 export const signup_steps = [
   'Basic Information',
-  'Select Your Category',
+  'Company Information',
   'Social Media Links',
   'Agreement & Submission',
 ];
@@ -107,75 +107,153 @@ export const images_array = [
   },
 ];
 
-export const drawer_array = user => [
-  {
-    id: 1,
-    name: 'Home',
-    icon: home_icon,
-    route: 'Dashboard',
-  },
-  {
-    id: 2,
-    name: 'Exhibitors',
-    icon: exhibition_icon,
-    route: 'Exhibition',
-  },
-  {
-    id: 3,
-    name: 'Conferences',
-    icon: conferences_icon,
-    route: 'Conference',
-  },
-  {
-    id: 4,
-    name: 'My Favourites',
-    icon: my_agenda_icon,
-    route: 'MyAgenda',
-  },
+// export const drawer_array = user => [
+//   {
+//     id: 1,
+//     name: 'Home',
+//     icon: home_icon,
+//     route: 'Dashboard',
+//   },
+//   {
+//     id: 2,
+//     name: 'Exhibitors',
+//     icon: exhibition_icon,
+//     route: 'Exhibition',
+//   },
+//   {
+//     id: 3,
+//     name: 'Conferences',
+//     icon: conferences_icon,
+//     route: 'Conference',
+//   },
+//   {
+//     id: 4,
+//     name: 'My Favourites',
+//     icon: my_agenda_icon,
+//     route: 'MyAgenda',
+//   },
 
-  {
-    id: 5,
-    name: 'Contact Us',
-    icon: call_icon,
-    route: 'Contact',
-  },
-  {
-    id: 6,
-    name: 'About Us',
-    icon: organizer_detail_icon,
-    route: 'AboutOrganizer',
-  },
-  {
-    id: 7,
-    name: 'Venue',
-    icon: venue_icon,
-    route: 'Venue',
-  },
-  {
-    id: 8,
-    name: 'Social Media links',
-    icon: social_media_icon,
-    route: 'EditSocialMedia',
-  },
-  {
-    id: 9,
-    name: 'Feedback',
-    icon: feedback_icon,
-    isFeedback: true,
-  },
-  {
-    id: 10,
-    name: 'Delete Account',
-    icon: delete_icon,
-    isDeleteAccount: true,
-  },
-  {
+//   {
+//     id: 5,
+//     name: 'Contact Us',
+//     icon: call_icon,
+//     route: 'Contact',
+//   },
+//   {
+//     id: 6,
+//     name: 'About Us',
+//     icon: organizer_detail_icon,
+//     route: 'AboutOrganizer',
+//   },
+//   {
+//     id: 7,
+//     name: 'Venue',
+//     icon: venue_icon,
+//     route: 'Venue',
+//   },
+//   {
+//     id: 8,
+//     name: 'Social Media links',
+//     icon: social_media_icon,
+//     route: 'EditSocialMedia',
+//   },
+//   {
+//     id: 9,
+//     name: 'Feedback',
+//     icon: feedback_icon,
+//     isFeedback: true,
+//   },
+//   {
+//     id: 10,
+//     name: 'Delete Account',
+//     icon: delete_icon,
+//     isDeleteAccount: true,
+//   },
+//   {
+//     id: 11,
+//     name: user ? 'Logout' : 'Login',
+//     icon: logout_icon,
+//     isLogout: true,
+//   },
+// ];
+
+export const drawer_array = user => {
+  const items = [
+    {
+      id: 1,
+      name: 'Home',
+      icon: home_icon,
+      route: 'Dashboard',
+    },
+    {
+      id: 2,
+      name: 'Exhibitors',
+      icon: exhibition_icon,
+      route: 'Exhibition',
+    },
+    {
+      id: 3,
+      name: 'Conferences',
+      icon: conferences_icon,
+      route: 'Conference',
+    },
+    {
+      id: 4,
+      name: 'My Favourites',
+      icon: my_agenda_icon,
+      route: 'MyAgenda',
+    },
+
+    {
+      id: 5,
+      name: 'Contact Us',
+      icon: call_icon,
+      route: 'Contact',
+    },
+    {
+      id: 6,
+      name: 'About Us',
+      icon: organizer_detail_icon,
+      route: 'AboutOrganizer',
+    },
+    {
+      id: 7,
+      name: 'Venue',
+      icon: venue_icon,
+      route: 'Venue',
+    },
+    {
+      id: 8,
+      name: 'Social Media links',
+      icon: social_media_icon,
+      route: 'EditSocialMedia',
+    },
+    {
+      id: 9,
+      name: 'Feedback',
+      icon: feedback_icon,
+      isFeedback: true,
+    },
+  ];
+
+  if (user) {
+    items.push({
+      id: 10,
+      name: 'Delete Account',
+      icon: delete_icon,
+      isDeleteAccount: true,
+    });
+  }
+
+  items.push({
     id: 11,
     name: user ? 'Logout' : 'Login',
     icon: logout_icon,
     isLogout: true,
-  },
-];
+  });
+
+  return items;
+};
 
 export const dashboard_array = [
   {

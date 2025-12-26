@@ -10,7 +10,6 @@ import {
   Container,
   Icons,
   Loader,
-  LoaderModal,
   RowView,
   SizedBox,
   Text,
@@ -24,7 +23,7 @@ import { styles } from './index.styles';
 import { back_icon } from '../../assets/icons';
 import {
   BasicInformation,
-  SelectCategory,
+  CompanyInformation,
   SetupPassword,
   SocialMediaLinks,
 } from './components';
@@ -42,8 +41,8 @@ const Signup = () => {
     submitPassword,
     submitSocialMedia,
     signUpData,
-    setSelectedRole,
-    selectedRole,
+    companyInfoRef,
+    submitCompanyInfo,
   } = SignupFunctional();
 
   return (
@@ -99,11 +98,13 @@ const Signup = () => {
               />
             )}
             {selectedIndex === 1 && (
-              <SelectCategory
-                selectedRole={selectedRole}
-                setSelectedRole={setSelectedRole}
+              <CompanyInformation
+                formikRef={companyInfoRef}
+                onSubmit={submitCompanyInfo}
+                data={signUpData}
               />
             )}
+
             {selectedIndex === 2 && (
               <SocialMediaLinks
                 formikRef={socialMediaLinksRef}
@@ -126,7 +127,7 @@ const Signup = () => {
             ) : (
               <Button
                 onPress={onPressButton}
-                buttonText={selectedIndex < 2 ? 'Next' : 'Submit'}
+                buttonText={selectedIndex < 3 ? 'Next' : 'Submit'}
               />
             )}
 

@@ -12,6 +12,7 @@ export default () => {
   const basicInfoRef = useRef(null);
   const socialMediaLinksRef = useRef(null);
   const passworkRef = useRef(null);
+  const companyInfoRef = useRef(null);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -34,14 +35,22 @@ export default () => {
     setSelectedIndex(selectedIndex + 1);
   };
 
-  const submitCategory = () => {
-    if (!selectedRole) {
-      Alert.alert('Please choose your role first');
-      return;
-    }
+  // const submitCategory = () => {
+  //   if (!selectedRole) {
+  //     Alert.alert('Please choose your role first');
+  //     return;
+  //   }
+  //   setSignUpData(prev => ({
+  //     ...prev,
+  //     role: selectedRole?.name,
+  //   }));
+  //   setSelectedIndex(selectedIndex + 1);
+  // };
+
+  const submitCompanyInfo = values => {
     setSignUpData(prev => ({
       ...prev,
-      role: selectedRole?.name,
+      ...values,
     }));
     setSelectedIndex(selectedIndex + 1);
   };
@@ -61,16 +70,15 @@ export default () => {
       ...values,
     }));
 
-    const cleanedRole =
-      signUpData?.role === 'Exhibitor (Stall Owner)'
-        ? 'Exhibitor'
-        : signUpData?.role;
-
     const apiData = {
       name: signUpData?.name,
       email: signUpData?.email,
       password: values.password,
-      role: cleanedRole,
+      role: 'Visitor',
+      dob: signUpData?.dateOfBirth,
+      companyName: signUpData?.companyName,
+      designation: signUpData?.designation,
+      displayName: signUpData?.displayName,
       facebookLink: signUpData?.facebookLink,
       instagramLink: signUpData?.instagramLink,
       linkedinLink: signUpData?.linkedinLink,
@@ -99,7 +107,7 @@ export default () => {
             basicInfoRef.current?.handleSubmit();
             break;
           case 1:
-            submitCategory();
+            companyInfoRef.current.handleSubmit();
           case 2:
             socialMediaLinksRef.current?.handleSubmit();
             break;
@@ -123,11 +131,12 @@ export default () => {
     submitBasicInfo,
     passworkRef,
     socialMediaLinksRef,
-    submitCategory,
     submitPassword,
     submitSocialMedia,
     signUpData,
     setSelectedRole,
     selectedRole,
+    companyInfoRef,
+    submitCompanyInfo,
   };
 };
