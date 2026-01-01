@@ -158,14 +158,15 @@ const Login = () => {
                       <Loader />
                     ) : (
                       <RowView
-                        disabled={auth_loading}
+                        disabled={auth_loading || values?.role === 'Exhibitor'}
                         onPress={() => onPressGoogleBtn(values)}
                         style={[
                           styles.social_btn,
                           {
-                            backgroundColor: auth_loading
-                              ? COLORS.background_grey_color
-                              : COLORS.white,
+                            backgroundColor:
+                              auth_loading || values?.role === 'Exhibitor'
+                                ? COLORS.background_grey_color
+                                : COLORS.white,
                           },
                         ]}
                       >

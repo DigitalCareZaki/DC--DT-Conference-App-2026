@@ -360,11 +360,11 @@ export const hallMapList = [
     image: images.hall_5,
     url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1763176706/hall_5_wqusbs.png',
   },
-  {
-    title: 'Download Hall Map 6',
-    image: images.hall_6,
-    url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1763176706/hall_6_jirfeo.png',
-  },
+  // {
+  //   title: 'Download Hall Map 6',
+  //   image: images.hall_6,
+  //   url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1763176706/hall_6_jirfeo.png',
+  // },
 ];
 
 export const social_links = links => [
