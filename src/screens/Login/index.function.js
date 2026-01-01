@@ -54,7 +54,15 @@ export default () => {
           role: values?.role,
         };
 
-        dispatch(googleLogin(apiData));
+        dispatch(
+          googleLogin(apiData, res => {
+            if (res?.data?.user?.companyName) {
+              resetNavigationStack('DrawerNavigation');
+            } else {
+              navigate('CompanyInformation');
+            }
+          }),
+        );
       }
     } catch (error) {}
   };

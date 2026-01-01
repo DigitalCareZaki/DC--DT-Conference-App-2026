@@ -36,6 +36,7 @@ import {
   ExhibitorDetail,
   ImageView,
   FloorPlan,
+  CompanyInformation,
 } from '../screens';
 import {
   notificationListener,
@@ -106,6 +107,10 @@ const MainNavigator = () => {
           <Stack.Screen name="ExhibitorDetail" component={ExhibitorDetail} />
           <Stack.Screen name="ImageView" component={ImageView} />
           <Stack.Screen name="FloorPlan" component={FloorPlan} />
+          <Stack.Screen
+            name="CompanyInformation"
+            component={CompanyInformation}
+          />
         </Stack.Navigator>
       </NavigationContainer>
       <ToastModal

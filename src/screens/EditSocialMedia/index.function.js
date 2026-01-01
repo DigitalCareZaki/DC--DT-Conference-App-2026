@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { updateLinks } from '../../redux/actions/main-action';
+import { updateUser } from '../../redux/actions/main-action';
 import { setUser } from '../../redux/slices/constant-slice';
 
 export default () => {
@@ -9,7 +9,7 @@ export default () => {
   const { user } = useSelector(state => state.constant);
 
   const onPressSubmit = values => {
-    dispatch(updateLinks(values));
+    dispatch(updateUser(values));
   };
   return {
     main_loading,

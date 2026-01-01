@@ -25,7 +25,7 @@ export const SERVICE_URLS = {
   addRemoveFavourite: '/user/favorites',
   getFeedback: '/feedbacks/user',
   addFeedback: '/feedbacks/submit-update',
-  updateLinks: '/user/update',
+  updateUser: '/user/update',
   verifyOtp: '/user/verify-otp',
   askQuestion: '/question',
   getBanner: '/gallery?limit=100',
@@ -54,7 +54,7 @@ const getFavourites = data => get(SERVICE_URLS.getFavourites, data);
 const addRemoveFavourite = data => post(SERVICE_URLS.addRemoveFavourite, data);
 const getFeedBack = () => get(SERVICE_URLS.getFeedback);
 const addFeedback = data => put(SERVICE_URLS.addFeedback, data);
-const updateLinks = data => put(SERVICE_URLS.updateLinks, data);
+const updateUser = data => put(SERVICE_URLS.updateUser, data);
 const askQuestion = data => post(SERVICE_URLS.askQuestion, data);
 const getSingleUser = data => get(SERVICE_URLS.singleUser + data);
 const deleteAccount = data => del(SERVICE_URLS.deleteAccount + data);
@@ -83,7 +83,7 @@ const apiServices = {
   addRemoveFavourite,
   getFeedBack,
   addFeedback,
-  updateLinks,
+  updateUser,
   askQuestion,
   deleteAccount,
   getSingleUser,

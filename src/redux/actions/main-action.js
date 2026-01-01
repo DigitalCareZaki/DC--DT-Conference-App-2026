@@ -212,16 +212,17 @@ export const addFeedback = data => {
 };
 
 // Social Media Links
-export const updateLinks = data => {
+export const updateUser = (data, onDone) => {
   return async dispatch => {
     dispatch(
       requestHandler({
-        setLoading: setMainLoading,
+        setLoading: setMainPostLoading,
         param_data: data,
-        apiService: apiServices.updateLinks,
+        apiService: apiServices.updateUser,
         isSuccessMessage: true,
         onDone: async res => {
           dispatch(setUser(res?.data));
+          onDone && onDone(res);
         },
       }),
     );
