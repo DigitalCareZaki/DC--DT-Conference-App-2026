@@ -37,7 +37,7 @@ export const TextWeights = {
   thin: 'HelveticaNeue-Thin',
 };
 
-export const website_url = 'https://pharmaasia.com.pk/';
+export const website_url = 'https://buildasia.net/';
 export const privacy_policy_link = 'https://health-asia.com/privacy-policy.php';
 export const terms_link = 'https://health-asia.com/terms-and-conditions.php';
 export const organizer_url = 'https://www.ecgateway.net/';
