@@ -14,7 +14,8 @@ import { navigate } from '../../../navigation/service';
 
 const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
   const { favourites } = useSelector(state => state.main);
-
+  const { user } = useSelector(state => state.constant);
+  
   return (
     <View style={styles.main_view}>
       <RowView>
@@ -115,10 +116,21 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
 
       <SizedBox />
 
-      <Button
-        buttonText={'Chat'}
-        onPress={() => navigate('Chat', { user: item })}
-      />
+      {item?.chatId && (
+        <Button
+          buttonText={'Chat'}
+          onPress={() =>
+            navigate('Chat', {
+              user: {
+                name: item?.exhibitor?.name,
+                exhibitor: item?.exhibitor,
+                id: item?.chatId,
+                participants: [item?.exhibitor?._id, user?._id],
+              },
+            })
+          }
+        />
+      )}
     </View>
   );
 };

@@ -112,7 +112,7 @@ const ExhibitionCard = ({
         />
       ) : null}
 
-      {!isFav && (
+      {!isFav && item?.chatId && (
         <>
           <SizedBox />
           <Button
