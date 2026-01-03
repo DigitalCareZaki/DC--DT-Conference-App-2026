@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import {
   Container,
   Header,
@@ -20,7 +20,7 @@ import { io } from 'socket.io-client';
 import { useFocusEffect } from '@react-navigation/native';
 
 const Networking = () => {
-  const { search, setSearch, auth_loading, allUsers, setAllUsers } =
+  const { search, setSearch, allUsers, setAllUsers } =
     NetworkFunctional();
   let socket;
 

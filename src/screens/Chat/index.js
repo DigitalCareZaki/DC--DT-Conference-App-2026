@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { Container, Header, InputField, RowView, Text } from '../../components';
 import { TouchableOpacity, View } from 'react-native';
 import { COLORS, SIZES } from '../../constants';
@@ -164,7 +164,7 @@ const Chat = ({ route }) => {
 
   return (
     <Container>
-      <Header title={name || exhibitor.name} rightIcon={null} />
+      <Header title={name || exhibitor?.name} rightIcon={null} />
 
       <View style={styles.main_view}>
         <GiftedChat

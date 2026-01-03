@@ -1,4 +1,4 @@
-package com.pharmaasia
+package com.buildasia
 
 import android.app.Application
 import com.facebook.react.PackageList

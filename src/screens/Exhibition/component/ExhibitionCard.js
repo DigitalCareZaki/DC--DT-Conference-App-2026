@@ -25,6 +25,8 @@ const ExhibitionCard = ({
   const { favourites, selected_item_index, favourite_loading } = useSelector(
     state => state.main,
   );
+  const { user } = useSelector(state => state.constant);
+
   return (
     <TouchableOpacity
       style={styles.main_view}
@@ -115,7 +117,16 @@ const ExhibitionCard = ({
           <SizedBox />
           <Button
             buttonText={'Chat'}
-            onPress={() => navigate('Chat', { user: item })}
+            onPress={() =>
+              navigate('Chat', {
+                user: {
+                  name: item?.exhibitor?.name,
+                  exhibitor: item?.exhibitor,
+                  id: item?.chatId,
+                  participants: [item?.exhibitor?._id, user?._id],
+                },
+              })
+            }
           />
         </>
       )}
