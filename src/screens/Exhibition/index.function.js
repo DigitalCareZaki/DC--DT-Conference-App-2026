@@ -5,7 +5,7 @@ import {
   setListLoading,
   setSelectedItemIndex,
 } from '../../redux/slices/main-slice';
-import { Alert, PermissionsAndroid, Platform } from 'react-native';
+import { Alert, Platform } from 'react-native';
 import RNFetchBlob from 'react-native-blob-util';
 import { navigate } from '../../navigation/service';
 
@@ -25,6 +25,7 @@ export default () => {
     const payload = {
       limit: 10,
       page: pageNumber,
+      ...(user ? { userId: user._id } : {}),
     };
     dispatch(getExhibition(payload, exhibition, hasMore => setIsMore(hasMore)));
   };
