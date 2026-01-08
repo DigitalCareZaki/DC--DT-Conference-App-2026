@@ -77,7 +77,7 @@ const Login = () => {
                     <Text
                       size={SIZES.h14}
                       text={
-                        "Your journey into Pakistan's largest healthcare event starts here. Please log in or signup to access all the features and connect with fellow attendees."
+                        "Your journey into Pakistan's Premier Construction Industry event starts here. Please log in or signup to access all the features and connect with fellow attendees."
                       }
                       align={'center'}
                       lineHeight={SIZES.padding}

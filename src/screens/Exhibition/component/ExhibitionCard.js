@@ -73,12 +73,28 @@ const ExhibitionCard = ({
       </RowView>
 
       <Text
-        text={`${isFav ? item?.favoriteId?.address : item?.address} - ${
-          isFav ? item?.favoriteId?.industry : item?.industry
-        }`}
+        text={isFav ? item?.favoriteId?.address : item?.address}
         color={COLORS.light_blue_color}
         mt={SIZES.padding2}
       />
+      {isFav
+        ? item?.favoriteId?.industry
+        : item?.industry && (
+            <Text
+              mt={SIZES.normal / 2}
+              text={
+                <>
+                  <Text
+                    text={'Exhibitor category:'}
+                    color={COLORS.keys_color}
+                  />
+                  <Text
+                    text={isFav ? item?.favoriteId?.industry : item?.industry}
+                  />
+                </>
+              }
+            />
+          )}
       <Text
         mt={SIZES.normal / 2}
         text={
