@@ -15,7 +15,7 @@ import { navigate } from '../../../navigation/service';
 const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
   const { favourites } = useSelector(state => state.main);
   const { user } = useSelector(state => state.constant);
-  
+
   return (
     <View style={styles.main_view}>
       <RowView>
@@ -54,10 +54,22 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
       </View>
 
       <Text
-        text={`${item?.address} - ${item?.industry}`}
+        text={item?.address ?? ''}
         color={COLORS.light_blue_color}
         mt={SIZES.padding2}
       />
+
+      {item?.industry && (
+        <Text
+          mt={SIZES.normal / 2}
+          text={
+            <>
+              <Text text={'Exhibitor category:'} color={COLORS.keys_color} />
+              <Text text={item?.industry} />
+            </>
+          }
+        />
+      )}
 
       {item?.description ? (
         <Text
@@ -98,21 +110,23 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
 
       <SizedBox height={SIZES.normal} />
 
-      <View>
-        <Text
-          text={'Contact Link'}
-          color={COLORS.keys_color}
-          mb={SIZES.normal / 2}
-        />
-        <RowView onPress={onPressLink}>
-          <Icons name={website_icon} />
+      {item?.contactLink && (
+        <View>
           <Text
-            size={SIZES.h14}
-            text={item?.contactLink}
-            textDecorationLine={'underline'}
+            text={'Contact Link'}
+            color={COLORS.keys_color}
+            mb={SIZES.normal / 2}
           />
-        </RowView>
-      </View>
+          <RowView onPress={onPressLink}>
+            <Icons name={website_icon} />
+            <Text
+              size={SIZES.h14}
+              text={item?.contactLink}
+              textDecorationLine={'underline'}
+            />
+          </RowView>
+        </View>
+      )}
 
       <SizedBox />
 
