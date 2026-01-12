@@ -7,6 +7,7 @@ export const SERVICE_URLS = {
   getAllUser: '/user',
   getProfile: '/user/profile',
   googleLogin: '/auth/google',
+  appleLogin: '/auth/apple',
   sendOtp: '/user/send-otp',
   resetPassword: '/user/reset-password',
   deleteAccount: '/user/delete/',
@@ -37,6 +38,7 @@ const login = data => post(SERVICE_URLS.login, data);
 const getAllUser = data => get(SERVICE_URLS.getAllUser, data);
 const getProfile = () => get(SERVICE_URLS.getProfile);
 const googleLogin = data => post(SERVICE_URLS.googleLogin, data);
+const appleLogin = data => post(SERVICE_URLS.appleLogin, data);
 const sendOtp = data => post(SERVICE_URLS.sendOtp, data);
 const verifyOtp = data => post(SERVICE_URLS.verifyOtp, data);
 const resetPassword = data => post(SERVICE_URLS.resetPassword, data);
@@ -67,6 +69,7 @@ const apiServices = {
   getAllUser,
   getProfile,
   googleLogin,
+  appleLogin,
   sendOtp,
   verifyOtp,
   resetPassword,

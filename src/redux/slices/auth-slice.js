@@ -4,6 +4,7 @@ const initialState = {
   auth_loading: false,
   all_users: null,
   google_signin_loading: null,
+  apple_signin_loading: null,
   total_item: null,
   reset_password_token: null,
   user_email: null,
@@ -25,6 +26,9 @@ export const authSlice = createSlice({
     },
     setGoogleSigninLoading: (state, action) => {
       state.google_signin_loading = action.payload;
+    },
+    setAppleSigninLoading: (state, action) => {
+      state.apple_signin_loading = action.payload;
     },
     setTotalItems: (state, action) => {
       state.total_item = action.payload;
@@ -49,6 +53,7 @@ export const {
   setAuthLoading,
   setAllUsers,
   setGoogleSigninLoading,
+  setAppleSigninLoading,
   setIsAuth,
   setTotalItems,
   setResetPasswordToken,

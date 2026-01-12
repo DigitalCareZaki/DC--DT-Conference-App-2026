@@ -7,6 +7,7 @@ import {
 import { requestHandler, setToken } from '../../utils/functions';
 import {
   setAllUsers,
+  setAppleSigninLoading,
   setAuthLoading,
   setGoogleSigninLoading,
   setResetPasswordToken,
@@ -63,6 +64,25 @@ export const googleLogin = (data, onDone) => {
         apiService: apiServices.googleLogin,
         isAuth: true,
         onDone: async res => {
+          await setToken(res?.data?.accessToken);
+          dispatch(setUser(res?.data?.user));
+          onDone && onDone(res);
+        },
+      }),
+    );
+  };
+};
+
+export const appleLogin = (data, onDone) => {
+  return async dispatch => {
+    dispatch(
+      requestHandler({
+        setLoading: setAppleSigninLoading,
+        param_data: data,
+        apiService: apiServices.appleLogin,
+        isAuth: true,
+        onDone: async res => {
+          console.log('res ', res)
           await setToken(res?.data?.accessToken);
           dispatch(setUser(res?.data?.user));
           onDone && onDone(res);

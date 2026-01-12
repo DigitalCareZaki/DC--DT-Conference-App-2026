@@ -42,6 +42,7 @@ const Login = () => {
     onPressLogin,
     auth_loading,
     onPressGoogleBtn,
+    onAppleLogin,
     google_signin_loading,
   } = LoginFunctional();
 
@@ -72,7 +73,7 @@ const Login = () => {
                       size={SIZES.h26}
                       text={'Welcome to Build Asia!'}
                       align={'center'}
-                      mt={SIZES.padding * 2}
+                      mt={SIZES.padding}
                     />
                     <Text
                       size={SIZES.h14}
@@ -178,6 +179,29 @@ const Login = () => {
                         />
                       </RowView>
                     )}
+
+                    <SizedBox height={SIZES.padding2} />
+
+                    <RowView
+                      disabled={auth_loading || values?.role === 'Exhibitor'}
+                      onPress={() => onAppleLogin(values)}
+                      style={[
+                        styles.social_btn,
+                        {
+                          backgroundColor:
+                            auth_loading || values?.role === 'Exhibitor'
+                              ? COLORS.background_grey_color
+                              : COLORS.white,
+                        },
+                      ]}
+                    >
+                      <Icons name={google_icon} />
+                      <Text
+                        weight={TextWeights.medium}
+                        color={COLORS.text_black}
+                        text={'Continue With Apple'}
+                      />
+                    </RowView>
 
                     <SizedBox height={SIZES.padding * 2} />
 

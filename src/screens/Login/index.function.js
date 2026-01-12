@@ -1,9 +1,14 @@
 import { Keyboard } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { navigate, resetNavigationStack } from '../../navigation/service';
-import { googleLogin, login } from '../../redux/actions/auth-action';
+import {
+  appleLogin,
+  googleLogin,
+  login,
+} from '../../redux/actions/auth-action';
 import { getGoogleToken } from '../../utils/functions';
 import { setToastData } from '../../redux/slices/auth-slice';
+import { appleAuth } from '@invertase/react-native-apple-authentication';
 
 export default () => {
   const dispatch = useDispatch();
@@ -67,10 +72,52 @@ export default () => {
     } catch (error) {}
   };
 
+  const onAppleLogin = async values => {
+    if (!values?.role) {
+      dispatch(
+        setToastData({
+          show_toast_modal: true,
+          toast_description: 'Please select the role first',
+          is_error: true,
+        }),
+      );
+      return;
+    }
+
+    const appleAuthRequestResponse = await appleAuth.performRequest({
+      requestedOperation: appleAuth.Operation.LOGIN,
+      requestedScopes: [appleAuth.Scope.FULL_NAME, appleAuth.Scope.EMAIL],
+    });
+    const credentialState = await appleAuth.getCredentialStateForUser(
+      appleAuthRequestResponse.user,
+    );
+
+    if (credentialState === appleAuth.State.AUTHORIZED) {
+      const { fullName, email, identityToken, user } = appleAuthRequestResponse;
+      const userData = {
+        role: values?.role,
+        name: fullName?.givenName,
+        email: email?.toLowerCase(),
+        appleUserId: identityToken,
+        user,
+      };
+      dispatch(
+        appleLogin(userData, res => {
+          if (res?.data?.user?.companyName) {
+            resetNavigationStack('DrawerNavigation');
+          } else {
+            navigate('CompanyInformation');
+          }
+        }),
+      );
+    }
+  };
+
   return {
     onPressLogin,
     auth_loading,
     onPressGoogleBtn,
+    onAppleLogin,
     google_signin_loading,
   };
 };
