@@ -30,6 +30,7 @@ import {
   login_validation_schema,
 } from '../../validations_schemas/login_validation_schema';
 import {
+  apple_icon,
   email_icon,
   google_icon,
   or_line_icon,
@@ -44,6 +45,7 @@ const Login = () => {
     onPressGoogleBtn,
     onAppleLogin,
     google_signin_loading,
+    apple_signin_loading,
   } = LoginFunctional();
 
   return (
@@ -182,26 +184,32 @@ const Login = () => {
 
                     <SizedBox height={SIZES.padding2} />
 
-                    <RowView
-                      disabled={auth_loading || values?.role === 'Exhibitor'}
-                      onPress={() => onAppleLogin(values)}
-                      style={[
-                        styles.social_btn,
-                        {
-                          backgroundColor:
-                            auth_loading || values?.role === 'Exhibitor'
+                    {apple_signin_loading ? (
+                      <Loader />
+                    ) : (
+                      <RowView
+                        disabled={auth_loading}
+                        onPress={() => onAppleLogin(values)}
+                        style={[
+                          styles.social_btn,
+                          {
+                            backgroundColor: auth_loading
                               ? COLORS.background_grey_color
                               : COLORS.white,
-                        },
-                      ]}
-                    >
-                      <Icons name={google_icon} />
-                      <Text
-                        weight={TextWeights.medium}
-                        color={COLORS.text_black}
-                        text={'Continue With Apple'}
-                      />
-                    </RowView>
+                          },
+                        ]}
+                      >
+                        <Icons
+                          name={apple_icon}
+                          iconHeight={SIZES.padding * 1.5}
+                        />
+                        <Text
+                          weight={TextWeights.medium}
+                          color={COLORS.text_black}
+                          text={'Continue With Apple'}
+                        />
+                      </RowView>
+                    )}
 
                     <SizedBox height={SIZES.padding * 2} />
 

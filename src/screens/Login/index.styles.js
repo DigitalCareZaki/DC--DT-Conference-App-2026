@@ -15,11 +15,11 @@ export const styles = StyleSheet.create({
   social_btn: {
     alignSelf: 'center',
     borderRadius: SIZES.padding * 2,
-    height: SIZES.padding * 2.4,
+    height: SIZES.padding * 2,
     gap: SIZES.padding2,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: SIZES.padding,
+    width: '80%',
   },
   forgot_text: {
     textDecorationLine: 'underline',

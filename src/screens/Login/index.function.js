@@ -7,13 +7,12 @@ import {
   login,
 } from '../../redux/actions/auth-action';
 import { getGoogleToken } from '../../utils/functions';
-import { setToastData } from '../../redux/slices/auth-slice';
 import { appleAuth } from '@invertase/react-native-apple-authentication';
 
 export default () => {
   const dispatch = useDispatch();
 
-  const { auth_loading, google_signin_loading } = useSelector(
+  const { auth_loading, google_signin_loading, apple_signin_loading } = useSelector(
     state => state.auth,
   );
 
@@ -38,25 +37,14 @@ export default () => {
     );
   };
 
-  const onPressGoogleBtn = async values => {
+  const onPressGoogleBtn = async () => {
     try {
-      if (!values?.role) {
-        dispatch(
-          setToastData({
-            show_toast_modal: true,
-            toast_description: 'Please select the role first',
-            is_error: true,
-          }),
-        );
-        return;
-      }
-
       const data = await getGoogleToken();
 
       if (data?.user) {
         const apiData = {
           email: data?.user?.email,
-          role: values?.role,
+          role: 'Visitor',
         };
 
         dispatch(
@@ -72,18 +60,7 @@ export default () => {
     } catch (error) {}
   };
 
-  const onAppleLogin = async values => {
-    if (!values?.role) {
-      dispatch(
-        setToastData({
-          show_toast_modal: true,
-          toast_description: 'Please select the role first',
-          is_error: true,
-        }),
-      );
-      return;
-    }
-
+  const onAppleLogin = async () => {
     const appleAuthRequestResponse = await appleAuth.performRequest({
       requestedOperation: appleAuth.Operation.LOGIN,
       requestedScopes: [appleAuth.Scope.FULL_NAME, appleAuth.Scope.EMAIL],
@@ -95,11 +72,10 @@ export default () => {
     if (credentialState === appleAuth.State.AUTHORIZED) {
       const { fullName, email, identityToken, user } = appleAuthRequestResponse;
       const userData = {
-        role: values?.role,
+        role: 'Visitor',
         name: fullName?.givenName,
         email: email?.toLowerCase(),
-        appleUserId: identityToken,
-        user,
+        appleUserId: user,
       };
       dispatch(
         appleLogin(userData, res => {
@@ -119,5 +95,6 @@ export default () => {
     onPressGoogleBtn,
     onAppleLogin,
     google_signin_loading,
+    apple_signin_loading,
   };
 };

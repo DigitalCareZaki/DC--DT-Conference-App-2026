@@ -67,3 +67,4 @@ export { default as success_icon } from './success_icon';
 export { default as zoom_icon } from './zoom_icon';
 export { default as designation_icon } from './designation_icon';
 export { default as company_icon } from './company_icon';
+export { default as apple_icon } from './apple_icon';
