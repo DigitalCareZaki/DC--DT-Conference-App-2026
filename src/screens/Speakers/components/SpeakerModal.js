@@ -42,7 +42,7 @@ const SpeakerModal = ({ visible, onPressClose, data }) => {
           />
 
           <RowView>
-            <View style={styles.text_view}>
+            {/* <View style={styles.text_view}>
               <Text
                 size={SIZES.h12}
                 color={COLORS.placeholder_text_color}
@@ -50,7 +50,7 @@ const SpeakerModal = ({ visible, onPressClose, data }) => {
                 align={'center'}
                 numberOfLines={2}
               />
-            </View>
+            </View> */}
             <View style={styles.text_view}>
               <Text
                 size={SIZES.h12}

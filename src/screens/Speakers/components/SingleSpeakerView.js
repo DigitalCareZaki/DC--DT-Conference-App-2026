@@ -38,14 +38,14 @@ const SingleSpeakerView = ({ item }) => {
             mt={SIZES.padding2 * 0.8}
           />
 
-          <View style={styles.text_view}>
+          {/* <View style={styles.text_view}>
             <Text
               size={SIZES.h10}
               color={COLORS.placeholder_text_color}
               text={item.specialty}
               numberOfLines={2}
             />
-          </View>
+          </View> */}
         </View>
       </RowView>
       <SizedBox height={SIZES.normal} />

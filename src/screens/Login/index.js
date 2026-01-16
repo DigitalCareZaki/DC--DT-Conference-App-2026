@@ -22,7 +22,7 @@ import { COLORS, SIZES } from '../../constants';
 import { login_roles, TextWeights } from '../../config';
 import { common_styles } from '../../utils/common_styles';
 import { navigate } from '../../navigation/service';
-import { keyboardAvoidingBehaviour } from '../../constants/theme';
+import { isIOS, keyboardAvoidingBehaviour } from '../../constants/theme';
 import LoginFunctional from './index.function';
 import { Formik } from 'formik';
 import {
@@ -184,32 +184,36 @@ const Login = () => {
 
                     <SizedBox height={SIZES.padding2} />
 
-                    {apple_signin_loading ? (
-                      <Loader />
-                    ) : (
-                      <RowView
-                        disabled={auth_loading}
-                        onPress={() => onAppleLogin(values)}
-                        style={[
-                          styles.social_btn,
-                          {
-                            backgroundColor: auth_loading
-                              ? COLORS.background_grey_color
-                              : COLORS.white,
-                          },
-                        ]}
-                      >
-                        <Icons
-                          name={apple_icon}
-                          iconHeight={SIZES.padding * 1.5}
-                        />
-                        <Text
-                          weight={TextWeights.medium}
-                          color={COLORS.text_black}
-                          text={'Continue With Apple'}
-                        />
-                      </RowView>
-                    )}
+                    {isIOS ? (
+                      <>
+                        {apple_signin_loading ? (
+                          <Loader />
+                        ) : (
+                          <RowView
+                            disabled={auth_loading}
+                            onPress={() => onAppleLogin(values)}
+                            style={[
+                              styles.social_btn,
+                              {
+                                backgroundColor: auth_loading
+                                  ? COLORS.background_grey_color
+                                  : COLORS.white,
+                              },
+                            ]}
+                          >
+                            <Icons
+                              name={apple_icon}
+                              iconHeight={SIZES.padding * 1.5}
+                            />
+                            <Text
+                              weight={TextWeights.medium}
+                              color={COLORS.text_black}
+                              text={'Continue With Apple'}
+                            />
+                          </RowView>
+                        )}
+                      </>
+                    ) : null}
 
                     <SizedBox height={SIZES.padding * 2} />
 

@@ -14,6 +14,7 @@ import { common_styles } from '../../../utils/common_styles';
 import { heart_icon, selected_heart_icon } from '../../../assets/icons';
 import { navigate } from '../../../navigation/service';
 import { useSelector } from 'react-redux';
+import { capitalize } from '../../../utils/functions';
 
 const ExhibitionCard = ({
   isDescription = true,
@@ -77,6 +78,7 @@ const ExhibitionCard = ({
         color={COLORS.light_blue_color}
         mt={SIZES.padding2}
       />
+
       {isFav
         ? item?.favoriteId?.industry
         : item?.industry && (
@@ -95,38 +97,67 @@ const ExhibitionCard = ({
               }
             />
           )}
-      <Text
-        mt={SIZES.normal / 2}
-        text={
-          <>
-            <Text text={'Venue:'} color={COLORS.keys_color} />
-            <Text text={isFav ? item?.favoriteId?.venue : item?.venue} />
-          </>
-        }
-      />
-      {!item.category === 'none' && (
+      {/* {isFav
+        ? item?.favoriteId?.category
+        : item?.category && (
+            <Text
+              mt={SIZES.normal / 2}
+              text={
+                <>
+                  <Text
+                    text={'Sponsor:'}
+                    color={COLORS.keys_color}
+                  />
+                  <Text
+                    text={isFav ? item?.favoriteId?.category : item?.category}
+                  />
+                </>
+              }
+            />
+          )} */}
+
+      <RowView justifyContent={'space-between'} alignItems={'center'}>
         <Text
           mt={SIZES.normal / 2}
           text={
             <>
-              <Text text={'Exhibitor Category:'} color={COLORS.keys_color} />
-              <Text
-                color={COLORS.gold}
-                text={item.category}
-                weight={TextWeights.heavy}
-              />
+              <Text text={'Venue:'} color={COLORS.keys_color} />
+              <Text text={isFav ? item?.favoriteId?.venue : item?.venue} />
             </>
           }
         />
-      )}
-      {item?.description || item?.favoriteId?.description ? (
+        {(
+          isFav
+            ? item?.favoriteId?.category &&
+              item?.favoriteId?.category !== 'none'
+            : item?.category && item?.category !== 'none'
+        ) ? (
+          <View
+            style={{
+              backgroundColor: COLORS.gold,
+              borderRadius: SIZES.padding,
+              paddingHorizontal: SIZES.padding2,
+              paddingVertical: SIZES.padding2 * 0.1,
+            }}
+          >
+            <Text
+              text={capitalize(
+                isFav ? item?.favoriteId?.category : item?.category,
+              )}
+              align={'center'}
+              color={COLORS.white}
+            />
+          </View>
+        ) : null}
+      </RowView>
+      {/* {item?.description || item?.favoriteId?.description ? (
         <Text
           mt={SIZES.padding2}
           text={isFav ? item?.favoriteId?.description : item?.description}
           lineHeight={SIZES.padding2 * 1.5}
           numberOfLines={2}
         />
-      ) : null}
+      ) : null} */}
 
       {!isFav && item?.chatId && (
         <>

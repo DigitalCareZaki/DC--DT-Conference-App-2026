@@ -11,6 +11,7 @@ import {
 } from '../../../assets/icons';
 import { useSelector } from 'react-redux';
 import { navigate } from '../../../navigation/service';
+import { capitalize } from '../../../utils/functions';
 
 const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
   const { favourites } = useSelector(state => state.main);
@@ -83,7 +84,7 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
 
       <SizedBox height={SIZES.padding2} />
 
-      <RowView>
+      <RowView alignItems={'flex-end'}>
         <View style={common_styles.flex_1}>
           <Text text={'Venue'} color={COLORS.keys_color} />
           <Text
@@ -94,18 +95,22 @@ const SingleExhibitorView = ({ item, onPressHeart, onPressLink }) => {
           />
         </View>
 
-        {!item.category === 'none' && (
-          <View>
-            <Text text={'Exhibitor Category'} color={COLORS.keys_color} />
+        {item?.category && item?.category !== 'none' ? (
+          <View
+            style={{
+              backgroundColor: COLORS.gold,
+              borderRadius: SIZES.padding,
+              paddingHorizontal: SIZES.padding2,
+              paddingVertical: SIZES.padding2 * 0.1,
+            }}
+          >
             <Text
-              mt={SIZES.normal / 2}
-              size={SIZES.h14}
-              weight={TextWeights.heavy}
-              text={item.category}
-              color={COLORS.gold}
+              text={capitalize(item?.category)}
+              align={'center'}
+              color={COLORS.white}
             />
           </View>
-        )}
+        ) : null}
       </RowView>
 
       <SizedBox height={SIZES.normal} />
