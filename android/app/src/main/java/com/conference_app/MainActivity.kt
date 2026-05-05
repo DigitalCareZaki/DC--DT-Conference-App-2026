@@ -1,4 +1,4 @@
-package com.buildasia
+package com.pharmaasia
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

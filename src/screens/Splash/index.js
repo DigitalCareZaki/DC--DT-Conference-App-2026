@@ -28,7 +28,7 @@ const Splash = () => {
         <SizedBox />
 
         <ImageView
-          image={images.build_asia_logo}
+          image={images.drawer_logo}
           height={SIZES.padding * 10}
           width={'100%'}
           radius={0}
@@ -39,7 +39,7 @@ const Splash = () => {
             <Icons name={website_icon} />
             <Text
               color={COLORS.white}
-              text={'Buildasia.net'}
+              text={'pharmaasia.com.pk'}
               textDecorationLine={'underline'}
               weight={TextWeights.medium}
               size={SIZES.h14}

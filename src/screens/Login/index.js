@@ -73,7 +73,7 @@ const Login = () => {
                     <Text
                       weight={TextWeights.heavy}
                       size={SIZES.h26}
-                      text={'Welcome to Build Asia!'}
+                      text={'Welcome to Pharma Asia!'}
                       align={'center'}
                       mt={SIZES.padding}
                     />

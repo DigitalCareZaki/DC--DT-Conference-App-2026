@@ -37,7 +37,7 @@ const DrawerContent = () => {
       <View style={styles.main_view}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <ImageView
-            image={images.build_asia_logo}
+            image={images.drawer_logo}
             height={SIZES.padding * 6}
             width={'100%'}
             radius={0}
