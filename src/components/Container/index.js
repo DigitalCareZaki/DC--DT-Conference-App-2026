@@ -26,7 +26,7 @@ const Container = ({
         <ImageView
           radius={0}
           resizeMode={FastImage.resizeMode.cover}
-          image={images.pharma_background_img}
+          image={images.background_image}
           url={backgroundImage}
           style={styles.image}
         />

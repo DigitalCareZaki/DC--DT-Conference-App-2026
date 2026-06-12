@@ -39,7 +39,7 @@ const Splash = () => {
             <Icons name={website_icon} />
             <Text
               color={COLORS.white}
-              text={'pharmaasia.com.pk'}
+              text={'health-asia.com'}
               textDecorationLine={'underline'}
               weight={TextWeights.medium}
               size={SIZES.h14}
