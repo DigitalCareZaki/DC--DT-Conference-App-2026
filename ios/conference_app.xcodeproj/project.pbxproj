@@ -327,7 +327,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = conference_app/conference_app.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VWT9PW2SMJ;
+				DEVELOPMENT_TEAM = V575FN8V4Y;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = conference_app/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Build Asia";
@@ -358,7 +358,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = conference_app/conference_app.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VWT9PW2SMJ;
+				DEVELOPMENT_TEAM = V575FN8V4Y;
 				INFOPLIST_FILE = conference_app/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Build Asia";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
