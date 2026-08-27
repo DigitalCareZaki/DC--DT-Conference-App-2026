@@ -61,9 +61,9 @@ const MainNavigator = () => {
       dispatch(getUserProfile());
       dispatch(getFavourites());
     }
-    firebase_messaging.subscribeToTopic(notificationTopic);
     requestUserPermission();
     notificationListener();
+    firebase_messaging.subscribeToTopic(notificationTopic);
   }, []);
 
   return (

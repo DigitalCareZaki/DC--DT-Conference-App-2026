@@ -84,8 +84,8 @@ android {
         applicationId "com.conference.dt"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 8
-        versionName "1.1"
+        versionCode 9
+        versionName "1.2"
     }
     signingConfigs {
         debug {
