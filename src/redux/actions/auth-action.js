@@ -82,7 +82,6 @@ export const appleLogin = (data, onDone) => {
         apiService: apiServices.appleLogin,
         isAuth: true,
         onDone: async res => {
-          console.log('res ', res)
           await setToken(res?.data?.accessToken);
           dispatch(setUser(res?.data?.user));
           onDone && onDone(res);

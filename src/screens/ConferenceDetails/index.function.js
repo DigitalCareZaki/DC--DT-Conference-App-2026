@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addRemoveFav, getConference } from '../../redux/actions/main-action';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { setSelectedItemIndex } from '../../redux/slices/main-slice';
 import { Linking, Alert, Platform } from 'react-native';
 import { url_regix } from '../../utils/functions';
@@ -13,6 +13,8 @@ export default ({ id }) => {
     state => state.main,
   );
   const { user } = useSelector(state => state.constant);
+
+  const [showImageModal, setShowImageModal] = useState(false);
 
   useEffect(() => {
     dispatch(getConference(id));
@@ -94,5 +96,7 @@ export default ({ id }) => {
     onPressHeart,
     onPressRegister,
     saveImage,
+    showImageModal,
+    setShowImageModal,
   };
 };

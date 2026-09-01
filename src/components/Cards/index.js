@@ -54,9 +54,9 @@ const Cards = ({
               <Icons
                 name={
                   isFavourite ||
-                  favourites?.find(
-                    favItem => favItem?.favoriteId?._id === item?._id,
-                  )
+                    favourites?.find(
+                      favItem => favItem?.favoriteId?._id === item?._id,
+                    )
                     ? selected_heart_icon
                     : heart_icon
                 }
@@ -72,21 +72,22 @@ const Cards = ({
 
         <SizedBox height={SIZES.padding2} />
 
-        <RowView>
+        <RowView style={common_styles.flex_1} alignItems={'flex-start'}>
           <Text text={'Date:'} size={SIZES.h10} color={COLORS.white + 80} />
           <Text
             text={
               isWorkshop || item?.type === 'Workshop'
                 ? new Date(
-                    isFavourite ? item?.favoriteId?.date : item?.date,
-                  ).toLocaleDateString(dateLocale, datePattern)
+                  isFavourite ? item?.favoriteId?.date : item?.date,
+                ).toLocaleDateString(dateLocale, datePattern)
                 : `${new Date(
-                    isFavourite ? item?.favoriteId?.startDate : item?.startDate,
-                  ).toLocaleDateString(dateLocale, datePattern)} - ${new Date(
-                    isFavourite ? item?.favoriteId?.startDate : item?.endDate,
-                  ).toLocaleDateString(dateLocale, datePattern)}`
+                  isFavourite ? item?.favoriteId?.startDate : item?.startDate,
+                ).toLocaleDateString(dateLocale, datePattern)} - ${new Date(
+                  isFavourite ? item?.favoriteId?.startDate : item?.endDate,
+                ).toLocaleDateString(dateLocale, datePattern)}`
             }
             size={SIZES.h10}
+            style={common_styles.flex_1}
           />
         </RowView>
 
