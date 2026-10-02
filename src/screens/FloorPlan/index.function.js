@@ -24,7 +24,7 @@ export default () => {
       const dirs = fs.dirs;
       const downloadPath =
         Platform.OS === 'ios'
-          ? `${dirs.DocumentDir}/${fileName}`
+          ? `${dirs.DownloadDir}/${fileName}`
           : `${dirs.DownloadDir}/${fileName}`;
 
       // Set MIME type dynamically
@@ -58,13 +58,17 @@ export default () => {
           path: res.path(),
         });
       }
-      dispatch(
-        setToastData({
-          show_toast_modal: true,
-          toast_description: 'Image downloaded successfully!',
-          is_error: false,
-        }),
-      );
+      setShowModal(false);
+
+      setTimeout(() => {
+        dispatch(
+          setToastData({
+            show_toast_modal: true,
+            toast_description: 'Image downloaded successfully!',
+            is_error: false,
+          }),
+        );
+      }, 500);
     } catch (error) {
       console.error('Download error:', error);
       dispatch(

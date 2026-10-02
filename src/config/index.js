@@ -354,7 +354,7 @@ export const hallMapList = [
   {
     title: 'Download Hall Map 3',
     image: images.hall_3,
-    url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1763176706/hall_3_oysifl.png',
+    url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1788792057/hall_3_oysifl.jpg',
   },
   {
     title: 'Download Hall Map 4',

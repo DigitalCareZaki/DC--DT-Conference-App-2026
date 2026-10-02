@@ -43,9 +43,7 @@ const FloorPlan = () => {
           <ImageViewer
             imageUrls={[
               {
-                props: {
-                  source: hallImg?.image,
-                },
+                url: hallImg?.url,
               },
             ]}
             renderHeader={() => (

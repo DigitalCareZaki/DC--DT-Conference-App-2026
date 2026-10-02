@@ -42,7 +42,6 @@ const ExhibitionCard = ({
           size={SIZES.h16}
           weight={TextWeights.medium}
           text={isFav ? item?.favoriteId?.title : item?.title}
-          lineHeight={16}
         />
         <View style={styles.booth_view}>
           <Text
