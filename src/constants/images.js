@@ -16,12 +16,13 @@ import build_asia_background_img from '../assets/images/build_asia_background_im
 import build_asia_logo from '../assets/images/build_asia_logo.png';
 import organization_banner from '../assets/images/organization_banner.png';
 
-import hall_1 from '../assets/images/hall_1.png';
-import hall_2 from '../assets/images/hall_2.png';
-import hall_3 from '../assets/images/hall_3.png';
-import hall_4 from '../assets/images/hall_4.png';
-import hall_5 from '../assets/images/hall_5.png';
-import hall_6 from '../assets/images/hall_6.png';
+import hall_1 from '../assets/images/hall_1.jpeg';
+import hall_2 from '../assets/images/hall_2.jpeg';
+import hall_3 from '../assets/images/hall_3.jpeg';
+import hall_4 from '../assets/images/hall_4.jpeg';
+import hall_5 from '../assets/images/hall_5.jpeg';
+import hall_6 from '../assets/images/hall_6.jpeg';
+import hall_7 from '../assets/images/hall_7.jpeg';
 
 export default {
   background_image,
@@ -45,6 +46,7 @@ export default {
   hall_4,
   hall_5,
   hall_6,
+  hall_7,
   build_asia_logo,
   organization_banner,
 };

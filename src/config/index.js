@@ -338,33 +338,31 @@ export const hallMapList = [
   {
     title: 'Download Hall Map 1',
     image: images.hall_1,
-    url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1763176705/hall_1_jytk7z.png',
   },
   {
     title: 'Download Hall Map 2',
     image: images.hall_2,
-    url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1763176706/hall_2_rh0vw9.png',
   },
   {
     title: 'Download Hall Map 3',
     image: images.hall_3,
-    url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1763176706/hall_3_oysifl.png',
   },
   {
     title: 'Download Hall Map 4',
     image: images.hall_4,
-    url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1763176706/hall_4_rrulio.png',
   },
   {
     title: 'Download Hall Map 5',
     image: images.hall_5,
-    url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1763176706/hall_5_wqusbs.png',
   },
-  // {
-  //   title: 'Download Hall Map 6',
-  //   image: images.hall_6,
-  //   url: 'https://res.cloudinary.com/ddi9ikzpq/image/upload/v1763176706/hall_6_jirfeo.png',
-  // },
+  {
+    title: 'Download Hall Map 6',
+    image: images.hall_6,
+  },
+  {
+    title: 'Download Hall Map 7',
+    image: images.hall_7,
+  },
 ];
 
 export const social_links = links => [

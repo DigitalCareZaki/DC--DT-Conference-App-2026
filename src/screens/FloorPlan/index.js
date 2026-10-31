@@ -19,6 +19,8 @@ const FloorPlan = () => {
   const { showModal, setShowModal, setHallImg, hallImg, onPressDownload } =
     FloorPlanFunctional();
 
+  console.log('showModal ', hallImg)
+
   return (
     <Container>
       <Header title={'Floor Plan'} rightIcon={null} />
@@ -41,13 +43,11 @@ const FloorPlan = () => {
       <Modal transparent visible={showModal}>
         <View style={styles.modal_view}>
           <ImageViewer
-            imageUrls={[
-              {
-                props: {
-                  source: hallImg?.image,
-                },
+            imageUrls={[{
+              props: {
+                source: hallImg?.image,
               },
-            ]}
+            }]}
             renderHeader={() => (
               <RowView
                 onPress={() => setShowModal(false)}
@@ -75,7 +75,7 @@ const FloorPlan = () => {
           <Button
             buttonText={'Download Hall Map'}
             style={styles.btn}
-            onPress={() => onPressDownload(hallImg?.url)}
+            onPress={() => onPressDownload(hallImg?.image)}
           />
           <SizedBox />
         </View>
