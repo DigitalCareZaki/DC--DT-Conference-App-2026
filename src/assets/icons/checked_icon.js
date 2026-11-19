@@ -1,5 +1,0 @@
-export default `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="20" height="20" rx="4.44444" fill="#1C5BA8"/>
-<path d="M6 9.83L8.83 12.66L14.5 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-`;
