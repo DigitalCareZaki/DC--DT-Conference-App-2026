@@ -1,1 +1,0 @@
-export { default as SingleGalleryView } from "./SingleGalleryView"
